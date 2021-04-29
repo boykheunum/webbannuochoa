@@ -98,7 +98,8 @@ public class LoaiSP {
             }
         }
     }
-        public static int searchLoaiSP(loaispModel lsp, String id) {
+
+    public static int searchLoaiSP(loaispModel lsp, String id) {
         Connection cnn = CSDL.databaseConnection.cnnDB();
         if (cnn == null) {
             return -1;
@@ -108,11 +109,13 @@ public class LoaiSP {
                 PreparedStatement ps = cnn.prepareStatement(sql);
                 ps.setString(1, id);
                 ResultSet rs = ps.executeQuery();
-                while(rs.next()){
+                if (rs.next()) {
                     lsp.setMaloaisp(rs.getString("maloaisp"));
                     lsp.setTenloaisp(rs.getString("tenloaisp"));
+                    return 1;
+                }else{
+                    return 0;
                 }
-                return 1;
             } catch (SQLException ex) {
                 Logger.getLogger(loaispModel.class.getName()).log(Level.SEVERE, null, ex);
                 return -2;
