@@ -1,17 +1,12 @@
 <%-- 
-    Document   : chitietloaiSP
-    Created on : Apr 29, 2021, 3:52:50 PM
+    Document   : xoaloaiSP
+    Created on : Apr 30, 2021, 10:52:20 PM
     Author     : Nguyen Tien Dat
 --%>
 
-<%@page import="java.util.Vector"%>
 <%@page import="Model.loaispModel"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%
-    Vector<loaispModel> ds = new Vector<loaispModel>();
-    int kq = CSDL.LoaiSP.listLoaiSP(ds);
-    if (kq == 1) {
-%>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -25,6 +20,12 @@
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
     </head>
+    <%
+        String maloaisp = request.getParameter("maloaisp");
+        loaispModel lsp = new loaispModel();
+        int kq = CSDL.LoaiSP.searchLoaiSP(lsp, maloaisp);
+        if (kq == 1) {
+    %>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <a class="navbar-brand" href="~/admin/Default/Index">Cửa hàng nước hoa</a>
@@ -126,43 +127,34 @@
 
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="index.html">Loại Sản Phẩm</a></li>
-                            <li class="breadcrumb-item active">Danh Sách</li>
+                            <li class="breadcrumb-item active">Xóa</li>
                         </ol>
                         <div class="card mb-4">
                             <div class="card-body">
 
+                                <h3>Are you sure you want to delete this?</h3>
+                                <form action="xoaloaiSP" method="post">
+                                    <h4>Loại Sản Phẩm</h4>
+                                    <hr />
+                                    <dl class="dl-horizontal">
+                                        <dt>
+                                            <input type="hidden" id="maloaisp" name="maloaisp" value="<%=lsp.getMaloaisp()%>">
+                                        </dt>    
+                                        <dt>
+                                            <text>Tên Loại Sản Phẩm:</text>
+                                        </dt>
+                                        
+                                        <dd>
+                                           <text id="tenloaisp" name="tenloaisp"><%=lsp.getTenloaisp()%></text>
+                                        </dd>
 
-                                <p>
-                                    @Html.ActionLink("Thêm mới", "Create")
-                                    <a href="Thêm mới">Thêm mới</a>|
-                                </p>
-                                <table class="table">
-                                    <tr>
-                                        <th>
-                                            <text>Mã Loại Sản Phẩm</text>
-                                        <th>
-                                            <text>Tên Loại Sản Phẩm</text>
-                                        </th>
-                                        <th></th>
-                                    </tr>
+                                    </dl>
+                                    <div class="form-actions no-color">
+                                        <input type="submit" value="Delete" class="btn btn-default" /> |
+                                        "Back to List", "Index")                                   
+                                    </div>
 
-                                    <%for (loaispModel lsp : ds) {%>
-                                    <tr>
-                                        <td>
-                                            <%=lsp.getMaloaisp()%>
-                                        </td>
-                                        <td>
-                                            <%=lsp.getTenloaisp()%>
-                                        </td>
-                                        <td>
-                                            <a href="sualoaiSP.jsp?maloaisp=<%=lsp.getMaloaisp()%>">Edit</a>|
-                                            <a href="chitietloaiSP.jsp?maloaisp=<%=lsp.getMaloaisp()%>">Details</a>|
-                                            <a href="xoaloaiSP.jsp?maloaisp=<%=lsp.getMaloaisp()%>">Delete</a>
-                                        </td>
-                                    </tr>
-                                    <%}%>
-
-                                </table>
+                                </form>
 
 
                             </div>
@@ -191,6 +183,7 @@
         <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
         <script src="content/assets/demo/datatables-demo.js"></script>
     </body>
+    <%}%>
 </html>
-<%}%>
+
 

@@ -68,7 +68,7 @@ public class LoaiSP {
         if (cnn == null) {
             return -1;
         } else {
-            String sql = "DELETE FROM loaisp WHERE maloisp = ?";
+            String sql = "DELETE FROM loaisp WHERE maloaisp = ?";
             try {
                 PreparedStatement ps = cnn.prepareStatement(sql);
                 ps.setString(1, keyword);
