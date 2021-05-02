@@ -43,19 +43,19 @@ public class sanphamModel {
         this.soluong = soluong;
     }
 
-    public int getGianhap() {
+    public float getGianhap() {
         return gianhap;
     }
 
-    public void setGianhap(int gianhap) {
+    public void setGianhap(float gianhap) {
         this.gianhap = gianhap;
     }
 
-    public int getGiaban() {
+    public float getGiaban() {
         return giaban;
     }
 
-    public void setGiaban(int giaban) {
+    public void setGiaban(float giaban) {
         this.giaban = giaban;
     }
 
@@ -67,15 +67,15 @@ public class sanphamModel {
         this.mota = mota;
     }
 
-    public String getAnh() {
-        return anh;
+    public String getHinhanh() {
+        return hinhanh;
     }
 
-    public void setAnh(String anh) {
-        this.anh = anh;
+    public void setHinhanh(String hinhanh) {
+        this.hinhanh = hinhanh;
     }
 
-    public sanphamModel(String masp, String maloaisp, String tensp, int soluong, int gianhap, int giaban, String mota, String anh) {
+    public sanphamModel(String masp, String maloaisp, String tensp, int soluong, float gianhap, float giaban, String mota, String hinhanh) {
         this.masp = masp;
         this.maloaisp = maloaisp;
         this.tensp = tensp;
@@ -83,17 +83,18 @@ public class sanphamModel {
         this.gianhap = gianhap;
         this.giaban = giaban;
         this.mota = mota;
-        this.anh = anh;
+        this.hinhanh = hinhanh;
     }
 
     public sanphamModel() {
     }
+
     private String masp;
     private String maloaisp;
     private String tensp;
     private int soluong;
-    private int gianhap;
-    private int giaban;
+    private float gianhap;
+    private float giaban;
     private String mota;
-    private String anh;
+    private String hinhanh;
 }

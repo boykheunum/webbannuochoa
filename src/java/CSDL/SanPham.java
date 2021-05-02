@@ -35,10 +35,10 @@ public class SanPham {
                     tp.setMaloaisp(rs.getString("maloaisp"));
                     tp.setTensp(rs.getString("tensp"));
                     tp.setSoluong(rs.getInt("soluong"));
-                    tp.setGianhap(rs.getInt("gianhap"));
-                    tp.setGiaban(rs.getInt("giaban"));
+                    tp.setGianhap(rs.getFloat("gianhap"));
+                    tp.setGiaban(rs.getFloat("giaban"));
                     tp.setMota(rs.getString("mota"));
-                    tp.setAnh(rs.getString("anh"));
+                    tp.setHinhanh(rs.getString("hinhanh"));
                     ls.add(tp);
                 }
                 return 1;
@@ -49,25 +49,57 @@ public class SanPham {
 
         }
     }
-
+    
+    public static int searchSP(sanphamModel sp,String id){
+        Connection cnn = CSDL.databaseConnection.cnnDB();
+        if(cnn == null){
+            return  -1;
+        }else{
+            String sql = "SELECT * FROM sanpham where masp = ?";
+            PreparedStatement ps;
+            try {
+                ps = cnn.prepareStatement(sql);
+                ps.setString(1, id);
+                ResultSet rs = ps.executeQuery();
+                if(rs.next()){
+                    sp.setMaloaisp(rs.getString("maloaisp"));
+                    sp.setMasp(rs.getString("masp"));
+                    sp.setTensp(rs.getString("tensp"));
+                    sp.setSoluong(rs.getInt("soluong"));
+                    sp.setGianhap(rs.getFloat("gianhap"));
+                    sp.setGiaban(rs.getFloat("giaban"));
+                    sp.setMota(rs.getString("mota"));
+                    sp.setHinhanh(rs.getString("hinhanh"));
+                    return 1;
+                }else{
+                    return 0;
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(SanPham.class.getName()).log(Level.SEVERE, null, ex);
+                return -2;
+            }
+            
+        }
+    }
+    
     public static int addLoaiSP(sanphamModel lsm) {
         Connection cnn = CSDL.databaseConnection.cnnDB();
         if (cnn == null) {
             return -1;
         } else {
-            String sql = "INSERT INTO sanpham values(?,?)";
-            PreparedStatement ps;
+            String sql = "INSERT INTO sanpham(maloaisp, masp, tensp, soluong, gianhap, giaban, mota, hinhanh) VALUES (?,?,?,?,?,?,?,?)";
             try {
-                ps = cnn.prepareStatement(sql);
-                ps.setString(1, lsm.getMasp());
-                ps.setString(2, lsm.getMaloaisp());
+                PreparedStatement ps = cnn.prepareStatement(sql);
+                ps.setString(1, lsm.getMaloaisp());
+                ps.setString(2, lsm.getMasp());
                 ps.setString(3, lsm.getTensp());
                 ps.setInt(4, lsm.getSoluong());
-                ps.setInt(5, lsm.getGianhap());
-                ps.setInt(6, lsm.getGiaban());
+                ps.setFloat(5, lsm.getGianhap());
+                ps.setFloat(6, lsm.getGiaban());
                 ps.setString(7, lsm.getMota());
-                ps.setString(8, lsm.getAnh());
-                return ps.executeUpdate();
+                ps.setString(8, lsm.getHinhanh());
+                ps.executeUpdate();
+                return 1;
             } catch (SQLException ex) {
                 Logger.getLogger(SanPham.class.getName()).log(Level.SEVERE, null, ex);
                 return -2;
@@ -99,18 +131,21 @@ public class SanPham {
         if (cnn == null) {
             return -1;
         } else {
-            String sql = "INSERT INTO sanpham values(?) WHERE masp = ?";
+            String sql = "UPDATE sanpham SET maloaisp = ?,tensp= ?,soluong=?,gianhap=?,giaban=?,mota=?,hinhanh=? WHERE masp=?";
             try {
                 PreparedStatement ps = cnn.prepareStatement(sql);
                 ps.setString(1, lsm.getMaloaisp());
+                
                 ps.setString(2, lsm.getTensp());
                 ps.setInt(3, lsm.getSoluong());
-                ps.setInt(4, lsm.getGianhap());
-                ps.setInt(5, lsm.getGiaban());
+                ps.setFloat(4, lsm.getGianhap());
+                ps.setFloat(5, lsm.getGiaban());
                 ps.setString(6, lsm.getMota());
-                ps.setString(7, lsm.getAnh());
+                ps.setString(7, lsm.getHinhanh());
                 ps.setString(8, lsm.getMasp());
-                return ps.executeUpdate();
+                ps.executeUpdate();
+                return 1;
+
             } catch (SQLException ex) {
                 Logger.getLogger(SanPham.class.getName()).log(Level.SEVERE, null, ex);
                 return -2;

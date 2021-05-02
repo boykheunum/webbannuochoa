@@ -6,7 +6,6 @@
 package CSDL;
 
 import java.io.File;
-import java.io.UnsupportedEncodingException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
@@ -26,19 +25,22 @@ public class tienich {
 
     public static String filePath = "";
 
-    public static String inputFile(List fileItemList, String inputFile) throws UnsupportedEncodingException, Exception {
-        Iterator i = fileItemList.iterator();
-        while (i.hasNext()) {
-            FileItem fileItemName = (FileItem) i.next();
-            String fieldName = fileItemName.getFieldName();
-            if (fieldName.equalsIgnoreCase(inputFile)) {
-                if (fileItemName.isFormField()) {
-                    return fileItemName.getString("UTF-8");
-                } else {
-                    String fileName = fileItemName.getName();
-                    if (fieldName.equals("") == false) {
+    public static String inputFile(List fieldItems, String inputName) throws Exception {
+        Iterator i = fieldItems.iterator();
+        while (i.hasNext()) //lặp các input submit từ form
+        {
+            FileItem fi = (FileItem) i.next();
+            String fieldName = fi.getFieldName();
+            if (fieldName.equalsIgnoreCase(inputName)) {
+                if (fi.isFormField()) //nếu là input thường
+                {
+                    return fi.getString("UTF-8");
+                } else //nếu là input dạng file
+                {
+                    String fileName = fi.getName();
+                    if (fileName.equals("") == false) {
                         File file = new File(filePath + fileName);
-                        fileItemName.write(file);
+                        fi.write(file);
                     }
                     return fileName;
                 }
@@ -48,18 +50,23 @@ public class tienich {
     }
 
     public static List Uploads(HttpServletRequest request, String folder) {
-        int maxSizeFile = 1024 * 5000;
-        int maxMemSize = 1024 * 5000;
+      int maxFileSize = 5000 * 1024;
+      int maxMemSize = 5000 * 1024;
+      ServletContext context = request.getServletContext();
+      String curPath = context.getRealPath("/");
+      filePath = curPath + folder ;//thư mục chứa file upload từ trình duyệt lên
+      DiskFileItemFactory factory = new DiskFileItemFactory();
+      factory.setSizeThreshold(maxMemSize);
+      factory.setRepository(new File(curPath));
+      ServletFileUpload upload = new ServletFileUpload(factory);
+      upload.setSizeMax( maxFileSize );
+      List FieldItems=null;
+        try {
+            FieldItems = upload.parseRequest(request);
+        } catch (FileUploadException ex) {
+            Logger.getLogger(tienich.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
-        ServletContext context = request.getServletContext();
-        String curPath = context.getRealPath("/");
-        filePath = filePath + folder;
-        DiskFileItemFactory factory = new DiskFileItemFactory();
-        factory.setSizeThreshold(maxMemSize);
-        factory.setRepository(new File(filePath));
-        ServletFileUpload upload = new ServletFileUpload(factory);
-        upload.setSizeMax(maxSizeFile);
-        List FileItem = null;
-        return FileItem;
+      return FieldItems;
     }
 }
