@@ -136,7 +136,7 @@
                                 <div class="form-horizontal">
                                     <h4>Sản Phẩm</h4>
                                     <hr />
-                                    <input type="text" id="masp" name="masp" value="<%=sp.getMasp()%>">
+                                    <input type="hidden" id="masp" name="masp" value="<%=sp.getMasp()%>">
                                     <div class="form-group">
                                         "Mã loại Sản phẩm"
                                         <div class="col-md-10">

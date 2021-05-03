@@ -5,14 +5,9 @@
  */
 package Control;
 
-import CSDL.tienich;
-import Model.sanphamModel;
-import com.oracle.webservices.internal.api.databinding.DatabindingModeFeature;
+import Model.loaispModel;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,8 +18,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Nguyen Tien Dat
  */
-@WebServlet(name = "suaSP", urlPatterns = {"/suaSP"})
-public class suaSP extends HttpServlet {
+@WebServlet(name = "sualoaiSP", urlPatterns = {"/sualoaiSP"})
+public class sualoaiSP extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,28 +35,12 @@ public class suaSP extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            
-            String checkEntype = request.getContentType();
-            if(checkEntype.contains("multipart/form-data")){
-                List listItem = tienich.Uploads(request, "imageSP");
-                try {
-                    String masp = tienich.inputFile(listItem, "masp");
-                    String maloaisp = tienich.inputFile(listItem, "maloaisp");
-                    String tensp = tienich.inputFile(listItem, "tensp");
-                    int soluong = Integer.parseInt(tienich.inputFile(listItem, "soluong"));
-                    float gianhap = Float.parseFloat(tienich.inputFile(listItem, "gianhap"));
-                    float giaban = Float.parseFloat(tienich.inputFile(listItem, "giaban"));
-                    String mota = tienich.inputFile(listItem, "mota");
-                    String anh = tienich.inputFile(listItem, "anh");
-                    sanphamModel sp = new sanphamModel(masp, maloaisp, tensp, soluong, gianhap, giaban, mota, anh);
-                    int kq = CSDL.SanPham.editLoaiSP(sp);
-                    if(kq > 0){
-                        response.sendRedirect("dsSP.jsp");
-                    }
-                } catch (Exception ex) {
-                    Logger.getLogger(suaSP.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                
+            String maloaisp = request.getParameter("maloaisp");
+            String tenloaisp = request.getParameter("tenloaisp");
+            loaispModel lsp =new loaispModel(maloaisp, tenloaisp);
+            int kq = CSDL.LoaiSP.editLoaiSP(lsp);
+            if(kq == 1){
+                response.sendRedirect("dsloaiSP.jsp");
             }
         }
     }

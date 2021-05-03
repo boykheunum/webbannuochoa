@@ -40,7 +40,7 @@ public class themloaisp extends HttpServlet {
             loaispModel lsp = new loaispModel(maloaisp, tenloaisp);
             int kq = CSDL.LoaiSP.addLoaiSP(lsp);
             if(kq==1){
-                response.sendRedirect("chitietloaiSP.jsp");
+                response.sendRedirect("dsloaiSP.jsp");
             }
         }
     }

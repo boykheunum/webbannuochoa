@@ -89,6 +89,16 @@ public class sanphamModel {
     public sanphamModel() {
     }
 
+    public sanphamModel(String maloaisp, String tensp, int soluong, float gianhap, float giaban, String mota, String hinhanh) {
+        this.maloaisp = maloaisp;
+        this.tensp = tensp;
+        this.soluong = soluong;
+        this.gianhap = gianhap;
+        this.giaban = giaban;
+        this.mota = mota;
+        this.hinhanh = hinhanh;
+    }
+
     private String masp;
     private String maloaisp;
     private String tensp;

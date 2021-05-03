@@ -81,16 +81,17 @@ public class LoaiSP {
         }
     }
 
-    public static int editLoaiSP(loaispModel lsm, String id) {
+    public static int editLoaiSP(loaispModel lsm) {
         Connection cnn = CSDL.databaseConnection.cnnDB();
         if (cnn == null) {
             return -1;
         } else {
-            String sql = "INSERT INTO loaisp values(?) WHERE maloaisp = ?";
+            String sql = "UPDATE loaisp SET tenloaisp=? WHERE maloaisp=?";
             try {
                 PreparedStatement ps = cnn.prepareStatement(sql);
                 ps.setString(1, lsm.getTenloaisp());
-                ps.setString(2, id);
+                ps.setString(2, lsm.getMaloaisp());
+                String test  = ps.toString();
                 return ps.executeUpdate();
             } catch (SQLException ex) {
                 Logger.getLogger(LoaiSP.class.getName()).log(Level.SEVERE, null, ex);
