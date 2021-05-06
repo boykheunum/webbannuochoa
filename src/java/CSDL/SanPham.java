@@ -6,11 +6,13 @@
 package CSDL;
 
 import Model.sanphamModel;
+import com.sun.javafx.geom.Vec2d;
 import com.sun.xml.internal.bind.api.impl.NameConverter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -130,9 +132,9 @@ public class SanPham {
 
     public static int editLoaiSP(sanphamModel lsm) {
         Connection cnn = CSDL.databaseConnection.cnnDB();
-        if(cnn == null){
+        if (cnn == null) {
             return -1;
-        }else{
+        } else {
             try {
                 PreparedStatement ps = cnn.prepareStatement("UPDATE sanpham SET maloaisp = ?, tensp = ?, soluong = ?, gianhap = ?,giaban = ?,mota = ?, hinhanh = ? WHERE masp = ?");
                 ps.setString(1, lsm.getMaloaisp());
@@ -144,12 +146,60 @@ public class SanPham {
                 ps.setString(7, lsm.getHinhanh());
                 ps.setString(8, lsm.getMasp());
                 String test = ps.toString();
-                return  ps.executeUpdate();
+                return ps.executeUpdate();
             } catch (SQLException ex) {
                 Logger.getLogger(SanPham.class.getName()).log(Level.SEVERE, null, ex);
                 return -2;
             }
-            
+
         }
+    }
+
+    //dem so luopng san pham de phan trang
+    public static int countSP() {
+        Connection cnn = CSDL.databaseConnection.cnnDB();
+        if (cnn == null) {
+            return -1;
+        } else {
+            String sql = "COUNT * FROM sanpham";
+            try {
+                PreparedStatement ps = cnn.prepareStatement(sql);
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    return rs.getInt(1);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(SanPham.class.getName()).log(Level.SEVERE, null, ex);
+                return -2;
+            }
+
+        }
+        return 0;
+    }
+
+    public static Vector<sanphamModel> phantrang(int index, Vector<sanphamModel> ds) {
+        Connection cnn = null;
+        String sql = "SELECT * FROM sanpham ORDER BY masp OFFSET ? ROWS FETCH NEXT 12 ROWS ONLY";
+        PreparedStatement ps;
+        try {
+            ps = cnn.prepareStatement(sql);
+            ps.setInt(1, (index-1)*12);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                sanphamModel tp = new sanphamModel();
+                tp.setMasp(rs.getString("masp"));
+                tp.setMaloaisp(rs.getString("maloaisp"));
+                tp.setTensp(rs.getString("tensp"));
+                tp.setSoluong(rs.getInt("soluong"));
+                tp.setGianhap(rs.getFloat("gianhap"));
+                tp.setGiaban(rs.getFloat("giaban"));
+                tp.setMota(rs.getString("mota"));
+                tp.setHinhanh(rs.getString("hinhanh"));
+                ds.add(tp);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(SanPham.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return ds;
     }
 }
