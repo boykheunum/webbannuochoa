@@ -19,7 +19,7 @@ public class databaseConnection {
 
     public static String userName = "root";
     public static String password = "";
-    public static String url = "jdbc:mysql://localhost:3306/csdlbannuochoa";
+    public static String url = "jdbc:mysql://localhost:3306/csdlbannuochoa?useUnicode=true&characterEncoding=utf8";
 
     public static Connection cnnDB() {
         Connection cnn = null;

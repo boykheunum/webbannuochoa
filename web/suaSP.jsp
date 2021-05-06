@@ -126,7 +126,7 @@
                         </ol>
                         <div class="card mb-4">
                             <%
-                                
+
                                 String masp = request.getParameter("masp");
                                 sanphamModel sp = new sanphamModel();
                                 int kq = CSDL.SanPham.searchSP(sp, masp);
@@ -139,93 +139,103 @@
                                     <input type="hidden" id="masp" name="masp" value="<%=sp.getMasp()%>">
                                     <div class="form-group">
                                         "Mã loại Sản phẩm"
-                                        <div class="col-md-10">
-                                           <select class="col-md-10" id="maloaisp" name="maloaisp">
-                                            <%
-                                                Vector<loaispModel>ds = new Vector<loaispModel>();
-                                                CSDL.LoaiSP.listLoaiSP(ds);
-                                                for (loaispModel lsp : ds) {
-                                            %>
-                                            <option><%=lsp.getMaloaisp()%></option>>
-                                            <%}%>
-                                        </select>>
+                                        <div class="col-md-4">
+                                            <select class="col-md-4" id="maloaisp" name="maloaisp">
+                                                <%
+                                                    Vector<loaispModel> ds = new Vector<loaispModel>();
+                                                    CSDL.LoaiSP.listLoaiSP(ds);
+                                                    for (loaispModel lsp : ds) {
+                                                %>
+                                                <option><%=lsp.getMaloaisp()%></option>>
+                                                <%}%>
+                                            </select>>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         "Tên Sản phẩm"
-                                        <input type="text" id="tensp" name="tensp" value="<%=sp.getTensp()%>">
+                                        <div class="col-md-6">
+                                            <input type="text" id="tensp" name="tensp" value="<%=sp.getTensp()%>">
+                                        </div>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     "Số lượng"
-                                    <div class="col-md-10">
+                                    <div class="col-md-6">
                                         <input type="text" id="soluong" name="soluong" value="<%=sp.getSoluong()%>">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     "Giá nhập"
-                                    <div class="col-md-10">
+                                    <div class="col-md-6">
                                         <input type="text" id="gianhap" name="gianhap" value="<%=sp.getGianhap()%>">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     "Giá bán"
-                                    <input type="text" id="giaban" name="giaban" value="<%=sp.getGiaban()%>">
+                                    <div class="col-md-6">
+                                        <input type="text" id="giaban" name="giaban" value="<%=sp.getGiaban()%>">
                                     </div>
                                 </div>
-
 
 
                                 <div class="form-group">
                                     "Mô tả"
-                                    <div class="col-md-10">
-                                        <textarea type="text" id="mota" name="mota" value="<%=sp.getMota()%>"></textarea>>
+                                    <div class="col-md-6">
+                                        <textarea class="form-control" placeholder="Nhập mô tả" id="mota" name="mota"><%=sp.getMota()%></textarea>
                                     </div>
                                 </div>
-
 
                                 <div class="form-group">
                                     "Ảnh"
-                                    <div class="col-md-10">
-                                        <input type="file" id="anh" name="anh" value="<%=sp.getHinhanh()%>">
+                                    <%
+                                        String checkImage = "noImage";
+                                        if (sp.getHinhanh().equals("") != true) {
+                                            checkImage = sp.getHinhanh();
+                                    %>
+                                    <div class="col-md-6">
+                                        <img src="imageSP/<%=checkImage%>" width="40%" height="40%">
+                                        <div>
+                                        <input style="color: transparent;" id="formFileSm" type="file" id="anh" name="anh" value="<%=checkImage%>">
+                                        </div>
                                     </div>
+                                    <%}%>
                                 </div>
-                                    
-                                <div class="form-group">
-                                    <div class="col-md-offset-2 col-md-10">
-                                        <input type="submit" value="Save" class="btn btn-default" />
-                                    </div>
-                                </div>
-                            </form>
-                            <%}%>
-
-                            <div>
-                                @Html.ActionLink("Back to List", "Index")
-                            </div>
-
-
                         </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-6">
+                                <input type="submit" value="Save" class="btn btn-default" />
+                            </div>
+                        </div>
+                        </form>
+                        <%}%>
+
+                        <div>
+                            @Html.ActionLink("Back to List", "Index")
+                        </div>
+
+
                     </div>
             </div>
         </div>
-    </main>
+    </div>
+</main>
 
-    <footer class="py-4 bg-light mt-auto">
-        <div class="container-fluid">
-            <div class="d-flex align-items-center justify-content-between small">
-                <div class="text-muted">Copyright &copy; Your Website 2020</div>
-                <div>
-                    <a href="#">Privacy Policy</a>
-                    &middot;
-                    <a href="#">Terms &amp; Conditions</a>
-                </div>
+<footer class="py-4 bg-light mt-auto">
+    <div class="container-fluid">
+        <div class="d-flex align-items-center justify-content-between small">
+            <div class="text-muted">Copyright &copy; Your Website 2020</div>
+            <div>
+                <a href="#">Privacy Policy</a>
+                &middot;
+                <a href="#">Terms &amp; Conditions</a>
             </div>
         </div>
-    </footer>
+    </div>
+</footer>
 </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
