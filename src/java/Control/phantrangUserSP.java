@@ -5,8 +5,10 @@
  */
 package Control;
 
+import Model.sanphamModel;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Vector;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,12 +36,21 @@ public class phantrangUserSP extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            String indexPage = request.getParameter("index");
+            int a; 
+            if(indexPage == null){
+                a = 1;
+            }else{
+                a = Integer.parseInt(indexPage);   
+            }
             int count = CSDL.SanPham.countSP();
             int endPage = count/12;
             if(count % 12 != 0){
                 endPage ++;
             }
-            request.setAttribute("end", endPage);
+            request.setAttribute("num", a);
+            request.setAttribute("endP", endPage);
+            request.getRequestDispatcher("hienthiSP.jsp").forward(request, response);
         }
     }
 

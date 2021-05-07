@@ -199,7 +199,7 @@
                                     <div class="col-md-6">
                                         <img src="imageSP/<%=checkImage%>" width="40%" height="40%">
                                         <div>
-                                        <input style="color: transparent;" id="formFileSm" type="file" id="anh" name="anh" value="<%=checkImage%>">
+                                        <input title="<%=checkImage%>" id="formFileSm" type="file" id="anh" name="anh" value="<%=checkImage%>">
                                         </div>
                                     </div>
                                     <%}%>

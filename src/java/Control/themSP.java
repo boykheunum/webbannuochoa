@@ -41,29 +41,34 @@ public class themSP extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            
+
             String fileImage = "imageSP\\";
             String checkEnctype = request.getContentType();
-            if(checkEnctype.contains("multipart/form-data")){
+            if (checkEnctype.contains("multipart/form-data")) {
                 List fieldItem = tienich.Uploads(request, fileImage);
                 try {
                     String masp = tienich.inputFile(fieldItem, "masp");
-                    String maloaisp = tienich.inputFile(fieldItem, "maloaisp");
-                    String tensp = tienich.inputFile(fieldItem, "tensp");
-                    int soluong = Integer.parseInt(tienich.inputFile(fieldItem, "soluong"));
-                    float gianhap = Float.parseFloat(tienich.inputFile(fieldItem, "gianhap"));
-                    float giaban = Float.parseFloat(tienich.inputFile(fieldItem, "giaban"));
-                    String mota = tienich.inputFile(fieldItem, "mota");
-                    String anh = tienich.inputFile(fieldItem, "anh");
-                    sanphamModel sp = new sanphamModel(masp, maloaisp, tensp, soluong, gianhap, giaban, mota, anh);
-                    int kq = CSDL.SanPham.addLoaiSP(sp);
-                    if(kq == 1){
-                        response.sendRedirect("dsSP.jsp");
+                    int check = CSDL.SanPham.checkmaSP(masp);
+                    if (check == 0) {
+                        String maloaisp = tienich.inputFile(fieldItem, "maloaisp");
+                        String tensp = tienich.inputFile(fieldItem, "tensp");
+                        int soluong = Integer.parseInt(tienich.inputFile(fieldItem, "soluong"));
+                        float gianhap = Float.parseFloat(tienich.inputFile(fieldItem, "gianhap"));
+                        float giaban = Float.parseFloat(tienich.inputFile(fieldItem, "giaban"));
+                        String mota = tienich.inputFile(fieldItem, "mota");
+                        String anh = tienich.inputFile(fieldItem, "anh");
+                        sanphamModel sp = new sanphamModel(masp, maloaisp, tensp, soluong, gianhap, giaban, mota, anh);
+                        int kq = CSDL.SanPham.addLoaiSP(sp);
+                        if (kq == 1) {
+                            response.sendRedirect("dsSP.jsp");
+                        }
+                    }else{
+                        out.print("<script>alert('Đã tồn tại mã sản phẩm bạn vừa nhập')</script>");
                     }
                 } catch (Exception ex) {
                     Logger.getLogger(themSP.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                
+
             }
         }
     }

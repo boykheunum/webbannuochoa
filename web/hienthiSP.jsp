@@ -152,8 +152,11 @@
                 <h2 class="mb-4">Sản phẩm nổi bật</h2>
                 <div class="row">
                     <%
+                        int numPage = (int)request.getAttribute("endP");
+                        int num = (int)request.getAttribute("num");
                         Vector<sanphamModel> ds = new Vector<sanphamModel>();
-                        int kq = CSDL.SanPham.listSP(ds);
+                        //int kq = CSDL.SanPham.listSP(ds);
+                        int kq = CSDL.SanPham.phantrang(num, ds);
                         if (kq == 1) {
                             for (sanphamModel sp : ds) {
                                 String checkImage = "noImage.png";
@@ -176,6 +179,13 @@
                         }
                     %>
                 </div>
+                <%
+                    
+                    
+                    for(int i = 1; i <= numPage; i++ ){
+                %>
+                <a href="phantrangUserSP?index=<%=i%>"><%=i%></a>
+                <%}%>
             </div>
         </section>
         <!-- <hr class="my-0" />

@@ -188,7 +188,7 @@
                                             <%=sp.getMota()%>
                                         </td>
                                         <td>
-                                            <img src="imageSP/<%=sp.getHinhanh()%>"></a>
+                                            <img width='348px' height="348px"  src="imageSP/<%=sp.getHinhanh()%>"></a>
                                         </td>
                                         <td>
                                             <a href="suaSP.jsp?masp=<%=sp.getMasp()%>">Edit</a>|
