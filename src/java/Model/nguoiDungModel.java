@@ -11,12 +11,37 @@ package Model;
  */
 public class nguoiDungModel {
 
+    public nguoiDungModel(String tendangnhap, String hovaten, String diachi, String matkhau, String sdt, int makh) {
+        this.tendangnhap = tendangnhap;
+        this.hovaten = hovaten;
+        this.diachi = diachi;
+        this.matkhau = matkhau;
+        this.sdt = sdt;
+        this.makh = makh;
+    }
+
+    public nguoiDungModel(String tendangnhap, String hovaten, String diachi, String matkhau, String sdt) {
+        this.tendangnhap = tendangnhap;
+        this.hovaten = hovaten;
+        this.diachi = diachi;
+        this.matkhau = matkhau;
+        this.sdt = sdt;
+    }
+
     private String tendangnhap;
     private String hovaten;
     private String diachi;
     private String matkhau;
     private String sdt;
-    private String makh;
+    private int makh;
+    public int getMakh() {
+        return makh;
+    }
+
+    public void setMakh(int makh) {
+        this.makh = makh;
+    }
+    
 
     public nguoiDungModel(String tendangnhap, String matkhau) {
         this.tendangnhap = tendangnhap;
@@ -63,22 +88,7 @@ public class nguoiDungModel {
         this.sdt = sdt;
     }
 
-    public String getMakh() {
-        return makh;
-    }
 
-    public void setMakh(String makh) {
-        this.makh = makh;
-    }
-
-    public nguoiDungModel(String tendangnhap, String hovaten, String diachi, String matkhau, String sdt, String makh) {
-        this.tendangnhap = tendangnhap;
-        this.hovaten = hovaten;
-        this.diachi = diachi;
-        this.matkhau = matkhau;
-        this.sdt = sdt;
-        this.makh = makh;
-    }
 
     public nguoiDungModel() {
     }

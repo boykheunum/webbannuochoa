@@ -43,14 +43,10 @@ public class dangnhap extends HttpServlet {
             session.setAttribute("us", userName);
             session.setAttribute("ps", passWord);
             int kq = nguoidung.dangnhap(userName, passWord);
-            if(kq==-1){
-                out.print("<script>alert('loi ket noi database')</script>");
-            }else if(kq>0){
-                out.print("<script>alert('dang nhap thanh cong')</script>");
-            }else if(kq==0){
-                out.print("<script>alert('ten dang nhap hoac mat khau sai')</script>");
+            if(kq==1){
+                out.print("1");
             }else{
-                out.print("<script>alert('loi sql')</script>");
+                out.print("-1");
             }
         }
     }

@@ -134,6 +134,8 @@
                                 <form class="form-horizontal" method="post" action="themSP" enctype="multipart/form-data">
                                     <h4>Sản Phẩm</h4>
                                     <hr />
+                                    <span id="messBoxErr" style="color: red"></span>
+                                    <span id="messBox" style="color: greenyellow"></span>
                                     <div class="form-group">
                                         Mã sản phẩm
                                         <input class="col-md-10" type="text" id="masp" name="masp">
@@ -207,6 +209,31 @@
         <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
         <script src="content/assets/demo/datatables-demo.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#masp').keyup(function () {
+                    $.ajax({
+                        method: 'POST',
+                        url: 'checkMaSP',
+                        data: {
+                            masp: $('#masp').val()
+                        },
+                        success: function (res) {
+                            var messBox = document.getElementById('messBox');
+                            var messBoxErr = document.getElementById('messBoxErr');
+                            if (res == 1) {
+                                messBox.innerHTML=" ";
+                                messBoxErr.innerHTML = "Đã tồn tại mã  sản phẩm";
+                            } else if(res == -1) {
+                                messBoxErr.innerHTML =" ";
+                                messBox.innerHTML = "mã sản phẩm hợp lệ";
+                            }
+
+                        }
+                    });
+                });
+            });
+        </script>
     </body>
     <%}%>
 

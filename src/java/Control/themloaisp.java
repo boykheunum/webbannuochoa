@@ -37,17 +37,12 @@ public class themloaisp extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             String maloaisp = request.getParameter("maloaisp");
             int check = CSDL.LoaiSP.checkLoaiSP(maloaisp);
-            if (check == 1) {
-                response.sendRedirect("NhapLailoaiSP.jsp");
-            } else {
-                String tenloaisp = request.getParameter("tenloaisp");
-                loaispModel lsp = new loaispModel(maloaisp, tenloaisp);
-                int kq = CSDL.LoaiSP.addLoaiSP(lsp);
-                if (kq == 1) {
-                    response.sendRedirect("dsloaiSP.jsp");
-                }
+            String tenloaisp = request.getParameter("tenloaisp");
+            loaispModel lsp = new loaispModel(maloaisp, tenloaisp);
+            int kq = CSDL.LoaiSP.addLoaiSP(lsp);
+            if (kq == 1) {
+                response.sendRedirect("dsloaiSP.jsp");
             }
-            
         }
     }
 

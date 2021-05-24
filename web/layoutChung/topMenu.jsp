@@ -1,0 +1,150 @@
+<%-- 
+    Document   : topMenu
+    Created on : May 23, 2021, 2:56:50 PM
+    Author     : Nguyen Tien Dat
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">LIDAPERFUME</a>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                        data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                        aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="about.html"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sản Phẩm</a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+                                <a class="dropdown-item" href="portfolio-1-col.html">Nước Hoa Nam</a>
+                                <a class="dropdown-item" href="portfolio-2-col.html">Nước Hoa Nữ</a>
+                                <a class="dropdown-item" href="portfolio-3-col.html">Nước Hoa Unisex</a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Liên Hệ</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" data-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="false">Tin Tức</a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+                                <a class="dropdown-item" href="portfolio-1-col.html">1 Column Portfolio</a>
+                                <a class="dropdown-item" href="portfolio-2-col.html">2 Column Portfolio</a>
+                                <a class="dropdown-item" href="portfolio-3-col.html">Nước Hoa Unisex</a>
+                                <a class="dropdown-item" href="portfolio-4-col.html">4 Column Portfolio</a>
+                                <a class="dropdown-item" href="portfolio-item.html">Single Portfolio Item</a>
+                            </div>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="services.html">Tìm Kiếm</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" data-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="false">Giỏ Hàng</a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
+                                <a class="dropdown-item" href="blog-home-1.html">Blog Home 1</a>
+                                <a class="dropdown-item" href="blog-home-2.html">Blog Home 2</a>
+                                <a class="dropdown-item" href="blog-post.html">Blog Post</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                Đăng nhập
+                            </button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header" style="display: block;">
+                                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                                <li class="nav-item" role="presentation">
+                                                    <a class="nav-link active" style="color: blue;" id="home-tab"
+                                                       data-toggle="tab" href="#home" role="tab" aria-controls="home"
+                                                       aria-selected="true">Đăng nhập</a>
+                                                </li>
+                                                <li class="nav-item" role="presentation">
+                                                    <a class="nav-link" style="color: blue;" id="profile-tab"
+                                                       data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+                                                       aria-selected="false">Đăng ký</a>
+                                                </li>
+                                            </ul>
+
+                                            <div class="tab-content" id="myTabContent">
+                                                <div class="tab-pane fade show active" id="home" role="tabpanel"
+                                                     aria-labelledby="home-tab">
+                                                    <form>
+                                                        <div class="form-group">
+                                                            <label for="exampleInputEmail1">Tài Khoản</label>
+                                                            <input type="text" class="form-control" id="tendangnhap" name="tendangnhap">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="exampleInputPassword1">Mật khẩu</label>
+                                                            <input type="password" class="form-control"
+                                                                   id="matkhau" name="matkhau">
+                                                        </div>
+                                                        <div class="form-group form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                   id="exampleCheck1">
+                                                            <label class="form-check-label" for="exampleCheck1">Check me
+                                                                out</label>
+                                                        </div>
+                                                        <input type="submit" class="btn btn-primary" value="Đăng nhập">
+                                                        <input type="button" class="btn btn-secondary" data-dismiss="modal"
+                                                               value="Hủy">
+                                                    </form>
+                                                </div>
+                                                <div class="tab-pane fade" id="profile" role="tabpanel"
+                                                     aria-labelledby="profile-tab">
+                                                    <form id="dangky" name="dangky" method="post" action="dangkyUser">
+                                                        <div class="form-group">
+                                                            <label for="exampleInputEmail1">Họ và tên</label>
+                                                            <input type="text" class="form-control" id="hoten"
+                                                                   name="hoten">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="exampleInputEmail1">Số điện thoại</label>
+                                                            <input type="text" class="form-control" id="sodienthoai"
+                                                                   name="sodienthoai">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="exampleInputEmail1">Số địa chỉ</label>
+                                                            <input type="text" class="form-control" id="diachi"
+                                                                   name="diachi">
+                                                        </div>
+                                                        <span id="messBoxErr" style="color: red"></span>
+                                                        <span id="messBox" style="color: greenyellow"></span>
+                                                        <div class="form-group">
+                                                            <label for="exampleInputEmail1">Tên đăng nhập</label>
+                                                            <input type="text" class="form-control" id="tendangnhap"
+                                                                   name="tendangnhap">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="exampleInputPassword1">Mật khẩu</label>
+                                                            <input type="password" class="form-control"
+                                                                   id="matkhau" name="matkhau">
+                                                        </div>
+                                                        <input type="submit" class="btn btn-primary" value="Đăng ký">
+                                                        <input type="button" class="btn btn-secondary" data-dismiss="modal"
+                                                               value="Hủy">
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!--ajax -->
+
+    </body>
+
+</html>

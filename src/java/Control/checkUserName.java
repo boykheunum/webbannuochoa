@@ -5,10 +5,8 @@
  */
 package Control;
 
-import Model.sanphamModel;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Vector;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Nguyen Tien Dat
  */
-@WebServlet(name = "phantrangUserSP", urlPatterns = {"/phantrangUserSP"})
-public class phantrangUserSP extends HttpServlet {
+@WebServlet(name = "checkUserName", urlPatterns = {"/checkUserName"})
+public class checkUserName extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,21 +34,13 @@ public class phantrangUserSP extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String indexPage = request.getParameter("index");
-            int a;            
-            if (indexPage == null) {
-                a = 1;
-            } else {
-                a = Integer.parseInt(indexPage);                
+            String tenDangNhap = request.getParameter("tendangnhap");
+            int kq = CSDL.nguoidung.checkUserName(tenDangNhap);
+            if(kq == 1){
+                out.print("1");
+            }else{
+                out.print("-1");
             }
-            int count = CSDL.SanPham.countSP();
-            int endPage = count / 9;
-            if (count % 9 != 0) {
-                endPage++;
-            }
-            request.setAttribute("num", a);
-            request.setAttribute("endP", endPage);
-            request.getRequestDispatcher("hienthiSP.jsp").forward(request, response);
         }
     }
 

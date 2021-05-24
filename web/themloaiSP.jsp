@@ -129,10 +129,13 @@
                                     <form class="form-horizontal" action="themloaisp" method="post">
                                         <h4>Loại Sản Phẩm</h4>
                                         <hr />
+                                        <span id="messBoxErr" style="color: red"></span>
+                                        <span id="messBox" style="color: greenyellow"></span>
                                         <div class="form-group">
                                             Mã Loại Sản Phẩm
-                                            <input  id="maloaisp" name="maloaisp" type="text">
+                                            <input id="maloaisp" name="maloaisp" type="text">
                                         </div>
+                                        
                                         <div class="form-group">
                                             Tên Loại Sản Phẩm
                                             <input  id="tenloaisp" name="tenloaisp" type="text">
@@ -146,7 +149,6 @@
                                     <div>
                                         "Back to List", "Index"
                                     </div>
-
 
                                 </div>
                             </div>
@@ -173,5 +175,30 @@
         <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
         <script src="content/assets/demo/datatables-demo.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#maloaisp').keyup(function () {
+                    $.ajax({
+                        method:'POST',
+                        url:'checkLoaiSP',
+                        data: {
+                            masp: $('#masp').val()
+                        },
+                        success: function (res) {
+                            var messBox = document.getElementById('messBox');
+                            var messBoxErr = document.getElementById('messBoxErr');
+                            if (res == 1) {
+                                
+                                messBoxErr.innerHTML = "Đã tồn tại mã loai sản phẩm";
+                            } else {
+                                 messBox.innerHTML = "mã loại sản phẩm hợp lệ";
+                            }
+
+                        }
+                    });
+                });
+            });
+        </script>
     </body>
+
 </html>

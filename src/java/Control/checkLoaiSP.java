@@ -5,22 +5,23 @@
  */
 package Control;
 
-import Model.sanphamModel;
+import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Vector;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.json.JSONObject;
+
 
 /**
  *
  * @author Nguyen Tien Dat
  */
-@WebServlet(name = "phantrangUserSP", urlPatterns = {"/phantrangUserSP"})
-public class phantrangUserSP extends HttpServlet {
+@WebServlet(name = "checkLoaiSP", urlPatterns = {"/checkLoaiSP"})
+public class checkLoaiSP extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,21 +37,14 @@ public class phantrangUserSP extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String indexPage = request.getParameter("index");
-            int a;            
-            if (indexPage == null) {
-                a = 1;
+            String maloaisp = request.getParameter("maloaisp");
+            int check;
+            int kq = CSDL.LoaiSP.checkLoaiSP(maloaisp);
+            if (kq == 1) {
+                out.print("1");
             } else {
-                a = Integer.parseInt(indexPage);                
+                out.print("-1");
             }
-            int count = CSDL.SanPham.countSP();
-            int endPage = count / 9;
-            if (count % 9 != 0) {
-                endPage++;
-            }
-            request.setAttribute("num", a);
-            request.setAttribute("endP", endPage);
-            request.getRequestDispatcher("hienthiSP.jsp").forward(request, response);
         }
     }
 

@@ -37,7 +37,7 @@ public class nguoidung {
                     tp.setHovaten(rs.getString("hovaten"));
                     tp.setSdt(rs.getString("sdt"));
                     tp.setDiachi(rs.getString("diachi"));
-                    tp.setMakh(rs.getString("makh"));
+                    tp.setMakh(rs.getInt("makh"));
                     ls.add(tp);
                 }
                 return 1;
@@ -61,7 +61,7 @@ public class nguoidung {
                 ps.setString(3, lsm.getHovaten());
                 ps.setString(4, lsm.getSdt());
                 ps.setString(5, lsm.getDiachi());
-                ps.setString(6, lsm.getMakh());
+                ps.setInt(6, lsm.getMakh());
                 return ps.executeUpdate();
             } catch (SQLException ex) {
                 Logger.getLogger(nguoidung.class.getName()).log(Level.SEVERE, null, ex);
@@ -127,7 +127,7 @@ public class nguoidung {
                     lsp.setHovaten(rs.getString("hovaten"));
                     lsp.setSdt(rs.getString("sdt"));
                     lsp.setDiachi(rs.getString("diachi"));
-                    lsp.setMakh(rs.getString("makh"));
+                    lsp.setMakh(rs.getInt("makh"));
                 }
                 return 1;
             } catch (SQLException ex) {
@@ -158,4 +158,27 @@ public class nguoidung {
 
         }
     }
+    
+    public static int checkUserName(String id) {
+        Connection cnn = CSDL.databaseConnection.cnnDB();
+        if (cnn == null) {
+            return -1;
+        } else {
+            String sql = "SELECT * FROM nguoidung WHERE tendangnhap = ?";
+            PreparedStatement pst;
+            try {
+                pst = cnn.prepareStatement(sql);
+                pst.setString(1, id);
+                ResultSet rs = pst.executeQuery();
+                if (rs.next()) {
+                    return 1;
+                }
+                return 0;
+            } catch (SQLException ex) {
+                Logger.getLogger(nguoidung.class.getName()).log(Level.SEVERE, null, ex);
+                return -2;
+            }
+        }
+    }
+
 }

@@ -154,13 +154,13 @@ public class SanPham {
 
         }
     }
-    
-     public static int checkmaSP(String id) {
+
+    public static int checkmaSP(String id) {
         Connection cnn = CSDL.databaseConnection.cnnDB();
         if (cnn == null) {
             return -1;
         } else {
-            String sql = "SELECT * FROM Loaisp WHERE maloaiSP = ?";
+            String sql = "SELECT * FROM sanpham WHERE masp = ?";
             PreparedStatement pst;
             try {
                 pst = cnn.prepareStatement(sql);
@@ -201,14 +201,14 @@ public class SanPham {
 
     public static int phantrang(int index, Vector<sanphamModel> ds) {
         Connection cnn = CSDL.databaseConnection.cnnDB();
-        if(cnn == null){
+        if (cnn == null) {
             return -1;
         }
-        String sql = "SELECT * FROM sanpham GROUP BY masp LIMIT 12 OFFSET ?";
+        String sql = "SELECT * FROM sanpham GROUP BY masp LIMIT 9  OFFSET ?";
         PreparedStatement ps;
         try {
             ps = cnn.prepareStatement(sql);
-            ps.setInt(1, (index-1)*12);
+            ps.setInt(1, (index - 1) * 9);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 sanphamModel tp = new sanphamModel();
@@ -227,6 +227,6 @@ public class SanPham {
             Logger.getLogger(SanPham.class.getName()).log(Level.SEVERE, null, ex);
             return -2;
         }
-        
     }
+
 }

@@ -5,10 +5,9 @@
  */
 package Control;
 
-import Model.sanphamModel;
+import Model.nguoiDungModel;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Vector;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,8 +18,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Nguyen Tien Dat
  */
-@WebServlet(name = "phantrangUserSP", urlPatterns = {"/phantrangUserSP"})
-public class phantrangUserSP extends HttpServlet {
+@WebServlet(name = "dangkyUser", urlPatterns = {"/dangkyUser"})
+public class dangkyUser extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,21 +35,18 @@ public class phantrangUserSP extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String indexPage = request.getParameter("index");
-            int a;            
-            if (indexPage == null) {
-                a = 1;
-            } else {
-                a = Integer.parseInt(indexPage);                
+            String hoten = request.getParameter("hoten");
+            String sodienthoai = request.getParameter("sodienthoai");
+            String diachi = request.getParameter("diachi");
+            String taikhoan = request.getParameter("tendangnhap");
+            String matkhau = request.getParameter("matkhau");
+            nguoiDungModel nd = new nguoiDungModel(matkhau, hoten, diachi, matkhau, hoten);
+            int kq = CSDL.nguoidung.dangKy(nd);
+            if(kq==1){
+                response.sendRedirect("phantrangUserSP");
+            }else{
+                out.print("alert('dang ký thất bại')");
             }
-            int count = CSDL.SanPham.countSP();
-            int endPage = count / 9;
-            if (count % 9 != 0) {
-                endPage++;
-            }
-            request.setAttribute("num", a);
-            request.setAttribute("endP", endPage);
-            request.getRequestDispatcher("hienthiSP.jsp").forward(request, response);
         }
     }
 

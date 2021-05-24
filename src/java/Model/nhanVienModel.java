@@ -14,7 +14,7 @@ public class nhanVienModel {
     public nhanVienModel() {
     }
 
-    public nhanVienModel(String manv, String macv, String tennv, String sdt, String diachi, String ngaysinhString) {
+    public nhanVienModel(int manv, String macv, String tennv, String sdt, String diachi, String ngaysinhString) {
         this.manv = manv;
         this.macv = macv;
         this.tennv = tennv;
@@ -23,11 +23,11 @@ public class nhanVienModel {
         this.ngaysinhString = ngaysinhString;
     }
 
-    public String getManv() {
+    public int getManv() {
         return manv;
     }
 
-    public void setManv(String manv) {
+    public void setManv(int manv) {
         this.manv = manv;
     }
 
@@ -70,7 +70,7 @@ public class nhanVienModel {
     public void setNgaysinhString(String ngaysinhString) {
         this.ngaysinhString = ngaysinhString;
     }
-    private String manv;
+    private int manv;
     private String macv;
     private String tennv;
     private String sdt;
