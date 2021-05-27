@@ -8,6 +8,7 @@
 <!DOCTYPE html>
 <html>
 
+    
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
@@ -80,7 +81,7 @@
                                                     <form>
                                                         <div class="form-group">
                                                             <label for="exampleInputEmail1">Tài Khoản</label>
-                                                            <input type="text" class="form-control" id="tendangnhap" name="tendangnhap">
+                                                            <input type="text" class="form-control" id="tendangnhap1" name="tendangnhap">
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="exampleInputPassword1">Mật khẩu</label>
@@ -116,11 +117,11 @@
                                                             <input type="text" class="form-control" id="diachi"
                                                                    name="diachi">
                                                         </div>
-                                                        <span id="messBoxErr" style="color: red"></span>
-                                                        <span id="messBox" style="color: greenyellow"></span>
+                                                        <span id="messBoxErr2" style="color: red"></span>
+                                                        <span id="messBox2" style="color: greenyellow"></span>
                                                         <div class="form-group">
                                                             <label for="exampleInputEmail1">Tên đăng nhập</label>
-                                                            <input type="text" class="form-control" id="tendangnhap"
+                                                            <input type="text" class="form-control" id="tendangnhap2"
                                                                    name="tendangnhap">
                                                         </div>
                                                         <div class="form-group">
@@ -144,7 +145,32 @@
             </div>
         </nav>
         <!--ajax -->
-
+        <script>
+            $(document).ready(function () {
+                $('#tendangnhap2').keyup(function () {
+                    $.ajax({
+                        method: 'POST',
+                        url: 'checkUserName',
+                        data: {
+                            masp: $('#tendangnhap2').val()
+                        },
+                        success: function (res) {
+                            var messBox = document.getElementById('messBox2');
+                            var messBoxErr = document.getElementById('messBoxErr2');
+                            if (res == 1) {
+                                messBox.innerHTML = " ";
+                                messBoxErr.innerHTML = "Đã tồn tại userName";
+                                
+                            } else {
+                                messBoxErr.innerHTML = " ";
+                                messBox.innerHTML = "userName hợp lệ";
+                                
+                            }
+                        }
+                    });
+                });
+            });
+        </script>
     </body>
 
 </html>

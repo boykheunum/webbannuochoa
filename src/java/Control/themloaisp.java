@@ -36,7 +36,6 @@ public class themloaisp extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             String maloaisp = request.getParameter("maloaisp");
-            int check = CSDL.LoaiSP.checkLoaiSP(maloaisp);
             String tenloaisp = request.getParameter("tenloaisp");
             loaispModel lsp = new loaispModel(maloaisp, tenloaisp);
             int kq = CSDL.LoaiSP.addLoaiSP(lsp);

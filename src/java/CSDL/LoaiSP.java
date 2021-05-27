@@ -54,6 +54,7 @@ public class LoaiSP {
                 PreparedStatement ps = cnn.prepareStatement(sql);
                 ps.setString(1, lsm.getMaloaisp());
                 ps.setString(2, lsm.getTenloaisp());
+               
                 return ps.executeUpdate();
             } catch (SQLException ex) {
                 Logger.getLogger(LoaiSP.class.getName()).log(Level.SEVERE, null, ex);

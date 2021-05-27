@@ -21,7 +21,7 @@
     </head>
     <body>
         <!-- Navigation-->
-        <%@include file="layoutChung/topMenu.jsp"%>
+        <jsp:include page="layoutChung/topMenu.jsp" />
         <!-- Page Content-->
         <div class="container">
             <div class="row">
@@ -77,8 +77,11 @@
                             var messBox = document.getElementById('messBox');
                             var messBoxErr = document.getElementById('messBoxErr');
                             if (res == 1) {
+                                messBox.innerHTML = " ";
                                 messBoxErr.innerHTML = "Tên đăng nhập đã tồn tại";
+                                arlet('Tên đăng nhập đã tồn tại');
                             } else {
+                                messBoxErr.innerHTML = " ";
                                 messBox.innerHTML = "tên đăng nhập phù hợp";
                             }
                         }

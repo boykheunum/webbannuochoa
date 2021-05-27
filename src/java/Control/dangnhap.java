@@ -37,7 +37,7 @@ public class dangnhap extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String userName = request.getParameter("tendangnhap");
+            String userName = request.getParameter("tendangnhap1");
             String passWord = request.getParameter("matkhau");
             HttpSession session = request.getSession();
             session.setAttribute("us", userName);

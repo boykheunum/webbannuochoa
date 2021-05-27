@@ -135,7 +135,7 @@
                                             Mã Loại Sản Phẩm
                                             <input id="maloaisp" name="maloaisp" type="text">
                                         </div>
-                                        
+
                                         <div class="form-group">
                                             Tên Loại Sản Phẩm
                                             <input  id="tenloaisp" name="tenloaisp" type="text">
@@ -179,19 +179,21 @@
             $(document).ready(function () {
                 $('#maloaisp').keyup(function () {
                     $.ajax({
-                        method:'POST',
-                        url:'checkLoaiSP',
+                        
+                        method: 'POST',
+                        url: 'checkLoaiSP',
                         data: {
-                            masp: $('#masp').val()
+                            maloaisp: $('#maloaisp').val()
                         },
                         success: function (res) {
                             var messBox = document.getElementById('messBox');
                             var messBoxErr = document.getElementById('messBoxErr');
                             if (res == 1) {
-                                
+                                messBox.innerHTML = " ";
                                 messBoxErr.innerHTML = "Đã tồn tại mã loai sản phẩm";
                             } else {
-                                 messBox.innerHTML = "mã loại sản phẩm hợp lệ";
+                                messBoxErr.innerHTML = " ";
+                                messBox.innerHTML = "mã loại sản phẩm hợp lệ";
                             }
 
                         }

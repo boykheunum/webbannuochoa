@@ -24,7 +24,7 @@
     </head>
     <body>
         <!-- Navigation-->
-        <%@include file="layoutChung/topMenu.jsp"%>
+        <jsp:include page="layoutChung/topMenu.jsp" />
 
         <!-- Page header-->
         <header>
@@ -67,36 +67,6 @@
                 </a>
             </div>
         </header>
-        <!-- Page Content
-        <section class="py-5">
-            <div class="container">
-                <h1 class="mb-4">Chào mừng bạn đến với Lidaperfume</h1>
-                 Marketing Icons Section
-                <div class="row">
-                    <div class="col-lg-4 mb-4 mb-lg-0">
-                        <div class="card h-100">
-                            <h4 class="card-header">Card Title</h4>
-                            <div class="card-body"><p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p></div>
-                            <div class="card-footer"><a class="btn btn-primary" href="#!">Learn More</a></div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 mb-4 mb-lg-0">
-                        <div class="card h-100">
-                            <h4 class="card-header">Card Title</h4>
-                            <div class="card-body"><p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ipsam eos, nam perspiciatis natus commodi similique totam consectetur praesentium molestiae atque exercitationem ut consequuntur, sed eveniet, magni nostrum sint fuga.</p></div>
-                            <div class="card-footer"><a class="btn btn-primary" href="#!">Learn More</a></div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="card h-100">
-                            <h4 class="card-header">Card Title</h4>
-                            <div class="card-body"><p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p></div>
-                            <div class="card-footer"><a class="btn btn-primary" href="#!">Learn More</a></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>-->
         <hr class="my-0" />
         <!-- Portfolio Section-->
         <section class="py-5 bg-light">
@@ -138,29 +108,6 @@
                 <%}%>
             </div>
         </section>
-        <!-- <hr class="my-0" />
-        Features Section
-        <section class="py-5">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <h2 class="mb-4">Modern Business Features</h2>
-                        <p>The Modern Business template by Start Bootstrap includes:</p>
-                        <ul>
-                            <li><strong>Bootstrap 4.6.0</strong></li>
-                            <li>jQuery 3.5.1</li>
-                            <li>Font Awesome 5.15.3</li>
-                            <li>Working PHP contact form with validation</li>
-                            <li>Unstyled page elements for easy customization</li>
-                        </ul>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id reprehenderit, quisquam totam aspernatur tempora minima unde aliquid ea culpa sunt. Reiciendis quia dolorum ducimus unde.</p>
-                    </div>
-                    <div class="col-lg-6"><img class="img-fluid rounded" src="https://via.placeholder.com/700x450" alt="..." /></div>
-                </div>
-            </div>
-        </section>
-        <hr class="my-0" /> -->
-        <!-- Call to Action-->
         <aside class="py-5 bg-light">
             <div class="container">
                 <div class="row">
