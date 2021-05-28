@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 24, 2021 lúc 11:53 AM
+-- Thời gian đã tạo: Th5 28, 2021 lúc 01:17 PM
 -- Phiên bản máy phục vụ: 10.4.17-MariaDB
 -- Phiên bản PHP: 8.0.2
 
@@ -32,7 +32,19 @@ CREATE TABLE `chitiethoadon` (
   `masp` varchar(50) NOT NULL,
   `soluongmua` int(11) NOT NULL,
   `giaban` int(11) NOT NULL,
-  `thanhtien` int(11) NOT NULL
+  `thanhtien` int(11) NOT NULL,
+  `idmagiamgia` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `chitietphieunhap`
+--
+
+CREATE TABLE `chitietphieunhap` (
+  `maphieunhap` varchar(50) NOT NULL,
+  `masp` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -83,6 +95,22 @@ INSERT INTO `loaisp` (`maloaisp`, `tenloaisp`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `magiamgia`
+--
+
+CREATE TABLE `magiamgia` (
+  `idmagiamgia` varchar(50) NOT NULL,
+  `kieugiamgia` tinyint(1) NOT NULL,
+  `ngaybatdau` date NOT NULL,
+  `ngayketthuc` date NOT NULL,
+  `soluong` int(11) NOT NULL,
+  `giatri` int(11) NOT NULL,
+  `dieukien` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `nguoidung`
 --
 
@@ -105,6 +133,19 @@ INSERT INTO `nguoidung` (`tendangnhap`, `matkhau`, `hovaten`, `sdt`, `diachi`, `
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `nhacungcap`
+--
+
+CREATE TABLE `nhacungcap` (
+  `mancc` varchar(50) NOT NULL,
+  `tenncc` varchar(50) NOT NULL,
+  `diachi` varchar(50) NOT NULL,
+  `sodienthoai` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `nhanvien`
 --
 
@@ -115,6 +156,19 @@ CREATE TABLE `nhanvien` (
   `diachi` varchar(50) NOT NULL,
   `ngaysinh` date NOT NULL,
   `manv` int(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `phieunhap`
+--
+
+CREATE TABLE `phieunhap` (
+  `maphieunhap` varchar(50) CHARACTER SET utf32 NOT NULL,
+  `mancc` varchar(50) CHARACTER SET utf32 NOT NULL,
+  `ngaynhap` date NOT NULL,
+  `tongtien` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -157,6 +211,32 @@ INSERT INTO `sanpham` (`maloaisp`, `masp`, `tensp`, `soluong`, `gianhap`, `giaba
 ('MLSP001', 'MSP016', 'Nước hoa 147 by Jillian: I\'m not a Bad Man 50ml', 50, 1900000, 2100000, 'Mô tả sản phẩm\r\nMang nhóm hương chủ đạo là Fougère Spicy (Fougère trong tiếng Pháp có nghĩa là dương xỉ, nhóm hương này gồm các note oải hương, hoa phong lữ, rêu sồi, gỗ, v.v...), I’m not a Bad Man gây ấn tượng mạnh mẽ ngay từ giây phút đầu tiên khi mùi hương của cam bergamot lan tỏa trên da thịt. Lớp citrus quen thuộc mang theo vị đắng ngay đầu lưỡi đặc trưng của bergamot như một lời mời gọi nửa tươi vui trong trẻo, nửa kín đáo lạnh lùng. Và ngay sau đó, hỗn hợp các loại thảo mộc gồm bạc hà, lá xô thơm và thì là Ai Cập xuất hiện như rẽ ra một lối mòn dẫn đến khu vườn ẩm thấp bí mật.\r\n\r\nI’m not a Bad Man nhẹ nhàng biến chuyển từ tầng hương đầu tươi mát sang sắc thái trầm và dịu hơn nhưng vị nồng nàn khó cưỡng vẫn hiện diện rõ nét. Lúc này sự xuất hiện của hoắc hương như một điểm nhấn sâu thẳm khẳng định cá tính ấn tượng của người dùng.\r\n\r\nDư âm mà I’m not a Bad Man gửi lại trên da hầu như không còn vị đắng của bergamot hay cay nồng của các loại thảo mộc. Lúc này mùi thơm của đàn hương, xạ hương kết hợp cùng hổ phách và đậu Tonka thoảng vị hạnh nhân ngọt bùi như hóa thành chiếc khăn len mềm mại cực kỳ dễ chịu.', 'nuochoa18.png'),
 ('MLSP002', 'MSP017', 'Nước hoa GenZ x Jillian: Summer Twist 35ml', 50, 200000, 350000, 'Mô tả sản phẩm\r\nIt’s time to twist!\r\n\r\nThiên nhiên trong mắt ta là một người bạn lớn, cũng biết buồn vui, biết hờn giận và cần được yêu thương. Sự rung động khi bất ngờ chạm mắt anh chàng khóa trên hay tương tư khoảng trời xanh biếc đều là một tình yêu trong veo chẳng cần nhiều lý do. Bạn có đủ dũng cảm để tỏ tình? Chọn sống xanh để được hòa vào tình yêu trọn vẹn!\r\n\r\nXanh dịu dàng, tinh khôi từ hoa và quả mọng, lại tràn đầy năng lượng nhờ hương gỗ cuối, Summer Twist mở ra không gian của một khu vườn buổi sớm mai với vạt nắng mềm mại và các loài cây đang tưng bừng sức sống, cho bạn nguồn cảm hứng để khởi đầu một ngày mới năng động.', 'nuochoa19.jpg');
 
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `thongtincuahang`
+--
+
+CREATE TABLE `thongtincuahang` (
+  `sdtcuahang` varchar(50) CHARACTER SET utf32 NOT NULL,
+  `email` varchar(50) CHARACTER SET utf32 NOT NULL,
+  `diachi` varchar(100) CHARACTER SET utf32 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `tintuc`
+--
+
+CREATE TABLE `tintuc` (
+  `id` varchar(50) CHARACTER SET utf32 NOT NULL,
+  `anh` varchar(50) CHARACTER SET utf32 NOT NULL,
+  `ngaydang` date NOT NULL,
+  `tieude` varchar(50) CHARACTER SET utf32 NOT NULL,
+  `noidung` varchar(1000) CHARACTER SET utf32 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 --
 -- Chỉ mục cho các bảng đã đổ
 --
@@ -166,7 +246,14 @@ INSERT INTO `sanpham` (`maloaisp`, `masp`, `tensp`, `soluong`, `gianhap`, `giaba
 --
 ALTER TABLE `chitiethoadon`
   ADD PRIMARY KEY (`mahd`,`masp`),
-  ADD KEY `masp` (`masp`);
+  ADD KEY `masp` (`masp`),
+  ADD KEY `idmagiamgia` (`idmagiamgia`);
+
+--
+-- Chỉ mục cho bảng `chitietphieunhap`
+--
+ALTER TABLE `chitietphieunhap`
+  ADD PRIMARY KEY (`maphieunhap`);
 
 --
 -- Chỉ mục cho bảng `chucvu`
@@ -189,10 +276,23 @@ ALTER TABLE `loaisp`
   ADD PRIMARY KEY (`maloaisp`);
 
 --
+-- Chỉ mục cho bảng `magiamgia`
+--
+ALTER TABLE `magiamgia`
+  ADD PRIMARY KEY (`idmagiamgia`);
+
+--
 -- Chỉ mục cho bảng `nguoidung`
 --
 ALTER TABLE `nguoidung`
-  ADD PRIMARY KEY (`makh`);
+  ADD PRIMARY KEY (`makh`),
+  ADD UNIQUE KEY `tendangnhap` (`tendangnhap`);
+
+--
+-- Chỉ mục cho bảng `nhacungcap`
+--
+ALTER TABLE `nhacungcap`
+  ADD PRIMARY KEY (`mancc`);
 
 --
 -- Chỉ mục cho bảng `nhanvien`
@@ -200,6 +300,13 @@ ALTER TABLE `nguoidung`
 ALTER TABLE `nhanvien`
   ADD PRIMARY KEY (`manv`),
   ADD KEY `macv` (`macv`);
+
+--
+-- Chỉ mục cho bảng `phieunhap`
+--
+ALTER TABLE `phieunhap`
+  ADD PRIMARY KEY (`maphieunhap`),
+  ADD KEY `mancc` (`mancc`);
 
 --
 -- Chỉ mục cho bảng `sanpham`
@@ -216,7 +323,7 @@ ALTER TABLE `sanpham`
 -- AUTO_INCREMENT cho bảng `nguoidung`
 --
 ALTER TABLE `nguoidung`
-  MODIFY `makh` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `makh` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT cho bảng `nhanvien`
@@ -233,7 +340,8 @@ ALTER TABLE `nhanvien`
 --
 ALTER TABLE `chitiethoadon`
   ADD CONSTRAINT `chitiethoadon_ibfk_1` FOREIGN KEY (`masp`) REFERENCES `sanpham` (`masp`),
-  ADD CONSTRAINT `chitiethoadon_ibfk_2` FOREIGN KEY (`mahd`) REFERENCES `hoadon` (`mahd`);
+  ADD CONSTRAINT `chitiethoadon_ibfk_2` FOREIGN KEY (`mahd`) REFERENCES `hoadon` (`mahd`),
+  ADD CONSTRAINT `chitiethoadon_ibfk_3` FOREIGN KEY (`idmagiamgia`) REFERENCES `magiamgia` (`idmagiamgia`);
 
 --
 -- Các ràng buộc cho bảng `hoadon`
