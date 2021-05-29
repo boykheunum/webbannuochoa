@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 
-    
+
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
@@ -29,28 +29,18 @@
                             </div>
                         </li>
 
-                        <li class="nav-item"><a class="nav-link" href="contact.html">Liên Hệ</a></li>
+                        
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" data-toggle="dropdown"
-                               aria-haspopup="true" aria-expanded="false">Tin Tức</a>
+                               aria-haspopup="true" aria-expanded="false">Tin tức</a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-                                <a class="dropdown-item" href="portfolio-1-col.html">1 Column Portfolio</a>
-                                <a class="dropdown-item" href="portfolio-2-col.html">2 Column Portfolio</a>
-                                <a class="dropdown-item" href="portfolio-3-col.html">Nước Hoa Unisex</a>
-                                <a class="dropdown-item" href="portfolio-4-col.html">4 Column Portfolio</a>
-                                <a class="dropdown-item" href="portfolio-item.html">Single Portfolio Item</a>
+                                <a class="dropdown-item" href="portfolio-1-col.html">Tin tức Jillian</a>
+                                <a class="dropdown-item" href="portfolio-2-col.html">Tin tức Gucci</a>
+                                <a class="dropdown-item" href="portfolio-3-col.html">Tin tức Dior</a>
                             </div>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="services.html">Tìm Kiếm</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" data-toggle="dropdown"
-                               aria-haspopup="true" aria-expanded="false">Giỏ Hàng</a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-                                <a class="dropdown-item" href="blog-home-1.html">Blog Home 1</a>
-                                <a class="dropdown-item" href="blog-home-2.html">Blog Home 2</a>
-                                <a class="dropdown-item" href="blog-post.html">Blog Post</a>
-                            </div>
-                        </li>
+                        <li class="nav-item"><a class="nav-link" href="services.html">Giỏ Hàng</a></li>
+                        
                         <li class="nav-item">
                             <!-- Button trigger modal -->
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
@@ -140,10 +130,27 @@
                                 </div>
                             </div>
                         </li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">  </a></li>
+                        <li class="nav-item">
+                                <div class="input-group rounded">
+                                  <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                                  <span class="input-group-text border-0" id="search-addon">
+                                  <i class="fas fa-search"></i>
+                                   </span>
+                                </div>
+                            </li>
                     </ul>
                 </div>
             </div>
         </nav>
+
+        <!-- Bootstrap core JS-->
+        
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="content/js/scripts.js"></script>
         <!--ajax -->
         <script>
             $(document).ready(function () {
@@ -160,11 +167,11 @@
                             if (res == 1) {
                                 messBox.innerHTML = " ";
                                 messBoxErr.innerHTML = "Đã tồn tại userName";
-                                
+
                             } else {
                                 messBoxErr.innerHTML = " ";
                                 messBox.innerHTML = "userName hợp lệ";
-                                
+
                             }
                         }
                     });
