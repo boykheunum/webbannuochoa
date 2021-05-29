@@ -3,12 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/quyenlh/webbannuochoa/src/java/Control/dangkyUser.java</file>
             <file>file:/C:/Users/quyenlh/webbannuochoa/web/layoutChung/footer.jsp</file>
             <file>file:/C:/Users/quyenlh/webbannuochoa/web/hienthiSP.jsp</file>
             <file>file:/C:/Users/quyenlh/webbannuochoa/web/layoutChung/topMenu.jsp</file>
             <file>file:/C:/Users/quyenlh/webbannuochoa/web/chitietloaiSP.jsp</file>
             <file>file:/C:/Users/quyenlh/webbannuochoa/src/java/Control/phantrangUserSP.java</file>
+=======
+            <file>file:/D:/hoctap/JAVA/project/WebBanSach/src/java/CSDL/thongtincuahang.java</file>
+            <file>file:/D:/hoctap/JAVA/project/WebBanSach/web/hienthichitietSP.jsp</file>
+            <file>file:/D:/hoctap/JAVA/project/WebBanSach/src/java/Model/thongTinCuaHangModel.java</file>
+            <file>file:/D:/hoctap/JAVA/project/WebBanSach/src/java/Model/tintucModel.java</file>
+            <file>file:/D:/hoctap/JAVA/project/WebBanSach/src/java/CSDL/tintuc.java</file>
+>>>>>>> c919110835e06c6b8fb2fcd6f8e52792f271a304
         </group>
     </open-files>
 </project-private>
