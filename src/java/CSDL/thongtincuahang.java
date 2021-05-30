@@ -37,7 +37,7 @@ public class thongtincuahang {
                     tt.setId(rs.getInt("id"));
                     ds.add(tt);
                 }
-                return ps.executeUpdate();
+                return 1;
             } catch (SQLException ex) {
                 Logger.getLogger(thongtincuahang.class.getName()).log(Level.SEVERE, null, ex);
                 return -2;
