@@ -5,65 +5,116 @@
 --%>
 
 <%@page import="Model.sanphamModel"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Shop Item - Start Bootstrap Template</title>
+        <title>Cửa Hàng Nước Hoa</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="content/assets/favicon.ico" />
-         <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="content/css/styles.css" rel="stylesheet" />
     </head>
     <body>
         <!-- Navigation-->
-        <jsp:include page="layoutChung/topMenu.jsp" />
-        <!-- Page Content-->
+    <Jsp:include page="layoutChung/topMenu.jsp"/>
+    <!-- Page Content-->
+    <section class="py-5">
         <div class="container">
+            <%
+                String id = request.getParameter("masp");
+                sanphamModel sp = new sanphamModel();
+                int kq = CSDL.SanPham.searchSP(sp, id);
+                if (kq == 1) {
+                    String checkImage = "noImage.png";
+                    if (sp.getHinhanh().equals("") != true) {
+                        checkImage = sp.getHinhanh();
+                    }
+            %>
+            <h1>
+                Portfolio Item
+                <small>Subheading</small>
+            </h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active">Portfolio Item</li>
+            </ol>
             <div class="row">
-                <div class="col-lg-3">
-                    <h1 class="my-4">Shop Name</h1>
-                    <div class="list-group">
-                        <a class="list-group-item active" href="#!">Category 1</a>
-                        <a class="list-group-item" href="#!">Category 2</a>
-                        <a class="list-group-item" href="#!">Category 3</a>
-                    </div>
-                </div>
-                <div class="col-lg-9">
-                    <%
-                        String masp = request.getParameter("masp");
-                        sanphamModel sp = new sanphamModel();
-                        int kq = CSDL.SanPham.searchSP(sp, masp);
-                        if (kq == 1) {
-                    %>
-                    <div class="card mt-4">
-                        <img class="card-img-top img-fluid" src="imageSP/<%=sp.getHinhanh()%>" alt="..." />
-                        <div class="card-body">
-                            <h3 class="card-title"><%=sp.getTensp()%></h3>
-                            <h4><%=sp.getGiaban()%></h4>
-                            <p class="card-text"><%=sp.getMota()%></p>
+                <div class="col-md-6 mb-4 mb-md-0">
+
+                    <div id="mdb-lightbox-ui"></div>
+
+                    <div class="mdb-lightbox">
+
+                        <div class="row product-gallery mx-1">
+
+                            <div class="col-12 mb-0">
+                                <figure class="view overlay rounded z-depth-1 main-img">
+                                    <img src="imageSP/<%=checkImage%>"
+                                         class="img-fluid z-depth-1" width="502px" height="581.89px">
+                                </figure>
+
+                            </div>
 
                         </div>
+
                     </div>
-                    <%}%>
 
                 </div>
+                <form class="col-md-6">
+
+                    <h5><%=sp.getTensp()%></h5>
+                    <p class="mb-2 text-muted text-uppercase small">Shirts</p>
+
+                    <p><span class="mr-1"><strong>Giá: <%=sp.getGiaban()%></strong></span></p>
+                    <p><span class="mr-1"><strong>Mô tả: </strong></span></p>
+                    <p class="pt-1"><%=sp.getMota()%></p>
+                    <%}%>
+                    <hr>
+                    <div class="table-responsive mb-2">
+                        <table class="table table-sm table-borderless">
+                            <tbody>
+                                <tr>
+                                    <td class="pl-0 pb-0 w-25">Số lượng: </td>
+                                </tr>
+                                <tr>
+                                    <td class="pl-0">
+                                        <div class="def-number-input number-input safari_only mb-0">
+
+                                            <input class="quantity" min="0" name="Số lượng" value="1" type="number">
+
+                                        </div>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <button type="submit" class="btn btn-light btn-md mr-1 mb-2" style="background-color: #3339ef"><i
+                            class="fas fa-shopping-cart pr-2"></i>Thêm vào giỏ hàng</button>
+                </form>
             </div>
         </div>
-        <!-- Footer-->
-       
-             <jsp:include page="layoutChung/footer.jsp" />
-        
-        <!-- Bootstrap core JS-->
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="content/js/scripts.js"></script>
-    </body>
+
+    </section>
+    <hr class="my-0" />
+
+
+    <!-- Footer-->
+    <jsp:include page="layoutChung/footer.jsp" />
+    <!-- Bootstrap core JS-->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+</body>
 </html>
+
+

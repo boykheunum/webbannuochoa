@@ -111,10 +111,10 @@
                             %>
                             <ul class="list-unstyled mb-0">
                                 <li>
-                                    <a href="#!" class="text-white">Địa chỉ:<%=tt.getDiachi()%></a>
+                                    <a href="#!" class="text-white">Địa chỉ: <%=tt.getDiachi()%></a>
                                 </li>
                                 <li>
-                                    <a href="#!" class="text-white">Email:<%=tt.getEmail()%></a>
+                                    <a href="#!" class="text-white">Email: <%=tt.getEmail()%></a>
                                 </li>
                                 <li>
                                     <a href="#!" class="text-white">Hostline: <%=tt.getSdtcuahang()%></a>

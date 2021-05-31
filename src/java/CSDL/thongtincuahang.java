@@ -33,7 +33,7 @@ public class thongtincuahang {
                     thongTinCuaHangModel tt = new thongTinCuaHangModel();
                     tt.setDiachi(rs.getString("diachi"));
                     tt.setEmail(rs.getString("email"));
-                    tt.setSdtcuahang(rs.getString("diachi"));
+                    tt.setSdtcuahang(rs.getString("sdtcuahang"));
                     tt.setId(rs.getInt("id"));
                     ds.add(tt);
                 }
