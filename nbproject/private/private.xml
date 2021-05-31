@@ -5,9 +5,6 @@
         <group>
             <file>file:/D:/hoctap/JAVA/project/WebBanSach/web/layoutChung/topMenu.jsp</file>
             <file>file:/D:/hoctap/JAVA/project/WebBanSach/web/hienthiSP.jsp</file>
-            <file>file:/D:/hoctap/JAVA/project/WebBanSach/web/SearchByAjax.jsp</file>
-            <file>file:/D:/hoctap/JAVA/project/WebBanSach/src/java/CSDL/SanPham.java</file>
-            <file>file:/D:/hoctap/JAVA/project/WebBanSach/src/java/Control/SearchByAjax.java</file>
             <file>file:/D:/hoctap/JAVA/project/WebBanSach/src/java/Control/phantrangUserSP.java</file>
         </group>
     </open-files>

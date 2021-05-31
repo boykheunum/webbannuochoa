@@ -18,11 +18,11 @@
                         aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
-
+                        
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="about.html"
+                            <a class="nav-link dropdown-toggle" id="dropsanpham" href="about.html"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sản Phẩm</a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropsanpham">
                                 <a class="dropdown-item" href="portfolio-1-col.html">Nước Hoa Nam</a>
                                 <a class="dropdown-item" href="portfolio-2-col.html">Nước Hoa Nữ</a>
                                 <a class="dropdown-item" href="portfolio-3-col.html">Nước Hoa Unisex</a>
@@ -31,14 +31,16 @@
 
 
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" data-toggle="dropdown"
+                            <a class="nav-link dropdown-toggle" id="droptintuc" href="#" data-toggle="dropdown"
                                aria-haspopup="true" aria-expanded="false">Tin tức</a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="droptintuc">
                                 <a class="dropdown-item" href="portfolio-1-col.html">Tin tức Jillian</a>
                                 <a class="dropdown-item" href="portfolio-2-col.html">Tin tức Gucci</a>
                                 <a class="dropdown-item" href="portfolio-3-col.html">Tin tức Dior</a>
                             </div>
                         </li>
+                        
+
                         <li class="nav-item"><a class="nav-link" href="services.html">Giỏ Hàng</a></li>
 
                         <li class="nav-item">
@@ -107,8 +109,10 @@
                                                             <input type="text" class="form-control" id="diachi"
                                                                    name="diachi">
                                                         </div>
-                                                        <span id="messBoxErr2" style="color: red"></span>
+
+                                                        <span id="messBoxErr2" ></span>
                                                         <span id="messBox2" style="color: greenyellow"></span>
+
                                                         <div class="form-group">
                                                             <label for="exampleInputEmail1">Tên đăng nhập</label>
                                                             <input type="text" class="form-control" id="tendangnhap2"
@@ -147,36 +151,46 @@
 
         <!-- Bootstrap core JS-->
 
-
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+ <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
         <!-- Core theme JS-->
         <script src="content/js/scripts.js"></script>
         <!--ajax -->
         <script>
             $(document).ready(function () {
-            $('#tendangnhap2').keyup(function () {
-            $.ajax({
-            method: 'POST',
-                    url: 'checkUserName',
-                    data: {
-                    tendangnhap2: $('#tendangnhap2').val()
-                    },
-                    success: function (res) {
-                    var messBox = document.getElementById('messBox2');
+                $('#tendangnhap2').keyup(function () {
+                    $.ajax({
+                        method: 'POST',
+                        url: 'checkUserName',
+                        data: {
+                            tendangnhap2: $('#tendangnhap2').val()
+                        },
+                        success: function (res) {
+                            var messBox = document.getElementById('messBox2');
                             var messBoxErr = document.getElementById('messBoxErr2');
                             if (res == 1) {
-                    messBox.innerHTML = " ";
-                            messBoxErr.innerHTML = "Đã tồn tại userName";
-                    } else {
-                    messBoxErr.innerHTML = " ";
-                            messBox.innerHTML = "userName hợp lệ";
-                    }
-                    }
+                                $("#messBoxErr2").html("Đã tồn tại userName");
+                                $("#messBoxErr2").addClass("text-danger");
+                                $("#messBoxErr2").removeClass("text-success");
+
+
+                            } else {
+                                $("#messBoxErr2").removeClass("text-danger");
+
+                                $("#messBoxErr2").addClass("text-success");
+                                $("#messBoxErr2").html("userName hợp lệ");
+
+
+
+                            }
+                        }
+                    });
+                });
             });
-            });
+
         </script>
     </body>
 

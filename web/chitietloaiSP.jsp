@@ -179,33 +179,12 @@
         <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="content/js/scripts.js"></script>
-        <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+       <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
         <script src="content/assets/demo/datatables-demo.js"></script>
-        <script>
-            $(document).ready(function () {
-                $('#tendangnhap').keyup(function () {
-                    $.ajax({
-                        method: 'POST',
-                        url: 'checkUserName',
-                        data: {
-                            masp: $('#tendangnhap').val()
-                        },
-                        success: function (res) {
-                            var messBox = document.getElementById('messBox');
-                            var messBoxErr = document.getElementById('messBoxErr');
-                            if (res == 1) {
-                                messBoxErr.innerHTML = "Tên đăng nhập đã tồn tại";
-                            } else {
-                                messBox.innerHTML = "tên đăng nhập phù hợp";
-                            }
 
-                        }
-                    });
-                });
-            });
-        </script>
     </body>
+    
 
 </html>
 
