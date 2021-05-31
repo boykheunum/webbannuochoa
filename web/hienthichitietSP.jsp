@@ -16,6 +16,7 @@
         <title>Shop Item - Start Bootstrap Template</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="content/assets/favicon.ico" />
+         <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="content/css/styles.css" rel="stylesheet" />
     </head>
@@ -39,7 +40,6 @@
                         sanphamModel sp = new sanphamModel();
                         int kq = CSDL.SanPham.searchSP(sp, masp);
                         if (kq == 1) {
-
                     %>
                     <div class="card mt-4">
                         <img class="card-img-top img-fluid" src="imageSP/<%=sp.getHinhanh()%>" alt="..." />
@@ -61,33 +61,9 @@
         
         <!-- Bootstrap core JS-->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="content/js/scripts.js"></script>
-        <script>
-            $(document).ready(function () {
-                $('#tendangnhap').keyup(function () {
-                    $.ajax({
-                        method: 'POST',
-                        url: 'checkUserName',
-                        data: {
-                            masp: $('#tendangnhap').val()
-                        },
-                        success: function (res) {
-                            var messBox = document.getElementById('messBox');
-                            var messBoxErr = document.getElementById('messBoxErr');
-                            if (res == 1) {
-                                messBox.innerHTML = " ";
-                                messBoxErr.innerHTML = "Tên đăng nhập đã tồn tại";
-                                arlet('Tên đăng nhập đã tồn tại');
-                            } else {
-                                messBoxErr.innerHTML = " ";
-                                messBox.innerHTML = "tên đăng nhập phù hợp";
-                            }
-                        }
-                    });
-                });
-            });
-        </script>
     </body>
 </html>

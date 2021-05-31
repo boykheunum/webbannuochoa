@@ -29,7 +29,7 @@
                             </div>
                         </li>
 
-                        
+
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" data-toggle="dropdown"
                                aria-haspopup="true" aria-expanded="false">Tin tức</a>
@@ -40,7 +40,7 @@
                             </div>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="services.html">Giỏ Hàng</a></li>
-                        
+
                         <li class="nav-item">
                             <!-- Button trigger modal -->
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
@@ -112,7 +112,7 @@
                                                         <div class="form-group">
                                                             <label for="exampleInputEmail1">Tên đăng nhập</label>
                                                             <input type="text" class="form-control" id="tendangnhap2"
-                                                                   name="tendangnhap">
+                                                                   name="tendangnhap2">
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="exampleInputPassword1">Mật khẩu</label>
@@ -132,13 +132,14 @@
                         </li>
                         <li class="nav-item"><a class="nav-link" href="contact.html">  </a></li>
                         <li class="nav-item">
-                                <div class="input-group rounded">
-                                  <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                                  <span class="input-group-text border-0" id="search-addon">
-                                  <i class="fas fa-search"></i>
-                                   </span>
-                                </div>
-                            </li>
+                            <form class="input-group rounded" id="searchFrom" name="searchForm" method="post" action="SearchByAjax" >
+                                <input type="search" id="search" name="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                                <!--                                <span class="input-group-text border-0" id="search-addon">
+                                                                    <input type="submit" class="fas fa-search">
+                                                                </span>-->
+                                <input type="submit" value="search">
+                            </form>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -146,7 +147,7 @@
 
         <!-- Bootstrap core JS-->
 
-      
+
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -156,28 +157,25 @@
         <!--ajax -->
         <script>
             $(document).ready(function () {
-                $('#tendangnhap2').keyup(function () {
-                    $.ajax({
-                        method: 'POST',
-                        url: 'checkUserName',
-                        data: {
-                            masp: $('#tendangnhap2').val()
-                        },
-                        success: function (res) {
-                            var messBox = document.getElementById('messBox2');
+            $('#tendangnhap2').keyup(function () {
+            $.ajax({
+            method: 'POST',
+                    url: 'checkUserName',
+                    data: {
+                    tendangnhap2: $('#tendangnhap2').val()
+                    },
+                    success: function (res) {
+                    var messBox = document.getElementById('messBox2');
                             var messBoxErr = document.getElementById('messBoxErr2');
                             if (res == 1) {
-                                messBox.innerHTML = " ";
-                                messBoxErr.innerHTML = "Đã tồn tại userName";
-
-                            } else {
-                                messBoxErr.innerHTML = " ";
-                                messBox.innerHTML = "userName hợp lệ";
-
-                            }
-                        }
-                    });
-                });
+                    messBox.innerHTML = " ";
+                            messBoxErr.innerHTML = "Đã tồn tại userName";
+                    } else {
+                    messBoxErr.innerHTML = " ";
+                            messBox.innerHTML = "userName hợp lệ";
+                    }
+                    }
+            });
             });
         </script>
     </body>

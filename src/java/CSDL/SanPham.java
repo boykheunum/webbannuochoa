@@ -229,4 +229,36 @@ public class SanPham {
         }
     }
 
+    public static int searchAjaxSP(String id, Vector<sanphamModel> ds) {
+        Connection cnn = CSDL.databaseConnection.cnnDB();
+        if (cnn == null) {
+            return -1;
+        } else {
+            String sql = "SELECT * FROM sanpham where tensp like ?";
+            PreparedStatement ps;
+            try {
+                ps = cnn.prepareStatement(sql);
+                ps.setString(1, id);
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    sanphamModel sp = new sanphamModel();
+                    sp.setMaloaisp(rs.getString("maloaisp"));
+                    sp.setMasp(rs.getString("masp"));
+                    sp.setTensp(rs.getString("tensp"));
+                    sp.setSoluong(rs.getInt("soluong"));
+                    sp.setGianhap(rs.getFloat("gianhap"));
+                    sp.setGiaban(rs.getFloat("giaban"));
+                    sp.setMota(rs.getString("mota"));
+                    sp.setHinhanh(rs.getString("hinhanh"));
+                    ds.add(sp);
+                }
+                return 1;
+            } catch (SQLException ex) {
+                Logger.getLogger(SanPham.class.getName()).log(Level.SEVERE, null, ex);
+                return -2;
+            }
+
+        }
+    }
+
 }

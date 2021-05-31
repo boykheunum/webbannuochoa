@@ -17,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Nguyen Tien Dat
  */
-@WebServlet(name = "checkUserName", urlPatterns = {"/checkUserName"})
-public class checkUserName extends HttpServlet {
+@WebServlet(name = "SearchByAjax", urlPatterns = {"/SearchByAjax"})
+public class SearchByAjax extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,13 +34,11 @@ public class checkUserName extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String tenDangNhap2 = request.getParameter("tendangnhap2");
-            int kq = CSDL.nguoidung.checkUserName(tenDangNhap2);
-            if(kq == 1){
-                out.print("1");
-            }else{
-                out.print("-1");
-            }
+            response.setContentType("text/html; charset=UTF-8");
+            request.setCharacterEncoding("UTF-8");
+            String search = request.getParameter("search");
+            request.setAttribute("kq", search);
+            request.getRequestDispatcher("SearchByAjax.jsp").forward(request, response);
         }
     }
 
