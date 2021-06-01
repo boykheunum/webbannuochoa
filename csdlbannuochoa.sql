@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 28, 2021 lúc 01:17 PM
+-- Thời gian đã tạo: Th6 01, 2021 lúc 02:35 PM
 -- Phiên bản máy phục vụ: 10.4.17-MariaDB
 -- Phiên bản PHP: 8.0.2
 
@@ -28,11 +28,11 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `chitiethoadon` (
-  `mahd` varchar(50) NOT NULL,
+  `mahd` int(11) NOT NULL,
   `masp` varchar(50) NOT NULL,
   `soluongmua` int(11) NOT NULL,
-  `giaban` int(11) NOT NULL,
-  `thanhtien` int(11) NOT NULL,
+  `giaban` float NOT NULL,
+  `thanhtien` float NOT NULL,
   `idmagiamgia` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -65,8 +65,8 @@ CREATE TABLE `chucvu` (
 --
 
 CREATE TABLE `hoadon` (
-  `mahd` varchar(50) NOT NULL,
-  `ngayban` date NOT NULL,
+  `mahd` int(11) NOT NULL,
+  `ngayban` date NOT NULL DEFAULT current_timestamp(),
   `tongtien` float NOT NULL,
   `manv` int(50) NOT NULL,
   `makh` int(50) NOT NULL
@@ -100,13 +100,22 @@ INSERT INTO `loaisp` (`maloaisp`, `tenloaisp`) VALUES
 
 CREATE TABLE `magiamgia` (
   `idmagiamgia` varchar(50) NOT NULL,
-  `kieugiamgia` tinyint(1) NOT NULL,
-  `ngaybatdau` date NOT NULL,
-  `ngayketthuc` date NOT NULL,
+  `kieugiamgia` tinyint(1) NOT NULL DEFAULT 1,
+  `ngaybatdau` date NOT NULL DEFAULT current_timestamp(),
+  `ngayketthuc` date NOT NULL DEFAULT current_timestamp(),
   `soluong` int(11) NOT NULL,
   `giatri` int(11) NOT NULL,
   `dieukien` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `magiamgia`
+--
+
+INSERT INTO `magiamgia` (`idmagiamgia`, `kieugiamgia`, `ngaybatdau`, `ngayketthuc`, `soluong`, `giatri`, `dieukien`) VALUES
+('SK10K', 127, '2022-10-10', '2021-06-09', 10, 10000, 200000),
+('SK20K', 127, '2022-10-10', '0000-00-00', 10, 20000, 200000),
+('SK30K', 0, '2021-06-02', '2022-06-02', 20, 30000, 200000);
 
 -- --------------------------------------------------------
 
@@ -232,7 +241,7 @@ CREATE TABLE `thongtincuahang` (
 CREATE TABLE `tintuc` (
   `id` varchar(50) CHARACTER SET utf32 NOT NULL,
   `anh` varchar(50) CHARACTER SET utf32 NOT NULL,
-  `ngaydang` date NOT NULL,
+  `ngaydang` date NOT NULL DEFAULT current_timestamp(),
   `tieude` varchar(50) CHARACTER SET utf32 NOT NULL,
   `noidung` varchar(1000) CHARACTER SET utf32 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -266,7 +275,7 @@ ALTER TABLE `chucvu`
 --
 ALTER TABLE `hoadon`
   ADD PRIMARY KEY (`mahd`),
-  ADD KEY `manv` (`manv`,`makh`),
+  ADD KEY `manv` (`manv`),
   ADD KEY `makh` (`makh`);
 
 --
@@ -318,6 +327,18 @@ ALTER TABLE `sanpham`
 --
 -- AUTO_INCREMENT cho các bảng đã đổ
 --
+
+--
+-- AUTO_INCREMENT cho bảng `chitiethoadon`
+--
+ALTER TABLE `chitiethoadon`
+  MODIFY `mahd` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT cho bảng `hoadon`
+--
+ALTER TABLE `hoadon`
+  MODIFY `mahd` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT cho bảng `nguoidung`
