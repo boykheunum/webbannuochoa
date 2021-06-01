@@ -11,22 +11,11 @@ package Model;
  */
 public class chiTietHoaDonModel {
 
-    public chiTietHoaDonModel(String mahd, String masp, String soluongmua, float giaban, float thanhtien) {
-        this.mahd = mahd;
-        this.masp = masp;
-        this.soluongmua = soluongmua;
-        this.giaban = giaban;
-        this.thanhtien = thanhtien;
-    }
-
-    public chiTietHoaDonModel() {
-    }
-
-    public String getMahd() {
+    public int getMahd() {
         return mahd;
     }
 
-    public void setMahd(String mahd) {
+    public void setMahd(int mahd) {
         this.mahd = mahd;
     }
 
@@ -38,11 +27,11 @@ public class chiTietHoaDonModel {
         this.masp = masp;
     }
 
-    public String getSoluongmua() {
+    public int getSoluongmua() {
         return soluongmua;
     }
 
-    public void setSoluongmua(String soluongmua) {
+    public void setSoluongmua(int soluongmua) {
         this.soluongmua = soluongmua;
     }
 
@@ -61,9 +50,30 @@ public class chiTietHoaDonModel {
     public void setThanhtien(float thanhtien) {
         this.thanhtien = thanhtien;
     }
-    private String mahd;
+
+    public String getIdmagiamgia() {
+        return idmagiamgia;
+    }
+
+    public void setIdmagiamgia(String idmagiamgia) {
+        this.idmagiamgia = idmagiamgia;
+    }
+
+    public chiTietHoaDonModel(int mahd, String masp, int soluongmua, float giaban, float thanhtien, String idmagiamgia) {
+        this.mahd = mahd;
+        this.masp = masp;
+        this.soluongmua = soluongmua;
+        this.giaban = giaban;
+        this.thanhtien = thanhtien;
+        this.idmagiamgia = idmagiamgia;
+    }
+
+    public chiTietHoaDonModel() {
+    }
+    private int mahd;
     private String masp;
-    private String soluongmua;
+    private int soluongmua;
     private float giaban;
     private float thanhtien;
+    private String idmagiamgia;
 }

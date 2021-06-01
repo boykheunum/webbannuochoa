@@ -11,38 +11,27 @@ package Model;
  */
 public class hoaDonModel {
 
-    public hoaDonModel(String mahd, String manv, String makh, String ngayban, float tongtien) {
-        this.mahd = mahd;
-        this.manv = manv;
-        this.makh = makh;
-        this.ngayban = ngayban;
-        this.tongtien = tongtien;
-    }
-
-    public hoaDonModel() {
-    }
-
-    public String getMahd() {
+    public int getMahd() {
         return mahd;
     }
 
-    public void setMahd(String mahd) {
+    public void setMahd(int mahd) {
         this.mahd = mahd;
     }
 
-    public String getManv() {
+    public int getManv() {
         return manv;
     }
 
-    public void setManv(String manv) {
+    public void setManv(int manv) {
         this.manv = manv;
     }
 
-    public String getMakh() {
+    public int getMakh() {
         return makh;
     }
 
-    public void setMakh(String makh) {
+    public void setMakh(int makh) {
         this.makh = makh;
     }
 
@@ -61,9 +50,20 @@ public class hoaDonModel {
     public void setTongtien(float tongtien) {
         this.tongtien = tongtien;
     }
-    private String mahd;
-    private String manv;
-    private String makh;
+
+    public hoaDonModel() {
+    }
+
+    public hoaDonModel(int mahd, int manv, int makh, String ngayban, float tongtien) {
+        this.mahd = mahd;
+        this.manv = manv;
+        this.makh = makh;
+        this.ngayban = ngayban;
+        this.tongtien = tongtien;
+    }
+    private int mahd;
+    private int manv;
+    private int makh;
     private String ngayban;
     private float tongtien;
 }
