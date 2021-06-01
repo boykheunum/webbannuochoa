@@ -3,12 +3,27 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/hoctap/JAVA/project/WebBanSach/src/java/CSDL/thongtincuahang.java</file>
-            <file>file:/D:/hoctap/JAVA/project/WebBanSach/src/java/Control/themMaGiamGia.java</file>
-            <file>file:/D:/hoctap/JAVA/project/WebBanSach/web/themmagiamgia.jsp</file>
-            <file>file:/D:/hoctap/JAVA/project/WebBanSach/src/java/CSDL/LoaiSP.java</file>
-            <file>file:/D:/hoctap/JAVA/project/WebBanSach/src/java/CSDL/SanPham.java</file>
-            <file>file:/D:/hoctap/JAVA/project/WebBanSach/src/java/CSDL/phieugiamgia.java</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/src/java/Control/sualoaiSP.java</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/src/java/CSDL/hoadon.java</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/content/css/styles.css</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/layoutChung/topMenu.jsp</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/src/java/Model/hoaDonModel.java</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/src/java/CSDL/SanPham.java</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/dsSP.jsp</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/themTTCH.jsp</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/src/java/CSDL/tintuc.java</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/src/java/Model/loaispModel.java</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/src/java/CSDL/nguoidung.java</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/src/java/Control/dangkyUser.java</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/sualoaiSP.jsp</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/src/java/Model/thongTinCuaHangModel.java</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/src/java/CSDL/phieugiamgia.java</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/src/java/Control/themSP.java</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/src/java/CSDL/tienich.java</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/themSP.jsp</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/src/java/CSDL/thongtincuahang.java</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/src/java/Control/suaSP.java</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/themloaiSP.jsp</file>
         </group>
     </open-files>
 </project-private>
