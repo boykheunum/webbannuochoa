@@ -13,18 +13,20 @@ import java.sql.SQLException;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.text.html.HTMLDocument;
 
 /**
  *
  * @author Nguyen Tien Dat
  */
 public class phieugiamgia {
+
     public static int listTT(Vector<phieuGiamGiaModel> ds) {
         Connection cnn = CSDL.databaseConnection.cnnDB();
         if (cnn == null) {
             return -1;
         } else {
-            String sql = "SELECT * FROM phieugiamgia";
+            String sql = "SELECT * FROM magiamgia";
             try {
                 PreparedStatement ps = cnn.prepareStatement(sql);
                 ResultSet rs = ps.executeQuery();
@@ -53,22 +55,24 @@ public class phieugiamgia {
         if (cnn == null) {
             return -1;
         } else {
-            String sql = "INSERT INTO phieugiamgia values(?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO magiamgia VALUES (?,?,?,?,?,?,?)";
             try {
+
                 PreparedStatement ps = cnn.prepareStatement(sql);
                 ps.setString(1, tt.getIdmagiamgia());
-                ps.setString(2, tt.getNgaybatdau());
-                ps.setString(3, tt.getNgayketthuc());
-                ps.setBoolean(4, tt.setKieugiamgia());
+                ps.setBoolean(2, tt.isKieugiamgia());
+                ps.setString(3, tt.getNgaybatdau());
+                ps.setString(4, tt.getNgayketthuc());
                 ps.setInt(5, tt.getSoluong());
                 ps.setInt(6, tt.getGiatri());
                 ps.setInt(7, tt.getDieukien());
-                return ps.executeUpdate();
+                String test = ps.toString();
+                ps.executeUpdate();
+                return 1;
             } catch (SQLException ex) {
                 Logger.getLogger(phieugiamgia.class.getName()).log(Level.SEVERE, null, ex);
                 return -2;
             }
-
         }
     }
 
@@ -77,7 +81,7 @@ public class phieugiamgia {
         if (cnn == null) {
             return -1;
         } else {
-            String sql = "UPDATE phieugiamgia SET ngaybatdau=?, ngayketthuc=?, kieugiamgia=?, soluong=?, giatri=?, dieukien=? WHERE idmaphieugiamgia=?";
+            String sql = "UPDATE magiamgia SET ngaybatdau=?, ngayketthuc=?, kieugiamgia=?, soluong=?, giatri=?, dieukien=? WHERE idmaphieugiamgia=?";
             PreparedStatement ps;
             try {
                 ps = cnn.prepareStatement(sql);
@@ -101,20 +105,20 @@ public class phieugiamgia {
         if (cnn == null) {
             return -1;
         } else {
-            String sql = "SELECT * FROM phieugiamgia WHERE idmagiamgia = ?";
+            String sql = "SELECT * FROM magiamgia WHERE idmagiamgia = ?";
             PreparedStatement ps;
             try {
                 ps = cnn.prepareStatement(sql);
                 ps.setInt(1, keyWord);
                 ResultSet rs = ps.executeQuery();
                 if (rs.next()) {
-                ps.setString(1, tt.getNgaybatdau());
-                ps.setString(2, tt.getNgayketthuc());
-                ps.setBoolean(3, tt.setKieugiamgia());
-                ps.setInt(4, tt.getSoluong());
-                ps.setInt(5, tt.getGiatri());
-                ps.setInt(6, tt.getDieukien());
-                ps.setString(7, tt.getIdmagiamgia());
+                    ps.setString(1, tt.getNgaybatdau());
+                    ps.setString(2, tt.getNgayketthuc());
+                    ps.setBoolean(3, tt.setKieugiamgia());
+                    ps.setInt(4, tt.getSoluong());
+                    ps.setInt(5, tt.getGiatri());
+                    ps.setInt(6, tt.getDieukien());
+                    ps.setString(7, tt.getIdmagiamgia());
                 }
                 return 1;
             } catch (SQLException ex) {
@@ -130,7 +134,7 @@ public class phieugiamgia {
         if (cnn == null) {
             return -1;
         } else {
-            String sql = "DELETE * FROM phieugiamgia WHERE idmagiamgia = ?";
+            String sql = "DELETE * FROM magiamgia WHERE idmagiamgia = ?";
             PreparedStatement ps;
             try {
                 ps = cnn.prepareStatement(sql);

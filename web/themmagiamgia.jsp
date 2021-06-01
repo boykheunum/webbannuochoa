@@ -1,11 +1,10 @@
 <%-- 
-    Document   : themSP
-    Created on : Apr 29, 2021, 7:30:25 PM
+    Document   : themmagiamgia
+    Created on : Jun 1, 2021, 5:22:56 PM
     Author     : Nguyen Tien Dat
 --%>
 
-<%@page import="Model.loaispModel"%>
-<%@page import="java.util.Vector"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -126,52 +125,42 @@
                         </ol>
                         <div class="card mb-4">
                             <div class="card-body">
-                                <%
-                                    Vector<loaispModel> ds = new Vector<loaispModel>();
-                                    int kq = CSDL.LoaiSP.listLoaiSP(ds);
-                                    if (kq == 1) {
-                                %>
-                                <form class="form-horizontal" method="post" action="themSP" enctype="multipart/form-data">
+
+                                <form class="form-horizontal" method="post" action="themMaGiamGia">
                                     <h4>Sản Phẩm</h4>
                                     <hr />
                                     <span id="messBoxErr" style="color: red"></span>
                                     <span id="messBox" style="color: greenyellow"></span>
                                     <div class="form-group">
-                                        Mã sản phẩm
-                                        <input class="col-md-10" type="text" id="masp" name="masp">
+                                        ID mã giảm giá
+                                        <input class="col-md-10" type="text" id="magiamgia" name="idmagiamgia">
                                     </div>
                                     <div class="form-group">
-                                        "Mã loại sản phẩm"
-                                        <select class="col-md-10" id="maloaisp" name="maloaisp">
-                                            <%for (loaispModel lsp : ds) {%>
-                                            <option><%=lsp.getMaloaisp()%></option>>
-                                            <%}%>
-                                        </select>>
+                                        Kiểu giảm giá
+                                        <br>
+                                        Phần trăm <input type="radio" name="kieugiamgia" id="kieugiamgia" value="1">
+                                        Tiền mặt <input type="radio" name="kieugiamgia" id="kieugiamgia" value="0">
                                     </div>
                                     <div class="form-group">
-                                        "Tên sản phẩm"
-                                        <input class="col-md-10" type="text" id="tenSP" name="tenSP">
+                                        Ngày bắt đầu
+                                        <input class="col-md-10" type="text" id="ngaybatdau" name="ngaybatdau">
 
                                     </div>
                                     <div class="form-group">
-                                        "Số lương"
+                                        ngayketthuc
+                                        <input class="col-md-10" type="text" id="ngayketthuc" name="ngayketthuc">
+                                    </div>
+                                    <div class="form-group">
+                                        Số lượng
                                         <input class="col-md-10" type="text" id="soluong" name="soluong">
                                     </div>
                                     <div class="form-group">
-                                        "Giá nhập"
-                                        <input class="col-md-10" type="text" id="gianhap" name="gianhap">
+                                        Giá trị
+                                        <input class="col-md-10" type="text" id="giatri" name="giatri">
                                     </div>
                                     <div class="form-group">
-                                        "Giá bán"
-                                        <input class="col-md-10" type="text" id="giaban" name="giaban">
-                                    </div>
-                                    <div class="form-group">
-                                        "Mô tả"
-                                        <textarea class="col-md-10" type="text" id="mota" name="mota"></textarea>>
-                                    </div>
-                                    <div class="form-group">
-                                        "Ảnh"
-                                        <input class="col-md-10" type="file" id="anh" name="anh">
+                                        Điều kiện
+                                        <input class="col-md-10" type="dieukien" id="mota" name="dieukien">
                                     </div>
                                     <div class="form-group">
                                         <div class="col-md-offset-2 col-md-10">
@@ -179,7 +168,7 @@
                                         </div>
                                     </div>
                                 </form>
-                                }
+
                                 <div>
                                     @Html.ActionLink("Back to List", "Index")
                                     <a href="Danh sách">Danh sách</a>
@@ -223,10 +212,10 @@
                             var messBoxErr = document.getElementById('messBoxErr');
                             if (res == 1) {
                                 messBox.innerHTML = " ";
-                                messBoxErr.innerHTML = "Đã tồn tại mã  sản phẩm";
+                                messBoxErr.innerHTML = "Đã tồn tại mã  giảm giá";
                             } else if (res == -1) {
                                 messBoxErr.innerHTML = " ";
-                                messBox.innerHTML = "mã sản phẩm hợp lệ";
+                                messBox.innerHTML = "mã giảm giá hợp lệ";
                             }
 
                         }
@@ -235,5 +224,4 @@
             });
         </script>
     </body>
-    <%}%>
-
+    
