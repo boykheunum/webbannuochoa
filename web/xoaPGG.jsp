@@ -1,12 +1,10 @@
 <%-- 
-    Document   : themmagiamgia
-    Created on : Jun 1, 2021, 5:22:56 PM
+    Document   : xoaPGG
+    Created on : Jun 2, 2021, 9:49:06 AM
     Author     : Nguyen Tien Dat
 --%>
-
-
+<%@page import="Model.phieuGiamGiaModel"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -15,14 +13,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Cửa Hàng Nước Hoa</title>
+        <title>Cửa Hàng Rau Quả</title>
         <link href="content/css/styles.css" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <a class="navbar-brand" href="~/admin/Default/Index">Cửa hàng nước hoa</a>
+            <a class="navbar-brand" href="~/admin/Default/Index">Cửa hàng rau quả</a>
             <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
@@ -120,59 +118,61 @@
                     <div class="container-fluid">
 
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="index.html">Sản Phẩm</a></li>
-                            <li class="breadcrumb-item active">Thêm sản phẩm </li>
+                            <li class="breadcrumb-item"><a href="index.html">Loại Sản Phẩm</a></li>
+                            <li class="breadcrumb-item active">Sửa</li>
                         </ol>
                         <div class="card mb-4">
                             <div class="card-body">
-
-                                <form class="form-horizontal" method="post" action="themMaGiamGia">
-                                    <h4>Sản Phẩm</h4>
+                                <%
+                                    String idmagiamgia = request.getParameter("idmagiamgia");
+                                    phieuGiamGiaModel pgg = new phieuGiamGiaModel();
+                                    int kq = CSDL.phieugiamgia.searchPhieuGiamGia(idmagiamgia, pgg);
+                                    if (kq == 1) {
+                                %>
+                                <form class="form-horizontal" method="post" action="xoaPGG">
+                                    <h4>Phiếu giảm giá</h4>
                                     <hr />
-                                    <span id="messBoxErr" style="color: red"></span>
-                                    <span id="messBox" style="color: greenyellow"></span>
                                     <div class="form-group">
-                                        ID mã giảm giá
-                                        <input class="col-md-10" type="text" id="magiamgia" name="idmagiamgia">
+                                        <input type="text" name="idmagiamgia" id="idmaloaisp" value="<%=pgg.getIdmagiamgia()%>">
                                     </div>
                                     <div class="form-group">
                                         Kiểu giảm giá
                                         <br>
-                                        Phần trăm <input type="radio" checked="checked" name="kieugiamgia" id="kieugiamgia" value="1">
-                                        Tiền mặt <input type="radio" name="kieugiamgia" id="kieugiamgia" value="0">
+                                        Phần trăm <input type="radio" name="kieugiamgia" id="kieugiamgia" value="1" checked="checked" <%=pgg.isKieugiamgia() ? "checked" : ""%>>
+                                        Tiền mặt <input type="radio" name="kieugiamgia" id="kieugiamgia" value="0"<%=pgg.isKieugiamgia() ? "checked" : ""%>>
                                     </div>
                                     <div class="form-group">
                                         Ngày bắt đầu
-                                        <input class="col-md-10" type="text" id="ngaybatdau" name="ngaybatdau">
-
+                                        <input class="col-md-10" type="text" id="ngaybatdau" name="ngaybatdau" value="<%=pgg.getNgaybatdau()%>">
                                     </div>
                                     <div class="form-group">
                                         ngayketthuc
-                                        <input class="col-md-10" type="text" id="ngayketthuc" name="ngayketthuc">
+                                        <input class="col-md-10" type="text" id="ngayketthuc" name="ngayketthuc" value="<%=pgg.getNgayketthuc()%>">
                                     </div>
                                     <div class="form-group">
                                         Số lượng
-                                        <input class="col-md-10" type="text" id="soluong" name="soluong">
+                                        <input class="col-md-10" type="text" id="soluong" name="soluong" value="<%=pgg.getSoluong()%>">
                                     </div>
                                     <div class="form-group">
                                         Giá trị
-                                        <input class="col-md-10" type="text" id="giatri" name="giatri">
+                                        <input class="col-md-10" type="text" id="giatri" name="giatri" value="<%=pgg.getGiatri()%>">
                                     </div>
                                     <div class="form-group">
                                         Điều kiện
-                                        <input class="col-md-10" type="dieukien" id="dieukien" name="dieukien">
+                                        <input class="col-md-10" type="text" id="dieukien" name="dieukien" value="<%=pgg.getDieukien()%>">
                                     </div>
                                     <div class="form-group">
                                         <div class="col-md-offset-2 col-md-10">
-                                            <input type="submit" value="Create" class="btn btn-default" />
+                                            <input type="submit" value="Delete" class="btn btn-default" />
                                         </div>
                                     </div>
                                 </form>
+                                <%}%>
 
                                 <div>
                                     @Html.ActionLink("Back to List", "Index")
-                                    <a href="Danh sách">Danh sách</a>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -198,30 +198,5 @@
         <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
         <script src="content/assets/demo/datatables-demo.js"></script>
-        <script>
-            $(document).ready(function () {
-                $('#masp').keyup(function () {
-                    $.ajax({
-                        method: 'POST',
-                        url: 'checkMaSP',
-                        data: {
-                            masp: $('#masp').val()
-                        },
-                        success: function (res) {
-                            var messBox = document.getElementById('messBox');
-                            var messBoxErr = document.getElementById('messBoxErr');
-                            if (res == 1) {
-                                messBox.innerHTML = " ";
-                                messBoxErr.innerHTML = "Đã tồn tại mã  giảm giá";
-                            } else if (res == -1) {
-                                messBoxErr.innerHTML = " ";
-                                messBox.innerHTML = "mã giảm giá hợp lệ";
-                            }
-
-                        }
-                    });
-                });
-            });
-        </script>
     </body>
-    
+</html>

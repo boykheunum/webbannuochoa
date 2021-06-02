@@ -57,8 +57,8 @@ public class tintuc {
                 PreparedStatement ps = cnn.prepareStatement(sql);
                 ps.setString(1, tt.getAnh());
                 ps.setString(2, tt.getNgaydang());
-                ps.setString(3, tt.getNoidung());
-                ps.setString(4, tt.getTieude());
+                ps.setString(4, tt.getNoidung());
+                ps.setString(3, tt.getTieude());
                 return ps.executeUpdate();
             } catch (SQLException ex) {
                 Logger.getLogger(tintuc.class.getName()).log(Level.SEVERE, null, ex);

@@ -56,10 +56,10 @@ public class hoadon {
             try {
                 PreparedStatement ps = cnn.prepareStatement(sql);
                 ps.setInt(1, hd.getMahd());
-                ps.setInt(2, hd.getMakh());
-                ps.setInt(3, hd.getManv());
-                ps.setString(4, hd.getNgayban());
-                ps.setFloat(5, hd.getTongtien());
+                ps.setInt(5, hd.getMakh());
+                ps.setInt(4, hd.getManv());
+                ps.setString(2, hd.getNgayban());
+                ps.setFloat(3, hd.getTongtien());
                 return ps.executeUpdate();
             } catch (SQLException ex) {
                 Logger.getLogger(hoadon.class.getName()).log(Level.SEVERE, null, ex);

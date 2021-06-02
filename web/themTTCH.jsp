@@ -1,13 +1,14 @@
 <%-- 
-    Document   : themmagiamgia
-    Created on : Jun 1, 2021, 5:22:56 PM
-    Author     : Nguyen Tien Dat
+    Document   : themTTCH
+    Created on : Jun 2, 2021, 12:20:51 AM
+    Author     : quyenlh
 --%>
 
-
+<%@page import="Model.loaispModel"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
+<!DOCTYPE html>
+
 <html lang="en">
     <head>
         <meta charset="utf-8" />
@@ -15,7 +16,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Cửa Hàng Nước Hoa</title>
+        <title>Cửa Hàng Rau Quả</title>
         <link href="content/css/styles.css" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
@@ -73,7 +74,7 @@
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts2" aria-expanded="false" aria-controls="collapseLayouts">
-                                Đơn Vị Tính
+                                Thông tin cửa hàng
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="collapseLayouts2" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
@@ -117,67 +118,48 @@
             </div>
             <div id="layoutSidenav_content">
                 <main>
-                    <div class="container-fluid">
-
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="index.html">Sản Phẩm</a></li>
-                            <li class="breadcrumb-item active">Thêm sản phẩm </li>
-                        </ol>
-                        <div class="card mb-4">
-                            <div class="card-body">
-
-                                <form class="form-horizontal" method="post" action="themMaGiamGia">
-                                    <h4>Sản Phẩm</h4>
-                                    <hr />
-                                    <span id="messBoxErr" style="color: red"></span>
-                                    <span id="messBox" style="color: greenyellow"></span>
-                                    <div class="form-group">
-                                        ID mã giảm giá
-                                        <input class="col-md-10" type="text" id="magiamgia" name="idmagiamgia">
-                                    </div>
-                                    <div class="form-group">
-                                        Kiểu giảm giá
-                                        <br>
-                                        Phần trăm <input type="radio" checked="checked" name="kieugiamgia" id="kieugiamgia" value="1">
-                                        Tiền mặt <input type="radio" name="kieugiamgia" id="kieugiamgia" value="0">
-                                    </div>
-                                    <div class="form-group">
-                                        Ngày bắt đầu
-                                        <input class="col-md-10" type="text" id="ngaybatdau" name="ngaybatdau">
-
-                                    </div>
-                                    <div class="form-group">
-                                        ngayketthuc
-                                        <input class="col-md-10" type="text" id="ngayketthuc" name="ngayketthuc">
-                                    </div>
-                                    <div class="form-group">
-                                        Số lượng
-                                        <input class="col-md-10" type="text" id="soluong" name="soluong">
-                                    </div>
-                                    <div class="form-group">
-                                        Giá trị
-                                        <input class="col-md-10" type="text" id="giatri" name="giatri">
-                                    </div>
-                                    <div class="form-group">
-                                        Điều kiện
-                                        <input class="col-md-10" type="dieukien" id="dieukien" name="dieukien">
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-md-offset-2 col-md-10">
-                                            <input type="submit" value="Create" class="btn btn-default" />
+                    <main>
+                        <div class="container-fluid">
+                            <ol class="breadcrumb mb-4">
+                                <li class="breadcrumb-item"><a href="index.html">Thông tin cửa hàng</a></li>
+                                <li class="breadcrumb-item active">Thêm thông tin cửa hàng</li>
+                            </ol>
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <form class="form-horizontal" action="themloaisp" method="post">
+                                        <h4>Thông tin cửa hàng</h4>
+                                        <hr />
+                                        <span id="messBoxErr" style="color: red"></span>
+                                        <span id="messBox" style="color: greenyellow"></span>
+                                        
+                                        <div class="form-group">
+                                           Địa chỉ cửa hàng
+                                            <input  id="diachi" name="diachi" type="text">
                                         </div>
-                                    </div>
-                                </form>
+                                         <div class="form-group">
+                                            Email
+                                            <input id="email" name="email" type="text">
+                                        </div>
 
-                                <div>
-                                    @Html.ActionLink("Back to List", "Index")
-                                    <a href="Danh sách">Danh sách</a>
+                                        <div class="form-group">
+                                           Số điện thoại
+                                            <input  id="sdtcuahang" name="sdtcuahang" type="text">
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-offset-2 col-md-10">
+                                                <input type="submit" value="Create" class="btn btn-default" />
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <div>
+                                        "Back to List", "Index"
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </main>
                 </main>
-
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid">
                         <div class="d-flex align-items-center justify-content-between small">
@@ -200,22 +182,23 @@
         <script src="content/assets/demo/datatables-demo.js"></script>
         <script>
             $(document).ready(function () {
-                $('#masp').keyup(function () {
+                $('#maloaisp').keyup(function () {
                     $.ajax({
+                        
                         method: 'POST',
-                        url: 'checkMaSP',
+                        url: 'checkLoaiSP',
                         data: {
-                            masp: $('#masp').val()
+                            maloaisp: $('#maloaisp').val()
                         },
                         success: function (res) {
                             var messBox = document.getElementById('messBox');
                             var messBoxErr = document.getElementById('messBoxErr');
                             if (res == 1) {
                                 messBox.innerHTML = " ";
-                                messBoxErr.innerHTML = "Đã tồn tại mã  giảm giá";
-                            } else if (res == -1) {
+                                messBoxErr.innerHTML = "Đã tồn tại mã loai sản phẩm";
+                            } else {
                                 messBoxErr.innerHTML = " ";
-                                messBox.innerHTML = "mã giảm giá hợp lệ";
+                                messBox.innerHTML = "mã loại sản phẩm hợp lệ";
                             }
 
                         }
@@ -224,4 +207,5 @@
             });
         </script>
     </body>
-    
+
+</html>

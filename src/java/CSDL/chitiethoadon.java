@@ -56,12 +56,12 @@ public class chitiethoadon {
             String sql = "INSERT INTO chitiethoadon values(?,?,?,?,?,?)";
             try {
                 PreparedStatement ps = cnn.prepareStatement(sql);
-                ps.setString(1, cthd.getIdmagiamgia());
+                ps.setString(6, cthd.getIdmagiamgia());
                 ps.setString(2, cthd.getMasp());
-                ps.setFloat(3, cthd.getGiaban());
-                ps.setInt(4, cthd.getMahd());
-                ps.setInt(5, cthd.getSoluongmua());
-                ps.setFloat(6, cthd.getThanhtien());
+                ps.setFloat(4, cthd.getGiaban());
+                ps.setInt(1, cthd.getMahd());
+                ps.setInt(3, cthd.getSoluongmua());
+                ps.setFloat(5, cthd.getThanhtien());
                 return ps.executeUpdate();
             } catch (SQLException ex) {
                 Logger.getLogger(chitiethoadon.class.getName()).log(Level.SEVERE, null, ex);
