@@ -34,9 +34,11 @@ public class xoaPGG extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            response.setContentType("text/html; charset=UTF-8");
+            request.setCharacterEncoding("UTF-8");
             String idmagiamgia = request.getParameter("idmagiamgia");
             int kq = CSDL.phieugiamgia.deleteThongTin(idmagiamgia);
-            if(kq==1){
+            if (kq == 1) {
                 response.sendRedirect("dsPGG.jsp");
             }
         }

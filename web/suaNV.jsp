@@ -1,13 +1,12 @@
 <%-- 
-    Document   : suaSP
-    Created on : May 2, 2021, 2:06:56 AM
+    Document   : suaNV
+    Created on : Jun 2, 2021, 7:58:20 PM
     Author     : Nguyen Tien Dat
 --%>
 
-<%@page import="Model.loaispModel"%>
-<%@page import="Model.sanphamModel"%>
+<%@page import="Model.chucVuModel"%>
+<%@page import="Model.nhanVienModel"%>
 <%@page import="java.util.Vector"%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -127,91 +126,88 @@
                         </ol>
                         <div class="card mb-4">
                             <%
-
-                                String masp = request.getParameter("masp");
-                                sanphamModel sp = new sanphamModel();
-                                int kq = CSDL.SanPham.searchSP(sp, masp);
+                                int manv = Integer.parseInt(request.getParameter("manv"));
+                                nhanVienModel nv = new nhanVienModel();
+                                int kq = CSDL.nhanVien.searchNhanVien(nv, manv);
                                 if (kq == 1) {
                             %>
-                            <form class="card-body" action="suaSP" method="post" enctype="multipart/form-data">
+                            <form class="card-body" action="suaNV" method="post">
                                 <div class="form-horizontal">
                                     <h4>Sản Phẩm</h4>
                                     <hr />
-                                    <input type="hidden" id="masp" name="masp" value="<%=sp.getMasp()%>">
+
                                     <div class="form-group">
-                                        "Mã loại Sản phẩm"
+                                        "Mã chức vụ"
                                         <div class="col-md-4">
-                                            <select class="col-md-4" id="maloaisp" name="maloaisp">
+                                            <select class="col-md-4" id="macv" name="macv">
                                                 <%
-                                                    Vector<loaispModel> ds = new Vector<loaispModel>();
-                                                    CSDL.LoaiSP.listLoaiSP(ds);
-                                                    for (loaispModel lsp : ds) {
+                                                    Vector<chucVuModel> ds = new Vector<chucVuModel>();
+                                                    CSDL.chucVu.listLoaiCV(ds);
+                                                    for (chucVuModel cv : ds) {
                                                 %>
-                                                <option><%=lsp.getMaloaisp()%></option>>
+                                                <option><%=cv.getMacv()%></option>>
                                                 <%}%>
                                             </select>>
                                         </div>
                                     </div>
+                                    <input id="manv" type="hidden" name="manv" value="<%=nv.getManv()%>">
+                                    <div class="form-group">
+                                        "Tên nhân viên"
+                                        <div class="col-md-6">
+                                            <input type="text" id="tennv" name="tennv" value="<%=nv.getTennv()%>">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        "Số điện thoại"
+                                        <div class="col-md-6">
+                                            <input type="text" id="soluongsdt" name="sdt" value="<%=nv.getSdt()%>">
+                                        </div>
+                                    </div>
 
                                     <div class="form-group">
-                                        "Tên Sản phẩm"
+                                        "Ngày sinh"
                                         <div class="col-md-6">
-                                            <input type="text" id="tensp" name="tensp" value="<%=sp.getTensp()%>">
+                                            <input type="text" id="ngaysinh" name="ngaysinh" value="<%=nv.getNgaysinh()%>">
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="form-group">
-                                    "Số lượng"
-                                    <div class="col-md-6">
-                                        <input type="text" id="soluong" name="soluong" value="<%=sp.getSoluong()%>">
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    "Giá nhập"
-                                    <div class="col-md-6">
-                                        <input type="text" id="gianhap" name="gianhap" value="<%=sp.getGianhap()%>">
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    "Giá bán"
-                                    <div class="col-md-6">
-                                        <input type="text" id="giaban" name="giaban" value="<%=sp.getGiaban()%>">
-                                    </div>
-                                </div>
-
-
-                                <div class="form-group">
-                                    "Mô tả"
-                                    <div class="col-md-6">
-                                        <textarea class="form-control" placeholder="Nhập mô tả" id="mota" name="mota"><%=sp.getMota()%></textarea>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    "Ảnh"
-                                    <%
-                                        String checkImage = "noImage";
-                                        if (sp.getHinhanh().equals("") != true) {
-                                            checkImage = sp.getHinhanh();
-                                    %>
-                                    <div class="col-md-6">
-                                        <img src="imageSP/<%=checkImage%>" width="40%" height="40%">
-                                        <div>
-                                        <input title="<%=checkImage%>" id="formFileSm" type="file" id="anh" name="anh" value="<%=checkImage%>">
+                                    <div class="form-group">
+                                        "Tên Đăng nhập"
+                                        <div class="col-md-6">
+                                            <input type="text" id="tendangnhap" name="tendangnhap" value="<%=nv.getTendangnhap()%>">
                                         </div>
                                     </div>
-                                    <%}%>
+
+
+                                    <div class="form-group">
+                                        "Tài khoản"
+                                        <div class="col-md-6">
+                                            <input class="form-control" id="tendangnhap" name="tendangnhap" value="<%=nv.getTendangnhap()%>">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        "Mật khẩu"
+                                        <div class="col-md-6">
+                                            <input class="form-control" id="matkhau" name="matkhau" value="<%=nv.getMatkhau()%>">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        "Địa chỉ"
+                                        <div class="col-md-6">
+                                            <input class="form-control" id="diachi" name="diachi" value="<%=nv.getDiachi()%>">
+                                        </div>
+                                    </div>
+
                                 </div>
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-6">
+                                        <input type="submit" value="Save" class="btn btn-default" />
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-6">
-                                <input type="submit" value="Save" class="btn btn-default" />
-                            </div>
-                        </div>
-                        </form>
+
+
                         <%}%>
 
                         <div>

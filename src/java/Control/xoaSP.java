@@ -34,9 +34,11 @@ public class xoaSP extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            response.setContentType("text/html; charset=UTF-8");
+            request.setCharacterEncoding("UTF-8");
             String masp = request.getParameter("masp");
             int kq = CSDL.SanPham.deleteLoaiSP(masp);
-            if(kq == 1){
+            if (kq == 1) {
                 response.sendRedirect("dsSP.jsp");
             }
         }

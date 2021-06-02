@@ -37,11 +37,11 @@ public class phantrangUserSP extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             String indexPage = request.getParameter("index");
-            int a;            
+            int a;
             if (indexPage == null) {
                 a = 1;
             } else {
-                a = Integer.parseInt(indexPage);                
+                a = Integer.parseInt(indexPage);
             }
             int count = CSDL.SanPham.countSP();
             int endPage = count / 9;

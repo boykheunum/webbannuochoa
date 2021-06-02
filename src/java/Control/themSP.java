@@ -41,7 +41,8 @@ public class themSP extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-
+            response.setContentType("text/html; charset=UTF-8");
+            request.setCharacterEncoding("UTF-8");
             String fileImage = "imageSP\\";
             String checkEnctype = request.getContentType();
             if (checkEnctype.contains("multipart/form-data")) {
@@ -62,7 +63,7 @@ public class themSP extends HttpServlet {
                         if (kq == 1) {
                             response.sendRedirect("dsSP.jsp");
                         }
-                    }else{
+                    } else {
                         out.print("<script>alert('Đã tồn tại mã sản phẩm bạn vừa nhập')</script>");
                     }
                 } catch (Exception ex) {

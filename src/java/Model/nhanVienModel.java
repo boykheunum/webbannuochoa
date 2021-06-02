@@ -14,15 +14,6 @@ public class nhanVienModel {
     public nhanVienModel() {
     }
 
-    public nhanVienModel(int manv, String macv, String tennv, String sdt, String diachi, String ngaysinhString) {
-        this.manv = manv;
-        this.macv = macv;
-        this.tennv = tennv;
-        this.sdt = sdt;
-        this.diachi = diachi;
-        this.ngaysinhString = ngaysinhString;
-    }
-
     public int getManv() {
         return manv;
     }
@@ -63,17 +54,56 @@ public class nhanVienModel {
         this.diachi = diachi;
     }
 
-    public String getNgaysinhString() {
-        return ngaysinhString;
+    public String getNgaysinh() {
+        return ngaysinh;
     }
 
-    public void setNgaysinhString(String ngaysinhString) {
-        this.ngaysinhString = ngaysinhString;
+    public void setNgaysinh(String ngaysinh) {
+        this.ngaysinh = ngaysinh;
+    }
+
+    public String getTendangnhap() {
+        return tendangnhap;
+    }
+
+    public void setTendangnhap(String tendangnhap) {
+        this.tendangnhap = tendangnhap;
+    }
+
+    public String getMatkhau() {
+        return matkhau;
+    }
+
+    public void setMatkhau(String matkhau) {
+        this.matkhau = matkhau;
+    }
+
+    public nhanVienModel(int manv, String macv, String tennv, String sdt, String diachi, String ngaysinh, String tendangnhap, String matkhau) {
+        this.manv = manv;
+        this.macv = macv;
+        this.tennv = tennv;
+        this.sdt = sdt;
+        this.diachi = diachi;
+        this.ngaysinh = ngaysinh;
+        this.tendangnhap = tendangnhap;
+        this.matkhau = matkhau;
     }
     private int manv;
     private String macv;
     private String tennv;
     private String sdt;
     private String diachi;
-    private String ngaysinhString;
+    private String ngaysinh;
+    private String tendangnhap;
+
+    public nhanVienModel(String macv, String tennv, String sdt, String diachi, String ngaysinh, String tendangnhap, String matkhau) {
+        this.macv = macv;
+        this.tennv = tennv;
+        this.sdt = sdt;
+        this.diachi = diachi;
+        this.ngaysinh = ngaysinh;
+        this.tendangnhap = tendangnhap;
+        this.matkhau = matkhau;
+    }
+    private String matkhau;
 }

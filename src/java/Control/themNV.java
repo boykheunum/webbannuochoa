@@ -5,7 +5,7 @@
  */
 package Control;
 
-import Model.nguoiDungModel;
+import Model.nhanVienModel;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -18,8 +18,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Nguyen Tien Dat
  */
-@WebServlet(name = "dangkyUser", urlPatterns = {"/dangkyUser"})
-public class dangkyUser extends HttpServlet {
+@WebServlet(name = "themNV", urlPatterns = {"/themNV"})
+public class themNV extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,18 +36,18 @@ public class dangkyUser extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             response.setContentType("text/html; charset=UTF-8");
-            request.setCharacterEncoding("UTF-8");
-            String hoten = request.getParameter("hoten");
-            String sodienthoai = request.getParameter("sodienthoai");
-            String diachi = request.getParameter("diachi");
-            String taikhoan = request.getParameter("tendangnhap2");
+            request.setCharacterEncoding("UTF-8");           
+            String macv = request.getParameter("macv");
+            String tennv = request.getParameter("tennv");
+            String sdt = request.getParameter("sdt");
+            String ngaysinh = request.getParameter("ngaysinh");
+            String tendangnhap = request.getParameter("tendangnhap");
             String matkhau = request.getParameter("matkhau");
-            nguoiDungModel nd = new nguoiDungModel(matkhau, hoten, diachi, matkhau, hoten);
-            int kq = CSDL.nguoidung.dangKy(nd);
-            if (kq == 1) {
-                response.sendRedirect("phantrangUserSP");
-            } else {
-                out.print("alert('dang ký thất bại')");
+            String diachi = request.getParameter("diachi");
+            nhanVienModel nv = new nhanVienModel(macv, tennv, sdt, diachi, ngaysinh, tendangnhap, matkhau);
+            int kq = CSDL.nhanVien.dangKy(nv);
+            if(kq==1){
+                response.sendRedirect("dsNV.jsp");
             }
         }
     }

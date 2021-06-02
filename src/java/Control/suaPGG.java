@@ -35,21 +35,23 @@ public class suaPGG extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            response.setContentType("text/html; charset=UTF-8");
+            request.setCharacterEncoding("UTF-8");
             boolean kieugiamgia = false;
             String idmagiamgia = request.getParameter("idmagiamgia");
             String ngaybatdau = request.getParameter("ngaybatdau");
             String ngayketthuc = request.getParameter("ngayketthuc");
-            if(Integer.parseInt(request.getParameter("kieugiamgia"))==1){
-                kieugiamgia=true;
-            }else{
-                kieugiamgia=false;
+            if (Integer.parseInt(request.getParameter("kieugiamgia")) == 1) {
+                kieugiamgia = true;
+            } else {
+                kieugiamgia = false;
             }
             int soluong = Integer.parseInt(request.getParameter("soluong"));
             int giatri = Integer.parseInt(request.getParameter("giatri"));
             int dieukien = Integer.parseInt(request.getParameter("dieukien"));
             phieuGiamGiaModel pgg = new phieuGiamGiaModel(idmagiamgia, kieugiamgia, ngaybatdau, ngayketthuc, soluong, giatri, dieukien);
             int kq = CSDL.phieugiamgia.editPhieuGiamGia(idmagiamgia, pgg);
-            if(kq==1){
+            if (kq == 1) {
                 response.sendRedirect("dsPGG.jsp");
             }
         }

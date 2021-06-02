@@ -33,19 +33,21 @@ public class dangnhap extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-                         throws ServletException, IOException {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            response.setContentType("text/html; charset=UTF-8");
+            request.setCharacterEncoding("UTF-8");
             String userName = request.getParameter("tendangnhap1");
             String passWord = request.getParameter("matkhau");
             HttpSession session = request.getSession();
             session.setAttribute("us", userName);
             session.setAttribute("ps", passWord);
             int kq = nguoidung.dangnhap(userName, passWord);
-            if(kq==1){
+            if (kq == 1) {
                 out.print("1");
-            }else{
+            } else {
                 out.print("-1");
             }
         }
@@ -62,7 +64,7 @@ public class dangnhap extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-                         throws ServletException, IOException {
+            throws ServletException, IOException {
         processRequest(request, response);
     }
 
@@ -76,7 +78,7 @@ public class dangnhap extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-                         throws ServletException, IOException {
+            throws ServletException, IOException {
         processRequest(request, response);
     }
 

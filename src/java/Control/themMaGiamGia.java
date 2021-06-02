@@ -35,23 +35,25 @@ public class themMaGiamGia extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            response.setContentType("text/html; charset=UTF-8");
+            request.setCharacterEncoding("UTF-8");
             String idmagiamgia = request.getParameter("idmagiamgia");
             boolean kieugiamgia = false;
-            if(request.getParameter("kieugiamgia")!=null){
-                if(Integer.parseInt(request.getParameter("kieugiamgia")) == 1){
+            if (request.getParameter("kieugiamgia") != null) {
+                if (Integer.parseInt(request.getParameter("kieugiamgia")) == 1) {
                     kieugiamgia = true;
-                }else{
+                } else {
                     kieugiamgia = false;
                 }
             }
             String ngaybatdau = request.getParameter("ngaybatdau");
             String ngayketthuc = request.getParameter("ngayketthuc");
             int soluong = Integer.parseInt(request.getParameter("soluong"));
-            int giatri  = Integer.parseInt(request.getParameter("giatri"));
+            int giatri = Integer.parseInt(request.getParameter("giatri"));
             int dieukien = Integer.parseInt(request.getParameter("dieukien"));
             phieuGiamGiaModel pgg = new phieuGiamGiaModel(idmagiamgia, kieugiamgia, ngaybatdau, ngayketthuc, soluong, giatri, dieukien);
             int kq = CSDL.phieugiamgia.addThongTin(pgg);
-            if(kq==1){
+            if (kq == 1) {
                 out.print("<script>alert('thành công')</script>");
             }
         }

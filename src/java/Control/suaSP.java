@@ -40,9 +40,10 @@ public class suaSP extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            
+            response.setContentType("text/html; charset=UTF-8");
+            request.setCharacterEncoding("UTF-8");
             String checkEntype = request.getContentType();
-            if(checkEntype.contains("multipart/form-data")){
+            if (checkEntype.contains("multipart/form-data")) {
                 List listItem = tienich.Uploads(request, "imageSP");
                 try {
                     String masp = tienich.inputFile(listItem, "masp");
@@ -55,13 +56,13 @@ public class suaSP extends HttpServlet {
                     String anh = tienich.inputFile(listItem, "anh");
                     sanphamModel sp = new sanphamModel(masp, maloaisp, tensp, soluong, gianhap, giaban, mota, anh);
                     int kq = CSDL.SanPham.editLoaiSP(sp);
-                    if(kq > 0){
+                    if (kq > 0) {
                         response.sendRedirect("dsSP.jsp");
                     }
                 } catch (Exception ex) {
                     Logger.getLogger(suaSP.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                
+
             }
         }
     }

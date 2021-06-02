@@ -5,8 +5,7 @@
  */
 package CSDL;
 
-import Model.loaispModel;
-import Model.nguoiDungModel;
+import Model.nhanVienModel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,125 +16,135 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author DELL
+ * @author Nguyen Tien Dat
  */
-public class nguoidung {
+public class nhanVien {
 
-    public static int listNguoiDung(Vector<nguoiDungModel> ls) {
+    public static int listNhanVien(Vector<nhanVienModel> ls) {
         Connection cnn = CSDL.databaseConnection.cnnDB();
         if (cnn == null) {
             return -1;
         } else {
-            String sql = "SELECT * FROM nguoidung";
+            String sql = "SELECT * FROM nhanvien";
             try {
                 PreparedStatement ps = cnn.prepareStatement(sql);
                 ResultSet rs = ps.executeQuery();
                 while (rs.next()) {
-                    nguoiDungModel tp = new nguoiDungModel();
-                    tp.setTendangnhap(rs.getString("tendangnhap"));
-                    tp.setMatkhau(rs.getString("matkhau"));
-                    tp.setHovaten(rs.getString("hovaten"));
-                    tp.setSdt(rs.getString("sdt"));
-                    tp.setDiachi(rs.getString("diachi"));
-                    tp.setMakh(rs.getInt("makh"));
-                    ls.add(tp);
+                    nhanVienModel nv = new nhanVienModel();
+                    nv.setDiachi(rs.getString("diachi"));
+                    nv.setMacv(rs.getString("macv"));
+                    nv.setManv(rs.getInt("manv"));
+                    nv.setNgaysinh(rs.getString("ngaysinh"));
+                    nv.setSdt(rs.getString("sdt"));
+                    nv.setTennv(rs.getString("tennv"));
+                    nv.setTendangnhap(rs.getString("tendangnhap"));
+                    nv.setMatkhau(rs.getString("matkhau"));
+                    ls.add(nv);
                 }
                 return 1;
             } catch (SQLException ex) {
-                Logger.getLogger(nguoiDungModel.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(nhanVienModel.class.getName()).log(Level.SEVERE, null, ex);
                 return -2;
             }
         }
     }
 
-    public static int dangKy(nguoiDungModel lsm) {
+    public static int dangKy(nhanVienModel nv) {
         Connection cnn = CSDL.databaseConnection.cnnDB();
         if (cnn == null) {
             return -1;
         } else {
-            String sql = "INSERT INTO nguoidung values(?,?,?,?,?,?)";
+            String sql = "INSERT INTO nhanvien values(?,?,?,?,?,?,?,?)";
             try {
                 PreparedStatement ps = cnn.prepareStatement(sql);
-                ps.setString(1, lsm.getTendangnhap());
-                ps.setString(2, lsm.getMatkhau());
-                ps.setString(3, lsm.getHovaten());
-                ps.setString(4, lsm.getSdt());
-                ps.setString(5, lsm.getDiachi());
-                ps.setInt(6, lsm.getMakh());
+                ps.setString(1, nv.getMacv());
+                ps.setString(2, nv.getTennv());
+                ps.setString(3, nv.getSdt());
+                ps.setString(4, nv.getDiachi());
+                ps.setString(5, nv.getNgaysinh());
+                ps.setInt(6, nv.getManv());
+                ps.setString(7, nv.getTendangnhap());
+                ps.setString(8, nv.getMatkhau());
                 return ps.executeUpdate();
             } catch (SQLException ex) {
-                Logger.getLogger(nguoidung.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(nhanVien.class.getName()).log(Level.SEVERE, null, ex);
                 return -2;
             }
 
         }
     }
 
-    public static int deleteNguoiDung(String keyword) {
+    public static int deleteNV(int keyword) {
         Connection cnn = CSDL.databaseConnection.cnnDB();
         if (cnn == null) {
             return -1;
         } else {
-            String sql = "DELETE FROM nguoidung WHERE makh = ?";
+            String sql = "DELETE FROM nhanvien WHERE manv = ?";
             try {
                 PreparedStatement ps = cnn.prepareStatement(sql);
-                ps.setString(1, keyword);
+                ps.setInt(1, keyword);
                 return ps.executeUpdate();
             } catch (SQLException ex) {
-                Logger.getLogger(nguoidung.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(nhanVien.class.getName()).log(Level.SEVERE, null, ex);
                 return -2;
             }
 
         }
     }
 
-    public static int editNguoiDung(nguoiDungModel lsm, String id) {
+    public static int editNhanVien(nhanVienModel nv, int id) {
         Connection cnn = CSDL.databaseConnection.cnnDB();
         if (cnn == null) {
             return -1;
         } else {
-            String sql = "INSERT INTO nguoidung values(?,?,?,?,?) WHERE maloaisp = ?";
+            String sql = "UPDATE `nhanvien` SET `macv`= ?,`tennv`= ?,`sdt`=?,`diachi`=?,`ngaysinh`=?,`tendangnhap`=?,`matkhau`=? WHERE `manv`=?";
             try {
                 PreparedStatement ps = cnn.prepareStatement(sql);
-                ps.setString(1, lsm.getTendangnhap());
-                ps.setString(2, lsm.getMatkhau());
-                ps.setString(3, lsm.getHovaten());
-                ps.setString(4, lsm.getSdt());
-                ps.setString(5, lsm.getDiachi());
-                ps.setString(6, id);
+                ps.setString(1, nv.getMacv());
+                ps.setString(2, nv.getTennv());
+                ps.setString(3, nv.getSdt());
+                ps.setString(4, nv.getDiachi());
+                ps.setString(5, nv.getNgaysinh());
+                ps.setString(6, nv.getTendangnhap());
+                ps.setString(7, nv.getMatkhau());
+                ps.setInt(8, id);
+                String test = ps.toString();
                 return ps.executeUpdate();
             } catch (SQLException ex) {
-                Logger.getLogger(nguoidung.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(nhanVien.class.getName()).log(Level.SEVERE, null, ex);
                 return -2;
             }
         }
     }
 
-    public static int searchNguoiDung(nguoiDungModel lsp, String id) {
+    public static int searchNhanVien(nhanVienModel nv, int id) {
         Connection cnn = CSDL.databaseConnection.cnnDB();
         if (cnn == null) {
             return -1;
         } else {
-            String sql = "SELECT * FROM nguoidung where makh = ?";
+            String sql = "SELECT * FROM nhanvien where manv = ?";
             try {
                 PreparedStatement ps = cnn.prepareStatement(sql);
-                ps.setString(1, id);
+                ps.setInt(1, id);
                 ResultSet rs = ps.executeQuery();
-                while (rs.next()) {
-                    lsp.setTendangnhap(rs.getString("tendangnhap"));
-                    lsp.setMatkhau(rs.getString("matkhau"));
-                    lsp.setHovaten(rs.getString("hovaten"));
-                    lsp.setSdt(rs.getString("sdt"));
-                    lsp.setDiachi(rs.getString("diachi"));
-                    lsp.setMakh(rs.getInt("makh"));
+                if (rs.next()) {
+                    nv.setDiachi(rs.getString("diachi"));
+                    nv.setMacv(rs.getString("macv"));
+                    nv.setManv(rs.getInt("manv"));
+                    nv.setNgaysinh(rs.getString("ngaysinh"));
+                    nv.setSdt(rs.getString("sdt"));
+                    nv.setTennv(rs.getString("tennv"));
+                    nv.setTendangnhap(rs.getString("tendangnhap"));
+                    nv.setMatkhau(rs.getString("matkhau"));
                 }
                 return 1;
             } catch (SQLException ex) {
-                Logger.getLogger(nguoidung.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(nhanVien.class.getName()).log(Level.SEVERE, null, ex);
                 return -2;
             }
         }
     }
+
     public static int dangnhap(String us, String ps) {
         Connection cnn = CSDL.databaseConnection.cnnDB();
         if (cnn == null) {
@@ -147,18 +156,18 @@ public class nguoidung {
                 pst.setString(1, us);
                 pst.setString(2, ps);
                 ResultSet rs = pst.executeQuery();
-                if(rs.next()){
-                  return 1;  
+                if (rs.next()) {
+                    return 1;
                 }
                 return 0;
             } catch (SQLException ex) {
-                Logger.getLogger(nguoidung.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(nhanVien.class.getName()).log(Level.SEVERE, null, ex);
                 return -2;
             }
 
         }
     }
-    
+
     public static int checkUserName(String id) {
         Connection cnn = CSDL.databaseConnection.cnnDB();
         if (cnn == null) {
@@ -175,7 +184,7 @@ public class nguoidung {
                 }
                 return 0;
             } catch (SQLException ex) {
-                Logger.getLogger(nguoidung.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(nhanVien.class.getName()).log(Level.SEVERE, null, ex);
                 return -2;
             }
         }

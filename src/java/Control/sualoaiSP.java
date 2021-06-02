@@ -35,11 +35,13 @@ public class sualoaiSP extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            response.setContentType("text/html; charset=UTF-8");
+            request.setCharacterEncoding("UTF-8");
             String maloaisp = request.getParameter("maloaisp");
             String tenloaisp = request.getParameter("tenloaisp");
-            loaispModel lsp =new loaispModel(maloaisp, tenloaisp);
+            loaispModel lsp = new loaispModel(maloaisp, tenloaisp);
             int kq = CSDL.LoaiSP.editLoaiSP(lsp);
-            if(kq == 1){
+            if (kq == 1) {
                 response.sendRedirect("dsloaiSP.jsp");
             }
         }

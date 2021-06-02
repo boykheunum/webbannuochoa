@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.json.JSONObject;
 
-
 /**
  *
  * @author Nguyen Tien Dat
@@ -37,6 +36,8 @@ public class checkLoaiSP extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            response.setContentType("text/html; charset=UTF-8");
+            request.setCharacterEncoding("UTF-8");
             String maloaisp = request.getParameter("maloaisp");
             int check;
             int kq = CSDL.LoaiSP.checkLoaiSP(maloaisp);

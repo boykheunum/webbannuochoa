@@ -34,11 +34,13 @@ public class checkUserName extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            response.setContentType("text/html; charset=UTF-8");
+            request.setCharacterEncoding("UTF-8");
             String tenDangNhap2 = request.getParameter("tendangnhap2");
             int kq = CSDL.nguoidung.checkUserName(tenDangNhap2);
-            if(kq == 1){
+            if (kq == 1) {
                 out.print("1");
-            }else{
+            } else {
                 out.print("-1");
             }
         }
