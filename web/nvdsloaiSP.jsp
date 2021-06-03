@@ -1,10 +1,18 @@
 <%-- 
-    Document   : themChucVu
-    Created on : Jun 2, 2021, 3:51:11 PM
-    Author     : Nguyen Tien Dat
+    Document   : nvdsloaiSP
+    Created on : Jun 2, 2021, 11:06:05 PM
+    Author     : quyenlh
 --%>
 
+
+<%@page import="java.util.Vector"%>
+<%@page import="Model.loaispModel"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    Vector<loaispModel> ds = new Vector<loaispModel>();
+    int kq = CSDL.LoaiSP.listLoaiSP(ds);
+    if (kq == 1) {
+%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -50,6 +58,16 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Quản lý Bán hàng</div>
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts4" aria-expanded="false" aria-controls="collapseLayouts">
+                               Thông Tin Cá Nhân
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseLayouts4" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                   
+                                    <a class="nav-link" href="~/admin/CTHoaDons/Create">Sửa</a>
+                                </nav>
+                            </div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 Loại Sản Phẩm
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -121,16 +139,6 @@
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts4" aria-expanded="false" aria-controls="collapseLayouts">
-                                Nhân Viên
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapseLayouts4" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="~/admin/CTHoaDons/Index">Danh sách</a>
-                                    <a class="nav-link" href="~/admin/CTHoaDons/Create">Thêm</a>
-                                </nav>
-                            </div>
-                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts4" aria-expanded="false" aria-controls="collapseLayouts">
                                 Tin Tức
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
@@ -146,43 +154,54 @@
             </div>
             <div id="layoutSidenav_content">
                 <main>
-                    <main>
-                        <div class="container-fluid">
-                            <ol class="breadcrumb mb-4">
-                                <li class="breadcrumb-item"><a href="index.html">Loại Sản Phẩm</a></li>
-                                <li class="breadcrumb-item active">Thêm loại sản phẩm</li>
-                            </ol>
-                            <div class="card mb-4">
-                                <div class="card-body">
-                                    <form class="form-horizontal" action="themcv" method="post">
-                                        <h4>Loại Sản Phẩm</h4>
-                                        <hr />
-                                        <span id="messBoxErr" style="color: red"></span>
-                                        <span id="messBox" style="color: greenyellow"></span>
-                                        <div class="form-group">
-                                            Mã chức vụ
-                                            <input id="macv" name="macv" type="text">
-                                        </div>
+                    <div class="container-fluid">
 
-                                        <div class="form-group">
-                                            Tên chức vụ
-                                            <input  id="tencv" name="tencv" type="text">
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="col-md-offset-2 col-md-10">
-                                                <input type="submit" value="Create" class="btn btn-default" />
-                                            </div>
-                                        </div>
-                                    </form>
-                                    <div>
-                                        "Back to List", "Index"
-                                    </div>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item"><a href="index.html">Loại Sản Phẩm</a></li>
+                            <li class="breadcrumb-item active">Danh Sách</li>
+                        </ol>
+                        <div class="card mb-4">
+                            <div class="card-body">
 
-                                </div>
+
+                                <p>
+                                    @Html.ActionLink("Thêm mới", "Create")
+                                    <a href="Thêm mới">Thêm mới</a>|
+                                </p>
+                                <table class="table">
+                                    <tr>
+                                        <th>
+                                            <text>Mã Loại Sản Phẩm</text>
+                                        <th>
+                                            <text>Tên Loại Sản Phẩm</text>
+                                        </th>
+                                        <th></th>
+                                    </tr>
+
+                                    <%for (loaispModel lsp : ds) {%>
+                                    <tr>
+                                        <td>
+                                            <%=lsp.getMaloaisp()%>
+                                        </td>
+                                        <td>
+                                            <%=lsp.getTenloaisp()%>
+                                        </td>
+                                        <td>
+                                            <a href="sualoaiSP.jsp?maloaisp=<%=lsp.getMaloaisp()%>">Edit</a>|
+                                            <a href="chitietloaiSP.jsp?maloaisp=<%=lsp.getMaloaisp()%>">Details</a>|
+                                            <a href="xoaloaiSP.jsp?maloaisp=<%=lsp.getMaloaisp()%>">Delete</a>
+                                        </td>
+                                    </tr>
+                                    <%}%>
+
+                                </table>
+
+
                             </div>
                         </div>
-                    </main>
+                    </div>
                 </main>
+
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid">
                         <div class="d-flex align-items-center justify-content-between small">
@@ -203,32 +222,7 @@
         <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
         <script src="content/assets/demo/datatables-demo.js"></script>
-        <script>
-            $(document).ready(function () {
-                $('#macv').keyup(function () {
-                    $.ajax({
-                        
-                        method: 'POST',
-                        url: 'checkTrungCV',
-                        data: {
-                            maloaisp: $('#macv').val()
-                        },
-                        success: function (res) {
-                            var messBox = document.getElementById('messBox');
-                            var messBoxErr = document.getElementById('messBoxErr');
-                            if (res == 1) {
-                                messBox.innerHTML = " ";
-                                messBoxErr.innerHTML = "Đã tồn tại mã chức vụ";
-                            } else {
-                                messBoxErr.innerHTML = " ";
-                                messBox.innerHTML = "mã chức vụ hợp lệ";
-                            }
-
-                        }
-                    });
-                });
-            });
-        </script>
     </body>
-
 </html>
+<%}%>
+

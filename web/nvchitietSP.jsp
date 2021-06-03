@@ -1,10 +1,12 @@
 <%-- 
-    Document   : themChucVu
-    Created on : Jun 2, 2021, 3:51:11 PM
-    Author     : Nguyen Tien Dat
+    Document   : nvchitietSP
+    Created on : Jun 2, 2021, 11:05:12 PM
+    Author     : quyenlh
 --%>
 
+<%@page import="Model.sanphamModel"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -50,6 +52,16 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Quản lý Bán hàng</div>
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts4" aria-expanded="false" aria-controls="collapseLayouts">
+                               Thông Tin Cá Nhân
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseLayouts4" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                   
+                                    <a class="nav-link" href="~/admin/CTHoaDons/Create">Sửa</a>
+                                </nav>
+                            </div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 Loại Sản Phẩm
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -120,16 +132,7 @@
                                     <a class="nav-link" href="~/ThanhToans/Index">Danh sách</a>
                                 </nav>
                             </div>
-                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts4" aria-expanded="false" aria-controls="collapseLayouts">
-                                Nhân Viên
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapseLayouts4" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="~/admin/CTHoaDons/Index">Danh sách</a>
-                                    <a class="nav-link" href="~/admin/CTHoaDons/Create">Thêm</a>
-                                </nav>
-                            </div>
+                            
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts4" aria-expanded="false" aria-controls="collapseLayouts">
                                 Tin Tức
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -146,89 +149,121 @@
             </div>
             <div id="layoutSidenav_content">
                 <main>
-                    <main>
-                        <div class="container-fluid">
-                            <ol class="breadcrumb mb-4">
-                                <li class="breadcrumb-item"><a href="index.html">Loại Sản Phẩm</a></li>
-                                <li class="breadcrumb-item active">Thêm loại sản phẩm</li>
-                            </ol>
-                            <div class="card mb-4">
-                                <div class="card-body">
-                                    <form class="form-horizontal" action="themcv" method="post">
-                                        <h4>Loại Sản Phẩm</h4>
-                                        <hr />
-                                        <span id="messBoxErr" style="color: red"></span>
-                                        <span id="messBox" style="color: greenyellow"></span>
-                                        <div class="form-group">
-                                            Mã chức vụ
-                                            <input id="macv" name="macv" type="text">
-                                        </div>
-
-                                        <div class="form-group">
-                                            Tên chức vụ
-                                            <input  id="tencv" name="tencv" type="text">
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="col-md-offset-2 col-md-10">
-                                                <input type="submit" value="Create" class="btn btn-default" />
-                                            </div>
-                                        </div>
-                                    </form>
-                                    <div>
-                                        "Back to List", "Index"
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </main>
-                </main>
-                <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2020</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
+
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item"><a href="index.html">Sản Phẩm</a></li>
+                            <li class="breadcrumb-item active">Chi Tiết</li>
+                        </ol>
+                        <div class="card mb-4">
+                            <%
+                                String masp = request.getParameter("masp");
+                                sanphamModel sp = new sanphamModel();
+                                int kq = CSDL.SanPham.searchSP(sp, masp);
+                                if (kq == 1) {
+
+
+                            %>
+                            <div class="card-body">
+
+                                <div>
+
+                                    <hr />
+
+                                    <dl class="dl-horizontal">
+                                        <dt>
+                                            <text>Mã loại sản phẩm</text>
+                                        </dt>
+                                        <dd>
+                                            <text><%=sp.getMaloaisp()%></text>
+                                        </dd>
+                                        <dt>
+                                            <text>Mã sản phẩm</text>
+                                        </dt>
+                                        <dd>
+                                            <text><%=sp.getMasp()%></text>
+                                        </dd>
+                                        <dt>
+                                            <text>Tên sản phẩm</text>
+                                        </dt>
+
+                                        <dd>
+                                            <text><%=sp.getTensp()%></text>
+                                        </dd>
+                                        <dt>
+                                            <text>Số lượng</text>
+                                        </dt>
+
+                                        <dd>
+                                            <text><%=sp.getSoluong()%></text>
+                                        </dd>
+                                        <dt>
+                                            <text>Giá nhập</text>
+                                        </dt>
+
+                                        <dd>
+                                            <text><%=sp.getGianhap()%></text>
+                                        </dd>
+
+                                        <dt>
+                                            <text>Giá bán</text>
+                                        </dt>
+
+                                        <dd>
+                                            <text><%=sp.getGiaban()%></text>
+                                        </dd>
+
+                                        <dt>
+                                            <text>Mô tả</text>
+                                        </dt>
+
+                                        <dd>
+                                            <text><%=sp.getMota()%></text>
+                                        </dd>
+
+                                        <dt>
+                                            <text>Ảnh</text>
+                                        </dt>
+
+                                        <dd>
+                                            <img src="imageSP/<%=sp.getHinhanh()%>">
+                                        </dd>
+
+
+
+                                    </dl>
+                                </div>
+                                <p>
+                                    "Edit", "Edit", new { id = Model.MaSP }
+                                    "Back to List", "Index"
+                                </p>
+
                             </div>
+                            <%}%>
                         </div>
                     </div>
-                </footer>
             </div>
-        </div>
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="content/js/scripts.js"></script>
-        <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
-        <script src="content/assets/demo/datatables-demo.js"></script>
-        <script>
-            $(document).ready(function () {
-                $('#macv').keyup(function () {
-                    $.ajax({
-                        
-                        method: 'POST',
-                        url: 'checkTrungCV',
-                        data: {
-                            maloaisp: $('#macv').val()
-                        },
-                        success: function (res) {
-                            var messBox = document.getElementById('messBox');
-                            var messBoxErr = document.getElementById('messBoxErr');
-                            if (res == 1) {
-                                messBox.innerHTML = " ";
-                                messBoxErr.innerHTML = "Đã tồn tại mã chức vụ";
-                            } else {
-                                messBoxErr.innerHTML = " ";
-                                messBox.innerHTML = "mã chức vụ hợp lệ";
-                            }
+        </main>
 
-                        }
-                    });
-                });
-            });
-        </script>
-    </body>
-
+        <footer class="py-4 bg-light mt-auto">
+            <div class="container-fluid">
+                <div class="d-flex align-items-center justify-content-between small">
+                    <div class="text-muted">Copyright &copy; Your Website 2020</div>
+                    <div>
+                        <a href="#">Privacy Policy</a>
+                        &middot;
+                        <a href="#">Terms &amp; Conditions</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="content/js/scripts.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+<script src="content/assets/demo/datatables-demo.js"></script>
+</body>
 </html>

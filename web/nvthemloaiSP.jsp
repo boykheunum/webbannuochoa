@@ -1,9 +1,10 @@
 <%-- 
-    Document   : themChucVu
-    Created on : Jun 2, 2021, 3:51:11 PM
-    Author     : Nguyen Tien Dat
+    Document   : nvthemloaiSP
+    Created on : Jun 2, 2021, 11:07:04 PM
+    Author     : quyenlh
 --%>
 
+<%@page import="Model.loaispModel"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,6 +51,16 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Quản lý Bán hàng</div>
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts4" aria-expanded="false" aria-controls="collapseLayouts">
+                               Thông Tin Cá Nhân
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseLayouts4" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                   
+                                    <a class="nav-link" href="~/admin/CTHoaDons/Create">Sửa</a>
+                                </nav>
+                            </div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 Loại Sản Phẩm
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -121,16 +132,6 @@
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts4" aria-expanded="false" aria-controls="collapseLayouts">
-                                Nhân Viên
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapseLayouts4" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="~/admin/CTHoaDons/Index">Danh sách</a>
-                                    <a class="nav-link" href="~/admin/CTHoaDons/Create">Thêm</a>
-                                </nav>
-                            </div>
-                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts4" aria-expanded="false" aria-controls="collapseLayouts">
                                 Tin Tức
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
@@ -154,19 +155,19 @@
                             </ol>
                             <div class="card mb-4">
                                 <div class="card-body">
-                                    <form class="form-horizontal" action="themcv" method="post">
+                                    <form class="form-horizontal" action="themloaisp" method="post">
                                         <h4>Loại Sản Phẩm</h4>
                                         <hr />
                                         <span id="messBoxErr" style="color: red"></span>
                                         <span id="messBox" style="color: greenyellow"></span>
                                         <div class="form-group">
-                                            Mã chức vụ
-                                            <input id="macv" name="macv" type="text">
+                                            Mã Loại Sản Phẩm
+                                            <input id="maloaisp" name="maloaisp" type="text">
                                         </div>
 
                                         <div class="form-group">
-                                            Tên chức vụ
-                                            <input  id="tencv" name="tencv" type="text">
+                                            Tên Loại Sản Phẩm
+                                            <input  id="tenloaisp" name="tenloaisp" type="text">
                                         </div>
                                         <div class="form-group">
                                             <div class="col-md-offset-2 col-md-10">
@@ -205,23 +206,23 @@
         <script src="content/assets/demo/datatables-demo.js"></script>
         <script>
             $(document).ready(function () {
-                $('#macv').keyup(function () {
+                $('#maloaisp').keyup(function () {
                     $.ajax({
                         
                         method: 'POST',
-                        url: 'checkTrungCV',
+                        url: 'checkLoaiSP',
                         data: {
-                            maloaisp: $('#macv').val()
+                            maloaisp: $('#maloaisp').val()
                         },
                         success: function (res) {
                             var messBox = document.getElementById('messBox');
                             var messBoxErr = document.getElementById('messBoxErr');
                             if (res == 1) {
                                 messBox.innerHTML = " ";
-                                messBoxErr.innerHTML = "Đã tồn tại mã chức vụ";
+                                messBoxErr.innerHTML = "Đã tồn tại mã loai sản phẩm";
                             } else {
                                 messBoxErr.innerHTML = " ";
-                                messBox.innerHTML = "mã chức vụ hợp lệ";
+                                messBox.innerHTML = "mã loại sản phẩm hợp lệ";
                             }
 
                         }

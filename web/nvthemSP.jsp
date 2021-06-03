@@ -1,9 +1,11 @@
 <%-- 
-    Document   : themChucVu
-    Created on : Jun 2, 2021, 3:51:11 PM
-    Author     : Nguyen Tien Dat
+    Document   : nvThemSP
+    Created on : Jun 2, 2021, 11:02:13 PM
+    Author     : quyenlh
 --%>
 
+<%@page import="Model.loaispModel"%>
+<%@page import="java.util.Vector"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,6 +52,16 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Quản lý Bán hàng</div>
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts4" aria-expanded="false" aria-controls="collapseLayouts">
+                               Thông Tin Cá Nhân
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseLayouts4" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                   
+                                    <a class="nav-link" href="~/admin/CTHoaDons/Create">Sửa</a>
+                                </nav>
+                            </div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 Loại Sản Phẩm
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -121,16 +133,6 @@
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts4" aria-expanded="false" aria-controls="collapseLayouts">
-                                Nhân Viên
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapseLayouts4" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="~/admin/CTHoaDons/Index">Danh sách</a>
-                                    <a class="nav-link" href="~/admin/CTHoaDons/Create">Thêm</a>
-                                </nav>
-                            </div>
-                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts4" aria-expanded="false" aria-controls="collapseLayouts">
                                 Tin Tức
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
@@ -146,43 +148,77 @@
             </div>
             <div id="layoutSidenav_content">
                 <main>
-                    <main>
-                        <div class="container-fluid">
-                            <ol class="breadcrumb mb-4">
-                                <li class="breadcrumb-item"><a href="index.html">Loại Sản Phẩm</a></li>
-                                <li class="breadcrumb-item active">Thêm loại sản phẩm</li>
-                            </ol>
-                            <div class="card mb-4">
-                                <div class="card-body">
-                                    <form class="form-horizontal" action="themcv" method="post">
-                                        <h4>Loại Sản Phẩm</h4>
-                                        <hr />
-                                        <span id="messBoxErr" style="color: red"></span>
-                                        <span id="messBox" style="color: greenyellow"></span>
-                                        <div class="form-group">
-                                            Mã chức vụ
-                                            <input id="macv" name="macv" type="text">
-                                        </div>
+                    <div class="container-fluid">
 
-                                        <div class="form-group">
-                                            Tên chức vụ
-                                            <input  id="tencv" name="tencv" type="text">
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="col-md-offset-2 col-md-10">
-                                                <input type="submit" value="Create" class="btn btn-default" />
-                                            </div>
-                                        </div>
-                                    </form>
-                                    <div>
-                                        "Back to List", "Index"
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item"><a href="index.html">Sản Phẩm</a></li>
+                            <li class="breadcrumb-item active">Thêm sản phẩm </li>
+                        </ol>
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <%
+                                    Vector<loaispModel> ds = new Vector<loaispModel>();
+                                    int kq = CSDL.LoaiSP.listLoaiSP(ds);
+                                    if (kq == 1) {
+                                %>
+                                <form class="form-horizontal" method="post" action="themSP" enctype="multipart/form-data">
+                                    <h4>Sản Phẩm</h4>
+                                    <hr />
+                                    <span id="messBoxErr" style="color: red"></span>
+                                    <span id="messBox" style="color: greenyellow"></span>
+                                    <div class="form-group">
+                                        Mã sản phẩm
+                                        <input class="col-md-10" type="text" id="masp" name="masp">
                                     </div>
+                                    <div class="form-group">
+                                        "Mã loại sản phẩm"
+                                        <select class="col-md-10" id="maloaisp" name="maloaisp">
+                                            <%for (loaispModel lsp : ds) {%>
+                                            <option><%=lsp.getMaloaisp()%></option>>
+                                            <%}%>
+                                        </select>>
+                                    </div>
+                                    <div class="form-group">
+                                        "Tên sản phẩm"
+                                        <input class="col-md-10" type="text" id="tenSP" name="tenSP">
 
+                                    </div>
+                                    <div class="form-group">
+                                        "Số lương"
+                                        <input class="col-md-10" type="text" id="soluong" name="soluong">
+                                    </div>
+                                    <div class="form-group">
+                                        "Giá nhập"
+                                        <input class="col-md-10" type="text" id="gianhap" name="gianhap">
+                                    </div>
+                                    <div class="form-group">
+                                        "Giá bán"
+                                        <input class="col-md-10" type="text" id="giaban" name="giaban">
+                                    </div>
+                                    <div class="form-group">
+                                        "Mô tả"
+                                        <textarea class="col-md-10" type="text" id="mota" name="mota"></textarea>>
+                                    </div>
+                                    <div class="form-group">
+                                        "Ảnh"
+                                        <input class="col-md-10" type="file" id="anh" name="anh">
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            <input type="submit" value="Create" class="btn btn-default" />
+                                        </div>
+                                    </div>
+                                </form>
+                                }
+                                <div>
+                                    @Html.ActionLink("Back to List", "Index")
+                                    <a href="Danh sách">Danh sách</a>
                                 </div>
                             </div>
                         </div>
-                    </main>
+                    </div>
                 </main>
+
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid">
                         <div class="d-flex align-items-center justify-content-between small">
@@ -205,23 +241,22 @@
         <script src="content/assets/demo/datatables-demo.js"></script>
         <script>
             $(document).ready(function () {
-                $('#macv').keyup(function () {
+                $('#masp').keyup(function () {
                     $.ajax({
-                        
                         method: 'POST',
-                        url: 'checkTrungCV',
+                        url: 'checkMaSP',
                         data: {
-                            maloaisp: $('#macv').val()
+                            masp: $('#masp').val()
                         },
                         success: function (res) {
                             var messBox = document.getElementById('messBox');
                             var messBoxErr = document.getElementById('messBoxErr');
                             if (res == 1) {
                                 messBox.innerHTML = " ";
-                                messBoxErr.innerHTML = "Đã tồn tại mã chức vụ";
-                            } else {
+                                messBoxErr.innerHTML = "Đã tồn tại mã  sản phẩm";
+                            } else if (res == -1) {
                                 messBoxErr.innerHTML = " ";
-                                messBox.innerHTML = "mã chức vụ hợp lệ";
+                                messBox.innerHTML = "mã sản phẩm hợp lệ";
                             }
 
                         }
@@ -230,5 +265,5 @@
             });
         </script>
     </body>
+    <%}%>
 
-</html>

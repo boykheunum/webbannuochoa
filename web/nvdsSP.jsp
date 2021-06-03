@@ -1,9 +1,12 @@
 <%-- 
-    Document   : themChucVu
-    Created on : Jun 2, 2021, 3:51:11 PM
-    Author     : Nguyen Tien Dat
+    Document   : nvhienthiSP
+    Created on : Jun 2, 2021, 11:03:45 PM
+    Author     : quyenlh
 --%>
 
+
+<%@page import="Model.sanphamModel"%>
+<%@page import="java.util.Vector"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,6 +24,7 @@
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <a class="navbar-brand" href="~/admin/Default/Index">Cửa hàng nước hoa</a>
+            
             <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
@@ -50,6 +54,16 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Quản lý Bán hàng</div>
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts4" aria-expanded="false" aria-controls="collapseLayouts">
+                               Thông Tin Cá Nhân
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseLayouts4" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                   
+                                    <a class="nav-link" href="~/admin/CTHoaDons/Create">Sửa</a>
+                                </nav>
+                            </div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 Loại Sản Phẩm
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -121,16 +135,6 @@
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts4" aria-expanded="false" aria-controls="collapseLayouts">
-                                Nhân Viên
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapseLayouts4" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="~/admin/CTHoaDons/Index">Danh sách</a>
-                                    <a class="nav-link" href="~/admin/CTHoaDons/Create">Thêm</a>
-                                </nav>
-                            </div>
-                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts4" aria-expanded="false" aria-controls="collapseLayouts">
                                 Tin Tức
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
@@ -146,43 +150,99 @@
             </div>
             <div id="layoutSidenav_content">
                 <main>
-                    <main>
-                        <div class="container-fluid">
-                            <ol class="breadcrumb mb-4">
-                                <li class="breadcrumb-item"><a href="index.html">Loại Sản Phẩm</a></li>
-                                <li class="breadcrumb-item active">Thêm loại sản phẩm</li>
-                            </ol>
-                            <div class="card mb-4">
-                                <div class="card-body">
-                                    <form class="form-horizontal" action="themcv" method="post">
-                                        <h4>Loại Sản Phẩm</h4>
-                                        <hr />
-                                        <span id="messBoxErr" style="color: red"></span>
-                                        <span id="messBox" style="color: greenyellow"></span>
-                                        <div class="form-group">
-                                            Mã chức vụ
-                                            <input id="macv" name="macv" type="text">
-                                        </div>
+                    <div class="container-fluid">
 
-                                        <div class="form-group">
-                                            Tên chức vụ
-                                            <input  id="tencv" name="tencv" type="text">
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="col-md-offset-2 col-md-10">
-                                                <input type="submit" value="Create" class="btn btn-default" />
-                                            </div>
-                                        </div>
-                                    </form>
-                                    <div>
-                                        "Back to List", "Index"
-                                    </div>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item"><a href="index.html">Sản Phẩm</a></li>
+                            <li class="breadcrumb-item active">Danh Sách</li>
+                        </ol>
+                        <div class="card mb-4">
+                            <div class="card-body">
 
-                                </div>
+                                <p>
+                                    @Html.ActionLink("Create New", "Create")
+                                </p>
+                                <%
+                                    Vector<sanphamModel> ds = new Vector<sanphamModel>();
+                                    int kq = CSDL.SanPham.listSP(ds);
+                                    if (kq == 1) {
+                                %>
+                                <table class="table">
+                                    <tr>
+                                        <th>
+                                            Mã Sản Phẩm
+                                        </th>
+                                        <th>
+                                            Mã Loại Sản Phẩm
+                                        </th>
+                                        <th>
+                                            <text>Tên Sản Phẩm</text>
+                                        </th>
+                                        <th>
+                                            <text>Số Lượng</text>
+                                        </th>
+                                        <th>
+                                            <text>Giá Nhập</text>
+                                        </th>
+                                        <th>
+                                            <text>Giá Bán</text>
+                                        </th>
+                                        <th>
+                                            <text>Mô tả</text>
+                                        </th>
+
+                                        <th>
+                                            <text>Ảnh</text>
+                                        </th>
+
+                                        <th>
+                                            <text>Tên Loại Sản Phẩm</text>
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                                    <%
+                                        for (sanphamModel sp : ds) {
+                                    %>
+                                    <tr>
+                                        <td>
+                                            <%=sp.getMasp()%>
+                                        </td>
+                                        <td>
+                                            <%=sp.getMaloaisp()%>
+                                        </td>>
+                                        <td>
+                                            <%=sp.getTensp()%>
+                                        </td>
+                                        <td>
+                                            <%=sp.getSoluong()%>
+                                        </td>
+                                        <td>
+                                            <%=sp.getGianhap()%>
+                                        </td>
+                                        <td>
+                                            <%=sp.getGiaban()%>
+                                        </td>
+                                        <td>
+                                            <%=sp.getMota()%>
+                                        </td>
+                                        <td>
+                                            <img width='348px' height="348px"  src="imageSP/<%=sp.getHinhanh()%>"></a>
+                                        </td>
+                                        <td>
+                                            <a href="suaSP.jsp?masp=<%=sp.getMasp()%>">Edit</a>|
+                                            <a href="chitietSP.jsp?masp=<%=sp.getMasp()%>">Details</a>|
+                                            <a href="xoaSP.jsp?masp=<%=sp.getMasp()%>">Delete</a>
+                                        </td>
+                                    </tr>
+                                    <%}%>
+                                </table>
+                                <%}%>
+
                             </div>
                         </div>
-                    </main>
+                    </div>
                 </main>
+
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid">
                         <div class="d-flex align-items-center justify-content-between small">
@@ -203,32 +263,5 @@
         <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
         <script src="content/assets/demo/datatables-demo.js"></script>
-        <script>
-            $(document).ready(function () {
-                $('#macv').keyup(function () {
-                    $.ajax({
-                        
-                        method: 'POST',
-                        url: 'checkTrungCV',
-                        data: {
-                            maloaisp: $('#macv').val()
-                        },
-                        success: function (res) {
-                            var messBox = document.getElementById('messBox');
-                            var messBoxErr = document.getElementById('messBoxErr');
-                            if (res == 1) {
-                                messBox.innerHTML = " ";
-                                messBoxErr.innerHTML = "Đã tồn tại mã chức vụ";
-                            } else {
-                                messBoxErr.innerHTML = " ";
-                                messBox.innerHTML = "mã chức vụ hợp lệ";
-                            }
-
-                        }
-                    });
-                });
-            });
-        </script>
     </body>
-
 </html>
