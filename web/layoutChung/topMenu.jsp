@@ -4,6 +4,8 @@
     Author     : Nguyen Tien Dat
 --%>
 
+<%@page import="Model.tintucModel"%>
+<%@page import="java.util.Vector"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,13 +14,13 @@
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-                <a class="navbar-brand" href="index.html">LIDAPERFUME</a>
+                <a class="navbar-brand" href="phantrangUserSP">LIDAPERFUME</a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                         data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                         aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
-                        
+
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="dropsanpham" href="about.html"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sản Phẩm</a>
@@ -32,14 +34,22 @@
 
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="droptintuc" href="#" data-toggle="dropdown"
-                               aria-haspopup="true" aria-expanded="false">Tin tức</a>
+                               aria-haspopup="true" aria-expanded="false">Các hãng nước hoa</a>
+                            <%
+                                Vector<tintucModel> ds = new Vector<tintucModel>();
+                                int kq = CSDL.tintuc.listTT(ds);
+                                if (kq == 1) {
+                            %>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="droptintuc">
-                                <a class="dropdown-item" href="portfolio-1-col.html">Tin tức Jillian</a>
-                                <a class="dropdown-item" href="portfolio-2-col.html">Tin tức Gucci</a>
-                                <a class="dropdown-item" href="portfolio-3-col.html">Tin tức Dior</a>
+                                <%
+                                    for (tintucModel tt : ds) {
+                                %>
+                                <a class="dropdown-item" href="hienthiTT.jsp?id=<%=tt.getId()%>"><%=tt.getTieude()%></a>
+                                <%}%>
                             </div>
+                            <%}%>
                         </li>
-                        
+
 
                         <li class="nav-item"><a class="nav-link" href="services.html">Giỏ Hàng</a></li>
 
@@ -151,11 +161,11 @@
 
         <!-- Bootstrap core JS-->
 
- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
         <!-- Core theme JS-->
         <script src="content/js/scripts.js"></script>
         <!--ajax -->

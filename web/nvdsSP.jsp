@@ -229,9 +229,9 @@
                                             <img width='348px' height="348px"  src="imageSP/<%=sp.getHinhanh()%>"></a>
                                         </td>
                                         <td>
-                                            <a href="suaSP.jsp?masp=<%=sp.getMasp()%>">Edit</a>|
-                                            <a href="chitietSP.jsp?masp=<%=sp.getMasp()%>">Details</a>|
-                                            <a href="xoaSP.jsp?masp=<%=sp.getMasp()%>">Delete</a>
+                                            <a href="nvsuaSP.jsp?masp=<%=sp.getMasp()%>">Edit</a>|
+                                            <a href="nvchitietSP.jsp?masp=<%=sp.getMasp()%>">Details</a>|
+                                            <a href="nvxoaSP.jsp?masp=<%=sp.getMasp()%>">Delete</a>
                                         </td>
                                     </tr>
                                     <%}%>

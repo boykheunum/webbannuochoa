@@ -1,18 +1,12 @@
 <%-- 
-    Document   : nvdsloaiSP
-    Created on : Jun 2, 2021, 11:06:05 PM
-    Author     : quyenlh
+    Document   : dsTT
+    Created on : Jun 3, 2021, 1:34:42 PM
+    Author     : Nguyen Tien Dat
 --%>
 
-
+<%@page import="Model.tintucModel"%>
 <%@page import="java.util.Vector"%>
-<%@page import="Model.loaispModel"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%
-    Vector<loaispModel> ds = new Vector<loaispModel>();
-    int kq = CSDL.LoaiSP.listLoaiSP(ds);
-    if (kq == 1) {
-%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -58,16 +52,6 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Quản lý Bán hàng</div>
-                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts4" aria-expanded="false" aria-controls="collapseLayouts">
-                               Thông Tin Cá Nhân
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapseLayouts4" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                   
-                                    <a class="nav-link" href="~/admin/CTHoaDons/Create">Sửa</a>
-                                </nav>
-                            </div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 Loại Sản Phẩm
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -139,6 +123,16 @@
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts4" aria-expanded="false" aria-controls="collapseLayouts">
+                                Nhân Viên
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseLayouts4" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="~/admin/CTHoaDons/Index">Danh sách</a>
+                                    <a class="nav-link" href="~/admin/CTHoaDons/Create">Thêm</a>
+                                </nav>
+                            </div>
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts4" aria-expanded="false" aria-controls="collapseLayouts">
                                 Tin Tức
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
@@ -157,45 +151,70 @@
                     <div class="container-fluid">
 
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="index.html">Loại Sản Phẩm</a></li>
+                            <li class="breadcrumb-item"><a href="index.html">Sản Phẩm</a></li>
                             <li class="breadcrumb-item active">Danh Sách</li>
                         </ol>
                         <div class="card mb-4">
                             <div class="card-body">
 
-
                                 <p>
-                                    @Html.ActionLink("Thêm mới", "Create")
-                                    <a href="Thêm mới">Thêm mới</a>|
+                                    @Html.ActionLink("Create New", "Create")
                                 </p>
+                                <%
+                                    Vector<tintucModel> ds = new Vector<tintucModel>();
+                                    int kq = CSDL.tintuc.listTT(ds);
+                                    if (kq == 1) {
+                                %>
                                 <table class="table">
                                     <tr>
                                         <th>
-                                            <text>Mã Loại Sản Phẩm</text>
+                                            Mã bài viết
+                                        </th>
                                         <th>
-                                            <text>Tên Loại Sản Phẩm</text>
+                                            Tiêu đề
+                                        </th>
+                                        <th>
+                                            Ảnh
+                                        </th>
+                                        <th>
+                                            <text>Nội dung</text>
+                                        </th>
+                                        <th>
+                                            <text>Ngày đăng</text>
                                         </th>
                                         <th></th>
                                     </tr>
-
-                                    <%for (loaispModel lsp : ds) {%>
+                                    <%
+                                        for (tintucModel tt : ds) {
+                                    %>
                                     <tr>
+
                                         <td>
-                                            <%=lsp.getMaloaisp()%>
+                                            <%=tt.getId()%>
                                         </td>
                                         <td>
-                                            <%=lsp.getTenloaisp()%>
+                                            <%=tt.getTieude()%>
                                         </td>
                                         <td>
-                                            <a href="nvsualoaiSP.jsp?maloaisp=<%=lsp.getMaloaisp()%>">Edit</a>|
-                                            <a href="nvchitietloaiSP.jsp?maloaisp=<%=lsp.getMaloaisp()%>">Details</a>|
-                                            <a href="nvxoaloaiSP.jsp?maloaisp=<%=lsp.getMaloaisp()%>">Delete</a>
+                                            <img width='348px' height="348px"  src="imageSP/<%=tt.getAnh()%>"></a>
+                                        </td>
+                                        <td>
+                                            <%=tt.getNoidung()%>
+                                        </td>
+                                        <td>
+                                            <%=tt.getNgaydang()%>
+                                        </td>
+
+
+                                        <td>
+                                            <a href="suaTT.jsp?id=<%=tt.getId()%>">Edit</a>|
+                                            <a href="chitietTT.jsp?id=<%=tt.getId()%>">Details</a>|
+                                            <a href="xoaTT.jsp?id=<%=tt.getId()%>">Delete</a>
                                         </td>
                                     </tr>
                                     <%}%>
-
                                 </table>
-
+                                <%}%>
 
                             </div>
                         </div>
@@ -223,6 +242,4 @@
         <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
         <script src="content/assets/demo/datatables-demo.js"></script>
     </body>
-</html>
-<%}%>
-
+</html

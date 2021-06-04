@@ -38,7 +38,7 @@ public class tintuc {
                     tt.setNoidung(rs.getString("noidung"));
                     ds.add(tt);
                 }
-                return ps.executeUpdate();
+                return 1;
             } catch (SQLException ex) {
                 Logger.getLogger(tintuc.class.getName()).log(Level.SEVERE, null, ex);
                 return -2;
@@ -52,13 +52,13 @@ public class tintuc {
         if (cnn == null) {
             return -1;
         } else {
-            String sql = "INSERT INTO tintuc values(?,?,?,?)";
+            String sql = "INSERT INTO `tintuc`(`anh`, `ngaydang`, `tieude`, `noidung`) VALUES (?,?,?,?)";
             try {
                 PreparedStatement ps = cnn.prepareStatement(sql);
                 ps.setString(1, tt.getAnh());
                 ps.setString(2, tt.getNgaydang());
-                ps.setString(4, tt.getNoidung());
                 ps.setString(3, tt.getTieude());
+                ps.setString(4, tt.getNoidung());
                 return ps.executeUpdate();
             } catch (SQLException ex) {
                 Logger.getLogger(tintuc.class.getName()).log(Level.SEVERE, null, ex);
@@ -68,23 +68,23 @@ public class tintuc {
         }
     }
 
-    public static int searchTinTuc(String tentieude, tintucModel tt) {
+    public static int searchTinTuc(int id, tintucModel tt) {
         Connection cnn = CSDL.databaseConnection.cnnDB();
         if (cnn == null) {
             return -1;
         } else {
-            String sql = "SELECT * FROM tintuc WHERE tieude = ?";
+            String sql = "SELECT * FROM tintuc WHERE id = ?";
             PreparedStatement ps;
             try {
                 ps = cnn.prepareStatement(sql);
-                ps.setString(1, tentieude);
+                ps.setInt(1, id);
                 ResultSet rs = ps.executeQuery();
                 if (rs.next()) {
-                    ps.setString(1, tt.getAnh());
-                    ps.setString(2, tt.getNgaydang());
-                    ps.setString(3, tt.getNoidung());
-                    ps.setString(4, tt.getTieude());
-                    ps.setInt(4, tt.getId());
+                    tt.setAnh(rs.getString("anh"));
+                    tt.setId(rs.getInt("id"));
+                    tt.setNgaydang(rs.getString("ngaydang"));
+                    tt.setTieude(rs.getString("tieude"));
+                    tt.setNoidung(rs.getString("noidung"));
                 }
                 return 1;
             } catch (SQLException ex) {
@@ -95,16 +95,16 @@ public class tintuc {
         }
     }
 
-    public static int deleteTinTuc(String tentieude) {
+    public static int deleteTinTuc(int tentieude) {
         Connection cnn = CSDL.databaseConnection.cnnDB();
         if (cnn == null) {
             return -1;
         } else {
-            String sql = "DELETE * FROM tintuc WHERE tieude = ?";
+            String sql = "DELETE FROM tintuc WHERE id = ?";
             PreparedStatement ps;
             try {
                 ps = cnn.prepareStatement(sql);
-                ps.setString(1, tentieude);
+                ps.setInt(1, tentieude);
                 return ps.executeUpdate();
             } catch (SQLException ex) {
                 Logger.getLogger(tintuc.class.getName()).log(Level.SEVERE, null, ex);

@@ -180,7 +180,7 @@
                                         </dt>
                                         <dd>
                                             <input type="hidden" id="masp" name="masp" value="<%=sp.getMasp()%>">
-                                            <text><%=sp.getMasp()%></text>
+                                            
                                         </dd>
                                         <dt>
                                             <text>Tên sản phẩm</text>

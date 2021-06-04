@@ -23,7 +23,7 @@
     </head>
     <body>
         <!-- Navigation-->
-    <Jsp:include page="layoutChung/topMenu.jsp"/>
+    <jsp:include page="layoutChung/topMenu.jsp"/>
     <!-- Page Content-->
     <section class="py-5">
         <div class="container">
@@ -67,12 +67,12 @@
                     </div>
 
                 </div>
-                <form class="col-md-6">
-
+                <form class="col-md-6" method="post" action="cart">
                     <h5><%=sp.getTensp()%></h5>
                     <p class="mb-2 text-muted text-uppercase small">Shirts</p>
-
                     <p><span class="mr-1"><strong>Giá: <%=sp.getGiaban()%></strong></span></p>
+                    <input type="hidden" id="giaban" name="giaban" value="<%=sp.getGiaban()%>">
+                    <input type="hidden" id="masp" name="masp" value="<%=sp.getMasp()%>">
                     <p><span class="mr-1"><strong>Mô tả: </strong></span></p>
                     <p class="pt-1"><%=sp.getMota()%></p>
                     <%}%>
@@ -81,17 +81,14 @@
                         <table class="table table-sm table-borderless">
                             <tbody>
                                 <tr>
-                                    <td class="pl-0 pb-0 w-25">Số lượng: </td>
+                                    <td class="pl-0 pb-0 w-25">Số lượng: <%=sp.getSoluong()%></td>
                                 </tr>
                                 <tr>
                                     <td class="pl-0">
                                         <div class="def-number-input number-input safari_only mb-0">
-
-                                            <input class="quantity" min="0" name="Số lượng" value="1" type="number">
-
+                                            <input class="quantity" min="0" name="soluongmua" value="1" type="number">
                                         </div>
                                     </td>
-
                                 </tr>
                             </tbody>
                         </table>
