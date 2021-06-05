@@ -150,8 +150,9 @@
                                     int id = Integer.parseInt(request.getParameter("id"));
                                     thongTinCuaHangModel tt = new thongTinCuaHangModel();
                                     int kq = CSDL.thongtincuahang.searchThongTin(id, tt);
+                                    if(kq==1){
                                 %>
-                                <form class="form-horizontal" method="post" action="sualoaiSP">
+                                <form class="form-horizontal" method="post" action="suaTTCH">
                                     <h4>Loại sản phẩm</h4>
                                     <hr />
                                     <input type="hidden" name="id" id="id" value="<%=tt.getId()%>">

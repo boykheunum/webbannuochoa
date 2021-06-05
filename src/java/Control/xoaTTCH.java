@@ -5,7 +5,6 @@
  */
 package Control;
 
-import Model.thongTinCuaHangModel;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -16,10 +15,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author quyenlh
+ * @author Nguyen Tien Dat
  */
-@WebServlet(name = "suaTTCH", urlPatterns = {"/suaTTCH"})
-public class suaTTCH extends HttpServlet {
+@WebServlet(name = "xoaTTCH", urlPatterns = {"/xoaTTCH"})
+public class xoaTTCH extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,15 +34,9 @@ public class suaTTCH extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            response.setContentType("text/html; charset=UTF-8");
-            request.setCharacterEncoding("UTF-8");
-            String sdtcuahang = request.getParameter("sdt");
-            String email = request.getParameter("email");
-            String diachi = request.getParameter("diachi");
             int id = Integer.parseInt(request.getParameter("id"));
-            thongTinCuaHangModel nv = new thongTinCuaHangModel(sdtcuahang, email, diachi, id);
-            int kq = CSDL.thongtincuahang.editThongTin(id, nv);
-            if (kq == 1) {
+            int kq = CSDL.thongtincuahang.deleteThongTin(id);
+            if(kq==1){
                 response.sendRedirect("dsTTCH.jsp");
             }
         }

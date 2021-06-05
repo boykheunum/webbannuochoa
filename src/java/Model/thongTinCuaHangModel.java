@@ -15,7 +15,7 @@ public class thongTinCuaHangModel {
     private String email;
     private String diachi;
     private int id;
-
+    
     public thongTinCuaHangModel(String sdtcuahang, String email, String diachi, int id) {
         this.sdtcuahang = sdtcuahang;
         this.email = email;

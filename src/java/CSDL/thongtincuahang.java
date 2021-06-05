@@ -51,12 +51,12 @@ public class thongtincuahang {
         if (cnn == null) {
             return -1;
         } else {
-            String sql = "INSERT INTO thongtincuahang values(?,?,?)";
+            String sql = "INSERT INTO thongtincuahang(sdtcuahang, email, diachi) values(?,?,?)";
             try {
                 PreparedStatement ps = cnn.prepareStatement(sql);
-                ps.setString(1, tt.getDiachi());
-                ps.setString(2, tt.getEmail());
                 ps.setString(3, tt.getSdtcuahang());
+                ps.setString(2, tt.getEmail());
+                ps.setString(1, tt.getDiachi());
                 return ps.executeUpdate();
             } catch (SQLException ex) {
                 Logger.getLogger(thongtincuahang.class.getName()).log(Level.SEVERE, null, ex);
@@ -71,14 +71,15 @@ public class thongtincuahang {
         if (cnn == null) {
             return -1;
         } else {
-            String sql = "UPDATE thongtincuahang SET diachi=?,Email=?, sdtcuahang=? WHERE id=?";
+            String sql = "UPDATE `thongtincuahang` SET `sdtcuahang`= ?,`email`=?,`diachi`= ? WHERE `id`=?";
             PreparedStatement ps;
             try {
                 ps = cnn.prepareStatement(sql);
-                ps.setString(1, tt.getDiachi());
-                ps.setString(2, tt.getEmail());
                 ps.setString(3, tt.getSdtcuahang());
+                ps.setString(2, tt.getEmail());
+                ps.setString(1, tt.getDiachi());
                 ps.setInt(4, keyword);
+                String test = ps.toString();
                 return ps.executeUpdate();
             } catch (SQLException ex) {
                 Logger.getLogger(thongtincuahang.class.getName()).log(Level.SEVERE, null, ex);
@@ -99,10 +100,10 @@ public class thongtincuahang {
                 ps.setInt(1, keyWord);
                 ResultSet rs = ps.executeQuery();
                 if (rs.next()) {
-                    ps.setString(1, tt.getDiachi());
-                    ps.setString(2, tt.getEmail());
-                    ps.setString(3, tt.getSdtcuahang());
-                    ps.setInt(4, tt.getId());
+                    tt.setDiachi(rs.getString("diachi"));
+                    tt.setEmail(rs.getString("email"));
+                    tt.setSdtcuahang(rs.getString("sdtcuahang"));
+                    tt.setId(rs.getInt("id"));
                 }
                 return 1;
             } catch (SQLException ex) {
@@ -118,7 +119,7 @@ public class thongtincuahang {
         if (cnn == null) {
             return -1;
         } else {
-            String sql = "DELETE * FROM thongtincuahang WHERE tieude = ?";
+            String sql = "DELETE FROM thongtincuahang WHERE id = ?";
             PreparedStatement ps;
             try {
                 ps = cnn.prepareStatement(sql);

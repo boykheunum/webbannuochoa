@@ -8,7 +8,7 @@
 <%@page import="CSDL.thongtincuahang"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.Vector"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -203,9 +203,9 @@
 
 
                                         <td>
-                                            <a href="suaNV.jsp?id=<%=tt.getId()%>">Edit</a>|
-                                            <a href="chitietNV.jsp?id=<%=tt.getId()%>">Details</a>|
-                                            <a href="xoaNV.jsp?id=<%=tt.getId()%>">Delete</a>
+                                            <a href="suaTTCH.jsp?id=<%=tt.getId()%>">Edit</a>|
+                                            <a href="chitietTTCH.jsp?id=<%=tt.getId()%>">Details</a>|
+                                            <a href="xoaTTCH.jsp?id=<%=tt.getId()%>">Delete</a>
                                         </td>
                                     </tr>
                                     <%}%>

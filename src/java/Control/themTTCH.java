@@ -16,10 +16,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author quyenlh
+ * @author Nguyen Tien Dat
  */
-@WebServlet(name = "suaTTCH", urlPatterns = {"/suaTTCH"})
-public class suaTTCH extends HttpServlet {
+@WebServlet(name = "themTTCH", urlPatterns = {"/themTTCH"})
+public class themTTCH extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,13 +37,12 @@ public class suaTTCH extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             response.setContentType("text/html; charset=UTF-8");
             request.setCharacterEncoding("UTF-8");
-            String sdtcuahang = request.getParameter("sdt");
             String email = request.getParameter("email");
             String diachi = request.getParameter("diachi");
-            int id = Integer.parseInt(request.getParameter("id"));
-            thongTinCuaHangModel nv = new thongTinCuaHangModel(sdtcuahang, email, diachi, id);
-            int kq = CSDL.thongtincuahang.editThongTin(id, nv);
-            if (kq == 1) {
+            String sdt = request.getParameter("sdt");
+            thongTinCuaHangModel tt = new thongTinCuaHangModel(sdt, email, diachi);
+            int kq = CSDL.thongtincuahang.addThongTin(tt);
+            if(kq==1){
                 response.sendRedirect("dsTTCH.jsp");
             }
         }

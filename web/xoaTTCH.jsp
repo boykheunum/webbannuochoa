@@ -1,13 +1,11 @@
 <%-- 
-    Document   : themTTCH
-    Created on : Jun 2, 2021, 12:20:51 AM
-    Author     : quyenlh
+    Document   : xoaTTCH
+    Created on : Jun 5, 2021, 11:59:00 AM
+    Author     : Nguyen Tien Dat
 --%>
 
-<%@page import="Model.loaispModel"%>
+<%@page import="Model.thongTinCuaHangModel"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<!DOCTYPE html>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -150,48 +148,56 @@
             </div>
             <div id="layoutSidenav_content">
                 <main>
-                    <main>
-                        <div class="container-fluid">
-                            <ol class="breadcrumb mb-4">
-                                <li class="breadcrumb-item"><a href="index.html">Thông tin cửa hàng</a></li>
-                                <li class="breadcrumb-item active">Thêm thông tin cửa hàng</li>
-                            </ol>
-                            <div class="card mb-4">
-                                <div class="card-body">
-                                    <form class="form-horizontal" action="themTTCH" method="post">
-                                        <h4>Thông tin cửa hàng</h4>
-                                        <hr />
-                                        <span id="messBoxErr" style="color: red"></span>
-                                        <span id="messBox" style="color: greenyellow"></span>
-                                        
-                                        <div class="form-group">
-                                           Địa chỉ cửa hàng
-                                            <input  id="diachi" name="diachi" type="text">
-                                        </div>
-                                         <div class="form-group">
-                                            Email
-                                            <input id="email" name="email" type="text">
-                                        </div>
+                    <div class="container-fluid">
 
-                                        <div class="form-group">
-                                           Số điện thoại
-                                            <input  id="sdtcuahang" name="sdt" type="text">
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="col-md-offset-2 col-md-10">
-                                                <input type="submit" value="Create" class="btn btn-default" />
-                                            </div>
-                                        </div>
-                                    </form>
-                                    <div>
-                                        "Back to List", "Index"
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item"><a href="index.html">Sản Phẩm</a></li>
+                            <li class="breadcrumb-item active">Xóa</li>
+                        </ol>
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h3>Are you sure you want to delete this?</h3>
+                                <%
+                                    int id = Integer.parseInt(request.getParameter("id"));
+                                    thongTinCuaHangModel tt = new thongTinCuaHangModel();
+                                    int kq = CSDL.thongtincuahang.searchThongTin(id, tt);
+                                    if (kq == 1) {
+                                %>
+                                <form method="post" action="xoaTTCH">
+                                    <hr />
+                                    <dl class="dl-horizontal">
+                                        <dt>
+                                            <text>Địa chỉ</text>
+                                        </dt>
+                                        <dd>
+                                            <text><%=tt.getDiachi()%></text>
+                                        </dd>
+                                            <input type="hidden" id="id" name="id" value="<%=tt.getId()%>">
+                                        <dt>
+                                            <text>Email</text>
+                                        </dt>
+                                        <dd>                                
+                                            <text><%=tt.getEmail()%></text>
+                                        </dd>
+                                        <dt>                                          
+                                            <text>Số điện thoại</text>
+                                        </dt>
+                                        <dd>
+                                            <text><%=tt.getSdtcuahang()%></text>
+                                        </dd>
+                                    </dl>
+                                    <div class="form-actions no-color">
+                                        <input type="submit" value="Delete" class="btn btn-default" /> |
+                                        @Html.ActionLink("Back to List", "Index")
                                     </div>
-
-                                </div>
+                                    }
+                                </form>
+                                <%}%>
                             </div>
                         </div>
-                    </main>
+                    </div>
                 </main>
+
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid">
                         <div class="d-flex align-items-center justify-content-between small">
@@ -212,32 +218,5 @@
         <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
         <script src="content/assets/demo/datatables-demo.js"></script>
-        <script>
-            $(document).ready(function () {
-                $('#maloaisp').keyup(function () {
-                    $.ajax({
-                        
-                        method: 'POST',
-                        url: 'checkLoaiSP',
-                        data: {
-                            maloaisp: $('#maloaisp').val()
-                        },
-                        success: function (res) {
-                            var messBox = document.getElementById('messBox');
-                            var messBoxErr = document.getElementById('messBoxErr');
-                            if (res == 1) {
-                                messBox.innerHTML = " ";
-                                messBoxErr.innerHTML = "Đã tồn tại mã loai sản phẩm";
-                            } else {
-                                messBoxErr.innerHTML = " ";
-                                messBox.innerHTML = "mã loại sản phẩm hợp lệ";
-                            }
-
-                        }
-                    });
-                });
-            });
-        </script>
     </body>
-
 </html>
