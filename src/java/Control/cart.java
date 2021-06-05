@@ -38,7 +38,6 @@ public class cart extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             HttpSession session = request.getSession();
-            
             String masp = request.getParameter("masp");
             int soluong = Integer.parseInt(request.getParameter("soluongmua"));
             TreeMap<String, Integer> cart = (TreeMap<String, Integer>) session.getAttribute("cart");
@@ -46,14 +45,14 @@ public class cart extends HttpServlet {
                 cart = new TreeMap<String, Integer>();
             }
             if (cart.containsKey(masp) == false) {
-                cart.put(masp, 1);
+                cart.put(masp, soluong);
             } else {//sản phẩm đã có trong giỏ hàng
                 int soluong1 = (int) session.getAttribute("soluong");//lấy số lượng hiện tại cảu sản phẩm
                 soluong = soluong + soluong1;
-                //cart.put(masp, soluong);
+                cart.put(masp, soluong);
             }
             session.setAttribute("cart", cart);//cập nhật giỏ hàng mới vào sesion
-            session.setAttribute("soluong", soluong);
+            //session.setAttribute("soluong", soluong);
             response.sendRedirect("giohang.jsp");
         }
     }

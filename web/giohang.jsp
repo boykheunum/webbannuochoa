@@ -46,7 +46,7 @@
                     </div>
                     <!-- thong tin nhung san pham-->
                     <%
-                        int soluong = (int) session.getAttribute("soluong");
+                        //int soluong1 = (int) session.getAttribute("soluong");
                         TreeMap<String, Integer> cart = (TreeMap<String, Integer>) session.getAttribute("cart");
                         if (cart == null) {
                             out.println("<h3> chưa có giỏ hàng</h3>");
@@ -56,7 +56,7 @@
                                 sanphamModel sp = new sanphamModel();
                                 int ketqua = CSDL.SanPham.searchSP(sp, masp);
                                 if (ketqua > 0) {
-                                    //float soluong = cart.get(masp);
+                                    int soluong = cart.get(masp);
                                     float thanhtien = soluong * sp.getGiaban();
                                     tongtien += thanhtien;
 
@@ -74,12 +74,12 @@
                         </div>
                         <div class="pl-md-0 pl-1"><b><%=sp.getGiaban()%></b></div>
                         <div class="pl-md-0 pl-2"> 
-                            <span class="fa fa-minus-square text-secondary"></span>
+                            <input type="button" class="fa fa-minus-square text-secondary">
                             <span class="px-md-3 px-1"><%=soluong%></span>
                             <%
                                 session.setAttribute("soluong", soluong);
                             %>
-                            <span class="fa fa-plus-square text-secondary"></span>
+                            <input type="button" class="fa fa-plus-square text-secondary"></span>
                         </div>
                         <div class="pl-md-0 pl-1"><b><%=thanhtien%></b></div>
                         <div class="close">&times;</div>
