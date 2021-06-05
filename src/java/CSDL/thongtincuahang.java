@@ -87,7 +87,7 @@ public class thongtincuahang {
         }
     }
 
-    public static int searchMaGiamGia(int keyWord, thongTinCuaHangModel tt) {
+    public static int searchThongTin(int keyWord, thongTinCuaHangModel tt) {
         Connection cnn = CSDL.databaseConnection.cnnDB();
         if (cnn == null) {
             return -1;

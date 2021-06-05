@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th6 01, 2021 lúc 02:35 PM
+-- Thời gian đã tạo: Th6 04, 2021 lúc 07:05 PM
 -- Phiên bản máy phục vụ: 10.4.17-MariaDB
 -- Phiên bản PHP: 8.0.2
 
@@ -58,6 +58,14 @@ CREATE TABLE `chucvu` (
   `tencv` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Đang đổ dữ liệu cho bảng `chucvu`
+--
+
+INSERT INTO `chucvu` (`macv`, `tencv`) VALUES
+('1', 'Chủ cửa hàng'),
+('2', 'nhân viên');
+
 -- --------------------------------------------------------
 
 --
@@ -108,15 +116,6 @@ CREATE TABLE `magiamgia` (
   `dieukien` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Đang đổ dữ liệu cho bảng `magiamgia`
---
-
-INSERT INTO `magiamgia` (`idmagiamgia`, `kieugiamgia`, `ngaybatdau`, `ngayketthuc`, `soluong`, `giatri`, `dieukien`) VALUES
-('SK10K', 127, '2022-10-10', '2021-06-09', 10, 10000, 200000),
-('SK20K', 127, '2022-10-10', '0000-00-00', 10, 20000, 200000),
-('SK30K', 0, '2021-06-02', '2022-06-02', 20, 30000, 200000);
-
 -- --------------------------------------------------------
 
 --
@@ -164,7 +163,9 @@ CREATE TABLE `nhanvien` (
   `sdt` varchar(50) NOT NULL,
   `diachi` varchar(50) NOT NULL,
   `ngaysinh` date NOT NULL,
-  `manv` int(50) NOT NULL
+  `manv` int(50) NOT NULL,
+  `tendangnhap` varchar(50) NOT NULL,
+  `matkhau` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -202,7 +203,7 @@ CREATE TABLE `sanpham` (
 --
 
 INSERT INTO `sanpham` (`maloaisp`, `masp`, `tensp`, `soluong`, `gianhap`, `giaban`, `mota`, `hinhanh`) VALUES
-('MLSP001', 'MSP001', 'Nước hoa Jillian New: Fall in Lust 15ml', 50, 800000, 850000, 'Mô tả sản phẩm\r\nLà sự hòa trộn tinh tế giữa cảm giác thân thuộc gần gũi và phong cách bí ẩn đầy lôi cuốn, Fall in Lust mang đến một trải nghiệm hoàn toàn thú vị cho người dùng. Nhà chế tác mùi hương David Chieze đã sử dụng các nguyên liệu mang sắc thái nồng nàn như rượu absinthe, gừng và cam bergamot để tạo nên cảm giác ấm áp ngay từ tầng hương đầu tiên. Thế nhưng ngay sau đó, vị cay nồng lập tức được cân bằng bởi hương biển mát lạnh sâu thẳm, nhẹ nhàng hơn và dần ổn định trên da. \r\n\r\nSự độc đáo trong cách kết hợp các nốt hương của Fall in Lust vừa khắc họa một người đàn ông tinh tế, lịch lãm, vừa khẳng định sự cuốn hút khó cưỡng của một chàng trai hào hoa, phóng túng. Đây là mùi hương thích hợp sử dụng vào buổi tối hoặc khi tiết trời mát mẻ.', 'nuochoa03.png'),
+('MLSP001', 'MSP001', 'Nước hoa Jillian New: Fall in Lust 15ml', 15, 800000, 850000, 'Mô tả sản phẩm\r\nLà sự hòa trộn tinh tế giữa cảm giác thân thuộc gần gũi và phong cách bí ẩn đầy lôi cuốn, Fall in Lust mang đến một trải nghiệm hoàn toàn thú vị cho người dùng. Nhà chế tác mùi hương David Chieze đã sử dụng các nguyên liệu mang sắc thái nồng nàn như rượu absinthe, gừng và cam bergamot để tạo nên cảm giác ấm áp ngay từ tầng hương đầu tiên. Thế nhưng ngay sau đó, vị cay nồng lập tức được cân bằng bởi hương biển mát lạnh sâu thẳm, nhẹ nhàng hơn và dần ổn định trên da. \r\n\r\nSự độc đáo trong cách kết hợp các nốt hương của Fall in Lust vừa khắc họa một người đàn ông tinh tế, lịch lãm, vừa khẳng định sự cuốn hút khó cưỡng của một chàng trai hào hoa, phóng túng. Đây là mùi hương thích hợp sử dụng vào buổi tối hoặc khi tiết trời mát mẻ.', ''),
 ('MLSP001', 'MSP002', 'Nước hoa Jillian: Edelweiss 15ml (White)', 50, 800000, 850000, 'Mô tả sản phẩm\r\nEdelweiss bộc lộ cá tính riêng biệt ngay từ phút đầu tiên với mùi hương tươi mát và sắc sảo. Nét dịu dàng của hoa nhung tuyết ôm lấy các nốt hương trái cây để rồi tone patchouli âm thầm đẩy cảm xúc lên đến đỉnh điểm như một lời gọi mời hấp dẫn. \r\n\r\nEdelweiss được đánh giá là một mùi hương tinh khiết và trong trẻo, mềm mại nhưng mãnh liệt tột cùng - như sức sống của loài hoa trắng muốt trên các dãy núi cao giá lạnh.', 'nuochoa04.jpg'),
 ('MLSP001', 'MSP003', 'Nước hoa Jillian: Creation8 15ml', 50, 800000, 850000, 'Mô tả sản phẩm\r\nMở đầu chuỗi hương đậm chất trái cây nhiệt đới sảng khoái với bưởi và quýt hồng, Creation8 - sáng tạo hương thứ 8 của BST Jillian dường như đã mang đến làn gió mát rượi thổi từ vùng biển trong xanh nước Ý, sảng khoái và mạnh mẽ đánh thức mọi giác quan. Khéo léo đan xen cùng bạc hà the mát, cùng chút cay nồng của các loại gia vị là hương thơm hoa hồng dịu dàng kín kẽ. Đó là sự kết hợp kì diệu gợi nên cảm giác thỏa mãn xa hoa, như một giấc mơ về kỳ nghỉ trên chuyến du thuyền và ngắm nhìn hòn đảo Capri xinh đẹp. \r\n\r\nCreation8 là mùi hương phù hợp với xu hướng hiện đại, với lối sống phóng khoáng và không chút e dè thể hiện bản thân. Khi hai tầng hương đầu dần khép lại, hỗn hợp gỗ tuyết tùng và xạ hương nam tính lịch lãm xuất hiện, khắc họa rõ nét một Creation8 trưởng thành đằng sau vẻ ngoài ồn ào náo nhiệt. Chuỗi hương kết thúc bằng một chút ướt át của rêu sồi, mùi thơm đặc trưng của da thuộc và thuốc lá. Trái ngược với khởi đầu cuồng nhiệt cháy bỏng, điều cô đọng mà Creation8 để lại là một cái tôi đơn giản và khác biệt như chính tên gọi của mình: Sáng tạo thứ 8. ', 'nuochoa05.jpg'),
 ('MLSP001', 'MSP004', 'Nước hoa Jillian: Beloved J 15ml', 50, 800000, 850000, 'Mô tả sản phẩm\r\nCam đắng rạng ngời và hoa đậu thơm nhẹ nhàng xuất hiện ở tầng hương đầu tiên, phảng phất êm dịu rồi khẽ tan vào không khí - đây cũng là lúc các loài hoa đua nhau phô diễn trong làn gió mát lạnh tinh khôi. Beloved J là mùi hương thể hiện sự cộng hưởng tuyệt vời giữa vẻ đẹp của tự nhiên và người phụ nữ. Hoa lan Nam Phi và phong lữ duyên dáng kết hợp cùng quả mộc qua tạo nên những giai điệu mùi hương đầy mê hoặc, Beloved J như một khu vườn vừa bừng tỉnh giấc, vươn mình rũ bỏ từng hạt nước còn đọng lại đêm qua. \r\n\r\nKhông mang đến nhiều sự đột phá hay cú twist thú vị, Beloved J nồng nàn ôm ấp một người phụ nữ trong chiếc váy midi cổ điển, khéo léo khoe đường nét thanh tú sau vành mũ rộng. Mùi hương lúc này vẫn đằm thắm lãng mạn đến khi có sự xuất hiện của cặp đôi hoa hồng và hoắc hương - một điểm nhấn sắc sảo tô thật đậm sắc thái gợi cảm ngập tràn si mê.\r\n\r\nLựa chọn mở đầu bằng vẻ thuần khiết mỏng manh và kết thúc bằng hương thơm nữ tính quyến rũ đầy ấn tượng, Beloved J là mùi hương khiến trái tim rung động, là tất cả những gì một cô gái đang tìm kiếm. ', 'nuochoa06.jpg'),
@@ -239,11 +240,11 @@ CREATE TABLE `thongtincuahang` (
 --
 
 CREATE TABLE `tintuc` (
-  `id` varchar(50) CHARACTER SET utf32 NOT NULL,
+  `id` int(50) NOT NULL,
   `anh` varchar(50) CHARACTER SET utf32 NOT NULL,
   `ngaydang` date NOT NULL DEFAULT current_timestamp(),
   `tieude` varchar(50) CHARACTER SET utf32 NOT NULL,
-  `noidung` varchar(1000) CHARACTER SET utf32 NOT NULL
+  `noidung` varchar(10000) CHARACTER SET utf32 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -325,6 +326,12 @@ ALTER TABLE `sanpham`
   ADD KEY `maloaisp` (`maloaisp`);
 
 --
+-- Chỉ mục cho bảng `tintuc`
+--
+ALTER TABLE `tintuc`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT cho các bảng đã đổ
 --
 
@@ -350,7 +357,13 @@ ALTER TABLE `nguoidung`
 -- AUTO_INCREMENT cho bảng `nhanvien`
 --
 ALTER TABLE `nhanvien`
-  MODIFY `manv` int(50) NOT NULL AUTO_INCREMENT;
+  MODIFY `manv` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT cho bảng `tintuc`
+--
+ALTER TABLE `tintuc`
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Các ràng buộc cho các bảng đã đổ

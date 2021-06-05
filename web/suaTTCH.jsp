@@ -1,14 +1,12 @@
 <%-- 
-    Document   : themTTCH
-    Created on : Jun 2, 2021, 12:20:51 AM
+    Document   : suaTTCH
+    Created on : Jun 4, 2021, 11:03:10 PM
     Author     : quyenlh
 --%>
 
-<%@page import="Model.loaispModel"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<!DOCTYPE html>
 
+<%@page import="Model.thongTinCuaHangModel"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -125,16 +123,6 @@
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts4" aria-expanded="false" aria-controls="collapseLayouts">
-                                Nhân Viên
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapseLayouts4" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="~/admin/CTHoaDons/Index">Danh sách</a>
-                                    <a class="nav-link" href="~/admin/CTHoaDons/Create">Thêm</a>
-                                </nav>
-                            </div>
-                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts4" aria-expanded="false" aria-controls="collapseLayouts">
                                 Tin Tức
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
@@ -150,48 +138,58 @@
             </div>
             <div id="layoutSidenav_content">
                 <main>
-                    <main>
-                        <div class="container-fluid">
-                            <ol class="breadcrumb mb-4">
-                                <li class="breadcrumb-item"><a href="index.html">Thông tin cửa hàng</a></li>
-                                <li class="breadcrumb-item active">Thêm thông tin cửa hàng</li>
-                            </ol>
-                            <div class="card mb-4">
-                                <div class="card-body">
-                                    <form class="form-horizontal" action="themTTCH" method="post">
-                                        <h4>Thông tin cửa hàng</h4>
-                                        <hr />
-                                        <span id="messBoxErr" style="color: red"></span>
-                                        <span id="messBox" style="color: greenyellow"></span>
-                                        
-                                        <div class="form-group">
-                                           Địa chỉ cửa hàng
-                                            <input  id="diachi" name="diachi" type="text">
-                                        </div>
-                                         <div class="form-group">
-                                            Email
-                                            <input id="email" name="email" type="text">
-                                        </div>
+                    <div class="container-fluid">
 
-                                        <div class="form-group">
-                                           Số điện thoại
-                                            <input  id="sdtcuahang" name="sdtcuahang" type="text">
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item"><a href="index.html">Loại Sản Phẩm</a></li>
+                            <li class="breadcrumb-item active">Sửa</li>
+                        </ol>
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <%
+                                    int id = Integer.parseInt(request.getParameter("id"));
+                                    thongTinCuaHangModel tt = new thongTinCuaHangModel();
+                                    int kq = CSDL.thongtincuahang.searchThongTin(id, tt);
+                                %>
+                                <form class="form-horizontal" method="post" action="sualoaiSP">
+                                    <h4>Loại sản phẩm</h4>
+                                    <hr />
+                                    <input type="hidden" name="id" id="id" value="<%=tt.getId()%>">
+                                    <div class="form-group">
+                                        <text>Địa chỉ</text>
+                                        <div class="col-md-10">
+                                            <input type="text" name="diachi" id="diachi" value="<%=tt.getDiachi()%>">
                                         </div>
-                                        <div class="form-group">
-                                            <div class="col-md-offset-2 col-md-10">
-                                                <input type="submit" value="Create" class="btn btn-default" />
-                                            </div>
-                                        </div>
-                                    </form>
-                                    <div>
-                                        "Back to List", "Index"
                                     </div>
+                                    <div class="form-group">
+                                        <text>Số điện thoại</text>
+                                        <div class="col-md-10">
+                                            <input type="text" name="email" id="email" value="<%=tt.getEmail()%>">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <text>Địa chỉ</text>
+                                        <div class="col-md-10">
+                                            <input type="text" name="sdt" id=sdt value="<%=tt.getSdtcuahang()%>">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            <input type="submit" value="Save" class="btn btn-default" />
+                                        </div>
+                                    </div>
+                                </form>
+                                <%}%>
 
+                                <div>
+                                    @Html.ActionLink("Back to List", "Index")
                                 </div>
+
                             </div>
                         </div>
-                    </main>
+                    </div>
                 </main>
+
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid">
                         <div class="d-flex align-items-center justify-content-between small">
@@ -212,32 +210,5 @@
         <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
         <script src="content/assets/demo/datatables-demo.js"></script>
-        <script>
-            $(document).ready(function () {
-                $('#maloaisp').keyup(function () {
-                    $.ajax({
-                        
-                        method: 'POST',
-                        url: 'checkLoaiSP',
-                        data: {
-                            maloaisp: $('#maloaisp').val()
-                        },
-                        success: function (res) {
-                            var messBox = document.getElementById('messBox');
-                            var messBoxErr = document.getElementById('messBoxErr');
-                            if (res == 1) {
-                                messBox.innerHTML = " ";
-                                messBoxErr.innerHTML = "Đã tồn tại mã loai sản phẩm";
-                            } else {
-                                messBoxErr.innerHTML = " ";
-                                messBox.innerHTML = "mã loại sản phẩm hợp lệ";
-                            }
-
-                        }
-                    });
-                });
-            });
-        </script>
     </body>
-
 </html>
