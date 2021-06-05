@@ -1,13 +1,14 @@
 <%-- 
-    Document   : themTTCH
-    Created on : Jun 2, 2021, 12:20:51 AM
+    Document   : dsTTCH
+    Created on : Jun 5, 2021, 10:22:58 AM
     Author     : quyenlh
 --%>
 
-<%@page import="Model.loaispModel"%>
+<%@page import="Model.thongTinCuaHangModel"%>
+<%@page import="CSDL.thongtincuahang"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<!DOCTYPE html>
+<%@page import="java.util.Vector"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -125,7 +126,7 @@
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts4" aria-expanded="false" aria-controls="collapseLayouts">
-                                Nhân Viên
+                               Nhân Viên
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="collapseLayouts4" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
@@ -150,48 +151,72 @@
             </div>
             <div id="layoutSidenav_content">
                 <main>
-                    <main>
-                        <div class="container-fluid">
-                            <ol class="breadcrumb mb-4">
-                                <li class="breadcrumb-item"><a href="index.html">Thông tin cửa hàng</a></li>
-                                <li class="breadcrumb-item active">Thêm thông tin cửa hàng</li>
-                            </ol>
-                            <div class="card mb-4">
-                                <div class="card-body">
-                                    <form class="form-horizontal" action="themTTCH" method="post">
-                                        <h4>Thông tin cửa hàng</h4>
-                                        <hr />
-                                        <span id="messBoxErr" style="color: red"></span>
-                                        <span id="messBox" style="color: greenyellow"></span>
-                                        
-                                        <div class="form-group">
-                                           Địa chỉ cửa hàng
-                                            <input  id="diachi" name="diachi" type="text">
-                                        </div>
-                                         <div class="form-group">
+                    <div class="container-fluid">
+
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item"><a href="index.html">Sản Phẩm</a></li>
+                            <li class="breadcrumb-item active">Danh Sách</li>
+                        </ol>
+                        <div class="card mb-4">
+                            <div class="card-body">
+
+                                <p>
+                                    @Html.ActionLink("Create New", "Create")
+                                </p>
+                                <%
+                                    Vector<thongTinCuaHangModel> ds = new Vector<thongTinCuaHangModel>();
+                                    int kq = CSDL.thongtincuahang.listTT(ds);
+                                    if (kq == 1) {
+                                %>
+                                <table class="table">
+                                    <tr>
+                                        <th>
+                                            Id
+                                        </th>
+                                        <th>
                                             Email
-                                            <input id="email" name="email" type="text">
-                                        </div>
+                                        </th>
+                                        <th>
+                                            <text>Địa Chỉ</text>
+                                        </th>
+                                        <th>
+                                            <text>Số điện thoại</text>
+                                        </th>                                        
+                                        <th></th>
+                                    </tr>
+                                    <%
+                                        for (thongTinCuaHangModel tt : ds) {
+                                    %>
+                                    <tr>
+                                        <td>
+                                            <%=tt.getId()%>
+                                        </td>
+                                        <td>
+                                            <%=tt.getEmail()%>
+                                        </td>>
+                                        <td>
+                                            <%=tt.getDiachi()%>
+                                        </td>
+                                        <td>
+                                            <%=tt.getSdtcuahang()%>
+                                        </td>
 
-                                        <div class="form-group">
-                                           Số điện thoại
-                                            <input  id="sdtcuahang" name="sdtcuahang" type="text">
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="col-md-offset-2 col-md-10">
-                                                <input type="submit" value="Create" class="btn btn-default" />
-                                            </div>
-                                        </div>
-                                    </form>
-                                    <div>
-                                        "Back to List", "Index"
-                                    </div>
 
-                                </div>
+                                        <td>
+                                            <a href="suaNV.jsp?id=<%=tt.getId()%>">Edit</a>|
+                                            <a href="chitietNV.jsp?id=<%=tt.getId()%>">Details</a>|
+                                            <a href="xoaNV.jsp?id=<%=tt.getId()%>">Delete</a>
+                                        </td>
+                                    </tr>
+                                    <%}%>
+                                </table>
+                                <%}%>
+
                             </div>
                         </div>
-                    </main>
+                    </div>
                 </main>
+
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid">
                         <div class="d-flex align-items-center justify-content-between small">
@@ -212,32 +237,5 @@
         <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
         <script src="content/assets/demo/datatables-demo.js"></script>
-        <script>
-            $(document).ready(function () {
-                $('#maloaisp').keyup(function () {
-                    $.ajax({
-                        
-                        method: 'POST',
-                        url: 'checkLoaiSP',
-                        data: {
-                            maloaisp: $('#maloaisp').val()
-                        },
-                        success: function (res) {
-                            var messBox = document.getElementById('messBox');
-                            var messBoxErr = document.getElementById('messBoxErr');
-                            if (res == 1) {
-                                messBox.innerHTML = " ";
-                                messBoxErr.innerHTML = "Đã tồn tại mã loai sản phẩm";
-                            } else {
-                                messBoxErr.innerHTML = " ";
-                                messBox.innerHTML = "mã loại sản phẩm hợp lệ";
-                            }
-
-                        }
-                    });
-                });
-            });
-        </script>
     </body>
-
 </html>
