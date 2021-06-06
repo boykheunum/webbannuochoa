@@ -3,11 +3,53 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/hoctap/JAVA/project/WebBanSach/web/xoaloaiSP.jsp</file>
-            <file>file:/D:/hoctap/JAVA/project/WebBanSach/web/layoutChung/topMenu.jsp</file>
-            <file>file:/D:/hoctap/JAVA/project/WebBanSach/src/java/Control/deleteCart.java</file>
-            <file>file:/D:/hoctap/JAVA/project/WebBanSach/web/giohang.jsp</file>
-            <file>file:/D:/hoctap/JAVA/project/WebBanSach/src/java/Control/cart.java</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/xoaSP.jsp</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/dsCV.jsp</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/giohang.jsp</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/nvsuaSP.jsp</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/hienthiSP.jsp</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/dsSP.jsp</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/chitietloaiSP.jsp</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/themTTCH.jsp</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/nvthemloaiSP.jsp</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/suaSP.jsp</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/nvthemSP.jsp</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/layoutChung/footer.jsp</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/xoaTT.jsp</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/nvdsSP.jsp</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/suaPGG.jsp</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/layoutAdmin/menuNV.jsp</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/xoaCV.jsp</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/nvsualoaiSP.jsp</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/dsloaiSP.jsp</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/nvchitietloaiSP.jsp</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/dsTT.jsp</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/themSP.jsp</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/themloaiSP.jsp</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/suaTTCH.jsp</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/layoutAdmin/menuAdmin.jsp</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/nbproject/build-impl.xml</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/layoutChung/topMenu.jsp</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/themNV.jsp</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/src/java/Model/sanphamModel.java</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/suaNV.jsp</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/chitietSP.jsp</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/hienthichitietSP.jsp</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/xoaloaiSP.jsp</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/xoaTTCH.jsp</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/themmagiamgia.jsp</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/dsPGG.jsp</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/suaCV.jsp</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/themTT.jsp</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/dsNV.jsp</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/nvchitietSP.jsp</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/dsTTCH.jsp</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/sualoaiSP.jsp</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/nvdsloaiSP.jsp</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/themChucVu.jsp</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/xoaNV.jsp</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/xoaPGG.jsp</file>
+            <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/src/java/Control/phantrangUserSP.java</file>
         </group>
     </open-files>
 </project-private>
