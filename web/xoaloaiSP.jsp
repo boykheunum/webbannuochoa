@@ -157,6 +157,12 @@
                             <div class="card-body">
 
                                 <h3>Are you sure you want to delete this?</h3>
+                                <%
+                                    String maloaisp = request.getParameter("maloaisp");
+                                    loaispModel lsp = new loaispModel();
+                                    int kq = CSDL.LoaiSP.searchLoaiSP(lsp, maloaisp);
+                                    if(kq==1){
+                                %>
                                 <form action="xoaloaiSP" method="post">
                                     <h4>Loại Sản Phẩm</h4>
                                     <hr />
@@ -179,7 +185,7 @@
                                     </div>
 
                                 </form>
-
+                                <%}%>
 
                             </div>
                         </div>
