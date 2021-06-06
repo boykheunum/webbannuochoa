@@ -59,9 +59,7 @@
                                     int soluong = cart.get(masp);
                                     float thanhtien = soluong * sp.getGiaban();
                                     tongtien += thanhtien;
-
                     %>
-
                     <div class="d-flex flex-row justify-content-between align-items-center pt-lg-4 pt-2 pb-3 border-bottom mobile">
                         <div class="d-flex flex-ro//images.unsplash.com/photo-152w align-items-center">
                             <div><img src="imageSP/<%=sp.getHinhanh()%>" width="150" height="150" alt="" id="image"></div>
@@ -69,25 +67,24 @@
                                 <div>
                                     <h6><%=sp.getTensp()%></h6>
                                 </div>
-
                             </div>
                         </div>
                         <div class="pl-md-0 pl-1"><b><%=sp.getGiaban()%></b></div>
+
                         <div class="pl-md-0 pl-2"> 
-                            <input type="button" class="fa fa-minus-square text-secondary">
-                            <span class="px-md-3 px-1"><%=soluong%></span>
-                            <%
-                                session.setAttribute("soluong", soluong);
-                            %>
-                            <input type="button" class="fa fa-plus-square text-secondary"></span>
+                            <button class="btn btn-dark btn-sm" id="minus-btn" onclick="giamFuntion()"><i class="fa fa-minus"></i></button>
+                            <span><input type="number" id="soluongmua1" name="soluongmua1" value="<%=soluong%>" min="1" onchange="checkFunction()"></span>
+                            <input type="hidden" id="masp" name="masp" value="<%=sp.getMasp()%>">
+                            <button class="btn btn-dark btn-sm" onclick="tangFuntion()" id="plus-btn"><i class="fa fa-plus"></i></button>
                         </div>
+
+
                         <div class="pl-md-0 pl-1"><b><%=thanhtien%></b></div>
-                        <div class="close">&times;</div>
+                        <span><a href="deleteCart?masp=<%=sp.getMasp()%>">Xóa</a></span>
                     </div>
                     <%
                             }
                         }
-
                     %>
                     <!--ket thuc thong tin nhung san pham-->
                 </div>
@@ -102,6 +99,7 @@
                         <div> <button class="btn btn-sm bg-dark text-white px-lg-5 px-3">CONTINUE</button> </div>
                     </div>
                 </div>
+
             </div>
         </div>
         <%}%>
@@ -113,6 +111,51 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="content/js/scripts.js"></script>
+        <script>
+                                                        $(document).ready(function () {
+                                                            $('#soluongmua1').prop('disabled', true);
 
+                                                            $('#plus-btn').click(function () {
+                                                                $('#soluongmua1').val(parseInt($('#soluongmua1').val()) + 1);
+                                                            });
+
+                                                            $('#minus-btn').click(function () {
+                                                                $('#soluongmua1').val(parseInt($('#soluongmua').val()) - 1);
+                                                                if ($('#soluongmua1').val() == 0) {
+                                                                    $('#soluongmua1').val(1);
+                                                                }
+
+                                                            });
+                                                            // tang so luong trong input
+                                                            $('#plus-btn').click(function () {
+                                                                $.ajax({
+                                                                    method: 'POST',
+                                                                    url: 'cart',
+                                                                    data: {
+                                                                        masp: $('#masp').val(),
+                                                                        soluongmua1: '1'
+                                                                    },
+                                                                    success: function (res) {
+                                                                        location.reload(true);
+                                                                    }
+                                                                });
+                                                            });
+                                                            //giam so luong
+                                                            $('#minus-btn').click(function () {
+                                                                $.ajax({
+                                                                    method: 'POST',
+                                                                    url: 'cart',
+                                                                    data: {
+                                                                        masp: $('#masp').val(),
+                                                                        soluongmua1: '-1'
+                                                                    },
+                                                                    success: function (res) {
+                                                                        location.reload(true);
+                                                                    }
+                                                                });
+                                                            });
+
+                                                        });
+        </script>
     </body>
 </html>

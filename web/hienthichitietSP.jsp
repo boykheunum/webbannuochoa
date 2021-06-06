@@ -85,7 +85,7 @@
                                 </tr>
                                 <tr>
                                     <td class="pl-0">
-                                        <div class="def-number-input number-input safari_only mb-0">
+                                       <div class="def-number-input number-input safari_only mb-0">
                                             <input class="quantity" min="0" name="soluongmua" value="1" type="number">
                                         </div>
                                     </td>
