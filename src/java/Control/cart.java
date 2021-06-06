@@ -53,24 +53,23 @@ public class cart extends HttpServlet {
             if (cart.containsKey(masp) == false) {
                 cart.put(masp, soluong);
             } else {//sản phẩm đã có trong giỏ hàng
-                String tang1 = request.getParameter("soluongmua1");
-
-                int soluong1 = 0;
-                if (tang1 == null) {
-                    soluong1 = 0;
-                } else if (tang1.equals("1")) {
-                    soluong1 = 1;
-                } else {
-                    soluong1 = -1;
-                }
-                int soluong2 = cart.get(masp);//lấy số lượng hiện tại
-                int soluong3 = soluong2 + soluong1;
-                soluong = soluong + soluong3;
+//                String tang1 = request.getParameter("soluongmua1");
+//
+//                int soluong1 = 0;
+//                if (tang1 == null) {
+//                    soluong1 = 0;
+//                } else if (tang1.equals("1")) {
+//                    soluong1 = 1;
+//                } else {
+//                    soluong1 = -1;
+//                }
+//                int soluong2 = cart.get(masp);//lấy số lượng hiện tại
+//                int soluong3 = soluong2 + soluong1;
+//                soluong = soluong + soluong3;
+                soluong = cart.get(masp);
                 cart.put(masp, soluong);
             }
-
             session.setAttribute("cart", cart);//cập nhật giỏ hàng mới vào sesion
-            //session.setAttribute("soluong", soluong);
             response.sendRedirect("giohang.jsp");
         }
     }

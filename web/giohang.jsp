@@ -72,14 +72,12 @@
                         <div class="pl-md-0 pl-1"><b><%=sp.getGiaban()%></b></div>
 
                         <div class="pl-md-0 pl-2"> 
-                            <button class="btn btn-dark btn-sm" id="minus-btn" onclick="giamFuntion()"><i class="fa fa-minus"></i></button>
-                            <span><input type="number" id="soluongmua1" name="soluongmua1" value="<%=soluong%>" min="1" onchange="checkFunction()"></span>
-                            <input type="hidden" id="masp" name="masp" value="<%=sp.getMasp()%>">
-                            <button class="btn btn-dark btn-sm" onclick="tangFuntion()" id="plus-btn"><i class="fa fa-plus"></i></button>
+                            <button  type="button"  class="btn btn-dark btn-sm minus-btn" ><i class="fa fa-minus"></i></button>
+                            <span><input type="number" class="soluongmua1" name="soluongmua1" value="<%=soluong%>" min="1" onchange="checkFunction()"></span>
+                            <input type="hidden" id="masp" name="masp" value="<%=sp.getMasp()%>">                     
+                            <button type="button" class="btn btn-dark btn-sm plus-btn"  ><i class="fa fa-plus"></i></button>
                         </div>
-
-
-                        <div class="pl-md-0 pl-1"><b><%=thanhtien%></b></div>
+                        <div class="pl-md-0 pl-1"><b data-thanhtien="<%=sp.getGiaban()%>"><%=thanhtien%></b></div>
                         <span><a href="deleteCart?masp=<%=sp.getMasp()%>">Xóa</a></span>
                     </div>
                     <%
@@ -95,7 +93,7 @@
                 <div class="col-lg-10 col-12">
                     <div class="d-flex justify-content-between align-items-center">
                         <div> <button class="btn btn-sm bg-light border border-dark">GO BACK</button> </div>
-                        <div class="px-md-0 px-1" id="footer-font"> <b class="pl-md-4">SUBTOTAL<span class="pl-md-4"><%=tongtien%></span></b> </div>
+                        <div class="px-md-0 px-1" id="footer-font"> <b class="pl-md-4">SUBTOTAL<span class="pl-md-4" id="TongTien"><%=tongtien%></span></b> </div>
                         <div> <button class="btn btn-sm bg-dark text-white px-lg-5 px-3">CONTINUE</button> </div>
                     </div>
                 </div>
@@ -112,50 +110,66 @@
         <!-- Core theme JS-->
         <script src="content/js/scripts.js"></script>
         <script>
-                                                        $(document).ready(function () {
-                                                            $('#soluongmua1').prop('disabled', true);
+                                $(document).ready(function () {
+                                    $('.soluongmua1').prop('disabled', true);
 
-                                                            $('#plus-btn').click(function () {
-                                                                $('#soluongmua1').val(parseInt($('#soluongmua1').val()) + 1);
-                                                            });
+                                    $('.plus-btn').click(function () {
+                                        var input = $(this).prev().prev().children();
+                                        input.val(parseInt(input.val()) + 1);
+                                    });
 
-                                                            $('#minus-btn').click(function () {
-                                                                $('#soluongmua1').val(parseInt($('#soluongmua').val()) - 1);
-                                                                if ($('#soluongmua1').val() == 0) {
-                                                                    $('#soluongmua1').val(1);
-                                                                }
+                                    $('.minus-btn').click(function () {
+                                        var giatri = $(this).next().children()
+                                        giatri.val(parseInt(giatri.val()) - 1);
+                                        if (giatri.val() == 0) {
+                                            giatri.val(1);
+                                        }
+                                    });
+                                    // tang so luong trong input
+                                    $('.plus-btn').click(function () {
+                                        var gt = $(this)
+                                        $.ajax({
+                                            method: 'POST',
+                                            url: 'cart',
+                                            data: {
+                                                masp: $('#masp').val(),
+                                                soluongmua1: '1'
+                                            },
+                                            success: function (res) {
+                                                var thanhtien = gt.parent().next().children()
+                                                thanhtien.html(parseFloat(parseFloat(thanhtien.html()) + parseFloat(thanhtien.attr("data-thanhtien"))))
+                                                $("#TongTien").html(parseFloat($("#TongTien").html()) + parseFloat(thanhtien.attr("data-thanhtien")))
+                                            }
+                                        });
+                                    });
+                                    //giam so luong
+                                    $('.minus-btn').click(function (e) {
 
-                                                            });
-                                                            // tang so luong trong input
-                                                            $('#plus-btn').click(function () {
-                                                                $.ajax({
-                                                                    method: 'POST',
-                                                                    url: 'cart',
-                                                                    data: {
-                                                                        masp: $('#masp').val(),
-                                                                        soluongmua1: '1'
-                                                                    },
-                                                                    success: function (res) {
-                                                                        location.reload(true);
-                                                                    }
-                                                                });
-                                                            });
-                                                            //giam so luong
-                                                            $('#minus-btn').click(function () {
-                                                                $.ajax({
-                                                                    method: 'POST',
-                                                                    url: 'cart',
-                                                                    data: {
-                                                                        masp: $('#masp').val(),
-                                                                        soluongmua1: '-1'
-                                                                    },
-                                                                    success: function (res) {
-                                                                        location.reload(true);
-                                                                    }
-                                                                });
-                                                            });
+                                        var gt = $(this)
+                                        console.log(gt.next().children().val())
+                                        if (gt.next().children().val() == 1){}else {
+                                            $.ajax({
+                                                method: 'POST',
+                                                url: 'cart',
+                                                data: {
+                                                    masp: $('#masp').val(),
+                                                    soluongmua1: '-1'
+                                                },
+                                                success: function (res) {
+                                                    var thanhtien = gt.parent().next().children()
+                                                    if (parseFloat(thanhtien.html()) > parseFloat(thanhtien.attr("data-thanhtien"))) {
+                                                        thanhtien.html(parseFloat(parseFloat(thanhtien.html()) - parseFloat(thanhtien.attr("data-thanhtien"))))
+                                                    }
+                                                    if (parseFloat($("#TongTien").html()) - parseFloat(thanhtien.attr("data-thanhtien")) > 0) {
+                                                        $("#TongTien").html(parseFloat($("#TongTien").html()) - parseFloat(thanhtien.attr("data-thanhtien")))
+                                                    }
+                                                }
+                                            });
+                                        }
 
-                                                        });
+                                    });
+
+                                });
         </script>
     </body>
 </html>
