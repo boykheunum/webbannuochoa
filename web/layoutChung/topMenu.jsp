@@ -80,10 +80,10 @@
                                             <div class="tab-content" id="myTabContent">
                                                 <div class="tab-pane fade show active" id="home" role="tabpanel"
                                                      aria-labelledby="home-tab">
-                                                    <form>
+                                                    <form method="post" action="dangnhap">
                                                         <div class="form-group">
                                                             <label for="exampleInputEmail1">Tài Khoản</label>
-                                                            <input type="text" class="form-control" id="tendangnhap1" name="tendangnhap">
+                                                            <input type="text" class="form-control" id="tendangnhap1" name="tendangnhap1">
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="exampleInputPassword1">Mật khẩu</label>

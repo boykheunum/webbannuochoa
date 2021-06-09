@@ -5,23 +5,26 @@
  */
 package Control;
 
-import CSDL.nguoidung;
-import Model.nguoiDungModel;
+import CSDL.tienich;
+import Model.sanphamModel;
+import Model.tintucModel;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author DELL
+ * @author Nguyen Tien Dat
  */
-@WebServlet(name = "dangnhap", urlPatterns = {"/dangnhap"})
-public class dangnhap extends HttpServlet {
+@WebServlet(name = "suaTT", urlPatterns = {"/suaTT"})
+public class suaTT extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,26 +42,25 @@ public class dangnhap extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             response.setContentType("text/html; charset=UTF-8");
             request.setCharacterEncoding("UTF-8");
-            String userName = request.getParameter("tendangnhap1");
-            String passWord = request.getParameter("matkhau");
-            HttpSession session = request.getSession();
-            session.setAttribute("us", userName);
-            session.setAttribute("ps", passWord);
-            int phanloai = CSDL.nguoidung.checkUserName(userName);
-            if (phanloai == 1) {
-                int kq = nguoidung.dangnhap(userName, passWord);
-                if (kq == 1) {
-                    response.sendRedirect("phantrangUserSP");
-                } else {
-                    out.print("-1");
+            String checkEntype = request.getContentType();
+            if (checkEntype.contains("multipart/form-data")) {
+                List listItem = tienich.Uploads(request, "imageSP");
+                try {
+                    int id = Integer.parseInt(tienich.inputFile(listItem, "id"));
+                    String tieude = tienich.inputFile(listItem, "tieude");
+                    String noidung = tienich.inputFile(listItem, "noidung");
+                    String ngaydang = tienich.inputFile(listItem, "ngaydang");
+                    String anh = tienich.inputFile(listItem, "anh");
+                    tintucModel tt = new tintucModel(id, anh, ngaydang, tieude, noidung);
+                    int kq = CSDL.tintuc.editTinTuc(id, tt);
+                    if (kq > 0) {
+                        response.sendRedirect("dsTT.jsp");
+                    }
+                } catch (Exception ex) {
+                    Logger.getLogger(suaTT.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            }else{
-                int kq = CSDL.nhanVien.dangnhap(userName, passWord);
-                if(kq==1){
-                    response.sendRedirect("dsSP.jsp");
-                }
-            }
 
+            }
         }
     }
 

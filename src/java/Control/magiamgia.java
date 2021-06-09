@@ -5,8 +5,7 @@
  */
 package Control;
 
-import CSDL.nguoidung;
-import Model.nguoiDungModel;
+import Model.phieuGiamGiaModel;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -14,14 +13,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author DELL
+ * @author Nguyen Tien Dat
  */
-@WebServlet(name = "dangnhap", urlPatterns = {"/dangnhap"})
-public class dangnhap extends HttpServlet {
+@WebServlet(name = "magiamgia", urlPatterns = {"/magiamgia"})
+public class magiamgia extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,28 +35,22 @@ public class dangnhap extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            response.setContentType("text/html; charset=UTF-8");
-            request.setCharacterEncoding("UTF-8");
-            String userName = request.getParameter("tendangnhap1");
-            String passWord = request.getParameter("matkhau");
-            HttpSession session = request.getSession();
-            session.setAttribute("us", userName);
-            session.setAttribute("ps", passWord);
-            int phanloai = CSDL.nguoidung.checkUserName(userName);
-            if (phanloai == 1) {
-                int kq = nguoidung.dangnhap(userName, passWord);
+            String magiamgia = request.getParameter("magiamgia");
+            int checkmagiamgia = CSDL.phieugiamgia.checkPhieuGiamGia(magiamgia);
+            if (checkmagiamgia == 1) {
+                phieuGiamGiaModel pgg = new phieuGiamGiaModel();
+                int kq = CSDL.phieugiamgia.searchPhieuGiamGia(magiamgia, pgg);
                 if (kq == 1) {
-                    response.sendRedirect("phantrangUserSP");
-                } else {
-                    out.print("-1");
+                    boolean checkLoaiGiamGia = pgg.isKieugiamgia();
+                    if (checkLoaiGiamGia == true) {
+                        out.print("PT");
+                    } else {
+                        out.print("TM");
+                    }
                 }
-            }else{
-                int kq = CSDL.nhanVien.dangnhap(userName, passWord);
-                if(kq==1){
-                    response.sendRedirect("dsSP.jsp");
-                }
+            } else {
+                out.print("-1");
             }
-
         }
     }
 

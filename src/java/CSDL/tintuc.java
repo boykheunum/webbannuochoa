@@ -113,19 +113,20 @@ public class tintuc {
         }
     }
 
-    public static int editTinTuc(String tentieude, tintucModel tt) {
+    public static int editTinTuc(int id, tintucModel tt) {
         Connection cnn = CSDL.databaseConnection.cnnDB();
         if (cnn == null) {
             return -1;
         } else {
-            String sql = "UPDATE tintuc SET anh=?,ngaydang=?,noidung=? WHERE tieude=?";
+            String sql = "UPDATE tintuc SET anh=?,ngaydang=?,noidung=?,tieude=? WHERE id=?";
             PreparedStatement ps;
             try {
                 ps = cnn.prepareStatement(sql);
                 ps.setString(1, tt.getAnh());
                 ps.setString(2, tt.getNgaydang());
                 ps.setString(3, tt.getNoidung());
-                ps.setString(4, tentieude);
+                ps.setString(4, tt.getTieude());
+                ps.setInt(5, id);
                 return ps.executeUpdate();
             } catch (SQLException ex) {
                 Logger.getLogger(tintuc.class.getName()).log(Level.SEVERE, null, ex);

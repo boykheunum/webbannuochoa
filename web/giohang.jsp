@@ -92,9 +92,9 @@
             <div class="row d-flex justify-content-center">
                 <div class="col-lg-10 col-12">
                     <div class="d-flex justify-content-between align-items-center">
-                        <div> <button class="btn btn-sm bg-light border border-dark">GO BACK</button> </div>
+                        <div><text>Mã giảm giá: </text><input class="col-md-3" type="text"  name="magiamgia" id="magiamgia"></div>
                         <div class="px-md-0 px-1" id="footer-font"> <b class="pl-md-4">SUBTOTAL<span class="pl-md-4" id="TongTien"><%=tongtien%></span></b> </div>
-                        <div> <button class="btn btn-sm bg-dark text-white px-lg-5 px-3">CONTINUE</button> </div>
+                        <div><button class="btn btn-sm bg-dark text-white px-lg-5 px-3">CONTINUE</button></div>
                     </div>
                 </div>
 
@@ -111,12 +111,33 @@
         <script src="content/js/scripts.js"></script>
         <script>
                                 $(document).ready(function () {
-                                    $('.soluongmua1').prop('disabled', true);
 
+                                    $.("#magiamgia").keyup(function{
+                                    $.ajax({
+                                        method:"post",
+                                            actiton:"magiamgia",
+                                            data:{
+                                                magiamgia: $("#magiamgia").val(),
+                                            }
+                                        success:function(data){
+                                        if (data == "TM"){
+                                            $("#TongTien").html(parseFloat($("#TongTien").html()) - ))
+                                        } else if (data == "PT"){
+                                            
+                                        } else{
+                                        
+                                        }
+                                    }
+                                    });
+                                    })
+
+                                    $('.soluongmua1').prop('disabled', true);
                                     $('.plus-btn').click(function () {
                                         var input = $(this).prev().prev().children();
                                         input.val(parseInt(input.val()) + 1);
                                     });
+
+
 
                                     $('.minus-btn').click(function () {
                                         var giatri = $(this).next().children()
@@ -147,7 +168,8 @@
 
                                         var gt = $(this)
                                         console.log(gt.next().children().val())
-                                        if (gt.next().children().val() == 1){}else {
+                                        if (gt.next().children().val() == 1) {
+                                        } else {
                                             $.ajax({
                                                 method: 'POST',
                                                 url: 'cart',

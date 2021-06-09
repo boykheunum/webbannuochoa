@@ -150,7 +150,7 @@ public class nhanVien {
         if (cnn == null) {
             return -1;
         } else {
-            String sql = "SELECT * FROM nguoidung WHERE tendangnhap=? AND matkhau=?";
+            String sql = "SELECT * FROM nhanvien WHERE tendangnhap=? AND matkhau=?";
             try {
                 PreparedStatement pst = cnn.prepareStatement(sql);
                 pst.setString(1, us);

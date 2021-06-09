@@ -147,4 +147,28 @@ public class phieugiamgia {
             }
         }
     }
+    
+        public static int checkPhieuGiamGia(String keyWord) {
+        Connection cnn = CSDL.databaseConnection.cnnDB();
+        if (cnn == null) {
+            return -1;
+        } else {
+            String sql = "SELECT * FROM magiamgia WHERE idmagiamgia = ?";
+            PreparedStatement ps;
+            try {
+                ps = cnn.prepareStatement(sql);
+                ps.setString(1, keyWord);
+                ResultSet rs = ps.executeQuery();
+                if (rs.next()) {
+                    return 1;
+                }
+                return 0;
+            } catch (SQLException ex) {
+                Logger.getLogger(phieugiamgia.class.getName()).log(Level.SEVERE, null, ex);
+                return -2;
+            }
+
+        }
+    }
+    
 }

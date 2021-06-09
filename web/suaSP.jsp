@@ -85,17 +85,18 @@
                                 <div class="form-group">
                                     "Ảnh"
                                     <%
-                                        String checkImage = "noImage";
+                                        String checkImage = "noImage.png";
                                         if (sp.getHinhanh().equals("") != true) {
                                             checkImage = sp.getHinhanh();
+                                        }
                                     %>
                                     <div class="col-md-6">
                                         <img src="imageSP/<%=checkImage%>" width="40%" height="40%">
                                         <div>
-                                        <input title="<%=checkImage%>" id="formFileSm" type="file" id="anh" name="anh" value="<%=checkImage%>">
+                                        <input title="<%=checkImage%>" type="file" id="formFileSm" name="anh" value="<%=checkImage%>">
                                         </div>
                                     </div>
-                                    <%}%>
+                                    
                                 </div>
                         </div>
                         <div class="form-group">
