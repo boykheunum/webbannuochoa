@@ -53,13 +53,21 @@ public class cart extends HttpServlet {
             if (cart.containsKey(masp) == false) {
                 cart.put(masp, soluong1);
             } else {//sản phẩm đã có trong giỏ hàng
-                int soluong = cart.get(masp);
-                if(soluong1 != 0){
+                int soluong = cart.get(masp);//lấy số lượng ht 
+                if (soluong1 != 0) {
                     soluong = soluong + soluong1;
-                }else{
+                }
+                String giatritanggiam = request.getParameter("giatritanggiam");
+                if(giatritanggiam==null){
+                
+                }else if(giatritanggiam.equals("1")==true){
                     soluong++;
-                }    
+                }else{
+                    soluong--;
+                }
+                
                 cart.put(masp, soluong);
+                
             }
             session.setAttribute("cart", cart);//cập nhật giỏ hàng mới vào sesion
             response.sendRedirect("giohang.jsp");

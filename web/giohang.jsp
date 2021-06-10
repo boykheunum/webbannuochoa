@@ -73,7 +73,7 @@
 
                         <div class="pl-md-0 pl-2"> 
                             <button  type="button"  class="btn btn-dark btn-sm minus-btn" ><i class="fa fa-minus"></i></button>
-                            <span><input type="number" class="soluongmua1" name="soluongmua1" value="<%=soluong%>" min="1" onchange="checkFunction()"></span>
+                            <span><input type="number" class="soluongmua1" name="soluongmua1" value="<%=soluong%>" min="1"></span>
                             <input type="hidden" id="masp" name="masp" value="<%=sp.getMasp()%>">                     
                             <button type="button" class="btn btn-dark btn-sm plus-btn"  ><i class="fa fa-plus"></i></button>
                         </div>
@@ -124,24 +124,24 @@
                                         }
                                     });
                                     
-                                    $.("#magiamgia").keyup(function{
-                                        $.ajax({
-                                            method:"post",
-                                            actiton:"magiamgia",
-                                            data:{
-                                                magiamgia: $("#magiamgia").val(),
-                                            }
-                                            success:function(data){
-                                                if (data == "TM"){
-                                                    $("#TongTien").html(parseFloat($("#TongTien").html()) - ))
-                                                } else if (data == "PT"){
-                                            
-                                                } else{
-                                        
-                                                }
-                                            }
-                                        });
-                                    })
+//                                    $.("#magiamgia").keyup(function{
+//                                        $.ajax({
+//                                            method:"post",
+//                                            actiton:"magiamgia",
+//                                            data:{
+//                                                magiamgia: $("#magiamgia").val(),
+//                                            }
+//                                            success:function(data){
+//                                                if (data == "TM"){
+//                                                    $("#TongTien").html(parseFloat($("#TongTien").html()) - ))
+//                                                } else if (data == "PT"){
+//                                            
+//                                                } else{
+//                                        
+//                                                }
+//                                            }
+//                                        });
+//                                    })
                                     
                                     // tang so luong trong input
                                     $('.plus-btn').click(function () {
@@ -150,8 +150,8 @@
                                             method: 'POST',
                                             url: 'cart',
                                             data: {
-                                                masp: $('#masp').val(),
-                                                
+                                                masp: gt.prev().val(),
+                                                giatritanggiam: 1
                                             },
                                             success: function (res) {
                                                 var thanhtien = gt.parent().next().children()
@@ -167,10 +167,11 @@
                                         if (gt.next().children().val() == 1) {
                                         } else {
                                             $.ajax({
-                                                method: 'POST',
+                                                method: 'post',
                                                 url: 'cart',
                                                 data: {
-                                                    masp: $('#masp').val()
+                                                    masp: gt.next().next().val(),
+                                                    giatritanggiam: '-1'
                                                 },
                                                 success: function (res) {
                                                     var thanhtien = gt.parent().next().children();
