@@ -185,16 +185,10 @@
                                 $("#messBoxErr2").html("Đã tồn tại userName");
                                 $("#messBoxErr2").addClass("text-danger");
                                 $("#messBoxErr2").removeClass("text-success");
-
-
                             } else {
                                 $("#messBoxErr2").removeClass("text-danger");
-
                                 $("#messBoxErr2").addClass("text-success");
                                 $("#messBoxErr2").html("userName hợp lệ");
-
-
-
                             }
                         }
                     });

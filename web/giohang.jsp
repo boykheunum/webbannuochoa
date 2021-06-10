@@ -111,41 +111,38 @@
         <script src="content/js/scripts.js"></script>
         <script>
                                 $(document).ready(function () {
-
-                                    $.("#magiamgia").keyup(function{
-                                    $.ajax({
-                                        method:"post",
-                                            actiton:"magiamgia",
-                                            data:{
-                                                magiamgia: $("#magiamgia").val(),
-                                            }
-                                        success:function(data){
-                                        if (data == "TM"){
-                                            $("#TongTien").html(parseFloat($("#TongTien").html()) - ))
-                                        } else if (data == "PT"){
-                                            
-                                        } else{
-                                        
-                                        }
-                                    }
-                                    });
-                                    })
-
                                     $('.soluongmua1').prop('disabled', true);
                                     $('.plus-btn').click(function () {
                                         var input = $(this).prev().prev().children();
                                         input.val(parseInt(input.val()) + 1);
                                     });
-
-
-
                                     $('.minus-btn').click(function () {
-                                        var giatri = $(this).next().children()
+                                        var giatri = $(this).next().children();
                                         giatri.val(parseInt(giatri.val()) - 1);
                                         if (giatri.val() == 0) {
                                             giatri.val(1);
                                         }
                                     });
+                                    
+                                    $.("#magiamgia").keyup(function{
+                                        $.ajax({
+                                            method:"post",
+                                            actiton:"magiamgia",
+                                            data:{
+                                                magiamgia: $("#magiamgia").val(),
+                                            }
+                                            success:function(data){
+                                                if (data == "TM"){
+                                                    $("#TongTien").html(parseFloat($("#TongTien").html()) - ))
+                                                } else if (data == "PT"){
+                                            
+                                                } else{
+                                        
+                                                }
+                                            }
+                                        });
+                                    })
+                                    
                                     // tang so luong trong input
                                     $('.plus-btn').click(function () {
                                         var gt = $(this)
@@ -154,7 +151,7 @@
                                             url: 'cart',
                                             data: {
                                                 masp: $('#masp').val(),
-                                                soluongmua1: '1'
+                                                
                                             },
                                             success: function (res) {
                                                 var thanhtien = gt.parent().next().children()
@@ -163,22 +160,20 @@
                                             }
                                         });
                                     });
+                                    
                                     //giam so luong
                                     $('.minus-btn').click(function (e) {
-
-                                        var gt = $(this)
-                                        console.log(gt.next().children().val())
+                                        var gt = $(this);
                                         if (gt.next().children().val() == 1) {
                                         } else {
                                             $.ajax({
                                                 method: 'POST',
                                                 url: 'cart',
                                                 data: {
-                                                    masp: $('#masp').val(),
-                                                    soluongmua1: '-1'
+                                                    masp: $('#masp').val()
                                                 },
                                                 success: function (res) {
-                                                    var thanhtien = gt.parent().next().children()
+                                                    var thanhtien = gt.parent().next().children();
                                                     if (parseFloat(thanhtien.html()) > parseFloat(thanhtien.attr("data-thanhtien"))) {
                                                         thanhtien.html(parseFloat(parseFloat(thanhtien.html()) - parseFloat(thanhtien.attr("data-thanhtien"))))
                                                     }

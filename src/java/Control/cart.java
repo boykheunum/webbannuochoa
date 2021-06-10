@@ -40,33 +40,25 @@ public class cart extends HttpServlet {
             HttpSession session = request.getSession();
             String masp = request.getParameter("masp");
             String check = (request.getParameter("soluongmua"));
-            int soluong;
+            int soluong1;
             if (check != null) {
-                soluong = Integer.parseInt(check);
+                soluong1 = Integer.parseInt(check);
             } else {
-                soluong = 0;
+                soluong1 = 0;
             }
             TreeMap<String, Integer> cart = (TreeMap<String, Integer>) session.getAttribute("cart");
             if (cart == null) {
                 cart = new TreeMap<String, Integer>();
             }
             if (cart.containsKey(masp) == false) {
-                cart.put(masp, soluong);
+                cart.put(masp, soluong1);
             } else {//sản phẩm đã có trong giỏ hàng
-//                String tang1 = request.getParameter("soluongmua1");
-//
-//                int soluong1 = 0;
-//                if (tang1 == null) {
-//                    soluong1 = 0;
-//                } else if (tang1.equals("1")) {
-//                    soluong1 = 1;
-//                } else {
-//                    soluong1 = -1;
-//                }
-//                int soluong2 = cart.get(masp);//lấy số lượng hiện tại
-//                int soluong3 = soluong2 + soluong1;
-//                soluong = soluong + soluong3;
-                soluong = cart.get(masp);
+                int soluong = cart.get(masp);
+                if(soluong1 != 0){
+                    soluong = soluong + soluong1;
+                }else{
+                    soluong++;
+                }    
                 cart.put(masp, soluong);
             }
             session.setAttribute("cart", cart);//cập nhật giỏ hàng mới vào sesion
