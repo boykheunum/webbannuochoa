@@ -55,6 +55,9 @@ public class themTinTuc extends HttpServlet {
                     if (kq == 1) {
                         response.sendRedirect("dsTT.jsp");
                     }
+                     else {
+                response.sendRedirect("500.jsp");
+            }
                 } catch (Exception ex) {
                     Logger.getLogger(themSP.class.getName()).log(Level.SEVERE, null, ex);
                 }

@@ -56,6 +56,9 @@ public class suaTT extends HttpServlet {
                     if (kq > 0) {
                         response.sendRedirect("dsTT.jsp");
                     }
+                     else {
+                response.sendRedirect("500.jsp");
+            }
                 } catch (Exception ex) {
                     Logger.getLogger(suaTT.class.getName()).log(Level.SEVERE, null, ex);
                 }

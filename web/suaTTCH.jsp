@@ -13,7 +13,7 @@
                     <div class="container-fluid">
 
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="index.html">Loại Sản Phẩm</a></li>
+                            <li class="breadcrumb-item"><a href="index.html">Thông Tin Cửa Hàng/a></li>
                             <li class="breadcrumb-item active">Sửa</li>
                         </ol>
                         <div class="card mb-4">

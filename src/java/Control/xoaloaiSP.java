@@ -41,6 +41,9 @@ public class xoaloaiSP extends HttpServlet {
             if (kq > 0) {
                 response.sendRedirect("dsloaiSP.jsp");
             }
+            else {
+                response.sendRedirect("500.jsp");
+            }
         }
     }
 

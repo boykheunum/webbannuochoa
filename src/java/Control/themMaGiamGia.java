@@ -56,6 +56,9 @@ public class themMaGiamGia extends HttpServlet {
             if (kq == 1) {
                 out.print("<script>alert('thành công')</script>");
             }
+             else {
+                response.sendRedirect("500.jsp");
+            }
         }
     }
 

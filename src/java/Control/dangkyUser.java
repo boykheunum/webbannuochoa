@@ -47,7 +47,7 @@ public class dangkyUser extends HttpServlet {
             if (kq == 1) {
                 response.sendRedirect("phantrangUserSP");
             } else {
-                out.print("alert('dang ký thất bại')");
+                out.print("alert('Đăng ký thất bại')");
             }
         }
     }

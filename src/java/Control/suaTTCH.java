@@ -46,6 +46,9 @@ public class suaTTCH extends HttpServlet {
             if (kq == 1) {
                 response.sendRedirect("dsTTCH.jsp");
             }
+             else {
+                response.sendRedirect("500.jsp");
+            }
         }
     }
 

@@ -39,6 +39,9 @@ public class xoaTT extends HttpServlet {
             if(kq==1){
                 response.sendRedirect("dsTT.jsp");
             }
+             else {
+                response.sendRedirect("500.jsp");
+            }
         }
     }
 
