@@ -5,7 +5,6 @@
  */
 package Control;
 
-import Model.phieuGiamGiaModel;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -13,14 +12,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Nguyen Tien Dat
  */
-@WebServlet(name = "magiamgia", urlPatterns = {"/magiamgia"})
-public class magiamgia extends HttpServlet {
+@WebServlet(name = "xuLyMaGiamGia", urlPatterns = {"/xuLyMaGiamGia"})
+public class xuLyMaGiamGia extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,27 +34,15 @@ public class magiamgia extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            HttpSession session = request.getSession();
-            String magiamgia = request.getParameter("magiamgia");
-            int checkmagiamgia = CSDL.phieugiamgia.checkPhieuGiamGia(magiamgia);
-            if (checkmagiamgia == 1) {
-                phieuGiamGiaModel pgg = new phieuGiamGiaModel();
-                int kq = CSDL.phieugiamgia.searchPhieuGiamGia(magiamgia, pgg);
-                if (kq == 1) {
-                    boolean checkLoaiGiamGia = pgg.isKieugiamgia();
-                    if (checkLoaiGiamGia == true) {
-                        int pt = pgg.getGiatri();
-                        session.setAttribute("pt", pt);
-                        out.print("PT");
-                    } else {
-                        int tm = pgg.getGiatri();
-                        session.setAttribute("tm", tm);
-                        out.print("TM");
-                    }
-                }
-            } else {
-                out.print("-1");
-            }
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet xuLyMaGiamGia</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet xuLyMaGiamGia at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 

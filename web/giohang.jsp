@@ -92,8 +92,14 @@
             <div class="row d-flex justify-content-center">
                 <div class="col-lg-10 col-12">
                     <div class="d-flex justify-content-between align-items-center">
-                        <div><text>Mã giảm giá: </text><input class="col-md-3" type="text"  name="magiamgia" id="magiamgia"></div>
-                        <div class="px-md-0 px-1" id="footer-font"> <b class="pl-md-4">SUBTOTAL<span class="pl-md-4" id="TongTien"><%=tongtien%></span></b> </div>
+                        <div>
+                            <span id="checkmagiamgia" name="checkmagiamgia" class="checkmagiamgia"></span>
+                            <form method="post" action="xuLyMaGiamGia">
+                                <text>Mã giảm giá: </text><input type="text" name="magiamgia" id="magiamgia">
+                                <input type="submit" value="Sử dụng">
+                            </form>
+                        </div>
+                        <div class="px-md-0 px-1" id="footer-font"><b class="pl-md-4">SUBTOTAL<span class="pl-md-4" id="TongTien"><%=tongtien%></span></b> </div>
                         <div><button class="btn btn-sm bg-dark text-white px-lg-5 px-3">CONTINUE</button></div>
                     </div>
                 </div>
@@ -110,84 +116,86 @@
         <!-- Core theme JS-->
         <script src="content/js/scripts.js"></script>
         <script>
-                                $(document).ready(function () {
-                                    $('.soluongmua1').prop('disabled', true);
-                                    $('.plus-btn').click(function () {
-                                        var input = $(this).prev().prev().children();
-                                        input.val(parseInt(input.val()) + 1);
-                                    });
-                                    $('.minus-btn').click(function () {
-                                        var giatri = $(this).next().children();
-                                        giatri.val(parseInt(giatri.val()) - 1);
-                                        if (giatri.val() == 0) {
-                                            giatri.val(1);
-                                        }
-                                    });
-                                    
-//                                    $.("#magiamgia").keyup(function{
-//                                        $.ajax({
-//                                            method:"post",
-//                                            actiton:"magiamgia",
-//                                            data:{
-//                                                magiamgia: $("#magiamgia").val(),
-//                                            }
-//                                            success:function(data){
-//                                                if (data == "TM"){
-//                                                    $("#TongTien").html(parseFloat($("#TongTien").html()) - ))
-//                                                } else if (data == "PT"){
-//                                            
-//                                                } else{
-//                                        
-//                                                }
-//                                            }
-//                                        });
-//                                    })
-                                    
-                                    // tang so luong trong input
-                                    $('.plus-btn').click(function () {
-                                        var gt = $(this)
-                                        $.ajax({
-                                            method: 'POST',
-                                            url: 'cart',
-                                            data: {
-                                                masp: gt.prev().val(),
-                                                giatritanggiam: 1
-                                            },
-                                            success: function (res) {
-                                                var thanhtien = gt.parent().next().children()
-                                                thanhtien.html(parseFloat(parseFloat(thanhtien.html()) + parseFloat(thanhtien.attr("data-thanhtien"))))
-                                                $("#TongTien").html(parseFloat($("#TongTien").html()) + parseFloat(thanhtien.attr("data-thanhtien")))
-                                            }
-                                        });
-                                    });
-                                    
-                                    //giam so luong
-                                    $('.minus-btn').click(function (e) {
-                                        var gt = $(this);
-                                        if (gt.next().children().val() == 1) {
-                                        } else {
-                                            $.ajax({
-                                                method: 'post',
-                                                url: 'cart',
-                                                data: {
-                                                    masp: gt.next().next().val(),
-                                                    giatritanggiam: '-1'
-                                                },
-                                                success: function (res) {
-                                                    var thanhtien = gt.parent().next().children();
-                                                    if (parseFloat(thanhtien.html()) > parseFloat(thanhtien.attr("data-thanhtien"))) {
-                                                        thanhtien.html(parseFloat(parseFloat(thanhtien.html()) - parseFloat(thanhtien.attr("data-thanhtien"))))
-                                                    }
-                                                    if (parseFloat($("#TongTien").html()) - parseFloat(thanhtien.attr("data-thanhtien")) > 0) {
-                                                        $("#TongTien").html(parseFloat($("#TongTien").html()) - parseFloat(thanhtien.attr("data-thanhtien")))
-                                                    }
-                                                }
-                                            });
-                                        }
+            $(document).ready(function () {
+                $('.soluongmua1').prop('disabled', true);
+                $('.plus-btn').click(function () {
+                    var input = $(this).prev().prev().children();
+                    input.val(parseInt(input.val()) + 1);
+                });
+                $('.minus-btn').click(function () {
+                    var giatri = $(this).next().children();
+                    giatri.val(parseInt(giatri.val()) - 1);
+                    if (giatri.val() == 0) {
+                        giatri.val(1);
+                    }
+                });
 
-                                    });
+                // tang so luong trong input
+                $('.plus-btn').click(function () {
+                    var gt = $(this)
+                    $.ajax({
+                        method: 'POST',
+                        url: 'cart',
+                        data: {
+                            masp: gt.prev().val(),
+                            giatritanggiam: 1
+                        },
+                        success: function (res) {
+                            var thanhtien = gt.parent().next().children()
+                            thanhtien.html(parseFloat(parseFloat(thanhtien.html()) + parseFloat(thanhtien.attr("data-thanhtien"))))
+                            $("#TongTien").html(parseFloat($("#TongTien").html()) + parseFloat(thanhtien.attr("data-thanhtien")))
+                        }
+                    });
+                });
 
-                                });
+                //giam so luong
+                $('.minus-btn').click(function (e) {
+                    var gt = $(this);
+                    if (gt.next().children().val() == 1) {
+                    } else {
+                        $.ajax({
+                            method: 'post',
+                            url: 'cart',
+                            data: {
+                                masp: gt.next().next().val(),
+                                giatritanggiam: '-1'
+                            },
+                            success: function (res) {
+                                var thanhtien = gt.parent().next().children();
+                                if (parseFloat(thanhtien.html()) > parseFloat(thanhtien.attr("data-thanhtien"))) {
+                                    thanhtien.html(parseFloat(parseFloat(thanhtien.html()) - parseFloat(thanhtien.attr("data-thanhtien"))))
+                                }
+                                if (parseFloat($("#TongTien").html()) - parseFloat(thanhtien.attr("data-thanhtien")) > 0) {
+                                    $("#TongTien").html(parseFloat($("#TongTien").html()) - parseFloat(thanhtien.attr("data-thanhtien")))
+                                }
+                            }
+                        });
+                    }
+                });
+
+                //su ly ma giam gia
+                $("#magiamgia").keyup(function () {
+                    $.ajax({
+                        method: 'post',
+                        url: 'magiamgia',
+                        data: {
+                            magiamgia: $('#magiamgia').val(),
+                        },
+                        success: function (res) {
+                            if (res == "-1") {
+                                $("#checkmagiamgia").html("Mã phiếu giảm giá không hợp lệ");
+                                $("#checkmagiamgia").addClass("text-danger");
+                                $("#checkmagiamgia").removeClass("text-success");
+                            }
+                        }
+                    });
+                });
+
+
+            });
+
+
+
         </script>
     </body>
 </html>
