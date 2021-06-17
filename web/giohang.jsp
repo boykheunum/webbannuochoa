@@ -81,7 +81,7 @@
                         <span><a href="deleteCart?masp=<%=sp.getMasp()%>">Xóa</a></span>
                     </div>
                     <%
-                            }
+                            }  
                         }
                     %>
                     <!--ket thuc thong tin nhung san pham-->
@@ -96,6 +96,7 @@
                             <span id="checkmagiamgia" name="checkmagiamgia" class="checkmagiamgia"></span>
                             <form method="post" action="xuLyMaGiamGia">
                                 <text>Mã giảm giá: </text><input type="text" name="magiamgia" id="magiamgia">
+                                <input type="hidden" id="tongGia" name="tongGia" value="<%=tongtien%>">
                                 <input type="submit" value="Sử dụng">
                             </form>
                         </div>
@@ -180,10 +181,15 @@
                         url: 'magiamgia',
                         data: {
                             magiamgia: $('#magiamgia').val(),
+                            tongGia : $('#tongGia').val(),
                         },
                         success: function (res) {
                             if (res == "-1") {
                                 $("#checkmagiamgia").html("Mã phiếu giảm giá không hợp lệ");
+                                $("#checkmagiamgia").addClass("text-danger");
+                                $("#checkmagiamgia").removeClass("text-success");
+                            } else {
+                                $("#checkmagiamgia").html("");
                                 $("#checkmagiamgia").addClass("text-danger");
                                 $("#checkmagiamgia").removeClass("text-success");
                             }

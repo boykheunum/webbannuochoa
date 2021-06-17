@@ -59,6 +59,9 @@ public class suaSP extends HttpServlet {
                     if (kq > 0) {
                         response.sendRedirect("dsSP.jsp");
                     }
+                     else {
+                response.sendRedirect("500.jsp");
+            }
                 } catch (Exception ex) {
                     Logger.getLogger(suaSP.class.getName()).log(Level.SEVERE, null, ex);
                 }

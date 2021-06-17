@@ -11,8 +11,8 @@
                     <main>
                         <div class="container-fluid">
                             <ol class="breadcrumb mb-4">
-                                <li class="breadcrumb-item"><a href="index.html">Loại Sản Phẩm</a></li>
-                                <li class="breadcrumb-item active">Thêm loại sản phẩm</li>
+                                <li class="breadcrumb-item"><a href="index.html">Chức Vụ</a></li>
+                                <li class="breadcrumb-item active">Thêm Chức Vụ</li>
                             </ol>
                             <div class="card mb-4">
                                 <div class="card-body">

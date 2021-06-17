@@ -41,6 +41,9 @@ public class xoaPGG extends HttpServlet {
             if (kq == 1) {
                 response.sendRedirect("dsPGG.jsp");
             }
+             else {
+                response.sendRedirect("500.jsp");
+            }
         }
     }
 

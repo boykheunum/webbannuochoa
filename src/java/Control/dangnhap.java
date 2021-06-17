@@ -42,19 +42,21 @@ public class dangnhap extends HttpServlet {
             String userName = request.getParameter("tendangnhap1");
             String passWord = request.getParameter("matkhau");
             HttpSession session = request.getSession();
-            session.setAttribute("us", userName);
-            session.setAttribute("ps", passWord);
             int phanloai = CSDL.nguoidung.checkUserName(userName);
             if (phanloai == 1) {
                 int kq = nguoidung.dangnhap(userName, passWord);
                 if (kq == 1) {
+                    session.setAttribute("usKhach", userName);
+                    
                     response.sendRedirect("phantrangUserSP");
                 } else {
                     out.print("-1");
                 }
-            }else{
+            } else {
                 int kq = CSDL.nhanVien.dangnhap(userName, passWord);
-                if(kq==1){
+                if (kq == 1) {
+                    session.setAttribute("usNV", userName);
+                    
                     response.sendRedirect("dsSP.jsp");
                 }
             }

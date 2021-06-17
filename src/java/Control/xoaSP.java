@@ -41,6 +41,9 @@ public class xoaSP extends HttpServlet {
             if (kq == 1) {
                 response.sendRedirect("dsSP.jsp");
             }
+             else {
+                response.sendRedirect("500.jsp");
+            }
         }
     }
 

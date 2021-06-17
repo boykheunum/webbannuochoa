@@ -44,6 +44,9 @@ public class sualoaiSP extends HttpServlet {
             if (kq == 1) {
                 response.sendRedirect("dsloaiSP.jsp");
             }
+             else {
+                response.sendRedirect("500.jsp");
+            }
         }
     }
 

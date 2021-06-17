@@ -39,6 +39,9 @@ public class xoaNV extends HttpServlet {
             if(kq==1){
                 response.sendRedirect("dsNV.jsp");
             }
+             else {
+                response.sendRedirect("500.jsp");
+            }
         }
     }
 

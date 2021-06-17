@@ -78,7 +78,6 @@ public class hoadon {
             PreparedStatement ps;
             try {
                 ps = cnn.prepareStatement(sql);
-
                 ps.setInt(1, hd.getMakh());
                 ps.setInt(2, hd.getManv());
                 ps.setString(3, hd.getNgayban());

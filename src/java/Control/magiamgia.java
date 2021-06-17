@@ -38,20 +38,26 @@ public class magiamgia extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             HttpSession session = request.getSession();
             String magiamgia = request.getParameter("magiamgia");
+            int tongGia = Integer.parseInt("tongGia");
             int checkmagiamgia = CSDL.phieugiamgia.checkPhieuGiamGia(magiamgia);
             if (checkmagiamgia == 1) {
                 phieuGiamGiaModel pgg = new phieuGiamGiaModel();
                 int kq = CSDL.phieugiamgia.searchPhieuGiamGia(magiamgia, pgg);
                 if (kq == 1) {
                     boolean checkLoaiGiamGia = pgg.isKieugiamgia();
-                    if (checkLoaiGiamGia == true) {
-                        int pt = pgg.getGiatri();
-                        session.setAttribute("pt", pt);
-                        out.print("PT");
+                    int checkDieuKien = pgg.getDieukien();
+                    if (checkDieuKien == tongGia) {
+                        if (checkLoaiGiamGia == true) {
+                            int pt = pgg.getGiatri();
+                            session.setAttribute("pt", pt);
+                            out.print("PT");
+                        } else {
+                            int tm = pgg.getGiatri();
+                            session.setAttribute("tm", tm);
+                            out.print("TM");
+                        }
                     } else {
-                        int tm = pgg.getGiatri();
-                        session.setAttribute("tm", tm);
-                        out.print("TM");
+                        out.print("1");
                     }
                 }
             } else {
