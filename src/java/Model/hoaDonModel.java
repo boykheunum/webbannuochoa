@@ -19,14 +19,6 @@ public class hoaDonModel {
         this.mahd = mahd;
     }
 
-    public int getManv() {
-        return manv;
-    }
-
-    public void setManv(int manv) {
-        this.manv = manv;
-    }
-
     public int getMakh() {
         return makh;
     }
@@ -54,15 +46,13 @@ public class hoaDonModel {
     public hoaDonModel() {
     }
 
-    public hoaDonModel(int mahd, int manv, int makh, String ngayban, float tongtien) {
+    public hoaDonModel(int mahd, int makh, String ngayban, float tongtien) {
         this.mahd = mahd;
-        this.manv = manv;
         this.makh = makh;
         this.ngayban = ngayban;
         this.tongtien = tongtien;
     }
     private int mahd;
-    private int manv;
     private int makh;
     private String ngayban;
     private float tongtien;

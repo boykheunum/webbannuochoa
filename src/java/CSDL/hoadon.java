@@ -33,7 +33,7 @@ public class hoadon {
                     hoaDonModel hd = new hoaDonModel();
                     hd.setMahd(rs.getInt("mahd"));
                     hd.setMakh(rs.getInt("makh"));
-                    hd.setManv(rs.getInt("manv"));
+                    
                     hd.setNgayban(rs.getString("ngayban"));
                     hd.setTongtien(rs.getFloat("tongtien"));
                     ds.add(hd);
@@ -52,12 +52,11 @@ public class hoadon {
         if (cnn == null) {
             return -1;
         } else {
-            String sql = "INSERT INTO hoadon values(?,?,?,?,?)";
+            String sql = "INSERT INTO hoadon values(?,?,?,?)";
             try {
                 PreparedStatement ps = cnn.prepareStatement(sql);
                 ps.setInt(1, hd.getMahd());
-                ps.setInt(5, hd.getMakh());
-                ps.setInt(4, hd.getManv());
+                ps.setInt(4, hd.getMakh());
                 ps.setString(2, hd.getNgayban());
                 ps.setFloat(3, hd.getTongtien());
                 return ps.executeUpdate();
@@ -74,15 +73,14 @@ public class hoadon {
         if (cnn == null) {
             return -1;
         } else {
-            String sql = "UPDATE hoadon SET makh=?, manv=?, ngayban=?, tongtien=? WHERE mahd=?";
+            String sql = "UPDATE hoadon SET makh=?, ngayban=?, tongtien=? WHERE mahd=?";
             PreparedStatement ps;
             try {
                 ps = cnn.prepareStatement(sql);
-                ps.setInt(1, hd.getMakh());
-                ps.setInt(2, hd.getManv());
-                ps.setString(3, hd.getNgayban());
-                ps.setFloat(4, hd.getTongtien());
-                ps.setInt(5, keyword);
+                ps.setInt(3, hd.getMakh());
+                ps.setString(1, hd.getNgayban());
+                ps.setFloat(2, hd.getTongtien());
+                ps.setInt(4, keyword);
                 return ps.executeUpdate();
             } catch (SQLException ex) {
                 Logger.getLogger(thongtincuahang.class.getName()).log(Level.SEVERE, null, ex);
@@ -106,7 +104,7 @@ public class hoadon {
 
                     hd.setMahd(rs.getInt("mahd"));
                     hd.setMakh(rs.getInt("makh"));
-                    hd.setManv(rs.getInt("manv"));
+                    
                     hd.setNgayban(rs.getString("ngayban"));
                     hd.setTongtien(rs.getFloat("tongtien"));
                 }

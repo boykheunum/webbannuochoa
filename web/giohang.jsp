@@ -4,6 +4,7 @@
     Author     : Nguyen Tien Dat
 --%>
 
+<%@page import="java.util.Set"%>
 <%@page import="Model.sanphamModel"%>
 <%@page import="java.util.TreeMap"%>
 <%@page import="java.util.List"%>
@@ -47,6 +48,7 @@
                     <!-- thong tin nhung san pham-->
                     <%
                         //int soluong1 = (int) session.getAttribute("soluong");
+                        
                         TreeMap<String, Integer> cart = (TreeMap<String, Integer>) session.getAttribute("cart");
                         if (cart == null) {
                             out.println("<h3> chưa có giỏ hàng</h3>");
@@ -81,7 +83,15 @@
                         <span><a href="deleteCart?masp=<%=sp.getMasp()%>">Xóa</a></span>
                     </div>
                     <%
-                            }  
+                                TreeMap<String, Integer> hoadon = (TreeMap<String, Integer>) session.getAttribute("cart");
+                                hoadon.put(masp, soluong);
+                                Set<String>key = hoadon.keySet();
+                                for(String k : key){
+                                    String test = k;
+                                }
+                                session.setAttribute("hoadon", hoadon);
+                            }
+                            
                         }
                     %>
                     <!--ket thuc thong tin nhung san pham-->
@@ -181,7 +191,7 @@
                         url: 'magiamgia',
                         data: {
                             magiamgia: $('#magiamgia').val(),
-                            tongGia : $('#tongGia').val(),
+                            tongGia: $('#tongGia').val(),
                         },
                         success: function (res) {
                             if (res == "-1") {
