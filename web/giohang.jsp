@@ -85,13 +85,8 @@
                     <%
                                 TreeMap<String, Integer> hoadon = (TreeMap<String, Integer>) session.getAttribute("cart");
                                 hoadon.put(masp, soluong);
-                                Set<String>key = hoadon.keySet();
-                                for(String k : key){
-                                    String test = k;
-                                }
                                 session.setAttribute("hoadon", hoadon);
-                            }
-                            
+                            }   
                         }
                     %>
                     <!--ket thuc thong tin nhung san pham-->
@@ -140,7 +135,7 @@
                         giatri.val(1);
                     }
                 });
-
+                
                 // tang so luong trong input
                 $('.plus-btn').click(function () {
                     var gt = $(this)
@@ -158,7 +153,7 @@
                         }
                     });
                 });
-
+                
                 //giam so luong
                 $('.minus-btn').click(function (e) {
                     var gt = $(this);
@@ -183,7 +178,7 @@
                         });
                     }
                 });
-
+                
                 //su ly ma giam gia
                 $("#magiamgia").keyup(function () {
                     $.ajax({
@@ -206,12 +201,12 @@
                         }
                     });
                 });
-
-
+                
+                
             });
-
-
-
+            
+            
+            
         </script>
     </body>
 </html>

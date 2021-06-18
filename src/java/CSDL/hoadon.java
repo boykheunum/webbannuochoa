@@ -33,7 +33,7 @@ public class hoadon {
                     hoaDonModel hd = new hoaDonModel();
                     hd.setMahd(rs.getInt("mahd"));
                     hd.setMakh(rs.getInt("makh"));
-                    
+
                     hd.setNgayban(rs.getString("ngayban"));
                     hd.setTongtien(rs.getFloat("tongtien"));
                     ds.add(hd);
@@ -104,7 +104,7 @@ public class hoadon {
 
                     hd.setMahd(rs.getInt("mahd"));
                     hd.setMakh(rs.getInt("makh"));
-                    
+
                     hd.setNgayban(rs.getString("ngayban"));
                     hd.setTongtien(rs.getFloat("tongtien"));
                 }
