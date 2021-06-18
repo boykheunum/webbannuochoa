@@ -48,7 +48,7 @@
                     <!-- thong tin nhung san pham-->
                     <%
                         //int soluong1 = (int) session.getAttribute("soluong");
-                        
+
                         TreeMap<String, Integer> cart = (TreeMap<String, Integer>) session.getAttribute("cart");
                         if (cart == null) {
                             out.println("<h3> chưa có giỏ hàng</h3>");
@@ -86,7 +86,7 @@
                                 TreeMap<String, Integer> hoadon = (TreeMap<String, Integer>) session.getAttribute("cart");
                                 hoadon.put(masp, soluong);
                                 session.setAttribute("hoadon", hoadon);
-                            }   
+                            }
                         }
                     %>
                     <!--ket thuc thong tin nhung san pham-->
@@ -105,8 +105,9 @@
                                 <input type="submit" value="Sử dụng">
                             </form>
                         </div>
-                        <div class="px-md-0 px-1" id="footer-font"><b class="pl-md-4">SUBTOTAL<span class="pl-md-4" id="TongTien"><%=tongtien%></span></b> </div>
-                        <div><button class="btn btn-sm bg-dark text-white px-lg-5 px-3">CONTINUE</button></div>
+                        <div class="px-md-0 px-1" id="footer-font"><b class="pl-md-4">TỔNG TIỀN<span class="pl-md-4" id="TongTien"><%=tongtien%></span></b> </div>
+                        <!--                        <div><button class="btn btn-sm bg-dark text-white px-lg-5 px-3" id="thanhtoan" name="thanhtoan">THANH TOÁN</button></div>-->
+                        <div><form method="post" action="thanhtoan"><input class="btn btn-sm bg-dark text-white px-lg-5 px-3" type="submit" value="THANH TOÁN"></form></div>
                     </div>
                 </div>
 
@@ -135,7 +136,7 @@
                         giatri.val(1);
                     }
                 });
-                
+
                 // tang so luong trong input
                 $('.plus-btn').click(function () {
                     var gt = $(this)
@@ -153,7 +154,7 @@
                         }
                     });
                 });
-                
+
                 //giam so luong
                 $('.minus-btn').click(function (e) {
                     var gt = $(this);
@@ -178,7 +179,7 @@
                         });
                     }
                 });
-                
+
                 //su ly ma giam gia
                 $("#magiamgia").keyup(function () {
                     $.ajax({
@@ -201,12 +202,12 @@
                         }
                     });
                 });
-                
-                
+
+
             });
-            
-            
-            
+
+
+
         </script>
     </body>
 </html>
