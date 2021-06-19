@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th6 17, 2021 lúc 11:34 AM
+-- Thời gian đã tạo: Th6 19, 2021 lúc 02:49 PM
 -- Phiên bản máy phục vụ: 10.4.17-MariaDB
 -- Phiên bản PHP: 8.0.2
 
@@ -100,8 +100,8 @@ CREATE TABLE `magiamgia` (
   `ngaybatdau` date NOT NULL DEFAULT current_timestamp(),
   `ngayketthuc` date NOT NULL DEFAULT current_timestamp(),
   `soluong` int(11) NOT NULL,
-  `giatri` int(11) NOT NULL,
-  `dieukien` int(11) NOT NULL
+  `giatri` float NOT NULL,
+  `dieukien` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
