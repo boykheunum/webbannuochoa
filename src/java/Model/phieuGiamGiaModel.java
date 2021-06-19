@@ -10,15 +10,8 @@ package Model;
  * @author Nguyen Tien Dat
  */
 public class phieuGiamGiaModel {
-    private String idmagiamgia;
-    private boolean kieugiamgia;
-    private String ngaybatdau;
-    private String ngayketthuc;
-    private int soluong;
-    private int giatri;
-    private int dieukien;
 
-    public phieuGiamGiaModel(String idmagiamgia, boolean kieugiamgia, String ngaybatdau, String ngayketthuc, int soluong, int giatri, int dieukien) {
+    public phieuGiamGiaModel(String idmagiamgia, boolean kieugiamgia, String ngaybatdau, String ngayketthuc, int soluong, float giatri, float dieukien) {
         this.idmagiamgia = idmagiamgia;
         this.kieugiamgia = kieugiamgia;
         this.ngaybatdau = ngaybatdau;
@@ -27,6 +20,13 @@ public class phieuGiamGiaModel {
         this.giatri = giatri;
         this.dieukien = dieukien;
     }
+    private String idmagiamgia;
+    private boolean kieugiamgia;
+    private String ngaybatdau;
+    private String ngayketthuc;
+    private int soluong;
+    private float giatri;
+    private float dieukien;
 
     public phieuGiamGiaModel() {
     }
@@ -71,23 +71,21 @@ public class phieuGiamGiaModel {
         this.soluong = soluong;
     }
 
-    public int getGiatri() {
+    public float getGiatri() {
         return giatri;
     }
 
-    public void setGiatri(int giatri) {
+    public void setGiatri(float giatri) {
         this.giatri = giatri;
     }
 
-    public int getDieukien() {
+    public float getDieukien() {
         return dieukien;
     }
 
-    public void setDieukien(int dieukien) {
+    public void setDieukien(float dieukien) {
         this.dieukien = dieukien;
     }
+    
 
-    public boolean setKieugiamgia() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

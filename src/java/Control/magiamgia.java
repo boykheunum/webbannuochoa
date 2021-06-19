@@ -8,6 +8,7 @@ package Control;
 import Model.phieuGiamGiaModel;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -36,32 +37,42 @@ public class magiamgia extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            HttpSession session = request.getSession();
             String magiamgia = request.getParameter("magiamgia");
-            int tongGia = Integer.parseInt("tongGia");
-            int checkmagiamgia = CSDL.phieugiamgia.checkPhieuGiamGia(magiamgia);
-            if (checkmagiamgia == 1) {
-                phieuGiamGiaModel pgg = new phieuGiamGiaModel();
-                int kq = CSDL.phieugiamgia.searchPhieuGiamGia(magiamgia, pgg);
-                if (kq == 1) {
-                    boolean checkLoaiGiamGia = pgg.isKieugiamgia();
-                    int checkDieuKien = pgg.getDieukien();
-                    if (checkDieuKien == tongGia) {
-                        if (checkLoaiGiamGia == true) {
-                            int pt = pgg.getGiatri();
-                            session.setAttribute("pt", pt);
-                            out.print("PT");
+            Float tongGia = Float.parseFloat(request.getParameter("tongGia"));
+            if (magiamgia != null) {
+
+                int checkmagiamgia = CSDL.phieugiamgia.checkPhieuGiamGia(magiamgia);
+                if (checkmagiamgia == 1) {
+                    phieuGiamGiaModel pgg = new phieuGiamGiaModel();
+                    int kq = CSDL.phieugiamgia.searchPhieuGiamGia(magiamgia, pgg);
+                    if (kq == 1) {
+                        String ngaysudung = LocalDate.now().toString();
+                        int checkNgaySuDung = CSDL.phieugiamgia.checkPhieuThoiGianSuDung(ngaysudung, ngaysudung, magiamgia);
+                        boolean checkLoaiGiamGia = pgg.isKieugiamgia();
+                        float checkDieuKien = pgg.getDieukien();
+                        if (checkNgaySuDung == 1) {
+                            if (checkDieuKien <= tongGia) {
+                                if (checkLoaiGiamGia == true) {
+                                    float pt = pgg.getGiatri();
+                                    tongGia = tongGia / pgg.getGiatri();
+                                    out.print(tongGia);
+                                } else {
+                                    float tm = pgg.getGiatri();
+                                    tongGia = tongGia - pgg.getGiatri();
+                                    out.print(tongGia);
+                                }
+                            } else {
+                                out.print("-2");
+                            }
                         } else {
-                            int tm = pgg.getGiatri();
-                            session.setAttribute("tm", tm);
-                            out.print("TM");
+                            out.print("-1");
                         }
-                    } else {
-                        out.print("1");
                     }
+                } else {
+                    out.print("-1");
                 }
             } else {
-                out.print("-1");
+                out.print(tongGia);
             }
         }
     }
