@@ -71,7 +71,7 @@ public class nguoidung {
         }
     }
 
-    public static int deleteNguoiDung(String keyword) {
+    public static int deleteNguoiDung(int keyword) {
         Connection cnn = CSDL.databaseConnection.cnnDB();
         if (cnn == null) {
             return -1;
@@ -79,7 +79,7 @@ public class nguoidung {
             String sql = "DELETE FROM nguoidung WHERE makh = ?";
             try {
                 PreparedStatement ps = cnn.prepareStatement(sql);
-                ps.setString(1, keyword);
+                ps.setInt(1, keyword);
                 return ps.executeUpdate();
             } catch (SQLException ex) {
                 Logger.getLogger(nguoidung.class.getName()).log(Level.SEVERE, null, ex);
@@ -89,12 +89,12 @@ public class nguoidung {
         }
     }
 
-    public static int editNguoiDung(nguoiDungModel lsm, String id) {
+    public static int editNguoiDung(nguoiDungModel lsm, int id) {
         Connection cnn = CSDL.databaseConnection.cnnDB();
         if (cnn == null) {
             return -1;
         } else {
-            String sql = "INSERT INTO nguoidung values(?,?,?,?,?) WHERE maloaisp = ?";
+            String sql = "UPDATE `nguoidung` SET `tendangnhap`= ?,`matkhau`=?,`hovaten`=?,`sdt`=?,`diachi`=? WHERE `makh`=?";
             try {
                 PreparedStatement ps = cnn.prepareStatement(sql);
                 ps.setString(1, lsm.getTendangnhap());
@@ -102,7 +102,7 @@ public class nguoidung {
                 ps.setString(3, lsm.getHovaten());
                 ps.setString(4, lsm.getSdt());
                 ps.setString(5, lsm.getDiachi());
-                ps.setString(6, id);
+                ps.setInt(6, id);
                 return ps.executeUpdate();
             } catch (SQLException ex) {
                 Logger.getLogger(nguoidung.class.getName()).log(Level.SEVERE, null, ex);
@@ -111,7 +111,7 @@ public class nguoidung {
         }
     }
 
-    public static int searchNguoiDung(nguoiDungModel lsp, String id) {
+    public static int searchNguoiDung(nguoiDungModel lsp, int id) {
         Connection cnn = CSDL.databaseConnection.cnnDB();
         if (cnn == null) {
             return -1;
@@ -119,7 +119,7 @@ public class nguoidung {
             String sql = "SELECT * FROM nguoidung where makh = ?";
             try {
                 PreparedStatement ps = cnn.prepareStatement(sql);
-                ps.setString(1, id);
+                ps.setInt(1, id);
                 ResultSet rs = ps.executeQuery();
                 while (rs.next()) {
                     lsp.setTendangnhap(rs.getString("tendangnhap"));

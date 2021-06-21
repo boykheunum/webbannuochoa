@@ -49,6 +49,7 @@
 
                         <div class="card my-4">
                             <h5 class="card-header">1. Thông tin nhận hàng</h5>
+                            <!--form sua thong tin nguoi dung-->
                             <div class="card-body">
                                 <%
                                     String usKhach = null;
@@ -101,9 +102,11 @@
                                     Chú ý: Nếu không có gì cần thay đổi thì có thể bỏ qua.
                                 </div>
                                 <%}%>
-                                <button type="button" class="btn btn-info">Sửa thông tin</button>
+                                <button type="button" id="suaTT" name="suaTT" class="btn btn-info">Sửa thông tin</button>
                                 <!-- For success/fail messages-->
                             </div>
+
+
                         </div>
                         <!-- Comment with nested comments-->
                         <div class="card my-4">
@@ -144,7 +147,6 @@
                                         <%}
                                             tongtien += thanhtien;
                                         %>
-
                                         <%}%>
                                         <tr>
                                             <td colspan="4">Tổng tiền: <span><%=tongtien%></span></td>
@@ -184,6 +186,27 @@
         <!-- Bootstrap core JS-->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("#suaTT").click(function () {
+                    $.ajax({
+                        method: 'POST',
+                        url: '',
+                        data: {
+                            hovaten: $("#hovaten").val(),
+                            sdt: $("sdt").val(),
+                            makh: $("makh").val(),
+                            tendangnhap: $("tendangnhap").val(),
+                            matkhau: $("matkhau").val(),
+                            diachi: $("diachi").val(),
+                        },
+                        success: function (res) {
+                            location.reload(true)
+                        }
+                    });
+                });
+            });
+        </script>
     </body>
 </html>
 

@@ -53,7 +53,7 @@
                                     <div class="form-group">
                                         "Số điện thoại"
                                         <div class="col-md-6">
-                                            <input type="text" id="soluongsdt" name="sdt" value="<%=nv.getSdt()%>">
+                                            <input type="text" id="sdt" name="sdt" value="<%=nv.getSdt()%>">
                                         </div>
                                     </div>
 
