@@ -118,11 +118,7 @@
                                 }
                             %>
                         </tbody>
-
                     </table>
-
-
-
 
                     <!--ket thuc thong tin nhung san pham-->
                 </div>
@@ -139,23 +135,24 @@
                             <text>Mã giảm giá: </text>
                             <input type="text" name="magiamgia"
                                    id="magiamgia">
-                            <input type="hidden" id="tongGia" name="tongGia" value="<%=tongtien%>">
+                            <input type="hidden" id="tongGia" name="tongGia" value="">
                             <input id="guimagiamgia" name="guimagiamgia" type="submit"
                                    value="Sử dụng">
 
                         </div>
                         <div class="px-md-0 px-1" id="footer-font">
                             <b class="pl-md-4">TỔNG TIỀN
-                                <span class="pl-md-4" id="TongTien">
+                                <span class="pl-md-4" id="TongTien" value="">
                                     <%=tongtien%>
                                 </span>
                             </b> 
                         </div>
-                        
+
                         <div>
-                            <form method="post" action="thanhtoan"><input
-                                    class="btn btn-sm bg-dark text-white px-lg-5 px-3" type="submit"
-                                    value="THANH TOÁN"></form>
+                                                        <form method="post" action="kiemTraTrangThaiDangNhap"><input
+                                                                class="btn btn-sm bg-dark text-white px-lg-5 px-3" type="submit"
+                                                                value="THANH TOÁN"></form>
+<!--                            <button class="btn btn-sm bg-dark text-white px-lg-5 px-3"><a href="xacNhanThongTinThanhToan.jsp" style="text-decoration: none; color: white">THANH TOÁN</a></button>-->
                         </div>
                     </div>
                 </div>
@@ -201,6 +198,8 @@
                             var thanhtien = gt.parent().next().children()
                             thanhtien.html(parseFloat(parseFloat(thanhtien.html()) + parseFloat(thanhtien.attr("data-thanhtien"))))
                             $("#TongTien").html(parseFloat($("#TongTien").html()) + parseFloat(thanhtien.attr("data-thanhtien")))
+                            $("#tongGia").val("hello")
+                            
                         }
                     });
                 });
@@ -235,30 +234,35 @@
                     $("#checkmagiamgia").removeClass("text-success");
                     $("#checkmagiamgia").removeClass("text-danger");
                     $("#checkmagiamgia").html("");
+                    
                     $.ajax({
                         method: 'post',
                         url: 'magiamgia',
                         data: {
                             magiamgia: $('#magiamgia').val(),
-                            tongGia: $('#tongGia').val(),
+                            tongGia: $("#TongTien").html(),
+//                              tongGia: $("tongGia").val(),
+                            
                         },
                         success: function (res) {
                             if (res == "-1") {
                                 $("#checkmagiamgia").html("Mã phiếu giảm giá không hợp lệ");
                                 $("#checkmagiamgia").addClass("text-danger");
                                 $("#checkmagiamgia").removeClass("text-success");
+                                
                             } else if (res == -2) {
                                 $("#checkmagiamgia").html("Giá trị đơn hàng chưa đủ");
                                 $("#checkmagiamgia").addClass("text-danger");
                                 $("#checkmagiamgia").removeClass("text-success");
+                                
+                            } else if (res > 0 ) {//sửa lại
+                                $("#TongTien").html(res);
                             } else {
                                 $("#TongTien").html(res);
                             }
                         }
                     });
                 });
-
-
             });
 
         </script>

@@ -5,24 +5,21 @@
  */
 package Control;
 
-import Model.sanphamModel;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Set;
-import java.util.TreeMap;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Nguyen Tien Dat
  */
-@WebServlet(name = "thanhtoan", urlPatterns = {"/thanhtoan"})
-public class thanhtoan extends HttpServlet {
+@WebServlet(name = "kiemTraTrangThaiDangNhap", urlPatterns = {"/kiemTraTrangThaiDangNhap"})
+public class kiemTraTrangThaiDangNhap extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,18 +37,17 @@ public class thanhtoan extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             response.setContentType("text/html; charset=UTF-8");
             request.setCharacterEncoding("UTF-8");
-            HttpSession session = request.getSession();
-            TreeMap<String, Integer> hoadon = (TreeMap<String, Integer>) session.getAttribute("cart");
-            Set<String> ds = hoadon.keySet();
-            for (String masp : ds) {
-                sanphamModel sp = new sanphamModel();
-                int searchSP = CSDL.SanPham.searchSP(sp, masp);
-                if (searchSP == 1) {
-                    String maloaisp = sp.getMaloaisp();
-                    String tensp = sp.getTensp();
-                    int soluongmua = hoadon.get(masp);
-                    float giaban = sp.getGiaban();
+            String usKhach = null;
+            Cookie[] cookies = request.getCookies();
+            for (Cookie c : cookies) {
+                if (c.getName().equals("usKhach")) {
+                    usKhach = c.getValue();
                 }
+            }
+            if (usKhach != null) {
+                response.sendRedirect("xacNhanThongTinThanhToan.jsp");
+            } else {
+                response.sendRedirect("phantrangUserSP");
             }
         }
     }

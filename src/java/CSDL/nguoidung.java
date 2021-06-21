@@ -181,4 +181,28 @@ public class nguoidung {
         }
     }
 
+        public static int searchTenNguoiDung(nguoiDungModel lsp, String userName) {
+        Connection cnn = CSDL.databaseConnection.cnnDB();
+        if (cnn == null) {
+            return -1;
+        } else {
+            String sql = "SELECT * FROM nguoidung where tendangnhap = ?";
+            try {
+                PreparedStatement ps = cnn.prepareStatement(sql);
+                ps.setString(1, userName);
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    lsp.setHovaten(rs.getString("hovaten"));
+                    lsp.setSdt(rs.getString("sdt"));
+                    lsp.setDiachi(rs.getString("diachi"));
+                    lsp.setTendangnhap(rs.getString("tendangnhap"));
+                }
+                return 1;
+            } catch (SQLException ex) {
+                Logger.getLogger(nguoidung.class.getName()).log(Level.SEVERE, null, ex);
+                return -2;
+            }
+        }
+    }
+    
 }

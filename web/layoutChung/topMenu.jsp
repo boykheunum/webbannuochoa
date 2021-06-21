@@ -51,7 +51,7 @@
                         </li>
 
 
-                        <li class="nav-item"><a class="nav-link" href="services.html">Giỏ Hàng</a></li>
+                        <li class="nav-item"><a class="nav-link" href="giohang.jsp">Giỏ Hàng</a></li>
 
                         <li class="nav-item">
                             <!-- Button trigger modal -->

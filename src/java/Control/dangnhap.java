@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -46,8 +47,9 @@ public class dangnhap extends HttpServlet {
             if (phanloai == 1) {
                 int kq = nguoidung.dangnhap(userName, passWord);
                 if (kq == 1) {
-                    session.setAttribute("usKhach", userName);
-                    
+                    Cookie cookie = new Cookie("usKhach", userName);
+                    cookie.setMaxAge(3600);
+                    response.addCookie(cookie);
                     response.sendRedirect("phantrangUserSP");
                 } else {
                     out.print("-1");
@@ -55,8 +57,9 @@ public class dangnhap extends HttpServlet {
             } else {
                 int kq = CSDL.nhanVien.dangnhap(userName, passWord);
                 if (kq == 1) {
-                    session.setAttribute("usNV", userName);
-                    
+                    Cookie cookie = new Cookie("usNV", userName);
+                    cookie.setMaxAge(3600);
+                    response.addCookie(cookie);
                     response.sendRedirect("dsSP.jsp");
                 }
             }
