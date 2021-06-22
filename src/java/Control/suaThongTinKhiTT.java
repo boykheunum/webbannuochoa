@@ -5,24 +5,21 @@
  */
 package Control;
 
-import CSDL.nguoidung;
 import Model.nguoiDungModel;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author DELL
+ * @author Nguyen Tien Dat
  */
-@WebServlet(name = "dangnhap", urlPatterns = {"/dangnhap"})
-public class dangnhap extends HttpServlet {
+@WebServlet(name = "suaThongTinKhiTT", urlPatterns = {"/suaThongTinKhiTT"})
+public class suaThongTinKhiTT extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,32 +35,19 @@ public class dangnhap extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            response.setContentType("text/html; charset=UTF-8");
-            request.setCharacterEncoding("UTF-8");
-            String userName = request.getParameter("tendangnhap1");
-            String passWord = request.getParameter("matkhau");
-            HttpSession session = request.getSession();
-            int phanloai = CSDL.nguoidung.checkUserName(userName);
-            if (phanloai == 1) {
-                int kq = nguoidung.dangnhap(userName, passWord);
-                if (kq == 1) {
-                    Cookie cookie = new Cookie("usKhach", userName);
-                    cookie.setMaxAge(3600);
-                    response.addCookie(cookie);
-                    response.sendRedirect("phantrangUserSP");
-                } else {
-                    out.print("-1");
-                }
-            } else {
-                int kq = CSDL.nhanVien.dangnhap(userName, passWord);
-                if (kq == 1) {
-                    Cookie cookie = new Cookie("usNV", userName);
-                    cookie.setMaxAge(60);
-                    response.addCookie(cookie);
-                    response.sendRedirect("dsSP.jsp");
-                }
+            int makh = Integer.parseInt(request.getParameter("makh"));
+            String matkhau = request.getParameter("matkhau");
+            String hovaten = request.getParameter("hovaten");
+            String tendangnhap = request.getParameter("tendangnhap");
+            String diachi = request.getParameter("diachi");
+            String sdt = request.getParameter("sdt");
+            nguoiDungModel nd = new nguoiDungModel(tendangnhap, hovaten, diachi, matkhau, sdt);
+            int kq = CSDL.nguoidung.editNguoiDung(nd, makh);
+            if(kq==1){
+                out.print("1");
+            }else{
+                out.print("-1");
             }
-
         }
     }
 

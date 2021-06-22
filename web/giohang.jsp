@@ -94,7 +94,7 @@
                                     <span style="width: fit-content"><input
                                             style="width: 100%" type="number"
                                             class="soluongmua1" name="soluongmua1"
-                                            value="<%=soluong%>" min="1">
+                                            value="<%=soluong%>" max="<%=sp.getSoluong()%>" min="1">
                                     </span>
                                     <input type="hidden" id="masp" name="masp"
                                            value="<%=sp.getMasp()%>">
@@ -128,18 +128,6 @@
             <div class="row d-flex justify-content-center">
                 <div class="col-lg-10 col-12">
                     <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            <span id="checkmagiamgia" name="checkmagiamgia"
-                                  class="checkmagiamgia"></span>
-                            <div class="d-flex justify-content-between"></div>
-                            <text>Mã giảm giá: </text>
-                            <input type="text" name="magiamgia"
-                                   id="magiamgia">
-                            <input type="hidden" id="tongGia" name="tongGia" value="">
-                            <input id="guimagiamgia" name="guimagiamgia" type="submit"
-                                   value="Sử dụng">
-
-                        </div>
                         <div class="px-md-0 px-1" id="footer-font">
                             <b class="pl-md-4">TỔNG TIỀN
                                 <span class="pl-md-4" id="TongTien" value="">
@@ -149,10 +137,12 @@
                         </div>
 
                         <div>
-                                                        <form method="post" action="kiemTraTrangThaiDangNhap"><input
-                                                                class="btn btn-sm bg-dark text-white px-lg-5 px-3" type="submit"
-                                                                value="THANH TOÁN"></form>
-<!--                            <button class="btn btn-sm bg-dark text-white px-lg-5 px-3"><a href="xacNhanThongTinThanhToan.jsp" style="text-decoration: none; color: white">THANH TOÁN</a></button>-->
+                            <!-- <form method="post" action="kiemTraTrangThaiDangNhap"><input
+                                    class="btn btn-sm bg-dark text-white px-lg-5 px-3" type="submit"
+                                    value="THANH TOÁN"></form>
+                            <!--                           
+                            <button class="btn btn-sm bg-dark text-white px-lg-5 px-3"><a href="xacNhanThongTinThanhToan.jsp" style="text-decoration: none; color: white">THANH TOÁN</a></button>-->
+                            <button class="btn btn-sm bg-dark text-white px-lg-5 px-3" id="kiemtradangnhap">THANH TOÁN</button>
                         </div>
                     </div>
                 </div>
@@ -174,7 +164,11 @@
                 $('.soluongmua1').prop('disabled', true);
                 $('.plus-btn').click(function () {
                     var input = $(this).prev().prev().children();
+
+
+
                     input.val(parseInt(input.val()) + 1);
+
                 });
                 $('.minus-btn').click(function () {
                     var giatri = $(this).next().children();
@@ -198,8 +192,7 @@
                             var thanhtien = gt.parent().next().children()
                             thanhtien.html(parseFloat(parseFloat(thanhtien.html()) + parseFloat(thanhtien.attr("data-thanhtien"))))
                             $("#TongTien").html(parseFloat($("#TongTien").html()) + parseFloat(thanhtien.attr("data-thanhtien")))
-                            $("#tongGia").val("hello")
-                            
+
                         }
                     });
                 });
@@ -230,39 +223,29 @@
                 });
 
                 //su ly ma giam gia
-                $("#guimagiamgia").click(function () {
-                    $("#checkmagiamgia").removeClass("text-success");
-                    $("#checkmagiamgia").removeClass("text-danger");
-                    $("#checkmagiamgia").html("");
-                    
+
+
+                //kiem tra dang nhap
+                $("#kiemtradangnhap").click(function () {
                     $.ajax({
-                        method: 'post',
-                        url: 'magiamgia',
-                        data: {
-                            magiamgia: $('#magiamgia').val(),
-                            tongGia: $("#TongTien").html(),
-//                              tongGia: $("tongGia").val(),
-                            
-                        },
+                        method: "post",
+                        url: "kiemTraTrangThaiDangNhap",
                         success: function (res) {
+
                             if (res == "-1") {
-                                $("#checkmagiamgia").html("Mã phiếu giảm giá không hợp lệ");
-                                $("#checkmagiamgia").addClass("text-danger");
-                                $("#checkmagiamgia").removeClass("text-success");
-                                
-                            } else if (res == -2) {
-                                $("#checkmagiamgia").html("Giá trị đơn hàng chưa đủ");
-                                $("#checkmagiamgia").addClass("text-danger");
-                                $("#checkmagiamgia").removeClass("text-success");
-                                
-                            } else if (res > 0 ) {//sửa lại
-                                $("#TongTien").html(res);
+
+                                $(".DangNhap").click()
                             } else {
-                                $("#TongTien").html(res);
+                                location.href = "/WebBanSach/xacNhanThongTinThanhToan.jsp"
+
                             }
+
+
                         }
+
                     });
                 });
+
             });
 
         </script>

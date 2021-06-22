@@ -70,6 +70,15 @@ public class chiTietHoaDonModel {
 
     public chiTietHoaDonModel() {
     }
+
+    public chiTietHoaDonModel(String masp, int soluongmua, float giaban, float thanhtien, String idmagiamgia) {
+        this.masp = masp;
+        this.soluongmua = soluongmua;
+        this.giaban = giaban;
+        this.thanhtien = thanhtien;
+        this.idmagiamgia = idmagiamgia;
+    }
+    
     private int mahd;
     private String masp;
     private int soluongmua;

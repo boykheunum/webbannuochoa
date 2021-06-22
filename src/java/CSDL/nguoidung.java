@@ -196,6 +196,8 @@ public class nguoidung {
                     lsp.setSdt(rs.getString("sdt"));
                     lsp.setDiachi(rs.getString("diachi"));
                     lsp.setTendangnhap(rs.getString("tendangnhap"));
+                    lsp.setMatkhau(rs.getString("matkhau"));
+                    lsp.setMakh(rs.getInt("makh"));
                 }
                 return 1;
             } catch (SQLException ex) {

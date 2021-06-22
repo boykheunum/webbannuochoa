@@ -195,13 +195,33 @@ public class phieugiamgia {
 
         }
     }
-    
-        public static int phieuGiamGiaSausuDung(String keyword, int soluong) {
+
+    public static int phieuGiamGiaSausuDung(String keyword, int soluong) {
         Connection cnn = CSDL.databaseConnection.cnnDB();
         if (cnn == null) {
             return -1;
         } else {
             String sql = "UPDATE magiamgia SET soluong=? WHERE idmagiamgia=?";
+            PreparedStatement ps;
+            try {
+                ps = cnn.prepareStatement(sql);
+                ps.setInt(1, soluong);
+                ps.setString(2, keyword);
+                String test = ps.toString();
+                return ps.executeUpdate();
+            } catch (SQLException ex) {
+                Logger.getLogger(phieugiamgia.class.getName()).log(Level.SEVERE, null, ex);
+                return -2;
+            }
+        }
+    }
+
+    public static int truSoluong(String keyword, int soluong) {
+        Connection cnn = CSDL.databaseConnection.cnnDB();
+        if (cnn == null) {
+            return -1;
+        } else {
+            String sql = "UPDATE magiamgia SET soluong=?, WHERE idmagiamgia=?";
             PreparedStatement ps;
             try {
                 ps = cnn.prepareStatement(sql);

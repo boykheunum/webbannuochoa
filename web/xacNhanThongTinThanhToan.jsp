@@ -34,7 +34,6 @@
                 <!-- Page Heading/Breadcrumbs-->
                 <h1 class="mt-4 mb-3">
                     Thông tin mua hàng
-
                 </h1>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
@@ -66,14 +65,14 @@
                                 <div class="control-group form-group">
                                     <div class="controls">
                                         <label>Họ và tên:</label>
-                                        <input class="form-control" id="hovaten" name="hovaten" type="text" value="<%=nd.getHovaten()%>" />
+                                        <input class="form-control" id="hovatenTT" name="hovatenTT" type="text" value="<%=nd.getHovaten()%>" />
                                         <p class="help-block"></p>
                                     </div>
                                 </div>
                                 <div class="control-group form-group">
                                     <div class="controls">
                                         <label>Số điện thoại:</label>
-                                        <input class="form-control" id="sdt" name="sdt" type="tel" value="<%=nd.getSdt()%>" />
+                                        <input class="form-control" id="sdtTT" name="sdtTT" type="tel" value="<%=nd.getSdt()%>" />
                                     </div>
                                 </div>
                                 <div class="control-group form-group">
@@ -83,18 +82,18 @@
                                 </div>
                                 <div class="control-group form-group">
                                     <div class="controls">
-                                        <input class="form-control" id="tendangnhap" name="tendangnhap" type="hidden" value="<%=nd.getTendangnhap()%>" />
+                                        <input class="form-control" id="tendangnhapTT" name="tendangnhapTT" type="hidden" value="<%=nd.getTendangnhap()%>" />
                                     </div>
                                 </div>
                                 <div class="control-group form-group">
                                     <div class="controls">
-                                        <input class="form-control" id="matkhau" name="matkhau" type="hidden" value="<%=nd.getMatkhau()%>" />
+                                        <input class="form-control" id="matkhauTT" name="matkhauTT" type="hidden" value="<%=nd.getMatkhau()%>" />
                                     </div>
                                 </div>
                                 <div class="control-group form-group">
                                     <div class="controls">
                                         <label>Địa chỉ:</label>
-                                        <input class="form-control" id="diachi" name="diachi" type="text" value="<%=nd.getDiachi()%>" />
+                                        <input class="form-control" id="diachiTT" name="diachiTT" type="text" value="<%=nd.getDiachi()%>" />
                                     </div>
                                 </div>
                                 <div id="success"></div>
@@ -149,8 +148,23 @@
                                         %>
                                         <%}%>
                                         <tr>
-                                            <td colspan="4">Tổng tiền: <span><%=tongtien%></span></td>
-                                        </tr>
+                                            <td colspan="2">
+                                                <div>
+                                                    <span id="checkmagiamgia" name="checkmagiamgia"
+                                                          class="checkmagiamgia"></span>
+                                                    <div class="d-flex justify-content-between"></div>
+                                                    <text>Mã giảm giá: </text>
+                                                    <input type="text" name="magiamgia"
+                                                           id="magiamgia">
+                                                    <input type="hidden" id="tongGia" name="tongGia" value="<%=tongtien%>">
+                                                    <input id="guimagiamgia" name="guimagiamgia" type="submit"
+                                                           value="Sử dụng">
+
+                                                </div>
+                                            </td>
+                                    <input type="hidden" class="GiaGoc" value="<%=tongtien%>"/>
+                                    <td colspan="2">Tổng tiền: <span id="TongTien"><%=tongtien%></span></td>
+                                    </tr>
                                     </tbody>
                                 </table>
                                 <div id="success"></div>
@@ -176,7 +190,7 @@
                         <!-- Categories Widget-->
 
                         <!-- Side Widget-->
-                        <button type="button" class="btn btn-dark">Đặt hàng</button>
+                        <button type="button" id="thanhtoan" class="btn btn-dark">Đặt hàng</button>
                     </div>
                 </div>
             </div>
@@ -188,23 +202,78 @@
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script>
             $(document).ready(function () {
+                //sua thong tin khach hang
                 $("#suaTT").click(function () {
                     $.ajax({
                         method: 'POST',
-                        url: '',
+                        url: 'suaThongTinKhiTT',
                         data: {
-                            hovaten: $("#hovaten").val(),
-                            sdt: $("sdt").val(),
-                            makh: $("makh").val(),
-                            tendangnhap: $("tendangnhap").val(),
-                            matkhau: $("matkhau").val(),
-                            diachi: $("diachi").val(),
+                            hovaten: $("#hovatenTT").val(),
+                            sdt: $("#sdtTT").val(),
+                            makh: $("#makh").val(),
+                            tendangnhap: $("#tendangnhapTT").val(),
+                            matkhau: $("#matkhauTT").val(),
+                            diachi: $("#diachiTT").val(),
                         },
                         success: function (res) {
-                            location.reload(true)
+                            if (res == "1") {
+                                location.href = "/WebBanSach/xacNhanThongTinThanhToan.jsp"
+                            } else {
+                                location.href = "/WebBanSach/500.jsp"
+                            }
                         }
                     });
                 });
+                //ma giam gia
+                $("#guimagiamgia").click(function () {
+                    $("#checkmagiamgia").removeClass("text-success");
+                    $("#checkmagiamgia").removeClass("text-danger");
+                    $("#checkmagiamgia").html("");
+                    $.ajax({
+                        method: 'post',
+                        url: 'magiamgia',
+                        data: {
+                            magiamgia: $('#magiamgia').val(),
+                            //tongGia: $("#TongTien").html(),
+                            tongGia: $("#tongGia").val(),
+                        },
+                        success: function (res) {
+                            if (res == "-1") {
+                                $("#checkmagiamgia").html("Mã phiếu giảm giá không hợp lệ");
+                                $("#checkmagiamgia").addClass("text-danger");
+                                $("#checkmagiamgia").removeClass("text-success");
+                                $("#TongTien").html($(".GiaGoc").val());
+                            } else if (res == -2) {
+                                $("#checkmagiamgia").html("Giá trị đơn hàng chưa đủ");
+                                $("#checkmagiamgia").addClass("text-danger");
+                                $("#checkmagiamgia").removeClass("text-success");
+                                $("#TongTien").html($(".GiaGoc").val());
+                            } else {
+                                $("#TongTien").html(res);
+                            }
+                        }
+                    });
+                });
+
+                //thanh toan
+                $("#thanhtoan").click(function () {
+                    $.ajax({
+                        method: 'POST',
+                        url: 'thanhtoan',
+                        data: {
+                            magiamgia: $('#magiamgia').val(),
+                            tongGia: $("#TongTien").html(),
+                        },
+                        success: function (res) {
+                            if (res == "-1") {
+                                location.href = "/WebBanSach/500.jsp"
+                            } else {
+                                location.href = "/WebBanSach/hoaDonKH.jsp"
+                            }
+                        }
+                    });
+                });
+
             });
         </script>
     </body>

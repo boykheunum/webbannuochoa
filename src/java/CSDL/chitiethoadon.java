@@ -62,6 +62,7 @@ public class chitiethoadon {
                 ps.setInt(1, cthd.getMahd());
                 ps.setInt(3, cthd.getSoluongmua());
                 ps.setFloat(5, cthd.getThanhtien());
+                String test = ps.toString();
                 return ps.executeUpdate();
             } catch (SQLException ex) {
                 Logger.getLogger(chitiethoadon.class.getName()).log(Level.SEVERE, null, ex);
@@ -94,7 +95,7 @@ public class chitiethoadon {
         }
     }
 
-    public static int searchTinTuc(int keyWord, chiTietHoaDonModel cthd) {
+    public static int searchChiTietHoaDon(int keyWord, chiTietHoaDonModel cthd) {
         Connection cnn = CSDL.databaseConnection.cnnDB();
         if (cnn == null) {
             return -1;
@@ -139,4 +140,34 @@ public class chitiethoadon {
             }
         }
     }
+    
+    public static int htChiTietHD(int mahd, Vector<chiTietHoaDonModel> ds) {
+        Connection cnn = CSDL.databaseConnection.cnnDB();
+        if (cnn == null) {
+            return -1;
+        } else {
+            String sql = "SELECT * FROM chitiethoadon Where mahd=?";
+            try {
+                PreparedStatement ps = cnn.prepareStatement(sql);
+                ps.setInt(1, mahd);
+                ResultSet rs = ps.executeQuery();
+                if (rs.next()) {
+                    chiTietHoaDonModel cthd = new chiTietHoaDonModel();
+                    cthd.setIdmagiamgia(rs.getString("idmagiamgia"));
+                    cthd.setMasp(rs.getString("masp"));
+                    cthd.setGiaban(rs.getFloat("giaban"));
+                    cthd.setMahd(rs.getInt("mahd"));
+                    cthd.setSoluongmua(rs.getInt("soluongmua"));
+                    cthd.setThanhtien(rs.getFloat("thanhtien"));
+                    ds.add(cthd);
+                }
+                return 1;
+            } catch (SQLException ex) {
+                Logger.getLogger(chitiethoadon.class.getName()).log(Level.SEVERE, null, ex);
+                return -2;
+            }
+
+        }
+    }
+    
 }

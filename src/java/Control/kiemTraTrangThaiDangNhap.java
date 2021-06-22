@@ -44,10 +44,12 @@ public class kiemTraTrangThaiDangNhap extends HttpServlet {
                     usKhach = c.getValue();
                 }
             }
+            
             if (usKhach != null) {
-                response.sendRedirect("xacNhanThongTinThanhToan.jsp");
+//                response.sendRedirect("xacNhanThongTinThanhToan.jsp");
+                    out.print("1");
             } else {
-                response.sendRedirect("phantrangUserSP");
+                 out.print("-1");
             }
         }
     }

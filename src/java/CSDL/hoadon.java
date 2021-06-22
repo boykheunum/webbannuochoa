@@ -47,7 +47,7 @@ public class hoadon {
         }
     }
 
-    public static int addCTHD(hoaDonModel hd) {
+    public static int addHD(hoaDonModel hd) {
         Connection cnn = CSDL.databaseConnection.cnnDB();
         if (cnn == null) {
             return -1;
@@ -89,7 +89,7 @@ public class hoadon {
         }
     }
 
-    public static int searchTinTuc(int keyWord, hoaDonModel hd) {
+    public static int searchHoaDon(int keyWord, hoaDonModel hd) {
         Connection cnn = CSDL.databaseConnection.cnnDB();
         if (cnn == null) {
             return -1;
@@ -134,4 +134,28 @@ public class hoadon {
             }
         }
     }
+    
+        public static int layMahdCuoi(hoaDonModel hd) {
+        Connection cnn = CSDL.databaseConnection.cnnDB();
+        if (cnn == null) {
+            return -1;
+        } else {
+            String sql = "SELECT mahd FROM `hoadon` WHERE mahd=(SELECT MAX(mahd) FROM `hoadon`)";
+            PreparedStatement ps;
+            try {
+                ps = cnn.prepareStatement(sql);
+                String test = ps.toString();
+                ResultSet rs = ps.executeQuery();
+                if(rs.next()){
+                   hd.setMahd(rs.getInt("mahd"));
+                }
+                
+                return 1;
+            } catch (SQLException ex) {
+                Logger.getLogger(hoadon.class.getName()).log(Level.SEVERE, null, ex);
+                return -2;
+            }
+        }
+    }
+    
 }

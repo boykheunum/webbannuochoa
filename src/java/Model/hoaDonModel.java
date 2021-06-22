@@ -52,6 +52,12 @@ public class hoaDonModel {
         this.ngayban = ngayban;
         this.tongtien = tongtien;
     }
+
+    public hoaDonModel(int makh, String ngayban, float tongtien) {
+        this.makh = makh;
+        this.ngayban = ngayban;
+        this.tongtien = tongtien;
+    }
     private int mahd;
     private int makh;
     private String ngayban;

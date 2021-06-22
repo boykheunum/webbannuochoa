@@ -38,9 +38,10 @@ public class magiamgia extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             String magiamgia = request.getParameter("magiamgia");
-            Float tongGia = Float.parseFloat(request.getParameter("tongGia"));
+            String Tong = request.getParameter("tongGia");
+            float tongGia = Float.parseFloat(request.getParameter("tongGia"));
             if (magiamgia != null) {
-
+                
                 int checkmagiamgia = CSDL.phieugiamgia.checkPhieuGiamGia(magiamgia);
                 if (checkmagiamgia == 1) {
                     phieuGiamGiaModel pgg = new phieuGiamGiaModel();
@@ -72,7 +73,7 @@ public class magiamgia extends HttpServlet {
                     out.print("-1");
                 }
             } else {
-                out.print(tongGia);
+                out.print(-1);
             }
         }
     }

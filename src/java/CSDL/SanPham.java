@@ -260,5 +260,24 @@ public class SanPham {
 
         }
     }
+    
+    public static int truSoLuongSP(String masp, int soluong ) {
+        Connection cnn = CSDL.databaseConnection.cnnDB();
+        if (cnn == null) {
+            return -1;
+        } else {
+            try {
+                PreparedStatement ps = cnn.prepareStatement("UPDATE sanpham SET soluong = ? WHERE masp = ?");
+                ps.setString(2, masp);
+                ps.setInt(1, soluong);
+                String test = ps.toString();
+                return ps.executeUpdate();
+            } catch (SQLException ex) {
+                Logger.getLogger(SanPham.class.getName()).log(Level.SEVERE, null, ex);
+                return -2;
+            }
+
+        }
+    }
 
 }
