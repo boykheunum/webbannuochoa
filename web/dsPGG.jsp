@@ -59,28 +59,27 @@
                                         for (phieuGiamGiaModel pgg : ds) {
                                     %>
                                     <tr>
-                                        <td>
-                                            <%=pgg.getIdmagiamgia()%>
+<td>
+                                           <text> <%=pgg.getIdmagiamgia()%></text>
                                         </td>
                                         <td>
-                                            <%=pgg.isKieugiamgia()?"Phần Trăm":"Tiền mặt"%>
+                                           <text> <%=pgg.isKieugiamgia()?"Phần Trăm":"Tiền mặt"%></text>
                                         </td>>
                                         <td>
-                                            <%=pgg.getNgaybatdau()%>
+                                            <<text>%=pgg.getNgaybatdau()%></text>
                                         </td>
                                         <td>
-                                            <%=pgg.getNgayketthuc()%>
+                                           <text> <%=pgg.getNgayketthuc()%></text>
                                         </td>
                                         <td>
-                                            <%=pgg.getSoluong()%>
+                                            <text><%=pgg.getSoluong()%></text>
                                         </td>
                                         <td>
-                                            <%=pgg.getGiatri()%>
+                                           <text> <%=pgg.getGiatri()%></text>
                                         </td>
                                         <td>
-                                            <%=pgg.getDieukien()%>
+                                           <text> <%=pgg.getDieukien()%></text>
                                         </td>
-
                                         <td>
                                             <a href="suaPGG.jsp?idmagiamgia=<%=pgg.getIdmagiamgia()%>">Edit</a>|
                                             <a href="chitietPGG.jsp?idmagiamgia=<%=pgg.getIdmagiamgia()%>">Details</a>|

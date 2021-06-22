@@ -27,21 +27,26 @@
                                     if (kq == 1) {
                                 %>
                                 <form action="xoaCV" method="post">
-                                    <h4>Loại Sản Phẩm</h4>
+                                     <div class="form-horizontal">
+                                    <h4>Xóa chức vụ</h4>
                                     <hr />
-                                    <dl class="dl-horizontal">
-                                        <dt>
-                                            <input type="hidden" id="macv" name="macv" value="<%=cv.getMacv()%>">
-                                        </dt>    
-                                        <dt>
-                                            <text>Tên Loại Sản Phẩm:</text>
-                                        </dt>
-
-                                        <dd>
-                                            <text id="tenloaisp" name="tenloaisp"><%=cv.getTencv()%></text>
-                                        </dd>
-
-                                    </dl>
+                                    
+                                         <div class="form-group">
+                                            <text>  Mã chức vụ</text>
+                                                <div class="col-md-6">
+                                               <input type="hidden" id="macv" name="macv" value="<%=cv.getMacv()%>">
+                                                 <text><%=cv.getMacv()%></text>
+                                                </div>
+                                         </div>
+                                        <div class="form-group">
+                                            <text>  Tên chức vụ </text>
+                                                <div class="col-md-6">
+                                               <input type="hidden" id="tencv" name="tencv" value="<%=cv.getTencv()%>">
+                                                 <text><%=cv.getTencv()%></text>
+                                                </div>
+                                         </div>
+                                        </div>
+                                    
                                     <div class="form-actions no-color">
                                         <input type="submit" value="Delete" class="btn btn-default" /> |
                                         "Back to List", "Index")                                   

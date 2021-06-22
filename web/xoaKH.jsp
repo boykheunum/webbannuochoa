@@ -29,33 +29,39 @@
                         <hr />
                         <input id="makh" type="hidden" name="makh" value="<%=kh.getMakh()%>">
                         <div class="form-group">
-                            "Tên đăng nhập"
+                            <text>Tên đăng nhập</text>
                             <div class="col-md-6">
-                                <input type="text" id="tendangnhap" name="tendangnhap" value="<%=kh.getTendangnhap()%>">
+                                <input type="hidden" id="tendangnhap" name="tendangnhap" value="<%=kh.getTendangnhap()%>">
+                                <text><%=kh.getTendangnhap()%></text>
                             </div>
                         </div>
                         <div class="form-group">
-                            "Mật khẩu"
+                           <text>  Mật khẩu</text>
                             <div class="col-md-6">
-                                <input type="text" id="matkhau" name="matkhau" value="<%=kh.getMatkhau()%>">
+                                <input type="hidden" id="matkhau" name="matkhau" value="<%=kh.getMatkhau()%>">
+                                <text><%=kh.getMatkhau()%></text>
                             </div>
                         </div>
                         <div class="form-group">
-                            "Họ và tên"
+                            <text>Họ và tên <text>
                             <div class="col-md-6">
-                                <input type="text" id="hovaten" name="hovaten" value="<%=kh.getHovaten()%>">
+                                <input type="hidden" id="hovaten" name="hovaten" value="<%=kh.getHovaten()%>">
+                                <text><%=kh.getHovaten()%></text>
+                            </div>
+                            </div>
+                        
+                        <div class="form-group">
+                            Địa chỉ
+                            <div class="col-md-6">
+                                <input type="hidden" id="diachi" name="diachi" value="<%=kh.getDiachi()%>">
+                                <text><%=kh.getDiachi()%></text>
                             </div>
                         </div>
                         <div class="form-group">
-                            "Địa chỉ"
+                            Số điện thoại
                             <div class="col-md-6">
-                                <input type="text" id="diachi" name="diachi" value="<%=kh.getDiachi()%>">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            "Số điện thoại"
-                            <div class="col-md-6">
-                                <input class="form-control" id="sdt" name="sdt" value="<%=kh.getSdt()%>">
+                                <input class="form-control" type= "hidden" id="sdt" name="sdt" value="<%=kh.getSdt()%>">
+                                <text><%=kh.getSdt()%></text>
                             </div>
                         </div>
                     </div>

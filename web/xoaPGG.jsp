@@ -23,10 +23,11 @@
                                     if (kq == 1) {
                                 %>
                                 <form class="form-horizontal" method="post" action="xoaPGG">
-                                    <h4>Phiếu giảm giá</h4>
+                                   <div class="form-horizontal">
+                                    <h4>Xóa Phiếu giảm giá</h4>
                                     <hr />
                                     <div class="form-group">
-                                        <input type="text" name="idmagiamgia" id="idmaloaisp" value="<%=pgg.getIdmagiamgia()%>">
+                                        <input type="hidden" name="idmagiamgia" id="idmaloaisp" value="<%=pgg.getIdmagiamgia()%>">
                                     </div>
                                     <div class="form-group">
                                         Kiểu giảm giá
@@ -34,26 +35,44 @@
                                         Phần trăm <input type="radio" name="kieugiamgia" id="kieugiamgia" value="1" checked="checked" <%=pgg.isKieugiamgia() ? "checked" : ""%>>
                                         Tiền mặt <input type="radio" name="kieugiamgia" id="kieugiamgia" value="0"<%=pgg.isKieugiamgia() ? "checked" : ""%>>
                                     </div>
+                                    
+                                    
                                     <div class="form-group">
-                                        Ngày bắt đầu
-                                        <input class="col-md-10" type="text" id="ngaybatdau" name="ngaybatdau" value="<%=pgg.getNgaybatdau()%>">
+                                       <text> Ngày bắt đầu</text>
+                                        <div class="col-md-6">
+                                            <input class="col-md-10" type="hidden" id="ngaybatdau" name="ngaybatdau" value="<%=pgg.getNgaybatdau()%>">
+                                            <text><%=pgg.getNgaybatdau()%></text>
+                                        </div>
                                     </div>
+                                       <div class="form-group">
+                                       <text> Ngày kết thúc</text>
+                                        <div class="col-md-6">
+                                             <input class="col-md-10" type="hidden" id="ngayketthuc" name="ngayketthuc" value="<%=pgg.getNgayketthuc()%>">
+                                            <text><%=pgg.getNgayketthuc()%></text>
+                                        </div>
+                                    </div> 
                                     <div class="form-group">
-                                        ngayketthuc
-                                        <input class="col-md-10" type="text" id="ngayketthuc" name="ngayketthuc" value="<%=pgg.getNgayketthuc()%>">
-                                    </div>
+                                       <text> Số lượng</text>
+                                        <div class="col-md-6">
+                                             <input class="col-md-10" type="hidden" id="soluong" name="soluong" value="<%=pgg.getSoluong()%>">
+                                            <text><%=pgg.getSoluong()%></text>
+                                        </div>
+                                    </div> 
                                     <div class="form-group">
-                                        Số lượng
-                                        <input class="col-md-10" type="text" id="soluong" name="soluong" value="<%=pgg.getSoluong()%>">
+                                       <text> Giá trị</text>
+                                        <div class="col-md-6">
+                                               <input class="col-md-10" type="hidden" id="giatri" name="giatri" value="<%=pgg.getGiatri()%>">
+                                            <text><%=pgg.getGiatri()%></text>
+                                        </div>
+                                    </div> 
+                                     <div class="form-group">
+                                       <text> Điều kiện</text>
+                                        <div class="col-md-6">
+                                             <input class="col-md-10" type="hidden" id="dieukien" name="dieukien" value="<%=pgg.getDieukien()%>">
+                                           <text> <%=pgg.getDieukien()%></text>
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        Giá trị
-                                        <input class="col-md-10" type="text" id="giatri" name="giatri" value="<%=pgg.getGiatri()%>">
-                                    </div>
-                                    <div class="form-group">
-                                        Điều kiện
-                                        <input class="col-md-10" type="text" id="dieukien" name="dieukien" value="<%=pgg.getDieukien()%>">
-                                    </div>
+                                </div>
                                     <div class="form-group">
                                         <div class="col-md-offset-2 col-md-10">
                                             <input type="submit" value="Delete" class="btn btn-default" />

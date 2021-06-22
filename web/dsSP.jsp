@@ -66,26 +66,26 @@
                             for (sanphamModel sp : ds) {
                         %>
                         <tr>
-                            <td>
-                                <%=sp.getMasp()%>
+                           <td>
+                               <text> <%=sp.getMasp()%></text>
                             </td>
                             <td>
-                                <%=sp.getMaloaisp()%>
+                               <text> <%=sp.getMaloaisp()%></text>
                             </td>>
                             <td>
-                                <%=sp.getTensp()%>
+                                <text><%=sp.getTensp()%></text>
                             </td>
                             <td>
-                                <%=sp.getSoluong()%>
+                               <text><%=sp.getSoluong()%></text>
                             </td>
                             <td>
-                                <%=sp.getGianhap()%>
+                               <text> <%=sp.getGianhap()%></text>
                             </td>
                             <td>
-                                <%=sp.getGiaban()%>
+                               <text> <%=sp.getGiaban()%></text>
                             </td>
                             <td>
-                                <%=sp.getMota()%>
+                               <text> <%=sp.getMota()%></text>
                             </td>
                             <td>
                                 <%

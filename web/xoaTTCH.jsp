@@ -26,27 +26,37 @@
                                 %>
                                 <form method="post" action="xoaTTCH">
                                     <hr />
-                                    <dl class="dl-horizontal">
-                                        <dt>
-                                            <text>Địa chỉ</text>
-                                        </dt>
-                                        <dd>
-                                            <text><%=tt.getDiachi()%></text>
-                                        </dd>
+                                     <div class="form-group">
+                                         <text>ID</text>
+                                        <div class="col-md-6">
                                             <input type="hidden" id="id" name="id" value="<%=tt.getId()%>">
-                                        <dt>
+                                                 <text><%=tt.getId()%></text>
+                                        </div>
+                                    </div>
+                                            
+                                      <div class="form-group">
+                                         <text>Địa chỉ</text>
+                                        <div class="col-md-6">
+                                             <input type="hidden" id="diachi" name="noidung" value="<%=tt.getDiachi()%>">
+                                                 <text><%=tt.getDiachi()%></text>
+                                        </div>
+                                    </div> 
+                                      
+                                            <input type="hidden" id="id" name="id" value="<%=tt.getId()%>">
+                                        <div class="form-group">
                                             <text>Email</text>
-                                        </dt>
-                                        <dd>                                
-                                            <text><%=tt.getEmail()%></text>
-                                        </dd>
-                                        <dt>                                          
-                                            <text>Số điện thoại</text>
-                                        </dt>
-                                        <dd>
-                                            <text><%=tt.getSdtcuahang()%></text>
-                                        </dd>
-                                    </dl>
+                                            <div class="col-md-6">
+                                                 <input type="hidden" id="email" name="email" value="<%=tt.getEmail()%>">
+                                               <text><%=tt.getEmail()%></text>
+                                            </div>
+                                        </div>
+                                         <div class="form-group">
+                                        <text>Số điện thoại</text>
+                                        <div class="col-md-6">
+                                             <input type="hidden" id="sdtcuahang" name="sdtcuahang" value="<%=tt.getSdtcuahang()%>">
+                                              <text><%=tt.getSdtcuahang()%></text>
+                                        </div>
+                                    </div>
                                     <div class="form-actions no-color">
                                         <input type="submit" value="Delete" class="btn btn-default" /> |
                                         @Html.ActionLink("Back to List", "Index")

@@ -26,61 +26,83 @@
                             %>
                             <form class="card-body" action="xoaNV" method="post">
                                 <div class="form-horizontal">
-                                    <h4>Sản Phẩm</h4>
+                                    <h4>Xóa nhân viên</h4>
                                     <hr />
-
                                     <div class="form-group">
-                                        "Mã chức vụ"
-                                        <input type="text" name="macv" id="macv" value="<%=nv.getMacv()%>">
-                                    </div>
-                                    <input id="manv" type="hidden" name="manv" value="<%=nv.getManv()%>">
+                                            <text>  Mã chức vụ </text>
+                                                <div class="col-md-6">
+                                               <input type="hidden" id="macv" name="macv" value="<%=nv.getMacv()%>">
+                                                 <text><%=nv.getMacv()%></text>
+                                                </div>
+                                         </div>
                                     <div class="form-group">
-                                        "Tên nhân viên"
+                                            <text>  Mã nhân viên</text>
+                                                <div class="col-md-6">
+                                               <input id="manv" type="hidden" name="manv" value="<%=nv.getManv()%>">
+                                                 <text><%=nv.getManv()%></text>
+                                                </div>
+                                         </div>
+                                 
+                                    <div class="form-group">
+                                      <text> Tên nhân viên</text>
                                         <div class="col-md-6">
-                                            <input type="text" id="tennv" name="tennv" value="<%=nv.getTennv()%>">
+                                            <input type="hidden" id="tennv" name="tennv" value="<%=nv.getTennv()%>">
+                                            <text><%=nv.getTennv()%></text>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        "Số điện thoại"
+                                        <text>Số điện thoại</text>
                                         <div class="col-md-6">
-                                            <input type="text" id="soluongsdt" name="sdt" value="<%=nv.getSdt()%>">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        "Ngày sinh"
-                                        <div class="col-md-6">
-                                            <input type="text" id="ngaysinh" name="ngaysinh" value="<%=nv.getNgaysinh()%>">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        "Tên Đăng nhập"
-                                        <div class="col-md-6">
-                                            <input type="text" id="tendangnhap" name="tendangnhap" value="<%=nv.getTendangnhap()%>">
+                                            <input type="hidden"id="soluongsdt" name="sdt" value="<%=nv.getSdt()%>">
+                                            <text><%=nv.getSdt()%></text>
                                         </div>
                                     </div>
 
-
                                     <div class="form-group">
-                                        "Tài khoản"
+                                        <text>Ngày sinh</text>
                                         <div class="col-md-6">
-                                            <input class="form-control" id="tendangnhap" name="tendangnhap" value="<%=nv.getTendangnhap()%>">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        "Mật khẩu"
-                                        <div class="col-md-6">
-                                            <input class="form-control" id="matkhau" name="matkhau" value="<%=nv.getMatkhau()%>">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        "Địa chỉ"
-                                        <div class="col-md-6">
-                                            <input class="form-control" id="diachi" name="diachi" value="<%=nv.getDiachi()%>">
+                                            <input type="hidden" id="ngaysinh" name="ngaysinh" value="<%=nv.getNgaysinh()%>">
+                                            <text><%=nv.getNgaysinh()%></text>
                                         </div>
                                     </div>
 
+                                    <div class="form-group">
+                                        <text>Tên Đăng nhập</text>
+                                        <div class="col-md-6">
+                                            <input type="hidden" id="tendangnhap" name="tendangnhap" value="<%=nv.getTendangnhap()%>">
+                                            <text><%=nv.getTendangnhap()%></text>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <text>Tài khoản</text>
+                                        <div class="col-md-6">
+                                            <input class="form-control" type="hidden"  id="tendangnhap" name="tendangnhap" value="<%=nv.getTendangnhap()%>">
+                                            <text><%=nv.getTendangnhap()%></text>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <text>Mật khẩu</text>
+                                        <div class="col-md-6">
+                                            <input type="hidden"  class="form-control" id="matkhau" name="matkhau" value="<%=nv.getMatkhau()%>">
+                                            <text><%=nv.getMatkhau()%></text>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                       <text> Địa chỉ</text>
+                                        <div class="col-md-6">
+                                            <input type="hidden" class="form-control" id="diachi" name="diachi" value="<%=nv.getDiachi()%>">
+                                            <text><%=nv.getDiachi()%></text>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-6">
+                                        <input type="submit" value="Save" class="btn btn-default" />
+                                    </div>
+                                </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-offset-2 col-md-6">

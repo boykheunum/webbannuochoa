@@ -51,24 +51,21 @@
                                         for (tintucModel tt : ds) {
                                     %>
                                     <tr>
-
-                                        <td>
-                                            <%=tt.getId()%>
+ <td>
+                                           <text> <%=tt.getId()%></text>
                                         </td>
                                         <td>
-                                            <%=tt.getTieude()%>
+                                          <text>  <%=tt.getTieude()%></text>
                                         </td>
                                         <td>
-                                            <img width='348px' height="348px"  src="imageSP/<%=tt.getAnh()%>"></a>
+                                            <img width='348px' height="348px"  src="imageSP/<%=tt.getAnh()%>">
                                         </td>
                                         <td>
-                                            <%=tt.getNoidung()%>
+                                           <text> <%=tt.getNoidung()%></text>
                                         </td>
                                         <td>
-                                            <%=tt.getNgaydang()%>
-                                        </td>
-
-
+                                           <text> <%=tt.getNgaydang()%></text>
+                                        </td>                                      
                                         <td>
                                             <a href="suaTT.jsp?id=<%=tt.getId()%>">Edit</a>|
                                             <a href="chitietTT.jsp?id=<%=tt.getId()%>">Details</a>|

@@ -50,19 +50,17 @@
                                     %>
                                     <tr>
                                         <td>
-                                            <%=tt.getId()%>
+                                           <text> <%=tt.getId()%></text>
                                         </td>
                                         <td>
-                                            <%=tt.getEmail()%>
+                                            <text><%=tt.getEmail()%></text>
                                         </td>>
                                         <td>
-                                            <%=tt.getDiachi()%>
+                                             <text> <%=tt.getDiachi()%></text>
                                         </td>
                                         <td>
-                                            <%=tt.getSdtcuahang()%>
+                                            <text>  <%=tt.getSdtcuahang()%></text>
                                         </td>
-
-
                                         <td>
                                             <a href="suaTTCH.jsp?id=<%=tt.getId()%>">Edit</a>|
                                             <a href="chitietTTCH.jsp?id=<%=tt.getId()%>">Details</a>|

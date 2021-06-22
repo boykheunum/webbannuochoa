@@ -27,37 +27,40 @@
                                 %>
                                 <form method="post" action="xoaTT">
                                     <hr />
-                                    <dl class="dl-horizontal">
-                                        <dt>
-                                            <text>Ngày đăng</text>
-                                        </dt>
-                                        <dd>                                          
-                                            <text><%=tt.getNgaydang()%></text>
-                                        </dd>
-                                        <dt>
-                                            <text>Tiêu đề</text>
-                                        </dt>
-                                        <dd>
+                                    <div class="form-group">
+                                        <text>Id</text>
+                                        <div class="col-md-6">
+                                              <input type="hidden" id="id" name="id" value="<%=tt.getId()%>">
+                                            <text><%=tt.getId()%></text>
+                                        </div>
+                                    </div> 
+                                    <div class="form-group">
+                                        <text>Ngày đăng</text>
+                                        <div class="col-md-6">
+                                             <input type="hidden" id="ngaydang" name="ngaydang" value="<%=tt.getNgaydang()%>">
+                                             <text><%=tt.getNgaydang()%></text>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <text>Tiêu đề</text>
+                                        <div class="col-md-6">
+                                             <input type="hidden" id="tieude" name="tieude" value="<%=tt.getTieude()%>">
                                             <text><%=tt.getTieude()%></text>
-                                        </dd>
-                                            <input type="hidden" id="id" name="id" value="<%=tt.getId()%>">
-                                        <dt>
-                                            <text>Nội dung</text>
-                                        </dt>
-                                        <dd>                                
-                                            <text><%=tt.getNoidung()%></text>
-                                        </dd>
-                                        <dt>                                          
-                                            <text>Số lượng</text>
-                                        </dt>
-                                        <dt>
-                                            <text>Ảnh</text>
-                                        </dt>
-                                        <dd>
-                                            <img src="imageSP/<%=tt.getAnh()%>">
-                                        </dd>
-                                    </dl>
-
+                                        </div>
+                                    </div>       
+                                     <div class="form-group">
+                                        <text>Nội dung</text>
+                                        <div class="col-md-6">
+                                             <input type="hidden" id="noidung" name="noidung" value="<%=tt.getNoidung()%>">
+                                               <text><%=tt.getNoidung()%></text>
+                                        </div>
+                                    </div>       
+                                     <div class="form-group">
+                                         <text>Ảnh</text>
+                                        <div class="col-md-6">
+                                          <img src="imageSP/<%=tt.getAnh()%>">   
+                                        </div>
+                                    </div> 
                                     <div class="form-actions no-color">
                                         <input type="submit" value="Delete" class="btn btn-default" /> |
                                         @Html.ActionLink("Back to List", "Index")

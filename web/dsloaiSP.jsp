@@ -42,11 +42,11 @@
 
                                     <%for (loaispModel lsp : ds) {%>
                                     <tr>
-                                        <td>
-                                            <%=lsp.getMaloaisp()%>
+                                         <td>
+                                          <text>  <%=lsp.getMaloaisp()%></text>
                                         </td>
                                         <td>
-                                            <%=lsp.getTenloaisp()%>
+                                           <text> <%=lsp.getTenloaisp()%></text>
                                         </td>
                                         <td>
                                             <a href="sualoaiSP.jsp?maloaisp=<%=lsp.getMaloaisp()%>">Edit</a>|

@@ -28,19 +28,21 @@
                                 <form action="xoaloaiSP" method="post">
                                     <h4>Loại Sản Phẩm</h4>
                                     <hr />
-                                    <dl class="dl-horizontal">
-                                        <dt>
-                                            <input type="hidden" id="maloaisp" name="maloaisp" value="<%=lsp.getMaloaisp()%>">
-                                        </dt>    
-                                        <dt>
-                                            <text>Tên Loại Sản Phẩm:</text>
-                                        </dt>
-                                        
-                                        <dd>
-                                           <text id="tenloaisp" name="tenloaisp"><%=lsp.getTenloaisp()%></text>
-                                        </dd>
+                                    <div class="form-group">
+                                           <text>Mã Loại Sản Phẩm:</text>
+                                                <div class="col-md-6">
+                                               <input type="hidden" id="maloaisp" name="maloaisp" value="<%=lsp.getMaloaisp()%>">
+                                                 <text><%=lsp.getMaloaisp()%></text>
+                                                </div>
+                                         </div>
+                                        <div class="form-group">
+                                           <text>Tên Loại Sản Phẩm:</text>
+                                                <div class="col-md-6">
+                                               <input type="hidden" id="tenloaisp" name="tenloaisp" value="<%=lsp.getTenloaisp()%>">
+                                                 <text><%=lsp.getTenloaisp()%></text>
+                                                </div>
+                                         </div>
 
-                                    </dl>
                                     <div class="form-actions no-color">
                                         <input type="submit" value="Delete" class="btn btn-default" /> |
                                         "Back to List", "Index")                                   

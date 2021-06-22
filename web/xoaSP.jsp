@@ -28,79 +28,65 @@
 
                                 %>
                                 <form method="post" action="xoaSP">
-                                    <hr />
-                                    <dl class="dl-horizontal">
-                                        <dt>
-                                            <text>Mã loại sản phẩm</text>
-                                        </dt>
-                                        <dd>
-                                           
-                                            <text><%=sp.getMaloaisp()%></text>
-                                        </dd>
-                                        <dt>
-                                            <text>Mã sản phẩm</text>
-                                        </dt>
-                                        <dd>
+                                    <div class="form-horizontal">
+                                      <h4>Xóa sản phẩm</h4>
+                                    <div class="form-group">
+                                        <text>Mã loại sản phẩm</text>
+                                        <div class="col-md-6">
+                                             <input class="col-md-10" type="hidden" id="maloaisp" name="maloaisp" value="<%=sp.getMaloaisp()%>">
+                                           <text><%=sp.getMaloaisp()%></text>
+                                        </div>
+                                    </div>
+                                        <div class="form-group">
+                                        <text>Mã sản phẩm</text>
+                                        <div class="col-md-6">
                                             <input type="hidden" id="masp" name="masp" value="<%=sp.getMasp()%>">
-                                            
-                                        </dd>
-                                        <dt>
-                                            <text>Tên sản phẩm</text>
-                                        </dt>
-
-                                        <dd>
-                                            
-                                            <text><%=sp.getTensp()%></text>
-                                        </dd>
-                                        <dt>
-                                            
-                                            <text>Số lượng</text>
-                                        </dt>
-
-                                        <dd>
-                                            
-                                            <text><%=sp.getSoluong()%></text>
-                                        </dd>
-                                        <dt>
-                                            
-                                            <text>Giá nhập</text>
-                                        </dt>
-
-                                        <dd>
-                                            
+                                           <text><%=sp.getMasp()%></text>
+                                        </div>
+                                    </div>
+                                        
+                                    <div class="form-group">
+                                       <text>Tên sản phẩm</text>
+                                        <div class="col-md-6">
+                                            <input type="hidden" id="tenSP" name="tenSP" value="<%=sp.getTensp()%>">
+                                           <text><%=sp.getMasp()%></text>
+                                        </div>
+                                    </div>
+                                     <div class="form-group">
+                                       <text>Số lượng</text>
+                                        <div class="col-md-6">
+                                            <input type="hidden" id="soluong" name="soluong" value="<%=sp.getSoluong()%>">
+                                           <text><%=sp.getSoluong()%></text>
+                                        </div>
+                                    </div>   
+                                     <div class="form-group">
+                                       <text>Giá nhập</text>
+                                        <div class="col-md-6">
+                                            <input type="hidden" id="gianhap" name="gianhap" value="<%=sp.getGianhap()%>">
                                             <text><%=sp.getGianhap()%></text>
-                                        </dd>
-
-                                        <dt>
-                                            <text>Giá bán</text>
-                                        </dt>
-
-                                        <dd>
-                                            
+                                        </div>
+                                    </div>    
+                                       <div class="form-group">
+                                       <text>Giá bán</text>
+                                        <div class="col-md-6">
+                                            <input type="hidden" id="giaban" name="giaban" value="<%=sp.getGiaban()%>">
                                             <text><%=sp.getGiaban()%></text>
-                                        </dd>
-
-                                        <dt>
-                                            <text>Mô tả</text>
-                                        </dt>
-
-                                        <dd>
-                                            
-                                            <text><%=sp.getMota()%></text>
-                                        </dd>
-
-                                        <dt>
+                                        </div>
+                                    </div>                                        
+                                    <div class="form-group">
+                                             <text>Mô tả</text>
+                                        <div class="col-md-6">
+                                            <input type="hidden" id="mota" name="mota" value="<%=sp.getMota()%>">
+                                            <text><%=sp.getMota()%></text>>
+                                        </div>
+                                    </div> 
+                                        <div class="form-group">
                                             <text>Ảnh</text>
-                                        </dt>
-
-                                        <dd>
-                                            
-                                            <img src="imageSP/<%=sp.getHinhanh()%>">
-                                        </dd>
-
-
-
-                                    </dl>
+                                                <div class="col-md-6">
+                                                <img src="imageSP/<%=sp.getHinhanh()%>">
+                                                </div>
+                                         </div>
+                                       </div> 
 
                                     <div class="form-actions no-color">
                                         <input type="submit" value="Delete" class="btn btn-default" /> |

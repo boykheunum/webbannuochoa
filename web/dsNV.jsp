@@ -60,27 +60,26 @@
                                     %>
                                     <tr>
                                         <td>
-                                            <%=nv.getMacv()%>
+                                            <text> <%=nv.getMacv()%> </text>
                                         </td>
                                         <td>
-                                            <%=nv.getManv()%>
+                                           <text> <%=nv.getManv()%> </text>
                                         </td>>
                                         <td>
-                                            <%=nv.getTennv()%>
+                                           <text> <%=nv.getTennv()%></text>
                                         </td>
                                         <td>
-                                            <%=nv.getSdt()%>
+                                            <text> <%=nv.getSdt()%></text>
                                         </td>
                                         <td>
-                                            <%=nv.getDiachi()%>
+                                           <text> <%=nv.getDiachi()%></text>
                                         </td>
                                         <td>
-                                            <%=nv.getTendangnhap()%>
+                                            <text><%=nv.getTendangnhap()%></text>
                                         </td>
                                         <td>
-                                            <%=nv.getMatkhau()%>
+                                            <text><%=nv.getMatkhau()%></text>
                                         </td>
-
                                         <td>
                                             <a href="suaNV.jsp?manv=<%=nv.getManv()%>">Edit</a>|
                                             <a href="chitietNV.jsp?manv=<%=nv.getManv()%>">Details</a>|

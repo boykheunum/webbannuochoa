@@ -44,10 +44,10 @@
                                     <%for (chucVuModel cv : ds) {%>
                                     <tr>
                                         <td>
-                                            <%=cv.getMacv()%>
+                                            <text><%=cv.getMacv()%></text>
                                         </td>
                                         <td>
-                                            <%=cv.getTencv()%>
+                                            <text><%=cv.getTencv()%></text>
                                         </td>
                                         <td>
                                             <a href="suaCV.jsp?macv=<%=cv.getMacv()%>">Edit</a>|
