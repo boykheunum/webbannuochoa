@@ -151,7 +151,7 @@ public class chitiethoadon {
                 PreparedStatement ps = cnn.prepareStatement(sql);
                 ps.setInt(1, mahd);
                 ResultSet rs = ps.executeQuery();
-                if (rs.next()) {
+                while (rs.next()) {
                     chiTietHoaDonModel cthd = new chiTietHoaDonModel();
                     cthd.setIdmagiamgia(rs.getString("idmagiamgia"));
                     cthd.setMasp(rs.getString("masp"));
