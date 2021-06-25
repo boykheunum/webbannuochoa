@@ -95,6 +95,7 @@
                                         <div>
                                         <input title="<%=checkImage%>" type="file" id="formFileSm" name="anh" value="<%=checkImage%>">
                                         </div>
+                                        <input  type="hidden" id="anhhientai" name="anhhientai" value="<%=sp.getHinhanh()%>">
                                     </div>
                                     
                                 </div>

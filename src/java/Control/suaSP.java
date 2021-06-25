@@ -53,15 +53,19 @@ public class suaSP extends HttpServlet {
                     float gianhap = Float.parseFloat(tienich.inputFile(listItem, "gianhap"));
                     float giaban = Float.parseFloat(tienich.inputFile(listItem, "giaban"));
                     String mota = tienich.inputFile(listItem, "mota");
+
                     String anh = tienich.inputFile(listItem, "anh");
+                    if (anh.equals(""))//nếu không có ảnh mới thì lấy tên ảnh hiện tại
+                    {
+                        anh = tienich.inputFile(listItem, "anhhientai");
+                    }
                     sanphamModel sp = new sanphamModel(masp, maloaisp, tensp, soluong, gianhap, giaban, mota, anh);
                     int kq = CSDL.SanPham.editLoaiSP(sp);
                     if (kq > 0) {
                         response.sendRedirect("dsSP.jsp");
+                    } else {
+                        response.sendRedirect("500.jsp");
                     }
-                     else {
-                response.sendRedirect("500.jsp");
-            }
                 } catch (Exception ex) {
                     Logger.getLogger(suaSP.class.getName()).log(Level.SEVERE, null, ex);
                 }

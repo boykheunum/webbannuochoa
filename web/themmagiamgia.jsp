@@ -63,8 +63,8 @@
                                 </form>
 
                                 <div>
-                                    @Html.ActionLink("Back to List", "Index")
-                                    <a href="Danh sách">Danh sách</a>
+                                    
+                                    <a href="dsPGG.jsp">Danh sách</a>
                                 </div>
                             </div>
                         </div>

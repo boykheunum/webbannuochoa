@@ -1,6 +1,6 @@
 <%-- 
     Document   : dsSP
-    Created on : May 1, 2021, 10:27:03 PM
+    Created on : Jun 25, 2021, 9:12:25 PM
     Author     : Nguyen Tien Dat
 --%>
 
@@ -20,10 +20,9 @@
             </ol>
             <div class="card mb-4">
                 <div class="card-body">
-
-                    <p>
-                        @Html.ActionLink("Create New", "Create")
-                    </p>
+                    <button class="btn btn-dark" style="margin-bottom: 2%">
+                        <a href="dsSP.jsp" style="text-decoration: none; color:white" >Thêm mới</a>
+                    </button>
                     <%
                         Vector<sanphamModel> ds = new Vector<sanphamModel>();
                         int kq = CSDL.SanPham.listSP(ds);
@@ -62,30 +61,30 @@
                             </th>
                             <th></th>
                         </tr>
-                        <%                            
+                        <%
                             for (sanphamModel sp : ds) {
                         %>
                         <tr>
-                           <td>
-                               <text> <%=sp.getMasp()%></text>
+                            <td>
+                                <text> <%=sp.getMasp()%></text>
                             </td>
                             <td>
-                               <text> <%=sp.getMaloaisp()%></text>
-                            </td>>
+                                <text> <%=sp.getMaloaisp()%></text>
+                            </td>
                             <td>
                                 <text><%=sp.getTensp()%></text>
                             </td>
                             <td>
-                               <text><%=sp.getSoluong()%></text>
+                                <text><%=sp.getSoluong()%></text>
                             </td>
                             <td>
-                               <text> <%=sp.getGianhap()%></text>
+                                <text> <%=sp.getGianhap()%></text>
                             </td>
                             <td>
-                               <text> <%=sp.getGiaban()%></text>
+                                <text> <%=sp.getGiaban()%></text>
                             </td>
                             <td>
-                               <text> <%=sp.getMota()%></text>
+                                <text> <%=sp.getMota()%></text>
                             </td>
                             <td>
                                 <%
@@ -133,4 +132,3 @@
 <script src="content/assets/demo/datatables-demo.js"></script>
 </body>
 </html>
-

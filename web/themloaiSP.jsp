@@ -38,7 +38,7 @@
                                         </div>
                                     </form>
                                     <div>
-                                        "Back to List", "Index"
+                                        <a href="dsloaiSP.jsp">Quay lại danh sách</a>
                                     </div>
 
                                 </div>
