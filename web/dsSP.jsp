@@ -21,7 +21,7 @@
             <div class="card mb-4">
                 <div class="card-body">
                     <button class="btn btn-dark" style="margin-bottom: 2%">
-                        <a href="dsSP.jsp" style="text-decoration: none; color:white" >Thêm mới</a>
+                        <a href="themSP.jsp" style="text-decoration: none; color:white" >Thêm mới</a>
                     </button>
                     <%
                         Vector<sanphamModel> ds = new Vector<sanphamModel>();

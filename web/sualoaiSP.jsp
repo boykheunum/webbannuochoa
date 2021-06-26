@@ -28,22 +28,21 @@
                         <hr />
                         <input type="hidden" name="maloaisp" id="maloaisp" value="<%=lsm.getMaloaisp()%>">
                         <div class="form-group">
-                            <text>Tên loại sản phẩm</text>
-                            <div class="col-md-10">
-                                <input type="text" name="tenloaisp" id="tenloaisp" value="<%=lsm.getTenloaisp()%>">
+                            <text><b>Tên loại sản phẩm</b></text>
+                            <div >
+                                <input class="col-md-10" type="text" name="tenloaisp" id="tenloaisp" value="<%=lsm.getTenloaisp()%>">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-10">
-                                <input type="submit" value="Save" class="btn btn-dark"/>
+                                <input type="submit" value="Save" class="btn btn-dark" >
+                                <button class="btn btn-dark">
+                                    <a href="dsloaiSP.jsp">Quay lại danh sách</a>
+                                </button>
                             </div>
                         </div>
                     </form>
                     <%}%>
-
-                    <div>
-                        <a href="dsloaiSP.jsp">Quay lại danh sách</a>
-                    </div>
 
                 </div>
             </div>

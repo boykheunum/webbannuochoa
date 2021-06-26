@@ -20,10 +20,9 @@
             </ol>
             <div class="card mb-4">
                 <div class="card-body">
-
-                    <p>
-                        @Html.ActionLink("Create New", "Create")
-                    </p>
+                    <button class="btn btn-dark" style="margin-bottom: 2%">
+                        <a href="themmagiamgia.jsp" style="text-decoration: none; color:white" >Thêm mới</a>
+                    </button>
                     <%
                         Vector<phieuGiamGiaModel> ds = new Vector<phieuGiamGiaModel>();
                         int kq = CSDL.phieugiamgia.listTT(ds);

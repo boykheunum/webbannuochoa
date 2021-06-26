@@ -46,8 +46,12 @@ public class thanhtoan extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             response.setContentType("text/html; charset=UTF-8");
             request.setCharacterEncoding("UTF-8");
+            HttpSession session = request.getSession();
             String ngaymua = java.time.LocalDate.now().toString();
-            int tongtien = Integer.parseInt(request.getParameter("tongGia"));
+            int giagoc = Integer.parseInt(request.getParameter("giagoc"));
+            session.setAttribute("giagoc", giagoc);
+            float tongtien = Float.parseFloat(request.getParameter("tongGia"));
+            session.setAttribute("tongtien", tongtien);
             // xu ly ma giam gia
             String magiamgia = request.getParameter("magiamgia");
             if (magiamgia == "") {
@@ -66,7 +70,7 @@ public class thanhtoan extends HttpServlet {
                     out.print("-1");
                 }
             }
-            HttpSession session = request.getSession();
+            
             String usKhach = null;
             Cookie[] cookies = request.getCookies();
             for (Cookie c : cookies) {

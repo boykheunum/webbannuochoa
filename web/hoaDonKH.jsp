@@ -53,6 +53,7 @@
                             </thead>
                             <%
                                 int mahd = (int) session.getAttribute("mahd");
+                                
                                 Vector<chiTietHoaDonModel> ds = new Vector<chiTietHoaDonModel>();
                                 int chitiethoadon = CSDL.chitiethoadon.htChiTietHD(mahd, ds);
                                 if (chitiethoadon == 1) {
@@ -66,7 +67,6 @@
                                     <td><%=hd.getThanhtien()%></td>
                                 </tr>
                                 <%                                        }
-
                                     }
                                 %>
 
@@ -75,14 +75,18 @@
                         <table class="table table-bordered">
                             <tbody>
                                 <tr class="table-info">
-
+                                    <%
+                                        int giagoc = (int)session.getAttribute("giagoc");
+                                    %>
                                     <td   class="font-weight-bold">Tổng giá trị sản phẩm:</td>
-                                    <td  >100000</td>
+                                    <td  ><%=giagoc%></td>
                                 </tr>
                                 <tr class="table-info">
-
+                                    <%
+                                        float tongtien = (float)session.getAttribute("tongtien");
+                                    %>
                                     <td  class="font-weight-bold">Giảm giá:</td>
-                                    <td  >100000</td>
+                                    <td  ><%=tongtien%></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -135,4 +139,3 @@
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     </body>
 </html>
-

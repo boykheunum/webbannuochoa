@@ -47,8 +47,8 @@ public class suaPGG extends HttpServlet {
                 kieugiamgia = false;
             }
             int soluong = Integer.parseInt(request.getParameter("soluong"));
-            int giatri = Integer.parseInt(request.getParameter("giatri"));
-            int dieukien = Integer.parseInt(request.getParameter("dieukien"));
+            float giatri = Float.parseFloat(request.getParameter("giatri"));
+            float dieukien = Float.parseFloat(request.getParameter("dieukien"));
             phieuGiamGiaModel pgg = new phieuGiamGiaModel(idmagiamgia, kieugiamgia, ngaybatdau, ngayketthuc, soluong, giatri, dieukien);
             int kq = CSDL.phieugiamgia.editPhieuGiamGia(idmagiamgia, pgg);
             if (kq == 1) {

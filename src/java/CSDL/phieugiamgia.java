@@ -221,7 +221,7 @@ public class phieugiamgia {
         if (cnn == null) {
             return -1;
         } else {
-            String sql = "UPDATE magiamgia SET soluong=?, WHERE idmagiamgia=?";
+            String sql = "UPDATE magiamgia SET soluong = ? WHERE idmagiamgia = ?";
             PreparedStatement ps;
             try {
                 ps = cnn.prepareStatement(sql);

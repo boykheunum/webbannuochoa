@@ -162,7 +162,7 @@
 
                                                 </div>
                                             </td>
-                                    <input type="hidden" class="GiaGoc" value="<%=tongtien%>"/>
+                                    <input type="hidden" class="GiaGoc" id="GiaGoc" value="<%=tongtien%>"/>
                                     <td colspan="2">Tổng tiền: <span id="TongTien"><%=tongtien%></span></td>
                                     </tr>
                                     </tbody>
@@ -263,6 +263,7 @@
                         data: {
                             magiamgia: $('#magiamgia').val(),
                             tongGia: $("#TongTien").html(),
+                            giagoc: $("#GiaGoc").val(),
                         },
                         success: function (res) {
                             if (res == "-1") {
