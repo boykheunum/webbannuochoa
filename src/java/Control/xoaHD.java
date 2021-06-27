@@ -5,7 +5,6 @@
  */
 package Control;
 
-import Model.nguoiDungModel;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -18,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Nguyen Tien Dat
  */
-@WebServlet(name = "dangkyUser", urlPatterns = {"/dangkyUser"})
-public class dangkyUser extends HttpServlet {
+@WebServlet(name = "xoaHD", urlPatterns = {"/xoaHD"})
+public class xoaHD extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,19 +34,12 @@ public class dangkyUser extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            response.setContentType("text/html; charset=UTF-8");
-            request.setCharacterEncoding("UTF-8");
-            String hoten = request.getParameter("hoten");
-            String sodienthoai = request.getParameter("sodienthoai");
-            String diachi = request.getParameter("diachi");
-            String tendangnhap = request.getParameter("tendangnhap2");
-            String matkhau = request.getParameter("matkhau");
-            nguoiDungModel nd = new nguoiDungModel(tendangnhap, hoten, diachi, matkhau, hoten);
-            int kq = CSDL.nguoidung.dangKy(nd);
-            if (kq == 1) {
-                response.sendRedirect("phantrangUserSP");
-            } else {
-                out.print("alert('Đăng ký thất bại')");
+            int mahd = Integer.parseInt(request.getParameter("mahd"));
+            
+            int kqXoaHD = CSDL.hoadon.deleteHD(mahd);
+            //hỏi lại lúc xóa hóa đơn có phải xóa chi tiết hóa đơn ko
+            if(kqXoaHD==1){
+                response.sendRedirect("dsHD.jsp");
             }
         }
     }

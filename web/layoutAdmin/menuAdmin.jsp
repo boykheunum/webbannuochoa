@@ -51,6 +51,8 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Quản lý Bán hàng</div>
+
+                            <!-- loai san pham-->
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 Loại Sản Phẩm
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -61,7 +63,7 @@
                                     <a class="nav-link" href="themloaiSP.jsp">Thêm</a>
                                 </nav>
                             </div>
-                            
+                            <!--san pham-->
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts1" aria-expanded="false" aria-controls="collapseLayouts">
                                 Sản Phẩm
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -73,6 +75,7 @@
                                 </nav>
                             </div>
                             
+                            <!--phieu giam gia-->
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts2" aria-expanded="false" aria-controls="collapseLayouts">
                                 Phiếu giảm giá
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -83,7 +86,8 @@
                                     <a class="nav-link" href="themmagiamgia.jsp">Thêm</a>
                                 </nav>
                             </div>
-                            
+
+                            <!--thong tin cua hang-->
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts3" aria-expanded="false" aria-controls="collapseLayouts">
                                 Thông Tin Cửa Hàng
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -95,6 +99,7 @@
                                 </nav>
                             </div>
 
+                            <!--hoa don-->
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts4" aria-expanded="false" aria-controls="collapseLayouts">
                                 Hóa Đơn
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -106,6 +111,7 @@
                                 </nav>
                             </div>
                             
+                            <!--chi tiet hoa don-->
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts5" aria-expanded="false" aria-controls="collapseLayouts">
                                 Chi Tiết Hóa Đơn
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -116,7 +122,7 @@
                                     <a class="nav-link" href="~/admin/CTHoaDons/Create">Thêm</a>
                                 </nav>
                             </div>
-                            
+                            <!--khach hang-->
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts6" aria-expanded="false" aria-controls="collapseLayouts">
                                 Khách Hàng
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -126,7 +132,7 @@
                                     <a class="nav-link" href="#">Danh sách</a>
                                 </nav>
                             </div>
-                            
+                            <!--nhan vien-->
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts7" aria-expanded="false" aria-controls="collapseLayouts">
                                 Nhân Viên
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -138,6 +144,7 @@
                                 </nav>
                             </div>
                             
+                            <!--chuc vu-->
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts8" aria-expanded="false" aria-controls="collapseLayouts">
                                 Chức vụ
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -149,6 +156,7 @@
                                 </nav>
                             </div>
                             
+                            <!--tin tuc-->
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts9" aria-expanded="false" aria-controls="collapseLayouts">
                                 Tin Tức
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -159,7 +167,7 @@
                                     <a class="nav-link" href="themTT.jsp">Thêm</a>
                                 </nav>
                             </div>
-                            
+
                         </div>
                     </div>
                 </nav>

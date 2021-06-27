@@ -20,7 +20,7 @@ import java.util.logging.Logger;
  */
 public class hoadon {
 
-    public static int listCTHD(Vector<hoaDonModel> ds) {
+    public static int listHD(Vector<hoaDonModel> ds) {
         Connection cnn = CSDL.databaseConnection.cnnDB();
         if (cnn == null) {
             return -1;
@@ -67,7 +67,7 @@ public class hoadon {
         }
     }
 
-    public static int editThongTin(int keyword, hoaDonModel hd) {
+    public static int editHD(int keyword, hoaDonModel hd) {
         Connection cnn = CSDL.databaseConnection.cnnDB();
         if (cnn == null) {
             return -1;
@@ -100,10 +100,8 @@ public class hoadon {
                 ps.setInt(1, keyWord);
                 ResultSet rs = ps.executeQuery();
                 if (rs.next()) {
-
                     hd.setMahd(rs.getInt("mahd"));
                     hd.setMakh(rs.getInt("makh"));
-
                     hd.setNgayban(rs.getString("ngayban"));
                     hd.setTongtien(rs.getFloat("tongtien"));
                 }
@@ -116,17 +114,23 @@ public class hoadon {
         }
     }
 
-    public static int deleteThongTin(int keyWord) {
+    public static int deleteHD(int keyWord) {
         Connection cnn = CSDL.databaseConnection.cnnDB();
         if (cnn == null) {
             return -1;
         } else {
-            String sql = "DELETE * FROM hoadon WHERE mahd=?";
+            String sql = "DELETE FROM hoadon WHERE mahd=?";
+            String sql1 = "DELETE FROM `chitiethoadon` WHERE mahd=?";
             PreparedStatement ps;
             try {
+                ps = cnn.prepareStatement(sql1);
+                ps.setInt(1, keyWord);
+                ps.executeUpdate();
                 ps = cnn.prepareStatement(sql);
                 ps.setInt(1, keyWord);
-                return ps.executeUpdate();
+                String test = ps.toString();
+                ps.executeUpdate();
+                return 1;
             } catch (SQLException ex) {
                 Logger.getLogger(hoadon.class.getName()).log(Level.SEVERE, null, ex);
                 return -2;

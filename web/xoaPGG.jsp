@@ -27,7 +27,7 @@
                                     <h4>Xóa Phiếu giảm giá</h4>
                                     <hr />
                                     <div class="form-group">
-                                        <input type="hidden" name="idmagiamgia" id="idmaloaisp" value="<%=pgg.getIdmagiamgia()%>">
+                                        <input type="hidden" name="idmagiamgia" id="idmagiamgia" value="<%=pgg.getIdmagiamgia()%>">
                                     </div>
                                     <div class="form-group">
                                         Kiểu giảm giá
