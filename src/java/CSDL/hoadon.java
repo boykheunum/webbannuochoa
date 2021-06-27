@@ -33,7 +33,6 @@ public class hoadon {
                     hoaDonModel hd = new hoaDonModel();
                     hd.setMahd(rs.getInt("mahd"));
                     hd.setMakh(rs.getInt("makh"));
-
                     hd.setNgayban(rs.getString("ngayban"));
                     hd.setTongtien(rs.getFloat("tongtien"));
                     ds.add(hd);
@@ -134,8 +133,8 @@ public class hoadon {
             }
         }
     }
-    
-        public static int layMahdCuoi(hoaDonModel hd) {
+
+    public static int layMahdCuoi(hoaDonModel hd) {
         Connection cnn = CSDL.databaseConnection.cnnDB();
         if (cnn == null) {
             return -1;
@@ -146,10 +145,10 @@ public class hoadon {
                 ps = cnn.prepareStatement(sql);
                 String test = ps.toString();
                 ResultSet rs = ps.executeQuery();
-                if(rs.next()){
-                   hd.setMahd(rs.getInt("mahd"));
+                if (rs.next()) {
+                    hd.setMahd(rs.getInt("mahd"));
                 }
-                
+
                 return 1;
             } catch (SQLException ex) {
                 Logger.getLogger(hoadon.class.getName()).log(Level.SEVERE, null, ex);
@@ -157,5 +156,33 @@ public class hoadon {
             }
         }
     }
-    
+
+    public static int searchMaKH(int keyWord, Vector<hoaDonModel> ds) {
+        Connection cnn = CSDL.databaseConnection.cnnDB();
+        if (cnn == null) {
+            return -1;
+        } else {
+            String sql = "SELECT * FROM hoadon WHERE makh=?";
+            PreparedStatement ps;
+            try {
+                ps = cnn.prepareStatement(sql);
+                ps.setInt(1, keyWord);
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    hoaDonModel hd = new hoaDonModel();
+                    hd.setMahd(rs.getInt("mahd"));
+                    hd.setMakh(rs.getInt("makh"));
+                    hd.setNgayban(rs.getString("ngayban"));
+                    hd.setTongtien(rs.getFloat("tongtien"));
+                    ds.add(hd);
+                }
+                return 1;
+            } catch (SQLException ex) {
+                Logger.getLogger(hoadon.class.getName()).log(Level.SEVERE, null, ex);
+                return -2;
+            }
+
+        }
+    }
+
 }

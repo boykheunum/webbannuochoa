@@ -101,11 +101,22 @@
                         }
                     %>
                 </div>
-                <%
-                    for (int i = 1; i <= numPage; i++) {
-                %>
-                <a href="phantrangUserSP?index=<%=i%>"><%=i%></a>
-                <%}%>
+
+                <nav aria-label="Page navigation example" >
+                    <ul class="pagination">
+
+                        <li class="page-item"><a class="page-link" id="Previous" href="#">Previous</a></li>
+                        <%
+                            for (int i = 1; i <= numPage; i++) {
+                        %>
+                        <li class="page-item"><a class="page-link" id="sotrang" value="<%=i%>" href="phantrangUserSP?index=<%=i%>"><%=i%></a></li>
+<!--                        <li class="page-item" id="sotrang" value="<%=i%>"><a class="page-link"  href="#<%=i%>"><%=i%></a></li>-->
+                        <%}%>
+                        <li class="page-item"><button class="page-link" id="Next">Next</button></li>
+                    </ul>
+                </nav>
+
+
             </div>
         </section>
         <aside class="py-5 bg-light">
@@ -124,6 +135,25 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="content/js/scripts.js"></script>
+        
+        <script>
+            $(document).ready(function(){
+               
+                //sử lý số trang
+               $("#Next").click(function () {
+                   
+                var next = parseInt($("#sotrang").html()) + 1
+                    $.ajax({
+                        method: "post",
+                        url: "phantrangUserSP",
+                        data:{
+                            index:next
+                        }
+                    });
+                });
 
+    });
+        </script>
+        
     </body>
 </html>

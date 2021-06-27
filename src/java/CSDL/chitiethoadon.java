@@ -140,7 +140,7 @@ public class chitiethoadon {
             }
         }
     }
-    
+
     public static int htChiTietHD(int mahd, Vector<chiTietHoaDonModel> ds) {
         Connection cnn = CSDL.databaseConnection.cnnDB();
         if (cnn == null) {
@@ -169,5 +169,5 @@ public class chitiethoadon {
 
         }
     }
-    
+
 }

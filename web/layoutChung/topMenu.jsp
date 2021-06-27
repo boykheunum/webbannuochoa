@@ -4,13 +4,13 @@
     Author     : Nguyen Tien Dat
 --%>
 
+<%@page import="Model.loaispModel"%>
+<%@page import="Model.nguoiDungModel"%>
 <%@page import="Model.tintucModel"%>
 <%@page import="java.util.Vector"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-
-
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
@@ -24,10 +24,19 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="dropsanpham" href="about.html"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sản Phẩm</a>
+                            <%
+                                Vector<loaispModel> dsloaisp = new Vector<loaispModel>();
+                            %>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropsanpham">
-                                <a class="dropdown-item" href="portfolio-1-col.html">Nước Hoa Nam</a>
-                                <a class="dropdown-item" href="portfolio-2-col.html">Nước Hoa Nữ</a>
-                                <a class="dropdown-item" href="portfolio-3-col.html">Nước Hoa Unisex</a>
+                                <%
+                                    int kqloaiSP = CSDL.LoaiSP.listLoaiSP(dsloaisp);
+                                    if (kqloaiSP == 1) {
+                                        for (loaispModel lsp : dsloaisp) {
+                                %>
+                                <a class="dropdown-item" href="portfolio-2-col.html"><%=lsp.getTenloaisp()%></a>
+                                <%}
+                                    }
+                                %>
                             </div>
                         </li>
 
@@ -50,9 +59,29 @@
                             <%}%>
                         </li>
 
-
                         <li class="nav-item"><a class="nav-link" href="giohang.jsp">Giỏ Hàng</a></li>
-
+                            <%
+                                String usKhach = null;
+                                Cookie[] cookies = request.getCookies();
+                                for (Cookie c : cookies) {
+                                    if (c.getName().equals("usKhach")) {
+                                        usKhach = c.getValue();
+                                    }
+                                }
+                                nguoiDungModel nd = new nguoiDungModel();
+                                int searhNguoiDung = CSDL.nguoidung.searchTenNguoiDung(nd, usKhach);
+                                if (searhNguoiDung == 1 && usKhach != null) {
+                            %>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="dropNguoiDung" href="#"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%=nd.getTendangnhap()%></a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropsanpham">
+                                <a class="dropdown-item" href="lichsudonhang.jsp?makh=<%=nd.getMakh()%>">Lịch sử mua hàng</a>
+                                <a class="dropdown-item" href="thongtintaikhoan.jsp?makh=<%=nd.getMakh()%>">Tài khoản</a>
+                                <a class="dropdown-item" href="dangXuat">Đăng xuất</a>
+                            </div>
+                        </li>
+                        <%} else if (usKhach == null) {%>
                         <li class="nav-item">
                             <!-- Button trigger modal -->
                             <button type="button" class="btn btn-primary DangNhap" data-toggle="modal" data-target="#exampleModal">
@@ -144,6 +173,8 @@
                                 </div>
                             </div>
                         </li>
+                        <%}%>
+
                         <li class="nav-item"><a class="nav-link" href="contact.html">  </a></li>
                         <li class="nav-item">
                             <form class="input-group rounded" id="searchFrom" name="searchForm" method="post" action="SearchByAjax" >

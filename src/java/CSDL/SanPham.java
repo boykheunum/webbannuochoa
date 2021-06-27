@@ -207,8 +207,10 @@ public class SanPham {
         String sql = "SELECT * FROM sanpham GROUP BY masp LIMIT 9  OFFSET ?";
         PreparedStatement ps;
         try {
+            int a = index;
             ps = cnn.prepareStatement(sql);
             ps.setInt(1, (index - 1) * 9);
+            String test = ps.toString();
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 sanphamModel tp = new sanphamModel();

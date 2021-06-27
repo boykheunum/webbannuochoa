@@ -1,0 +1,105 @@
+
+<%@page import="java.util.Vector"%>
+<%@page import="Model.nguoiDungModel"%>
+<%@page import="Model.hoaDonModel"%>
+<%@page import="Model.sanphamModel"%>
+<!DOCTYPE html>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Cửa Hàng Nước Hoa</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="content/assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="content/css/styles.css" rel="stylesheet" />
+    </head>
+    <body>
+        <!-- Navigation-->
+        <jsp:include page="layoutChung/topMenu.jsp"/>
+        <!-- Page Content-->
+        <section class="py-5">
+            <div class="container">
+                <!-- Page Heading/Breadcrumbs-->
+
+                <ol class="breadcrumb mb-4">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active">Lịch sử đơn hàng</li>
+                </ol>
+                <!-- Content Row-->
+                <div class="row">
+                    <!-- Sidebar Column-->
+                    <div class="col-lg-3 mb-4">
+                        <div class="list-group">
+                            <a class="list-group-item" href="#">Thông tin tài khoản</a>
+                            <a class="list-group-item" href="#">Lịch sử đơn hàng</a>
+
+                        </div>
+                    </div>
+                    <!-- Content Column-->
+                    <div class="col-lg-9 mb-4">
+                        <h2>Lịch sử đơn hàng</h2>
+                        <div class="media mb-4">
+                            <%
+                                int makh = Integer.parseInt(request.getParameter("makh"));
+                                nguoiDungModel nd = new nguoiDungModel();
+                                int kqSearchND = CSDL.nguoidung.searchNguoiDung(nd, makh);
+                                if (kqSearchND == 1) {
+                                    makh = nd.getMakh();
+                                } else {
+                                    response.sendRedirect("500.jsp");
+                                }
+                                Vector<hoaDonModel> ds = new Vector<hoaDonModel>();
+                                int searchHD = CSDL.hoadon.searchMaKH(makh, ds);
+                                if (searchHD == 1) {
+                            %>
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Mã đơn hàng</th>
+                                        <th scope="col">Ngày đặt</th>
+                                        <th scope="col">Tổng tiền</th>
+                                    </tr>
+                                </thead>
+                                <%
+                                    for (hoaDonModel hd : ds) {
+                                %>
+                                <tbody>
+                                    <tr>
+                                        <td><a href="chitiethoadonKH.jsp?mahd=<%=hd.getMahd()%>"><%=hd.getMahd()%></a></td>
+                                        <td><%=hd.getNgayban()%></td>
+                                        <td><%=hd.getTongtien()%></td>
+                                    </tr>
+                                </tbody>
+                                <%}%>
+                            </table>
+                            <%} else {
+                                    response.sendRedirect("500.jsp");
+                                }
+                            %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <hr class="my-0" />
+
+
+        <!-- Footer-->
+        <jsp:include page="layoutChung/footer.jsp" />
+        <!-- Bootstrap core JS-->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>
+
+
+

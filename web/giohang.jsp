@@ -231,16 +231,12 @@
                         method: "post",
                         url: "kiemTraTrangThaiDangNhap",
                         success: function (res) {
-
                             if (res == "-1") {
 
                                 $(".DangNhap").click()
                             } else {
                                 location.href = "/WebBanSach/xacNhanThongTinThanhToan.jsp"
-
                             }
-
-
                         }
 
                     });
