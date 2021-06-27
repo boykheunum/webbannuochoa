@@ -3,7 +3,6 @@
     Created on : May 23, 2021, 2:56:50 PM
     Author     : Nguyen Tien Dat
 --%>
-
 <%@page import="Model.loaispModel"%>
 <%@page import="Model.nguoiDungModel"%>
 <%@page import="Model.tintucModel"%>
@@ -33,7 +32,7 @@
                                     if (kqloaiSP == 1) {
                                         for (loaispModel lsp : dsloaisp) {
                                 %>
-                                <a class="dropdown-item" href="portfolio-2-col.html"><%=lsp.getTenloaisp()%></a>
+                                <a class="dropdown-item" href="phantrangLoaiSP?maloaisp=<%=lsp.getMaloaisp()%>"><%=lsp.getTenloaisp()%></a>
                                 <%}
                                     }
                                 %>

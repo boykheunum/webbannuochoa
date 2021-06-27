@@ -262,8 +262,8 @@ public class SanPham {
 
         }
     }
-    
-    public static int truSoLuongSP(String masp, int soluong ) {
+
+    public static int truSoLuongSP(String masp, int soluong) {
         Connection cnn = CSDL.databaseConnection.cnnDB();
         if (cnn == null) {
             return -1;
@@ -281,8 +281,8 @@ public class SanPham {
 
         }
     }
-    
-        public static int phanTrang(int index, Vector<sanphamModel> ds, String maloaisp) {
+
+    public static int phanTrangLoaiSP(int index, Vector<sanphamModel> ds, String maloaisp) {
         Connection cnn = CSDL.databaseConnection.cnnDB();
         if (cnn == null) {
             return -1;
@@ -292,7 +292,7 @@ public class SanPham {
         try {
             ps = cnn.prepareStatement(sql);
             ps.setString(1, maloaisp);
-            ps.setInt(1, (index - 1) * 9);
+            ps.setInt(2, (index - 1) * 9);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 sanphamModel tp = new sanphamModel();
@@ -311,6 +311,28 @@ public class SanPham {
             Logger.getLogger(SanPham.class.getName()).log(Level.SEVERE, null, ex);
             return -2;
         }
+    }
+
+    public static int countSPTheoLoai(String maloaisp) {
+        Connection cnn = CSDL.databaseConnection.cnnDB();
+        if (cnn == null) {
+            return -1;
+        } else {
+            String sql = "SELECT COUNT(*) FROM sanpham WHERE maloaisp = ?";
+            try {
+                PreparedStatement ps = cnn.prepareStatement(sql);
+                ps.setString(1, maloaisp);
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    return rs.getInt(1);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(SanPham.class.getName()).log(Level.SEVERE, null, ex);
+                return -2;
+            }
+
+        }
+        return 0;
     }
 
 }
