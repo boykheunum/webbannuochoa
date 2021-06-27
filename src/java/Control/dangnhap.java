@@ -54,14 +54,13 @@ public class dangnhap extends HttpServlet {
                 } else {
                     out.print("-1");
                 }
+            } else if (CSDL.nhanVien.dangnhap(userName, passWord) == 1) {
+                Cookie cookie = new Cookie("usNV", userName);
+                cookie.setMaxAge(60);
+                response.addCookie(cookie);
+                response.sendRedirect("dsSP.jsp");
             } else {
-                int kq = CSDL.nhanVien.dangnhap(userName, passWord);
-                if (kq == 1) {
-                    Cookie cookie = new Cookie("usNV", userName);
-                    cookie.setMaxAge(60);
-                    response.addCookie(cookie);
-                    response.sendRedirect("dsSP.jsp");
-                }
+                response.sendRedirect("dsSP.jsp");
             }
 
         }

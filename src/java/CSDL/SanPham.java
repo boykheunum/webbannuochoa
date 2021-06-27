@@ -279,5 +279,36 @@ public class SanPham {
 
         }
     }
+    
+        public static int phanTrang(int index, Vector<sanphamModel> ds, String maloaisp) {
+        Connection cnn = CSDL.databaseConnection.cnnDB();
+        if (cnn == null) {
+            return -1;
+        }
+        String sql = "SELECT * FROM sanpham WHERE maloaisp = ? GROUP BY masp LIMIT 9  OFFSET ?";
+        PreparedStatement ps;
+        try {
+            ps = cnn.prepareStatement(sql);
+            ps.setString(1, maloaisp);
+            ps.setInt(1, (index - 1) * 9);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                sanphamModel tp = new sanphamModel();
+                tp.setMasp(rs.getString("masp"));
+                tp.setMaloaisp(rs.getString("maloaisp"));
+                tp.setTensp(rs.getString("tensp"));
+                tp.setSoluong(rs.getInt("soluong"));
+                tp.setGianhap(rs.getFloat("gianhap"));
+                tp.setGiaban(rs.getFloat("giaban"));
+                tp.setMota(rs.getString("mota"));
+                tp.setHinhanh(rs.getString("hinhanh"));
+                ds.add(tp);
+            }
+            return 1;
+        } catch (SQLException ex) {
+            Logger.getLogger(SanPham.class.getName()).log(Level.SEVERE, null, ex);
+            return -2;
+        }
+    }
 
 }

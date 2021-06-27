@@ -4,6 +4,7 @@
     Author     : Nguyen Tien Dat
 --%>
 
+<%@page import="Model.nguoiDungModel"%>
 <%@page import="Model.chiTietHoaDonModel"%>
 <%@page import="java.util.Vector"%>
 <%@page import="Model.hoaDonModel"%>
@@ -53,7 +54,6 @@
                             </thead>
                             <%
                                 int mahd = (int) session.getAttribute("mahd");
-                                
                                 Vector<chiTietHoaDonModel> ds = new Vector<chiTietHoaDonModel>();
                                 int chitiethoadon = CSDL.chitiethoadon.htChiTietHD(mahd, ds);
                                 if (chitiethoadon == 1) {
@@ -76,14 +76,14 @@
                             <tbody>
                                 <tr class="table-info">
                                     <%
-                                        int giagoc = (int)session.getAttribute("giagoc");
+                                        int giagoc = (int) session.getAttribute("giagoc");
                                     %>
                                     <td   class="font-weight-bold">Tổng giá trị sản phẩm:</td>
                                     <td  ><%=giagoc%></td>
                                 </tr>
                                 <tr class="table-info">
                                     <%
-                                        float tongtien = (float)session.getAttribute("tongtien");
+                                        float tongtien = (float) session.getAttribute("tongtien");
                                     %>
                                     <td  class="font-weight-bold">Giảm giá:</td>
                                     <td  ><%=tongtien%></td>
@@ -95,39 +95,62 @@
                 <div class="card my-4">
                     <h5 class="card-header">Thông tin đơn hàng</h5>
                     <div class="card-body">
+                        <%
+                            hoaDonModel hd = new hoaDonModel();
+                            int kqHienThiHoaDon = CSDL.hoadon.searchHoaDon(mahd, hd);
+                            if (kqHienThiHoaDon == 1) {
+                        %>
                         <table class="table table-bordered">
                             <tbody>
                                 <tr >
                                     <td class="font-weight-bold" >Mã Đơn hàng của quý khách:</td>
-                                    <td  >100000</td>
+                                    <td  ><%=hd.getMahd()%></td>
                                 </tr>
                                 <tr >
                                     <td  class="font-weight-bold" >Thời gian đặt hàng:</td>
-                                    <td  >100000</td>
+                                    <td  ><%=hd.getNgayban()%></td>
                                 </tr>
                             </tbody>
                         </table>
+                        <%}%>
                     </div>
                 </div>
                 <div class="card my-4">
                     <h5 class="card-header">Địa chỉ giao hàng</h5>
                     <div class="card-body">
+                        <%
+                            String usKhach = null;
+                            Cookie[] cookies = request.getCookies();
+                            for (Cookie c : cookies) {
+                                if (c.getName().equals("usKhach")) {
+                                    usKhach = c.getValue();
+                                }
+                            }
+                            nguoiDungModel nd = new nguoiDungModel();
+                            int searhNguoiDung = CSDL.nguoidung.searchTenNguoiDung(nd, usKhach);
+                            if (searhNguoiDung == 1) {
+                        %>
                         <table class="table table-bordered">
                             <tbody>
                                 <tr >
+                                    <td class="font-weight-bold" >Tên đăng nhập người nhận:</td>
+                                    <td  ><%=nd.getTendangnhap()%></td>
+                                </tr>
+                                <tr >
                                     <td class="font-weight-bold" >Tên người nhận:</td>
-                                    <td  >100000</td>
+                                    <td  ><%=nd.getHovaten()%></td>
                                 </tr>
                                 <tr >
                                     <td  class="font-weight-bold">Địa chỉ người nhận:</td>
-                                    <td  >100000</td>
+                                    <td  ><%=nd.getDiachi()%></td>
                                 </tr>
                                 <tr >
                                     <td  class="font-weight-bold">Số điện thoại liên hệ:</td>
-                                    <td  >100000</td>
+                                    <td  ><%=nd.getSdt()%></td>
                                 </tr>
                             </tbody>
                         </table>
+                        <%}%>
                     </div>
                 </div>
             </div>
