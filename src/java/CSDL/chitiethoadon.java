@@ -72,7 +72,7 @@ public class chitiethoadon {
         }
     }
 
-    public static int editThongTin(int keyword, chiTietHoaDonModel cthd) {
+    public static int editCTHD(int keyword, chiTietHoaDonModel cthd) {
         Connection cnn = CSDL.databaseConnection.cnnDB();
         if (cnn == null) {
             return -1;
@@ -107,12 +107,12 @@ public class chitiethoadon {
                 ps.setInt(1, keyWord);
                 ResultSet rs = ps.executeQuery();
                 if (rs.next()) {
-                    ps.setString(1, cthd.getIdmagiamgia());
-                    ps.setString(2, cthd.getMasp());
-                    ps.setFloat(3, cthd.getGiaban());
-                    ps.setInt(4, cthd.getMahd());
-                    ps.setInt(5, cthd.getSoluongmua());
-                    ps.setFloat(6, cthd.getThanhtien());
+                    cthd.setIdmagiamgia(rs.getString("idmagiamgia"));
+                    cthd.setMasp(rs.getString("masp"));
+                    cthd.setGiaban(rs.getFloat("giaban"));
+                    cthd.setMahd(rs.getInt("mahd"));
+                    cthd.setSoluongmua(rs.getInt("soluongmua"));
+                    cthd.setThanhtien(rs.getFloat("thanhtien"));
                 }
                 return 1;
             } catch (SQLException ex) {
@@ -123,7 +123,7 @@ public class chitiethoadon {
         }
     }
 
-    public static int deleteThongTin(int keyWord) {
+    public static int deleteCTHD(int keyWord) {
         Connection cnn = CSDL.databaseConnection.cnnDB();
         if (cnn == null) {
             return -1;
