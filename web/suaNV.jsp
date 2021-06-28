@@ -8,6 +8,7 @@
 <%@page import="Model.nhanVienModel"%>
 <%@page import="java.util.Vector"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<<<<<<< HEAD
 <jsp:include page="layoutAdmin/menuAdmin.jsp" />
             <div id="layoutSidenav_content">
                 <main>
@@ -70,8 +71,16 @@
                                             <input type="text" id="tendangnhap" name="tendangnhap" value="<%=nv.getTendangnhap()%>">
                                         </div>
                                     </div>
+=======
 
+<jsp:include page="layoutAdmin/menuAdmin.jsp" />
+>>>>>>> fb8db9797de2a36b53b1f4fae819d6b9e0321716
 
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid">
+
+<<<<<<< HEAD
                                   <div class="form-group row">
                             <p class="col-sm-2 font-weight-bold"> Tài khoản</p>
                             <div class="col-sm-10">
@@ -90,26 +99,105 @@
                                             <input class="form-control" id="diachi" name="diachi" value="<%=nv.getDiachi()%>">
                                         </div>
                                     </div>
+=======
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item"><a href="index.html">Nhân Viên</a></li>
+                <li class="breadcrumb-item active">Sửa</li>
+            </ol>
+            <div class="card mb-4">
+                <%
+                    int manv = Integer.parseInt(request.getParameter("manv"));
+                    nhanVienModel nv = new nhanVienModel();
+                    int kq = CSDL.nhanVien.searchNhanVien(nv, manv);
+                    if (kq == 1) {
+                %>
+                <form class="card-body" action="suaNV" method="post">
+                    <div class="form-horizontal">
+                        <h4>Nhân viên</h4>
+                        <hr />
+                        <div class="form-group">
+                            <text><b>Mã chức vụ</b></text>
+                            <div class="col-md-4">
+                                <select class="col-md-4" id="macv" name="macv">
+                                    <%
+                                        Vector<chucVuModel> ds = new Vector<chucVuModel>();
+                                        CSDL.chucVu.listLoaiCV(ds);
+                                        for (chucVuModel cv : ds) {
+                                    %>
+                                    <option><%=cv.getMacv()%></option>
+                                    <%}%>
+                                </select>
+                            </div>
+                        </div>
+                        <input id="manv" type="hidden" name="manv" value="<%=nv.getManv()%>">
+                        <div class="form-group">
+                            <text><b>Tên nhân viên</b></text>
+                            <div class="col-md-6">
+                                <input type="text" id="tennv" name="tennv" value="<%=nv.getTennv()%>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <text><b>Số điện thoại</b></text>
+                            <div class="col-md-6">
+                                <input type="text" id="sdt" name="sdt" value="<%=nv.getSdt()%>">
+                            </div>
+                        </div>
+>>>>>>> fb8db9797de2a36b53b1f4fae819d6b9e0321716
 
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-md-offset-2 col-md-6">
-                                        <input type="submit" value="Save" class="btn btn-default" />
-                                    </div>
-                                </div>
-                            </form>
+                        <div class="form-group">
+                            <text><b>Ngày sinh</b></text>
+                            <div class="col-md-6">
+                                <input type="text" id="ngaysinh" name="ngaysinh" value="<%=nv.getNgaysinh()%>">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <text><b>Tên Đăng nhập</b></text>
+                            <div class="col-md-6">
+                                <input type="text" id="tendangnhap" name="tendangnhap" value="<%=nv.getTendangnhap()%>">
+                            </div>
                         </div>
 
 
-                        <%}%>
-
+<<<<<<< HEAD
                          <a href="dsNV.jsp">Quay lại danh sách</a>
-
+=======
+                        <div class="form-group">
+                            <text><b>Tài khoản</b></text>
+                            <div class="col-md-6">
+                                <input class="form-control" id="tendangnhap" name="tendangnhap" value="<%=nv.getTendangnhap()%>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <text><b>Mật khẩu</b></text>
+                            <div class="col-md-6">
+                                <input class="form-control" id="matkhau" name="matkhau" value="<%=nv.getMatkhau()%>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <text><b>Địa chỉ</b></text>
+                            <div class="col-md-6">
+                                <input class="form-control" id="diachi" name="diachi" value="<%=nv.getDiachi()%>">
+                            </div>
+                        </div>
+>>>>>>> fb8db9797de2a36b53b1f4fae819d6b9e0321716
 
                     </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Save" class="btn btn-dark" >
+                            <button class="btn btn-dark">
+                                <a href="dsNV.jsp" style="color: white; text-decoration: none">Quay lại danh sách</a>
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
+            <%}%>
         </div>
-    </div>
+</div>
+</div>
+</div>
 </main>
 
 <footer class="py-4 bg-light mt-auto">

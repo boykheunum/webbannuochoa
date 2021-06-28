@@ -4,9 +4,25 @@
     Author     : quyenlh
 --%>
 
+<%@page import="Model.nhanVienModel"%>
 <%@page import="Model.loaispModel"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    String usNV = null;
+    Cookie[] cookies = request.getCookies();
+    for (Cookie c : cookies) {
+        if (c.getName().equals("usNV")) {
+            usNV = c.getValue();
+        }
+    }
+    nhanVienModel nv = new nhanVienModel();
+    int kqSearchCV = CSDL.nhanVien.searchCVNhanVien(nv, usNV);
+    if (kqSearchCV == 1) {
+        String macv = nv.getMacv();
+        if (macv.contains("1") == true) {
+%>
 <jsp:include page="layoutAdmin/menuAdmin.jsp" />
+<<<<<<< HEAD
 <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid">
@@ -21,6 +37,41 @@
                             <hr />
                             <span id="messBoxErr" style="color: red"></span>
                             <span id="messBox" style="color: greenyellow"></span>
+=======
+<%
+} else {
+%>
+<jsp:include page="layoutAdmin/menuNV.jsp" />
+<%
+        }
+    }
+
+%>
+            <div id="layoutSidenav_content">
+                <main>
+                    <main>
+                        <div class="container-fluid">
+                            <ol class="breadcrumb mb-4">
+                                <li class="breadcrumb-item"><a href="index.html">Thông tin cửa hàng</a></li>
+                                <li class="breadcrumb-item active">Thêm thông tin cửa hàng</li>
+                            </ol>
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <form class="form-horizontal" action="themTTCH" method="post">
+                                        <h4>Thông tin cửa hàng</h4>
+                                        <hr />
+                                        <span id="messBoxErr" style="color: red"></span>
+                                        <span id="messBox" style="color: greenyellow"></span>
+                                        
+                                        <div class="form-group">
+                                           Địa chỉ cửa hàng
+                                            <input  id="diachi" name="diachi" type="text">
+                                        </div>
+                                         <div class="form-group">
+                                            Email
+                                            <input id="email" name="email" type="text">
+                                        </div>
+>>>>>>> fb8db9797de2a36b53b1f4fae819d6b9e0321716
 
                             <div class="form-group row">
                                 <p class="col-sm-2 font-weight-bold">  Địa chỉ cửa hàng</p>

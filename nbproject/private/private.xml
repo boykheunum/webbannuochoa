@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/suaTTCH.jsp</file>
             <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/suaCV.jsp</file>
             <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/suaPGG.jsp</file>
@@ -12,6 +13,17 @@
             <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/sualoaiSP.jsp</file>
             <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/thanhtoan.jsp</file>
             <file>file:/C:/Users/quyenlh/Desktop/webbannuochoa/web/suaSP.jsp</file>
+=======
+            <file>file:/D:/hoctap/JAVA/project/webbannuochoa/web/layoutAdmin/menuAdmin.jsp</file>
+            <file>file:/D:/hoctap/JAVA/project/webbannuochoa/web/dsCTHD.jsp</file>
+            <file>file:/D:/hoctap/JAVA/project/webbannuochoa/web/dsHD.jsp</file>
+            <file>file:/D:/hoctap/JAVA/project/webbannuochoa/web/xoaKH.jsp</file>
+            <file>file:/D:/hoctap/JAVA/project/webbannuochoa/web/sualoaiSP.jsp</file>
+            <file>file:/D:/hoctap/JAVA/project/webbannuochoa/web/suaKH.jsp</file>
+            <file>file:/D:/hoctap/JAVA/project/webbannuochoa/web/dsKH.jsp</file>
+            <file>file:/D:/hoctap/JAVA/project/webbannuochoa/web/suaTTCH.jsp</file>
+            <file>file:/D:/hoctap/JAVA/project/webbannuochoa/web/xoaHD.jsp</file>
+>>>>>>> fb8db9797de2a36b53b1f4fae819d6b9e0321716
         </group>
     </open-files>
 </project-private>

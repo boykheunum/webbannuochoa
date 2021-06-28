@@ -111,6 +111,9 @@ public class thanhtoan extends HttpServlet {
                     String tensp = sp.getTensp();
                     int soluongmua = hoadon.get(masp);
                     int soluong = sp.getSoluong();
+                    if(soluongmua > soluong){
+                        soluongmua = soluong;
+                    }
                     soluong = soluong - soluongmua;
                     float giaban = sp.getGiaban();
                     thanhtien = giaban * soluongmua;

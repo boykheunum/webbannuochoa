@@ -38,7 +38,7 @@
                     <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                        
-                        <a class="dropdown-item" href="login.html">Logout</a>
+                        <a class="dropdown-item" href="dangXuatNV">Logout</a>
                     </div>
                 </li>
             </ul>
@@ -104,7 +104,7 @@
                             </a>
                             <div class="collapse" id="collapseLayouts4" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="#">Danh sách</a>
+                                    <a class="nav-link" href="dsHD.jsp">Danh sách</a>
                                    
                                 </nav>
                             </div>
@@ -115,8 +115,8 @@
                             </a>
                             <div class="collapse" id="collapseLayouts5" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="~/admin/CTHoaDons/Index">Danh sách</a>
-                                    <a class="nav-link" href="~/admin/CTHoaDons/Create">Thêm</a>
+                                    <a class="nav-link" href="dsCTHD.jsp">Danh sách</a>
+                                    
                                 </nav>
                             </div>
                             <!--khach hang-->

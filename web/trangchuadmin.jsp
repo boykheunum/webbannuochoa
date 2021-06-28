@@ -4,37 +4,61 @@
     Author     : quyenlh
 --%>
 
+<%@page import="Model.nhanVienModel"%>
 <%@page import="java.util.Vector"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-
+<%
+    String usNV = null;
+    Cookie[] cookies = request.getCookies();
+    for (Cookie c : cookies) {
+        if (c.getName().equals("usNV")) {
+            usNV = c.getValue();
+        }
+    }
+    nhanVienModel nv = new nhanVienModel();
+    int kqSearchCV = CSDL.nhanVien.searchCVNhanVien(nv, usNV);
+    if (kqSearchCV == 1) {
+        String macv = nv.getMacv();
+        if (macv.contains("1") == true) {
+%>
 <jsp:include page="layoutAdmin/menuAdmin.jsp" />
-            <div id="layoutSidenav_content">
-                <main>
-                    <div class="container-fluid">
-                            <img src="content/img/anhadmin/admin.png" width="1100" height="650" >
-                    </div>
-                </main>
+<%
+} else {
+%>
+<jsp:include page="layoutAdmin/menuNV.jsp" />
+<%
+        }
+    }
 
-                <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2020</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
+%>
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid" style="padding-left: 0;
+             padding-right: 0;">
+            <img src="content/img/anhadmin/nhanvien.png" width="100%" height="650" >
+        </div>
+    </main>
+
+    <footer class="py-4 bg-light mt-auto">
+        <div class="container-fluid">
+            <div class="d-flex align-items-center justify-content-between small">
+                <div class="text-muted">Copyright &copy; Your Website 2020</div>
+                <div>
+                    <a href="#">Privacy Policy</a>
+                    &middot;
+                    <a href="#">Terms &amp; Conditions</a>
+                </div>
             </div>
         </div>
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="content/js/scripts.js"></script>
-        <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
-        <script src="content/assets/demo/datatables-demo.js"></script>
-    </body>
+    </footer>
+</div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="content/js/scripts.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+<script src="content/assets/demo/datatables-demo.js"></script>
+</body>
 </html>

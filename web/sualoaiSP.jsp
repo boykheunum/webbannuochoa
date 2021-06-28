@@ -4,9 +4,33 @@
     Author     : Nguyen Tien Dat
 --%>
 
+<%@page import="Model.nhanVienModel"%>
 <%@page import="Model.loaispModel"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    String usNV = null;
+    Cookie[] cookies = request.getCookies();
+    for (Cookie c : cookies) {
+        if (c.getName().equals("usNV")) {
+            usNV = c.getValue();
+        }
+    }
+    nhanVienModel nv = new nhanVienModel();
+    int kqSearchCV = CSDL.nhanVien.searchCVNhanVien(nv, usNV);
+    if (kqSearchCV == 1) {
+        String macv = nv.getMacv();
+        if (macv.contains("1") == true) {
+%>
 <jsp:include page="layoutAdmin/menuAdmin.jsp" />
+<%
+} else {
+%>
+<jsp:include page="layoutAdmin/menuNV.jsp" />
+<%
+        }
+    }
+
+%>
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid">
@@ -42,8 +66,15 @@
                         </div>
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-10">
+<<<<<<< HEAD
                                 <input type="submit" value="Save" class="btn btn-dark" >
                               
+=======
+                                <input type="submit" value="Save" class="btn btn-dark" >                                
+                                    <button class="btn btn-dark">
+                                        <a href="dsloaiSP.jsp" style="color: white; text-decoration: none">Quay lại danh sách</a>
+                                    </button>
+>>>>>>> fb8db9797de2a36b53b1f4fae819d6b9e0321716
                             </div>
                         </div>
                     </form>

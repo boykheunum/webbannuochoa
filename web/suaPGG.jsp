@@ -6,14 +6,20 @@
 
 <%@page import="Model.phieuGiamGiaModel"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <jsp:include page="layoutAdmin/menuAdmin.jsp" />
+
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid">
 
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item"><a href="index.html">Phiếu giảm giá</a></li>
+<<<<<<< HEAD
                 <li class="breadcrumb-item active">Sửa phiếu giảm giá</li>
+=======
+                <li class="breadcrumb-item active">Sửa</li>
+>>>>>>> fb8db9797de2a36b53b1f4fae819d6b9e0321716
             </ol>
             <div class="card mb-4">
                 <div class="card-body">
@@ -72,19 +78,18 @@
                         </div>
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-10">
-                                <input type="submit" value="Save" class="btn btn-dark" />
+                                <input type="submit" value="Save" class="btn btn-dark" >
+                                <button class="btn btn-dark">
+                                    <a href="dsPGG.jsp" style="color: white; text-decoration: none">Quay lại danh sách</a>
+                                </button>
                             </div>
                         </div>
                     </form>
                     <%}%>
-                    <div>
-                        <a href="dsPGG.jsp">Quay lại danh sách</a>
-                    </div>
                 </div>
             </div>
         </div>
     </main>
-
     <footer class="py-4 bg-light mt-auto">
         <div class="container-fluid">
             <div class="d-flex align-items-center justify-content-between small">

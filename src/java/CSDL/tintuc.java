@@ -59,6 +59,7 @@ public class tintuc {
                 ps.setString(2, tt.getNgaydang());
                 ps.setString(3, tt.getTieude());
                 ps.setString(4, tt.getNoidung());
+                String test = ps.toString();
                 return ps.executeUpdate();
             } catch (SQLException ex) {
                 Logger.getLogger(tintuc.class.getName()).log(Level.SEVERE, null, ex);
