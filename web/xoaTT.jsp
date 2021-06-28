@@ -13,7 +13,7 @@
                     <div class="container-fluid">
 
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="#">Tin Tức</a></li>
+                            <li class="breadcrumb-item"><a href="dsTT.jsp">Tin Tức</a></li>
                             <li class="breadcrumb-item active">Xóa tin tức</li>
                         </ol>
                         <div class="card mb-4">
@@ -26,38 +26,39 @@
                                     if (kq == 1) {
                                 %>
                                 <form method="post" action="xoaTT">
-                                    <hr />
-                                    <div class="form-group">
-                                        <text>Id</text>
-                                        <div class="col-md-6">
+                                    <h4>Xóa tin tức</h4>
+                        <hr />
+                                    <div class="form-group row">
+                            <p class="col-sm-2 font-weight-bold">ID bài viết</p>
+                            <div class="col-sm-10">
                                               <input type="hidden" id="id" name="id" value="<%=tt.getId()%>">
                                             <text><%=tt.getId()%></text>
                                         </div>
                                     </div> 
-                                    <div class="form-group">
-                                        <text>Ngày đăng</text>
-                                        <div class="col-md-6">
+                                     <div class="form-group row">
+                            <p class="col-sm-2 font-weight-bold"> Ngày đăng</p>
+                            <div class="col-sm-10">
                                              <input type="hidden" id="ngaydang" name="ngaydang" value="<%=tt.getNgaydang()%>">
                                              <text><%=tt.getNgaydang()%></text>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <text>Tiêu đề</text>
-                                        <div class="col-md-6">
+                                    <div class="form-group row">
+                            <p class="col-sm-2 font-weight-bold">Tiêu đề</p>
+                            <div class="col-sm-10">
                                              <input type="hidden" id="tieude" name="tieude" value="<%=tt.getTieude()%>">
                                             <text><%=tt.getTieude()%></text>
                                         </div>
                                     </div>       
-                                     <div class="form-group">
-                                        <text>Nội dung</text>
-                                        <div class="col-md-6">
+                                      <div class="form-group row">
+                            <p class="col-sm-2 font-weight-bold">Nội dung</p>
+                            <div class="col-sm-10">
                                              <input type="hidden" id="noidung" name="noidung" value="<%=tt.getNoidung()%>">
                                                <text><%=tt.getNoidung()%></text>
                                         </div>
                                     </div>       
-                                     <div class="form-group">
-                                         <text>Ảnh</text>
-                                        <div class="col-md-6">
+                                      <div class="form-group row">
+                            <p class="col-sm-2 font-weight-bold">Ảnh</p>
+                            <div class="col-sm-10">
                                           <img src="imageSP/<%=tt.getAnh()%>">   
                                         </div>
                                     </div> 
@@ -68,6 +69,7 @@
                             </div>
                                 </form>
                                 <%}%>
+                                 <a href="dsTT.jsp">Quay lại danh sách</a>
                             </div>
                         </div>
                     </div>

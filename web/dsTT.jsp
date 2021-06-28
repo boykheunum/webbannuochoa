@@ -14,15 +14,15 @@
                     <div class="container-fluid">
 
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="#">Tin Tức</a></li>
+                            <li class="breadcrumb-item"><a href="menuAdmin.jsp">Tin Tức</a></li>
                             <li class="breadcrumb-item active">Danh Sách</li>
                         </ol>
                         <div class="card mb-4">
                             <div class="card-body">
 
-                                <p>
-                                    @Html.ActionLink("Create New", "Create")
-                                </p>
+                                <button class="btn btn-dark" style="margin-bottom: 2%">
+                        <a href="themTT.jsp" style="text-decoration: none; color:white" >Thêm mới</a>
+                    </button>
                                 <%
                                     Vector<tintucModel> ds = new Vector<tintucModel>();
                                     int kq = CSDL.tintuc.listTT(ds);

@@ -13,15 +13,13 @@
                 <main>
                     <div class="container-fluid">
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="menuAdmin.jsp">Nhân Viên</a></li>
+                            <li class="breadcrumb-item"><a href="menuAdmin.jsp">Thông tin hóa đơn</a></li>
                             <li class="breadcrumb-item active">Danh Sách</li>
                         </ol>
                         <div class="card mb-4">
                             <div class="card-body">
 
-                                <p>
-                                    @Html.ActionLink("Create New", "Create")
-                                </p>
+                              
                                 <%
                                     Vector<hoaDonModel> ds = new Vector<hoaDonModel>();
                                     int kq = CSDL.hoadon.listHD(ds);

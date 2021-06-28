@@ -11,13 +11,12 @@
     <main>
         <div class="container-fluid">
             <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item"><a href="index.html">Loại Sản Phẩm</a></li>
-                <li class="breadcrumb-item active">Xóa</li>
+                <li class="breadcrumb-item"><a href="dsloaiSP.jsp">Loại Sản Phẩm</a></li>
+                <li class="breadcrumb-item active">Xóa loại sản phẩm</li>
             </ol>
             <div class="card mb-4">
                 <div class="card-body">
 
-                    <h3>Are you sure you want to delete this?</h3>
                     <%
                         String maloaisp = request.getParameter("maloaisp");
                         loaispModel lsp = new loaispModel();
@@ -25,7 +24,7 @@
                         if (kq == 1) {
                     %>
                     <form action="xoaloaiSP" method="post">
-                        <h4>Loại Sản Phẩm</h4>
+                        <h4>Xóa loại Sản Phẩm</h4>
                         <hr />
                         <div class="form-group">
                             <text><b>Mã Loại Sản Phẩm:</b></text>

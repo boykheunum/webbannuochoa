@@ -19,9 +19,7 @@
             <div class="card mb-4">
                 <div class="card-body">
 
-                    <p>
-                        @Html.ActionLink("Create New", "Create")
-                    </p>
+                    
                     <%
                         Vector<chiTietHoaDonModel> ds = new Vector<chiTietHoaDonModel>();
                         int kq = CSDL.chitiethoadon.listCTHD(ds);

@@ -15,17 +15,16 @@
                     <div class="container-fluid">
 
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="">Chức Vụ</a></li>
+                            <li class="breadcrumb-item"><a href="menuAdmin.jsp">Chức Vụ</a></li>
                             <li class="breadcrumb-item active">Danh Sách</li>
                         </ol>
                         <div class="card mb-4">
                             <div class="card-body">
 
 
-                                <p>
-                                    @Html.ActionLink("Thêm mới", "Create")
-                                    <a href="Thêm mới">Thêm mới</a>|
-                                </p>
+                                <button class="btn btn-dark" style="margin-bottom: 2%">
+                        <a href="themCV.jsp" style="text-decoration: none; color:white" >Thêm mới</a>
+                    </button>
                                 <%
                                     Vector<chucVuModel> ds = new Vector<chucVuModel>();
                                     int kq = CSDL.chucVu.listLoaiCV(ds);

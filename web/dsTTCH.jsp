@@ -15,15 +15,15 @@
                     <div class="container-fluid">
 
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="index.html">Sản Phẩm</a></li>
+                            <li class="breadcrumb-item"><a href="menuAdmin.jsp">Thông tin cửa hàng</a></li>
                             <li class="breadcrumb-item active">Danh Sách</li>
                         </ol>
                         <div class="card mb-4">
                             <div class="card-body">
-
-                                <p>
-                                    @Html.ActionLink("Create New", "Create")
-                                </p>
+<button class="btn btn-dark" style="margin-bottom: 2%">
+                        <a href="themTTCH.jsp" style="text-decoration: none; color:white" >Thêm mới</a>
+                    </button>
+                                
                                 <%
                                     Vector<thongTinCuaHangModel> ds = new Vector<thongTinCuaHangModel>();
                                     int kq = CSDL.thongtincuahang.listTT(ds);
@@ -32,10 +32,10 @@
                                 <table class="table">
                                     <tr>
                                         <th>
-                                            Id
+                                           <text> Id</text>
                                         </th>
                                         <th>
-                                            Email
+                                           <text> Email</text>
                                         </th>
                                         <th>
                                             <text>Địa Chỉ</text>

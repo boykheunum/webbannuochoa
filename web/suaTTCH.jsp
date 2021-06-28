@@ -13,7 +13,7 @@
                     <div class="container-fluid">
 
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="index.html">Thông Tin Cửa Hàng/a></li>
+                            <li class="breadcrumb-item"><a href="dsTTCH.jsp">Thông Tin Cửa Hàng</a></li>
                             <li class="breadcrumb-item active">Sửa</li>
                         </ol>
                         <div class="card mb-4">
@@ -54,10 +54,7 @@
                                 </form>
                                 <%}%>
 
-                                <div>
-                                    @Html.ActionLink("Back to List", "Index")
-                                </div>
-
+                                 <a href="dsTTCH.jsp">Quay lại danh sách</a>
                             </div>
                         </div>
                     </div>

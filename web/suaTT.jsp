@@ -13,7 +13,7 @@
         <div class="container-fluid">
 
             <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item"><a href="index.html">Tin Tức</a></li>
+                <li class="breadcrumb-item"><a href="dsTT.jsp">Tin Tức</a></li>
                 <li class="breadcrumb-item active">Sửa tin tức</li>
             </ol>
             <div class="card mb-4">
@@ -75,10 +75,7 @@
             </form>
             <%}%>
 
-            <div>
-                @Html.ActionLink("Back to List", "Index")
-            </div>
-
+           <a href="dsTT.jsp">Quay lại danh sách</a>
 
         </div>
 </div>

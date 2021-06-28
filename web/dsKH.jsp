@@ -13,15 +13,14 @@
                 <main>
                     <div class="container-fluid">
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="menuAdmin.jsp">Nhân Viên</a></li>
+                            <li class="breadcrumb-item"><a href="menuAdmin.jsp">Khách hàng</a></li>
                             <li class="breadcrumb-item active">Danh Sách</li>
                         </ol>
                         <div class="card mb-4">
                             <div class="card-body">
-
-                                <p>
-                                    @Html.ActionLink("Create New", "Create")
-                                </p>
+<button class="btn btn-dark" style="margin-bottom: 2%">
+                        <a href="themKH.jsp" style="text-decoration: none; color:white" >Thêm mới</a>
+                    </button>
                                 <%
                                     Vector<nguoiDungModel> ds = new Vector<nguoiDungModel>();
                                     int kq = CSDL.nguoidung.listNguoiDung(ds);

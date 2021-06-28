@@ -21,9 +21,9 @@
                         <div class="card mb-4">
                             <div class="card-body">
 
-                                <p>
-                                    @Html.ActionLink("Create New", "Create")
-                                </p>
+                                <button class="btn btn-dark" style="margin-bottom: 2%">
+                        <a href="themNV.jsp" style="text-decoration: none; color:white" >Thêm mới</a>
+                    </button>
                                 <%
                                     Vector<nhanVienModel> ds = new Vector<nhanVienModel>();
                                     int kq = CSDL.nhanVien.listNhanVien(ds);

@@ -12,8 +12,8 @@
         <div class="container-fluid">
 
             <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item"><a href="index.html">Phiếu iảm giá</a></li>
-                <li class="breadcrumb-item active">Sửa</li>
+                <li class="breadcrumb-item"><a href="index.html">Phiếu giảm giá</a></li>
+                <li class="breadcrumb-item active">Sửa phiếu giảm giá</li>
             </ol>
             <div class="card mb-4">
                 <div class="card-body">

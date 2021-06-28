@@ -13,8 +13,8 @@
         <div class="container-fluid">
 
             <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item"><a href="index.html">Nhân Viên</a></li>
-                <li class="breadcrumb-item active">Sửa </li>
+                <li class="breadcrumb-item"><a href="dsKH.jsp">Khách hàng</a></li>
+                <li class="breadcrumb-item active">Xóa khách hàng</li>
             </ol>
             <div class="card mb-4">
                 <%
@@ -25,41 +25,47 @@
                 %>
                 <form class="card-body" action="xoaKH" method="post">
                     <div class="form-horizontal">
-                        <h4>Khách hàng</h4>
+                        <h4>Xóa Khách hàng</h4>
                         <hr />
+                         <div class="form-group row">
+                                <p class="col-sm-2 font-weight-bold">Mã khách hàng</p>
+                                <div class="col-sm-10">
                         <input id="makh" type="hidden" name="makh" value="<%=kh.getMakh()%>">
-                        <div class="form-group">
-                            <text>Tên đăng nhập</text>
-                            <div class="col-md-6">
+                                </div> 
+                         </div>
+                                
+                        <div class="form-group row">
+                                <p class="col-sm-2 font-weight-bold">Tên đăng nhập</p>
+                                <div class="col-sm-10">
                                 <input type="hidden" id="tendangnhap" name="tendangnhap" value="<%=kh.getTendangnhap()%>">
                                 <text><%=kh.getTendangnhap()%></text>
                             </div>
                         </div>
-                        <div class="form-group">
-                           <text>  Mật khẩu</text>
-                            <div class="col-md-6">
+                       <div class="form-group row">
+                                <p class="col-sm-2 font-weight-bold">Mật khẩu</p>
+                                <div class="col-sm-10">
                                 <input type="hidden" id="matkhau" name="matkhau" value="<%=kh.getMatkhau()%>">
                                 <text><%=kh.getMatkhau()%></text>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <text>Họ và tên <text>
-                            <div class="col-md-6">
+                        <div class="form-group row">
+                                <p class="col-sm-2 font-weight-bold">Họ và tên</p>
+                                <div class="col-sm-10">
                                 <input type="hidden" id="hovaten" name="hovaten" value="<%=kh.getHovaten()%>">
                                 <text><%=kh.getHovaten()%></text>
                             </div>
                             </div>
                         
-                        <div class="form-group">
-                            Địa chỉ
-                            <div class="col-md-6">
+                        <div class="form-group row">
+                                <p class="col-sm-2 font-weight-bold">Địa chỉ</p>
+                                <div class="col-sm-10">
                                 <input type="hidden" id="diachi" name="diachi" value="<%=kh.getDiachi()%>">
                                 <text><%=kh.getDiachi()%></text>
                             </div>
                         </div>
-                        <div class="form-group">
-                            Số điện thoại
-                            <div class="col-md-6">
+                        <div class="form-group row">
+                                <p class="col-sm-2 font-weight-bold">Số điện thoại</p>
+                                <div class="col-sm-10">
                                 <input class="form-control" type= "hidden" id="sdt" name="sdt" value="<%=kh.getSdt()%>">
                                 <text><%=kh.getSdt()%></text>
                             </div>
@@ -74,8 +80,7 @@
             </div>
             <%}%>
             <div>
-                @Html.ActionLink("Back to List", "Index")
-            </div>
+                <a href="dsKH.jsp">Quay lại danh sách</a>
 
 
         </div>

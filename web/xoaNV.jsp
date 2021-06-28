@@ -9,112 +9,104 @@
 <%@page import="java.util.Vector"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:include page="layoutAdmin/menuAdmin.jsp" />
-            <div id="layoutSidenav_content">
-                <main>
-                    <div class="container-fluid">
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid">
 
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="index.html">Sản Phẩm</a></li>
-                            <li class="breadcrumb-item active">Chi Tiết</li>
-                        </ol>
-                        <div class="card mb-4">
-                            <%
-                                int manv = Integer.parseInt(request.getParameter("manv"));
-                                nhanVienModel nv = new nhanVienModel();
-                                int kq = CSDL.nhanVien.searchNhanVien(nv, manv);
-                                if (kq == 1) {
-                            %>
-                            <form class="card-body" action="xoaNV" method="post">
-                                <div class="form-horizontal">
-                                    <h4>Xóa nhân viên</h4>
-                                    <hr />
-                                    <div class="form-group row">
-                                            <text>  Mã chức vụ </text>
-                                                <div class="col-md-6">
-                                               <input type="hidden" id="macv" name="macv" value="<%=nv.getMacv()%>">
-                                                 <text><%=nv.getMacv()%></text>
-                                                </div>
-                                         </div>
-                                    <div class="form-group row">
-                                            <text>  Mã nhân viên</text>
-                                                <div class="col-md-6">
-                                               <input id="manv" type="hidden" name="manv" value="<%=nv.getManv()%>">
-                                                 <text><%=nv.getManv()%></text>
-                                                </div>
-                                         </div>
-                                 
-                                   <div class="form-group row">
-                                      <text> Tên nhân viên</text>
-                                        <div class="col-md-6">
-                                            <input type="hidden" id="tennv" name="tennv" value="<%=nv.getTennv()%>">
-                                            <text><%=nv.getTennv()%></text>
-                                        </div>
-                                    </div>
-                                   <div class="form-group row">
-                                        <text>Số điện thoại</text>
-                                        <div class="col-md-6">
-                                            <input type="hidden"id="soluongsdt" name="sdt" value="<%=nv.getSdt()%>">
-                                            <text><%=nv.getSdt()%></text>
-                                        </div>
-                                    </div>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item"><a href="dsNV.jsp">Nhân viên</a></li>
+                <li class="breadcrumb-item active">Xóa nhân viên</li>
+            </ol>
+            <div class="card mb-4">
+                <%
+                    int manv = Integer.parseInt(request.getParameter("manv"));
+                    nhanVienModel nv = new nhanVienModel();
+                    int kq = CSDL.nhanVien.searchNhanVien(nv, manv);
+                    if (kq == 1) {
+                %>
+                <form class="card-body" action="xoaNV" method="post">
+                    <div class="form-horizontal">
+                        <h4>Xóa nhân viên</h4>
+                        <hr />
+                        <div class="form-group row">
+                            <p class="col-sm-2 font-weight-bold"> Mã chức vụ</p>
+                            <div class="col-sm-10">
+                                <input type="hidden" id="macv" name="macv" value="<%=nv.getMacv()%>">
+                                <text><%=nv.getMacv()%></text>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <p class="col-sm-2 font-weight-bold"> Mã nhân viên</p>
+                            <div class="col-sm-10">
+                                <input id="manv" type="hidden" name="manv" value="<%=nv.getManv()%>">
+                                <text><%=nv.getManv()%></text>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <p class="col-sm-2 font-weight-bold"> Tên nhân viên</p>
+                            <div class="col-sm-10">
+                                <input type="hidden" id="tennv" name="tennv" value="<%=nv.getTennv()%>">
+                                <text><%=nv.getTennv()%></text>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <p class="col-sm-2 font-weight-bold"> Số điện thoại</p>
+                            <div class="col-sm-10">
+                                <input type="hidden"id="soluongsdt" name="sdt" value="<%=nv.getSdt()%>">
+                                <text><%=nv.getSdt()%></text>
+                            </div>
+                        </div>
 
-                                   <div class="form-group row">
-                                        <text>Ngày sinh</text>
-                                        <div class="col-md-6">
-                                            <input type="hidden" id="ngaysinh" name="ngaysinh" value="<%=nv.getNgaysinh()%>">
-                                            <text><%=nv.getNgaysinh()%></text>
-                                        </div>
-                                    </div>
+                        <div class="form-group row">
+                            <p class="col-sm-2 font-weight-bold"> Ngày sinh</p>
+                            <div class="col-sm-10">
+                                <input type="hidden" id="ngaysinh" name="ngaysinh" value="<%=nv.getNgaysinh()%>">
+                                <text><%=nv.getNgaysinh()%></text>
+                            </div>
+                        </div>
 
-                                    <div class="form-group row">
-                                        <text>Tên Đăng nhập</text>
-                                        <div class="col-md-6">
-                                            <input type="hidden" id="tendangnhap" name="tendangnhap" value="<%=nv.getTendangnhap()%>">
-                                            <text><%=nv.getTendangnhap()%></text>
-                                        </div>
-                                    </div>
-                                 <div class="form-group row">
-                                        <text>Tài khoản</text>
-                                        <div class="col-md-6">
-                                            <input class="form-control" type="hidden"  id="tendangnhap" name="tendangnhap" value="<%=nv.getTendangnhap()%>">
-                                            <text><%=nv.getTendangnhap()%></text>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <text>Mật khẩu</text>
-                                        <div class="col-md-6">
-                                            <input type="hidden"  class="form-control" id="matkhau" name="matkhau" value="<%=nv.getMatkhau()%>">
-                                            <text><%=nv.getMatkhau()%></text>
-                                        </div>
-                                    </div>
-                                     <div class="form-group row">
-                                       <text> Địa chỉ</text>
-                                        <div class="col-md-6">
-                                            <input type="hidden" class="form-control" id="diachi" name="diachi" value="<%=nv.getDiachi()%>">
-                                            <text><%=nv.getDiachi()%></text>
-                                        </div>
-                                    </div>
-
-                                </div>
-                               <div class="form-group row">
-                                    <div class="col-md-offset-2 col-md-6">
-                                        <input type="submit" value="Save" class="btn btn-default" />
-                                    </div>
-                                </div>
-                                 </div>
-                            </form>
-                        
-
-
-                        <%}%>
-
+                        <div class="form-group row">
+                            <p class="col-sm-2 font-weight-bold"> Tên đăng nhâp</p>
+                            <div class="col-sm-10">
+                                <input type="hidden" id="tendangnhap" name="tendangnhap" value="<%=nv.getTendangnhap()%>">
+                                <text><%=nv.getTendangnhap()%></text>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <p class="col-sm-2 font-weight-bold"> Tài khoản</p>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="hidden"  id="tendangnhap" name="tendangnhap" value="<%=nv.getTendangnhap()%>">
+                                <text><%=nv.getTendangnhap()%></text>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <p class="col-sm-2 font-weight-bold"> Mật khẩu</p>
+                            <div class="col-sm-10">
+                                <input type="hidden"  class="form-control" id="matkhau" name="matkhau" value="<%=nv.getMatkhau()%>">
+                                <text><%=nv.getMatkhau()%></text>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <p class="col-sm-2 font-weight-bold">Địa chỉ</p>
+                            <div class="col-sm-10">
+                                <input type="hidden" class="form-control" id="diachi" name="diachi" value="<%=nv.getDiachi()%>">
+                                <text><%=nv.getDiachi()%></text>
+                            </div>
+                        </div>
 
                     </div>
+                    <div class="form-actions no-color">
+                        <input type="submit" value="Delete" class="btn btn-dark" />
+                    </div>
+                </form>
+                <%}%>
+                
+                        <a href="dsNV.jsp">Quay lại danh sách</a>
+                 
+
             </div>
         </div>
-    </div>
 </main>
-
 <footer class="py-4 bg-light mt-auto">
     <div class="container-fluid">
         <div class="d-flex align-items-center justify-content-between small">

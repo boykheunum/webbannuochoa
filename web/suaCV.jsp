@@ -12,7 +12,7 @@
                 <div class="container-fluid">
 
                     <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item"><a href="index.html">Chức Vụ</a></li>
+                        <li class="breadcrumb-item"><a href="dsCV.jsp">Chức Vụ</a></li>
                         <li class="breadcrumb-item active">Sửa Chức Vụ</li>
                     </ol>
                     <div class="card mb-4">
@@ -24,13 +24,14 @@
                                     if(kq == 1){
                                 %>
                                 <form class="form-horizontal" method="post" action="suaCV">
-                                    <h4>Loại sản phẩm</h4>
+                                    <h4> Sửa chức vụ</h4>
                                     <hr />
                                     <div class="form-group">
                                         
                                         <input type="hidden" name="macv" id="maloaisp" value="<%=cv.getMacv()%>">
-                                        <text>Tên chức vụ</text>
-                                        <div class="col-md-10">                                            
+                                        <div class="form-group row">
+                            <p class="col-sm-2 font-weight-bold"> Tên chức vụ</p>
+                            <div class="col-sm-10">                                          
                                             <input type="text" name="tencv" id="tenloaisp" value="<%=cv.getTencv()%>">
                                         </div>
                                     </div>
@@ -43,9 +44,7 @@
                                 </form>
                                 <%}%>
 
-                            <div>
-                                @Html.ActionLink("Back to List", "Index")
-                            </div>
+                             <a href="dsCV.jsp">Quay lại danh sách</a>
 
                         </div>
                     </div>

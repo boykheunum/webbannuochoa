@@ -11,12 +11,12 @@
         <main>
             <div class="container-fluid">
                 <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item"><a href="index.html">Sản Phẩm</a></li>
-                    <li class="breadcrumb-item active">Xóa</li>
+                    <li class="breadcrumb-item"><a href="dsHD.jsp">Hóa đơn</a></li>
+                    <li class="breadcrumb-item active">Xóa hóa đơn</li>
                 </ol>
                 <div class="card mb-4">
                     <div class="card-body">
-                        <h3>Are you sure you want to delete this?</h3>
+                        
                         <%
                             int mahd = Integer.parseInt(request.getParameter("mahd"));
                             hoaDonModel hd = new hoaDonModel();
@@ -26,34 +26,36 @@
                         <form method="post" action="xoaHD">
                             <div class="form-horizontal">
                                 <h4>Xóa hóa đơn</h4>
-                                <div class="form-group">
-                                    <text><b>Mã hóa đơn</b></text>
-                                    <div class="col-md-6">
+                                <hr/>
+                                        <div class="form-group row">
+                                <p class="col-sm-2 font-weight-bold">Mã hóa đơn</p>
+                                <div class="col-sm-10">
                                         <input class="col-md-10" type="hidden" id="mahd" name="mahd" value="<%=hd.getMahd()%>">
                                         <text><%=hd.getMahd()%></text>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <text><b>Ngày bán</b></text>
-                                    <div class="col-md-6">
+                                      <div class="form-group row">
+                                <p class="col-sm-2 font-weight-bold">Mã khách hàng</p>
+                                <div class="col-sm-10">
+                                        <input type="hidden" id="makh" name="makh" value="<%=hd.getMakh()%>">
+                                        <text><%=hd.getMakh()%></text>
+                                    </div>
+                                </div>  
+                                        <div class="form-group row">
+                                <p class="col-sm-2 font-weight-bold">Ngày bán</p>
+                                <div class="col-sm-10">
                                         <input type="hidden" id="ngayban" name="ngayban" value="<%=hd.getNgayban()%>">
                                         <text><%=hd.getNgayban()%></text>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <text><b>Tổng tiền</b></text>
-                                    <div class="col-md-6">
+                                       <div class="form-group row">
+                                <p class="col-sm-2 font-weight-bold">Tổng tiền</p>
+                                <div class="col-sm-10">
                                         <input type="hidden" id="tongtien" name="tongtien" value="<%=hd.getTongtien()%>">
                                         <text><%=hd.getTongtien()%></text>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <text><b>Mã khách hàng</b></text>
-                                    <div class="col-md-6">
-                                        <input type="hidden" id="makh" name="makh" value="<%=hd.getMakh()%>">
-                                        <text><%=hd.getMakh()%></text>
-                                    </div>
-                                </div>   
+                               
                                 
                                 <div class="form-actions no-color">
                                     <input type="submit" value="Delete" class="btn btn-dark">
@@ -61,6 +63,7 @@
                             </div> 
                         </form>
                         <%}%>
+                        <a href="dsHD.jsp">Quay lại danh sách</a>
                     </div>
                 </div>
             </div>

@@ -11,12 +11,12 @@
     <main>
         <div class="container-fluid">
             <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item"><a href="index.html">Sản Phẩm</a></li>
-                <li class="breadcrumb-item active">Xóa</li>
+                <li class="breadcrumb-item"><a href="dsCTHD.jsp">Chi tiết hóa đơn</a></li>
+                <li class="breadcrumb-item active">Xóa phiếu chi tiết hóa đơn</li>
             </ol>
             <div class="card mb-4">
                 <div class="card-body">
-                    <h3>Are you sure you want to delete this?</h3>
+                    
                     <%
                         int mahd = Integer.parseInt(request.getParameter("mahd"));
                         chiTietHoaDonModel cthd = new chiTietHoaDonModel();
@@ -25,45 +25,46 @@
                     %>
                     <form method="post" action="xoaCTHD">
                         <div class="form-horizontal">
-                            <h4>Xóa hóa đơn</h4>
-                            <div class="form-group">
-                                <text><b>Mã hóa đơn</b></text>
-                                <div class="col-md-6">
+                            <h4>Xóa chi tiêt hóa đơn</h4>
+                            <hr/>
+                                    <div class="form-group row">
+                                <p class="col-sm-2 font-weight-bold">Mã hóa đơn</p>
+                                <div class="col-sm-10">
                                     <input class="col-md-10" type="hidden" id="mahd" name="mahd" value="<%=cthd.getMahd()%>">
                                     <text><%=cthd.getMahd()%></text>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <text><b>Mã sản phẩm</b></text>
-                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                <p class="col-sm-2 font-weight-bold">Mã sản phẩm</p>
+                                <div class="col-sm-10">
                                     <input type="hidden" id="masp" name="masp" value="<%=cthd.getMasp()%>">
                                     <text><%=cthd.getMasp()%></text>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <text><b>Tổng tiền</b></text>
-                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                <p class="col-sm-2 font-weight-bold">Số lượng mua</p>
+                                <div class="col-sm-10">
                                     <input type="hidden" id="soluongmua" name="soluongmua" value="<%=cthd.getSoluongmua()%>">
                                     <text><%=cthd.getSoluongmua()%></text>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <text><b>Giá bán</b></text>
-                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                <p class="col-sm-2 font-weight-bold">Giá bán</p>
+                                <div class="col-sm-10">
                                     <input type="hidden" id="giaban" name="giaban" value="<%=cthd.getGiaban()%>">
                                     <text><%=cthd.getGiaban()%></text>
                                 </div>
                             </div>   
-                            <div class="form-group">
-                                <text><b>Thành tiền</b></text>
-                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                <p class="col-sm-2 font-weight-bold">Thành tiền</p>
+                                <div class="col-sm-10">
                                     <input type="hidden" id="giaban" name="giaban" value="<%=cthd.getThanhtien()%>">
                                     <text><%=cthd.getThanhtien()%></text>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <text><b>Id mã giả giá</b></text>
-                                <div class="col-md-6">
+                                   <div class="form-group row">
+                                <p class="col-sm-2 font-weight-bold">ID Mã giảm giá</p>
+                                <div class="col-sm-10">
                                     <input type="hidden" id="giaban" name="giaban" value="<%=cthd.getIdmagiamgia()%>">
                                     <text><%=cthd.getIdmagiamgia()%></text>
                                 </div>
@@ -74,6 +75,7 @@
                         </div> 
                     </form>
                     <%}%>
+                    <a href="dsCTHD.jsp">Quay lại danh sách</a>
                 </div>
             </div>
         </div>

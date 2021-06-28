@@ -11,7 +11,7 @@
     <main>
         <div class="container-fluid">
             <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item"><a href="index.html">Chức Vụ</a></li>
+                <li class="breadcrumb-item"><a href="dsCV.jsp">Chức Vụ</a></li>
                 <li class="breadcrumb-item active">Thêm Chức Vụ</li>
             </ol>
             <div class="card mb-4">
@@ -37,9 +37,9 @@
                             <div class="col-md-offset-2 col-md-10">
                                 <button type="submit" value="Create" class="btn btn-dark">Thêm Chức vụ</button>
                             </div>
-                             <div class="col-md-offset-2 col-md-10">
-                            <a href=dsCV.jsp" class="btn btn-dark" role="button" aria-pressed="true">Quay lại danh sách</a>
-                        </div>
+                             
+                            <a href="dsCV.jsp" class="btn btn-dark" role="button" aria-pressed="true">Quay lại danh sách</a>
+                       
                              </div>
                     </form>
 
@@ -49,7 +49,7 @@
         </div>
 
     </main>
-</div>
+
 <footer class="py-4 bg-light mt-auto">
     <div class="container-fluid">
         <div class="d-flex align-items-center justify-content-between small">
@@ -62,8 +62,7 @@
         </div>
     </div>
 </footer>
-</div>
-</div>
+    </div>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="content/js/scripts.js"></script>
