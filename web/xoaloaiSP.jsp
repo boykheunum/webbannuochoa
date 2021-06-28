@@ -6,7 +6,30 @@
 
 <%@page import="Model.loaispModel"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    String usNV = null;
+    Cookie[] cookies = request.getCookies();
+    for (Cookie c : cookies) {
+        if (c.getName().equals("usNV")) {
+            usNV = c.getValue();
+        }
+    }
+    nhanVienModel nv = new nhanVienModel();
+    int kqSearchCV = CSDL.nhanVien.searchCVNhanVien(nv, usNV);
+    if (kqSearchCV == 1) {
+        String macv = nv.getMacv();
+        if (macv.contains("1") == true) {
+%>
 <jsp:include page="layoutAdmin/menuAdmin.jsp" />
+<%
+} else {
+%>
+<jsp:include page="layoutAdmin/menuNV.jsp" />
+<%
+        }
+    }
+
+%>
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid">

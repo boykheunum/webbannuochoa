@@ -36,11 +36,12 @@
                         <div class="form-group row">
                             <div class="col-md-offset-2 col-md-10">
                                 <button type="submit" value="Create" class="btn btn-dark">Thêm Chức vụ</button>
+                                <a href=dsCV.jsp" class="btn btn-dark" role="button" aria-pressed="true">Quay lại danh sách</a>
                             </div>
-                             <div class="col-md-offset-2 col-md-10">
-                            <a href=dsCV.jsp" class="btn btn-dark" role="button" aria-pressed="true">Quay lại danh sách</a>
+
+
+
                         </div>
-                             </div>
                     </form>
 
                 </div>
@@ -62,8 +63,7 @@
         </div>
     </div>
 </footer>
-</div>
-</div>
+
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="content/js/scripts.js"></script>

@@ -189,5 +189,33 @@ public class nhanVien {
             }
         }
     }
+    
+    public static int searchCVNhanVien(nhanVienModel nv, String id) {
+        Connection cnn = CSDL.databaseConnection.cnnDB();
+        if (cnn == null) {
+            return -1;
+        } else {
+            String sql = "SELECT * FROM nhanvien where tendangnhap = ?";
+            try {
+                PreparedStatement ps = cnn.prepareStatement(sql);
+                ps.setString(1, id);
+                ResultSet rs = ps.executeQuery();
+                if (rs.next()) {
+                    nv.setDiachi(rs.getString("diachi"));
+                    nv.setMacv(rs.getString("macv"));
+                    nv.setManv(rs.getInt("manv"));
+                    nv.setNgaysinh(rs.getString("ngaysinh"));
+                    nv.setSdt(rs.getString("sdt"));
+                    nv.setTennv(rs.getString("tennv"));
+                    nv.setTendangnhap(rs.getString("tendangnhap"));
+                    nv.setMatkhau(rs.getString("matkhau"));
+                }
+                return 1;
+            } catch (SQLException ex) {
+                Logger.getLogger(nhanVien.class.getName()).log(Level.SEVERE, null, ex);
+                return -2;
+            }
+        }
+    }
 
 }

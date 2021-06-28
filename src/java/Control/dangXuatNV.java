@@ -5,15 +5,11 @@
  */
 package Control;
 
-import CSDL.tienich;
-import Model.tintucModel;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,8 +18,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Nguyen Tien Dat
  */
-@WebServlet(name = "themTinTuc", urlPatterns = {"/themTinTuc"})
-public class themTinTuc extends HttpServlet {
+@WebServlet(name = "dangXuatNV", urlPatterns = {"/dangXuatNV"})
+public class dangXuatNV extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,33 +35,19 @@ public class themTinTuc extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            response.setContentType("text/html; charset=UTF-8");
-            request.setCharacterEncoding("UTF-8");
-            String fileImage = "imageSP\\";
-            String checkEnctype = request.getContentType();
-            if (checkEnctype.contains("multipart/form-data")) {
-                List fieldItem = tienich.Uploads(request, fileImage);
-                try {
-                    String tieude = tienich.inputFile(fieldItem, "tieude");
-                    String noidung = tienich.inputFile(fieldItem, "noidung");
-                    String ngaydang = tienich.inputFile(fieldItem, "ngaydang");
-                    if(ngaydang.equals("")==true){
-                        ngaydang = java.time.LocalDate.now().toString();
-                    }
-                    String anh = tienich.inputFile(fieldItem, "anh");
-                    tintucModel tt = new tintucModel(0, anh, ngaydang, tieude, noidung);
-                    int kq = CSDL.tintuc.addTintuc(tt);
-                    if (kq == 1) {
-                        response.sendRedirect("dsTT.jsp");
-                    }
-                     else {
-                response.sendRedirect("admin500.jsp");
-            }
-                } catch (Exception ex) {
-                    Logger.getLogger(themSP.class.getName()).log(Level.SEVERE, null, ex);
+            String usNV = null;
+            Cookie cookie = null;
+            Cookie[] cookies = request.getCookies();
+            for (int i = 0; i < cookies.length; i++) {
+                cookie = cookies[i];
+                if ((cookie.getName()).compareTo("usNV") == 0) {
+                    // delete cookie
+                    cookie.setMaxAge(0);
+                    response.addCookie(cookie);
                 }
 
             }
+            response.sendRedirect("phantrangUserSP");
         }
     }
 

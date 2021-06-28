@@ -4,6 +4,7 @@
     Author     : Nguyen Tien Dat
 --%>
 
+<%@page import="Model.nhanVienModel"%>
 <%@page import="Model.chiTietHoaDonModel"%>
 <%@page import="java.util.Vector"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -13,17 +14,13 @@
     <main>
         <div class="container-fluid">
             <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item"><a href="menuAdmin.jsp">Nhân Viên</a></li>
+                <li class="breadcrumb-item"><a href="menuAdmin.jsp">Chi tiết hóa đơn</a></li>
                 <li class="breadcrumb-item active">Danh Sách</li>
             </ol>
             <div class="card mb-4">
                 <div class="card-body">
 
-                    <p>
-                        @Html.ActionLink("Create New", "Create")
-                    </p>
-                    <%
-                        Vector<chiTietHoaDonModel> ds = new Vector<chiTietHoaDonModel>();
+                    <%                        Vector<chiTietHoaDonModel> ds = new Vector<chiTietHoaDonModel>();
                         int kq = CSDL.chitiethoadon.listCTHD(ds);
                         if (kq == 1) {
                     %>
@@ -72,7 +69,6 @@
                                 <text><%=cthd.getIdmagiamgia()%></text>
                             </td>
                             <td>
-                                <a href="suaCTHD.jsp?mahd=<%=cthd.getMahd()%>">Edit</a>|
                                 <a href="xoaCTHD.jsp?mahd=<%=cthd.getMahd()%>">Delete</a>
                             </td>
                         </tr>

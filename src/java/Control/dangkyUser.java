@@ -42,7 +42,7 @@ public class dangkyUser extends HttpServlet {
             String diachi = request.getParameter("diachi");
             String tendangnhap = request.getParameter("tendangnhap2");
             String matkhau = request.getParameter("matkhau");
-            nguoiDungModel nd = new nguoiDungModel(tendangnhap, hoten, diachi, matkhau, hoten);
+            nguoiDungModel nd = new nguoiDungModel(tendangnhap, hoten, diachi, matkhau, sodienthoai);
             int kq = CSDL.nguoidung.dangKy(nd);
             if (kq == 1) {
                 response.sendRedirect("phantrangUserSP");

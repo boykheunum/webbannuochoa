@@ -48,7 +48,7 @@ public class dangnhap extends HttpServlet {
                 int kq = nguoidung.dangnhap(userName, passWord);
                 if (kq == 1) {
                     Cookie cookie = new Cookie("usKhach", userName);
-                    cookie.setMaxAge(60);
+                    cookie.setMaxAge(60*60);
                     response.addCookie(cookie);
                     response.sendRedirect("phantrangUserSP");
                 } else {
@@ -56,11 +56,11 @@ public class dangnhap extends HttpServlet {
                 }
             } else if (CSDL.nhanVien.dangnhap(userName, passWord) == 1) {
                 Cookie cookie = new Cookie("usNV", userName);
-                cookie.setMaxAge(60);
+                cookie.setMaxAge(60*60);
                 response.addCookie(cookie);
-                response.sendRedirect("dsSP.jsp");
+                response.sendRedirect("trangchuadmin.jsp");
             } else {
-                response.sendRedirect("dsSP.jsp");
+                response.sendRedirect("admin500.jsp");
             }
 
         }
