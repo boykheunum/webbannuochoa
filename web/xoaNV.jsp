@@ -28,14 +28,14 @@
                                 <div class="form-horizontal">
                                     <h4>Xóa nhân viên</h4>
                                     <hr />
-                                    <div class="form-group">
+                                    <div class="form-group row">
                                             <text>  Mã chức vụ </text>
                                                 <div class="col-md-6">
                                                <input type="hidden" id="macv" name="macv" value="<%=nv.getMacv()%>">
                                                  <text><%=nv.getMacv()%></text>
                                                 </div>
                                          </div>
-                                    <div class="form-group">
+                                    <div class="form-group row">
                                             <text>  Mã nhân viên</text>
                                                 <div class="col-md-6">
                                                <input id="manv" type="hidden" name="manv" value="<%=nv.getManv()%>">
@@ -43,14 +43,14 @@
                                                 </div>
                                          </div>
                                  
-                                    <div class="form-group">
+                                   <div class="form-group row">
                                       <text> Tên nhân viên</text>
                                         <div class="col-md-6">
                                             <input type="hidden" id="tennv" name="tennv" value="<%=nv.getTennv()%>">
                                             <text><%=nv.getTennv()%></text>
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                   <div class="form-group row">
                                         <text>Số điện thoại</text>
                                         <div class="col-md-6">
                                             <input type="hidden"id="soluongsdt" name="sdt" value="<%=nv.getSdt()%>">
@@ -58,7 +58,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
+                                   <div class="form-group row">
                                         <text>Ngày sinh</text>
                                         <div class="col-md-6">
                                             <input type="hidden" id="ngaysinh" name="ngaysinh" value="<%=nv.getNgaysinh()%>">
@@ -66,16 +66,14 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
+                                    <div class="form-group row">
                                         <text>Tên Đăng nhập</text>
                                         <div class="col-md-6">
                                             <input type="hidden" id="tendangnhap" name="tendangnhap" value="<%=nv.getTendangnhap()%>">
                                             <text><%=nv.getTendangnhap()%></text>
                                         </div>
                                     </div>
-
-
-                                    <div class="form-group">
+                                 <div class="form-group row">
                                         <text>Tài khoản</text>
                                         <div class="col-md-6">
                                             <input class="form-control" type="hidden"  id="tendangnhap" name="tendangnhap" value="<%=nv.getTendangnhap()%>">
@@ -89,7 +87,7 @@
                                             <text><%=nv.getMatkhau()%></text>
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                     <div class="form-group row">
                                        <text> Địa chỉ</text>
                                         <div class="col-md-6">
                                             <input type="hidden" class="form-control" id="diachi" name="diachi" value="<%=nv.getDiachi()%>">
@@ -98,26 +96,17 @@
                                     </div>
 
                                 </div>
-                                <div class="form-group">
+                               <div class="form-group row">
                                     <div class="col-md-offset-2 col-md-6">
                                         <input type="submit" value="Save" class="btn btn-default" />
                                     </div>
                                 </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-md-offset-2 col-md-6">
-                                        <input type="submit" value="Save" class="btn btn-default" />
-                                    </div>
-                                </div>
+                                 </div>
                             </form>
-                        </div>
+                        
 
 
                         <%}%>
-
-                        <div>
-                            @Html.ActionLink("Back to List", "Index")
-                        </div>
 
 
                     </div>

@@ -37,12 +37,12 @@ public class xoaPGG extends HttpServlet {
             response.setContentType("text/html; charset=UTF-8");
             request.setCharacterEncoding("UTF-8");
             String idmagiamgia = request.getParameter("idmagiamgia");
-            int kq = CSDL.phieugiamgia.deleteThongTin(idmagiamgia);
+            int kq = CSDL.phieugiamgia.deleteMaGiamGia(idmagiamgia);
             if (kq == 1) {
                 response.sendRedirect("dsPGG.jsp");
             }
              else {
-                response.sendRedirect("500.jsp");
+                response.sendRedirect("admin500.jsp");
             }
         }
     }

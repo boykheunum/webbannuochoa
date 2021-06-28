@@ -51,7 +51,7 @@ public class suaNV extends HttpServlet {
                 response.sendRedirect("dsNV.jsp");
             }
              else {
-                response.sendRedirect("500.jsp");
+                response.sendRedirect("admin500.jsp");
             }
         }
     }

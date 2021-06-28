@@ -46,7 +46,7 @@ public class themTTCH extends HttpServlet {
                 response.sendRedirect("dsTTCH.jsp");
             }
              else {
-                response.sendRedirect("500.jsp");
+                response.sendRedirect("admin500.jsp");
             }
         }
     }

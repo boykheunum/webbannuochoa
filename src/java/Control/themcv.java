@@ -45,7 +45,8 @@ public class themcv extends HttpServlet {
                 response.sendRedirect("dsCV.jsp");
             }
              else {
-                response.sendRedirect("500.jsp");
+                response.sendRedirect("admin500.jsp");
+                
             }
         }
     }

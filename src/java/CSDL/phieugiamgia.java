@@ -130,7 +130,7 @@ public class phieugiamgia {
         }
     }
 
-    public static int deleteThongTin(String keyWord) {
+    public static int deleteMaGiamGia(String keyWord) {
         Connection cnn = CSDL.databaseConnection.cnnDB();
         if (cnn == null) {
             return -1;

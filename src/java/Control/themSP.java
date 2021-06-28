@@ -64,7 +64,7 @@ public class themSP extends HttpServlet {
                             response.sendRedirect("dsSP.jsp");
                         }
                          else {
-                response.sendRedirect("500.jsp");
+                response.sendRedirect("admin500.jsp");
             }
                     } else {
                         out.print("<script>alert('Đã tồn tại mã sản phẩm bạn vừa nhập')</script>");

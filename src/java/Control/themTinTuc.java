@@ -56,7 +56,7 @@ public class themTinTuc extends HttpServlet {
                         response.sendRedirect("dsTT.jsp");
                     }
                      else {
-                response.sendRedirect("500.jsp");
+                response.sendRedirect("admin500.jsp");
             }
                 } catch (Exception ex) {
                     Logger.getLogger(themSP.class.getName()).log(Level.SEVERE, null, ex);

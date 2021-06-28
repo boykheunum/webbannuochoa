@@ -48,7 +48,7 @@ public class suaKH extends HttpServlet {
             if(kq == 1){
                 response.sendRedirect("dsKH.jsp");
             }else{
-                response.sendRedirect("500.jsp");
+                response.sendRedirect("admin500.jsp");
             }
         }
     }

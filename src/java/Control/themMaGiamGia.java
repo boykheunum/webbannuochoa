@@ -57,7 +57,7 @@ public class themMaGiamGia extends HttpServlet {
                 out.print("<script>alert('thành công')</script>");
             }
              else {
-                response.sendRedirect("500.jsp");
+                response.sendRedirect("admin500.jsp");
             }
         }
     }

@@ -12,12 +12,12 @@
                     <div class="container-fluid">
 
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="index.html">Sản Phẩm</a></li>
-                            <li class="breadcrumb-item active">Xóa</li>
+                            <li class="breadcrumb-item"><a href="#">Thông tin cửa hàng</a></li>
+                            <li class="breadcrumb-item active">Xóa thông tin cửa hàng</li>
                         </ol>
                         <div class="card mb-4">
                             <div class="card-body">
-                                <h3>Are you sure you want to delete this?</h3>
+                                
                                 <%
                                     int id = Integer.parseInt(request.getParameter("id"));
                                     thongTinCuaHangModel tt = new thongTinCuaHangModel();

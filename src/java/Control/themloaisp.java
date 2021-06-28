@@ -45,7 +45,7 @@ public class themloaisp extends HttpServlet {
                 response.sendRedirect("dsloaiSP.jsp");
             }
              else {
-                response.sendRedirect("500.jsp");
+                response.sendRedirect("admin500.jsp");
             }
         }
     }

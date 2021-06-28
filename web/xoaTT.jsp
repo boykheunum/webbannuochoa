@@ -13,12 +13,12 @@
                     <div class="container-fluid">
 
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="index.html">Sản Phẩm</a></li>
-                            <li class="breadcrumb-item active">Xóa</li>
+                            <li class="breadcrumb-item"><a href="#">Tin Tức</a></li>
+                            <li class="breadcrumb-item active">Xóa tin tức</li>
                         </ol>
                         <div class="card mb-4">
                             <div class="card-body">
-                                <h3>Are you sure you want to delete this?</h3>
+                                
                                 <%
                                     int id = Integer.parseInt(request.getParameter("id"));
                                     tintucModel tt = new tintucModel();
@@ -61,11 +61,11 @@
                                           <img src="imageSP/<%=tt.getAnh()%>">   
                                         </div>
                                     </div> 
-                                    <div class="form-actions no-color">
-                                        <input type="submit" value="Delete" class="btn btn-default" /> |
-                                        @Html.ActionLink("Back to List", "Index")
-                                    </div>
-                                    }
+                                       <div class="form-group row">
+                            <div class="col-md-offset-2 col-md-10">
+
+                                <button type="submit" value="Create" class="btn btn-dark">Thêm thông tin cửa hàng</button>
+                            </div>
                                 </form>
                                 <%}%>
                             </div>

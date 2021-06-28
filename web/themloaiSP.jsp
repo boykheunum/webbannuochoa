@@ -18,29 +18,31 @@
                 <div class="card mb-4">
                     <div class="card-body" >
                         <form class="form-horizontal" action="themloaisp" method="post" >
-                            <h4>Loại Sản Phẩm</h4>
+                            <h4>Thêm Loại Sản Phẩm</h4>
                             <hr />
                             <span id="messBoxErr" style="color: red"></span>
                             <span id="messBox" style="color: greenyellow"></span>
-                            <div class="form-group">
-                                <text><b>Mã Loại Sản Phẩm</b></text>
-                                <br/>
-                                <input class="col-md-10" id="maloaisp" name="maloaisp" type="text">
-                            </div>
-                            <div class="form-group">
-                                <text><b>Tên Loại Sản Phẩm</b></text>
-                                <br/>
-                                <input class="col-md-10" id="tenloaisp" name="tenloaisp" type="text">
-                            </div>
-                            <div class="form-group">
-                                <div class="col-md-offset-2 col-md-10">
-                                    <input type="submit" value="Create" class="btn btn-dark" />
+                            <div class="form-group row">
+                                <p class="col-sm-2 font-weight-bold">Mã Loại Sản Phẩm</p>
+                                <div class="col-sm-10">
+                                    <input class="col-md-10" id="maloaisp" name="maloaisp" type="text">
                                 </div>
                             </div>
+                            <div class="form-group row">
+                                <p class="col-sm-2 font-weight-bold">Tên Loại Sản Phẩm</p>
+                                <div class="col-sm-10">
+                                    <input class="col-md-10" id="tenloaisp" name="tenloaisp" type="text">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-offset-2 col-md-10">
+
+                                    <button type="submit" value="Create" class="btn btn-dark">Thêm loại sản phẩm</button>
+                                </div>
+                                <a href="dsPGG.jsp" class="btn btn-dark" role="button" aria-pressed="true">Quay lại danh sách</a>
+                            </div>
                         </form>
-                        <div>
-                            <a href="dsloaiSP.jsp">Quay lại danh sách</a>
-                        </div>
+
 
                     </div>
                 </div>

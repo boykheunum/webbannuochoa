@@ -55,7 +55,7 @@ public class suaPGG extends HttpServlet {
                 response.sendRedirect("dsPGG.jsp");
             }
              else {
-                response.sendRedirect("500.jsp");
+                response.sendRedirect("admin500.jsp");
             }
         }
     }

@@ -12,7 +12,7 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
-                            <img src="content/img/anhadmin1.png" width="1100" height="650" >
+                            <img src="content/img/anhadmin/admin.png" width="1100" height="650" >
                     </div>
                 </main>
 

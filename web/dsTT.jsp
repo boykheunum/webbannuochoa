@@ -14,7 +14,7 @@
                     <div class="container-fluid">
 
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="index.html">Sản Phẩm</a></li>
+                            <li class="breadcrumb-item"><a href="#">Tin Tức</a></li>
                             <li class="breadcrumb-item active">Danh Sách</li>
                         </ol>
                         <div class="card mb-4">

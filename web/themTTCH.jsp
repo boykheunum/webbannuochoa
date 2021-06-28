@@ -36,15 +36,15 @@
                                            Số điện thoại
                                             <input  id="sdtcuahang" name="sdt" type="text">
                                         </div>
-                                        <div class="form-group">
-                                            <div class="col-md-offset-2 col-md-10">
-                                                <input type="submit" value="Create" class="btn btn-default" />
-                                            </div>
-                                        </div>
+                                         <div class="form-group row">
+                            <div class="col-md-offset-2 col-md-10">
+
+                                <button type="submit" value="Create" class="btn btn-dark">Thêm thông tin cửa hàng</button>
+                            </div>
+                            
+                        </div>
                                     </form>
-                                    <div>
-                                        "Back to List", "Index"
-                                    </div>
+                                   
 
                                 </div>
                             </div>

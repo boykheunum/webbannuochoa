@@ -40,7 +40,7 @@ public class xoaTT extends HttpServlet {
                 response.sendRedirect("dsTT.jsp");
             }
              else {
-                response.sendRedirect("500.jsp");
+                response.sendRedirect("admin500.jsp");
             }
         }
     }
