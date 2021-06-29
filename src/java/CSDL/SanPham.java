@@ -240,7 +240,7 @@ public class SanPham {
             PreparedStatement ps;
             try {
                 ps = cnn.prepareStatement(sql);
-                ps.setString(1, id);
+               ps.setString(1, "%"+id+"%");
                 ResultSet rs = ps.executeQuery();
                 while (rs.next()) {
                     sanphamModel sp = new sanphamModel();
