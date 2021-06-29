@@ -19,7 +19,28 @@ import java.util.logging.Logger;
  * @author Nguyen Tien Dat
  */
 public class hoadon {
+    
+    public static int countHD() {
+        Connection cnn = CSDL.databaseConnection.cnnDB();
+        if (cnn == null) {
+            return -1;
+        } else {
+            String sql = "SELECT COUNT(*) FROM hoadon";
+            try {
+                PreparedStatement ps = cnn.prepareStatement(sql);
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    return rs.getInt(1);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(hoadon.class.getName()).log(Level.SEVERE, null, ex);
+                return -2;
+            }
 
+        }
+        return 0;
+    }
+    
     public static int listHD(Vector<hoaDonModel> ds) {
         Connection cnn = CSDL.databaseConnection.cnnDB();
         if (cnn == null) {

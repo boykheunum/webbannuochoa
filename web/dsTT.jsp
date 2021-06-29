@@ -37,7 +37,7 @@
         <div class="container-fluid">
 
             <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item"><a href="#">Tin Tức</a></li>
+                <li class="breadcrumb-item"><a href="manuAdmin.jsp">Tin Tức</a></li>
                 <li class="breadcrumb-item active">Danh Sách</li>
             </ol>
             <div class="card mb-4">
@@ -96,6 +96,10 @@
                         <%}%>
                     </table>
                     <%}%>
+                    <%
+                        int demSoLuongTT = CSDL.tintuc.countTT();
+                    %>
+                    <text><b>Tổng số bản ghi: </b><%=demSoLuongTT%><text>
                 </div>
             </div>
         </div>

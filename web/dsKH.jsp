@@ -100,7 +100,10 @@
                         <%}%>
                     </table>
                     <%}%>
-
+                    <%
+                        int demSoLuongKH = CSDL.nguoidung.countKH();
+                    %>
+                    <text><b>Tổng số bản ghi: </b><%=demSoLuongKH%><text>
                 </div>
             </div>
         </div>

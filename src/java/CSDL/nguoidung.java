@@ -20,7 +20,26 @@ import java.util.logging.Logger;
  * @author DELL
  */
 public class nguoidung {
+    public static int countKH() {
+        Connection cnn = CSDL.databaseConnection.cnnDB();
+        if (cnn == null) {
+            return -1;
+        } else {
+            String sql = "SELECT COUNT(*) FROM nguoidung";
+            try {
+                PreparedStatement ps = cnn.prepareStatement(sql);
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    return rs.getInt(1);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(nguoidung.class.getName()).log(Level.SEVERE, null, ex);
+                return -2;
+            }
 
+        }
+        return 0;
+    }
     public static int listNguoiDung(Vector<nguoiDungModel> ls) {
         Connection cnn = CSDL.databaseConnection.cnnDB();
         if (cnn == null) {

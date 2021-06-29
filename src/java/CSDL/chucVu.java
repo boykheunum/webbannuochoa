@@ -20,6 +20,26 @@ import java.util.logging.Logger;
  * @author Nguyen Tien Dat
  */
 public class chucVu {
+     public static int countCV() {
+        Connection cnn = CSDL.databaseConnection.cnnDB();
+        if (cnn == null) {
+            return -1;
+        } else {
+            String sql = "SELECT COUNT(*) FROM chucvu";
+            try {
+                PreparedStatement ps = cnn.prepareStatement(sql);
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    return rs.getInt(1);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(chucVu.class.getName()).log(Level.SEVERE, null, ex);
+                return -2;
+            }
+
+        }
+        return 0;
+    }
     public static int listLoaiCV(Vector<chucVuModel> ls) {
         Connection cnn = CSDL.databaseConnection.cnnDB();
         if (cnn == null) {

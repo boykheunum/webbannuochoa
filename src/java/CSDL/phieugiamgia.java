@@ -20,7 +20,26 @@ import javax.swing.text.html.HTMLDocument;
  * @author Nguyen Tien Dat
  */
 public class phieugiamgia {
+    public static int countPGG() {
+        Connection cnn = CSDL.databaseConnection.cnnDB();
+        if (cnn == null) {
+            return -1;
+        } else {
+            String sql = "SELECT COUNT(*) FROM magiamgia";
+            try {
+                PreparedStatement ps = cnn.prepareStatement(sql);
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    return rs.getInt(1);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(phieugiamgia.class.getName()).log(Level.SEVERE, null, ex);
+                return -2;
+            }
 
+        }
+        return 0;
+    }
     public static int listTT(Vector<phieuGiamGiaModel> ds) {
         Connection cnn = CSDL.databaseConnection.cnnDB();
         if (cnn == null) {

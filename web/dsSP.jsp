@@ -48,6 +48,10 @@
                         <a href="themSP.jsp" style="text-decoration: none; color:white" >Thêm mới</a>
                     </button>
                     <%
+                        int demSoLuongSP = CSDL.SanPham.countSP();
+                    %>
+                    <text><b>Số lượng sản phẩm: </b><%=demSoLuongSP%><text>
+                    <%                        
                         Vector<sanphamModel> ds = new Vector<sanphamModel>();
                         int kq = CSDL.SanPham.listSP(ds);
                         if (kq == 1) {

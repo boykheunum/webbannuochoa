@@ -19,7 +19,7 @@ import java.util.logging.Logger;
  * @author Nguyen Tien Dat
  */
 public class chitiethoadon {
-
+    
     public static int listCTHD(Vector<chiTietHoaDonModel> ds) {
         Connection cnn = CSDL.databaseConnection.cnnDB();
         if (cnn == null) {

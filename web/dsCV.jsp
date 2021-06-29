@@ -8,12 +8,6 @@
 <%@page import="Model.chucVuModel"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<ol class="breadcrumb mb-4">
-    <li class="breadcrumb-item"><a href="menuAdmin.jsp">Chức Vụ</a></li>
-    <li class="breadcrumb-item active">Danh Sách</li>
-</ol>
-<div class="card mb-4">
-    <div class="card-body">
 
         <jsp:include page="layoutAdmin/menuAdmin.jsp" />
 
@@ -21,7 +15,12 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid">
-
+                    <ol class="breadcrumb mb-4">
+                        <li class="breadcrumb-item"><a href="menuAdmin.jsp">Chức vụ</a></li>
+                        <li class="breadcrumb-item active">Danh Sách chức vụ</li>
+                    </ol>
+                <div class="card mb-4">
+                <div class="card-body">
                     <button class="btn btn-dark" style="margin-bottom: 2%">
                         <a href="themCV.jsp" style="text-decoration: none; color:white" >Thêm mới</a>
                     </button>
@@ -56,7 +55,10 @@
 
                     </table>
 
-
+                    <%
+                        int demSoLuongCV = CSDL.chucVu.countCV();
+                    %>
+                    <text><b>Tổng số bản ghi: </b><%=demSoLuongCV%><text>
                 </div>
         </div>
     </div>

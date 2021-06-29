@@ -85,7 +85,10 @@
                         <%}%>
                     </table>
                     <%}%>
-
+                    <%
+                        int demSoLuongNV = CSDL.nhanVien.countNV();
+                    %>
+                    <text><b>Tổng số bản ghi: </b><%=demSoLuongNV%><text>
                 </div>
             </div>
         </div>

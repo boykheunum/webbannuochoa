@@ -53,35 +53,7 @@
                         <h4>Khách hàng</h4>
                         <hr />
                         <input id="makh" type="hidden" name="makh" value="<%=kh.getMakh()%>">
-<<<<<<< HEAD
-                        <div class="form-group row">
-                                <p class="col-sm-2 font-weight-bold">Tên đăng nhập</p>
-                                <div class="col-sm-10">
-                                <input type="text" id="tendangnhap" name="tendangnhap" value="<%=kh.getTendangnhap()%>">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                                <p class="col-sm-2 font-weight-bold">Mật khẩu</p>
-                                <div class="col-sm-10">
-                                <input type="text" id="matkhau" name="matkhau" value="<%=kh.getMatkhau()%>">
-                            </div>
-                        </div>
-                       <div class="form-group row">
-                                <p class="col-sm-2 font-weight-bold">Họ và tên</p>
-                                <div class="col-sm-10">
-                                <input type="text" id="hovaten" name="hovaten" value="<%=kh.getHovaten()%>">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                                <p class="col-sm-2 font-weight-bold">Địa chỉ</p>
-                                <div class="col-sm-10">
-                                <input type="text" id="diachi" name="diachi" value="<%=kh.getDiachi()%>">
-                            </div>
-                        </div>
-                       <div class="form-group row">
-                                <p class="col-sm-2 font-weight-bold">Số điện thoại</p>
-                                <div class="col-sm-10">
-=======
+
                         <div class="form-group">
                             <text><b>Tên đăng nhập</b></text>
                             <div class="col-md-6">
@@ -109,7 +81,7 @@
                         <div class="form-group">
                             <text><b>Số điện thoại</b></text>
                             <div class="col-md-6">
->>>>>>> fb8db9797de2a36b53b1f4fae819d6b9e0321716
+
                                 <input class="form-control" id="sdt" name="sdt" value="<%=kh.getSdt()%>">
                             </div>
                         </div>
@@ -128,13 +100,10 @@
 
             <%}%>
 
-<<<<<<< HEAD
-           <a href="dsKH.jsp">Quay lại danh sách</a>
-=======
             <div>
 
             </div>
->>>>>>> fb8db9797de2a36b53b1f4fae819d6b9e0321716
+
 
 
         </div>

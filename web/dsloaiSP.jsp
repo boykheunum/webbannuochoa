@@ -43,10 +43,18 @@
                 <li class="breadcrumb-item active">Danh Sách</li>
             </ol>
             <div class="card mb-4">
+                <%                    
+                    int demSoLuongLoaiSP = CSDL.LoaiSP.countLoaiSP();
+                %>
+                <text><b>Số lượng sản phẩm: </b><%=demSoLuongLoaiSP%><text>
                 <div class="card-body">
                     <button class="btn btn-dark" style="margin-bottom: 2%">
                         <a href="themloaiSP.jsp" style="text-decoration: none; color:white" >Thêm mới</a>
                     </button>
+                    <%
+                        int demSoMaSP = CSDL.SanPham.countSP();
+                    %>
+                    <text><b>Số lượng sản phẩm: </b><%=demSoLuongSP%><text>
                     <table class="table">
                         <tr>
                             <th>
@@ -56,7 +64,8 @@
                             </th>
                             <th></th>
                         </tr>
-                        <%                            Vector<loaispModel> ds = new Vector<loaispModel>();
+                        <%                            
+                            Vector<loaispModel> ds = new Vector<loaispModel>();
                             int kq = CSDL.LoaiSP.listLoaiSP(ds);
                             if (kq == 1) {
                                 for (loaispModel lsp : ds) {

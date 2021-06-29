@@ -18,6 +18,7 @@
                 <li class="breadcrumb-item active">Danh Sách</li>
             </ol>
             <div class="card mb-4">
+                
                 <div class="card-body">
                     <%
                         Vector<chiTietHoaDonModel> ds = new Vector<chiTietHoaDonModel>();
@@ -76,7 +77,10 @@
                         <%}%>
                     </table>
                     <%}%>
-
+                    <%
+                        int demSoLuongHD = CSDL.hoadon.countHD();
+                    %>
+                    <text><b>Tổng số hóa đơn: </b><%=demSoLuongHD%><text>
                 </div>
             </div>
         </div>

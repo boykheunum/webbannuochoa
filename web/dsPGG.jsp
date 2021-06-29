@@ -89,7 +89,10 @@
                         <%}%>
                     </table>
                     <%}%>
-
+                    <%
+                        int demSoLuongPGG = CSDL.phieugiamgia.countPGG();
+                    %>
+                    <text><b>Tổng số bản ghi: </b><%=demSoLuongPGG%><text>
                 </div>
             </div>
         </div>

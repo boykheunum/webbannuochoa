@@ -20,6 +20,27 @@ import org.apache.tomcat.util.net.jsse.openssl.Authentication;
  * @author Nguyen Tien Dat
  */
 public class LoaiSP {
+    
+    public static int countLoaiSP() {
+        Connection cnn = CSDL.databaseConnection.cnnDB();
+        if (cnn == null) {
+            return -1;
+        } else {
+            String sql = "SELECT COUNT(*) FROM loaisp";
+            try {
+                PreparedStatement ps = cnn.prepareStatement(sql);
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    return rs.getInt(1);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(loaispModel.class.getName()).log(Level.SEVERE, null, ex);
+                return -2;
+            }
+
+        }
+        return 0;
+    }
 
     public static int listLoaiSP(Vector<loaispModel> ls) {
         Connection cnn = CSDL.databaseConnection.cnnDB();
@@ -146,4 +167,5 @@ public class LoaiSP {
             }
         }
     }
+    
 }

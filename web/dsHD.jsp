@@ -18,6 +18,7 @@
             </ol>
             <div class="card mb-4">
                 <div class="card-body">
+                   
                     <%
                         Vector<hoaDonModel> ds = new Vector<hoaDonModel>();
                         int kq = CSDL.hoadon.listHD(ds);
@@ -62,6 +63,10 @@
                         <%}%>
                     </table>
                     <%}%>
+                     <%
+                        int demSoLuongHD = CSDL.hoadon.countHD();
+                    %>
+                    <text><b>Tổng số hóa đơn: </b><%=demSoLuongHD%><text>
                 </div>
             </div>
         </div>
