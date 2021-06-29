@@ -31,51 +31,6 @@
         }
     }
 
-<<<<<<< HEAD
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="dsTTCH.jsp">Thông Tin Cửa Hàng</a></li>
-                            <li class="breadcrumb-item active">Sửa</li>
-                        </ol>
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                <%
-                                    int id = Integer.parseInt(request.getParameter("id"));
-                                    thongTinCuaHangModel tt = new thongTinCuaHangModel();
-                                    int kq = CSDL.thongtincuahang.searchThongTin(id, tt);
-                                    if(kq==1){
-                                %>
-                                <form class="form-horizontal" method="post" action="suaTTCH">
-                                    <h4>Loại sản phẩm</h4>
-                                    <hr />
-                                    <input type="hidden" name="id" id="id" value="<%=tt.getId()%>">
-                                    <div class="form-group">
-                                        <text>Địa chỉ</text>
-                                        <div class="col-md-10">
-                                            <input type="text" name="diachi" id="diachi" value="<%=tt.getDiachi()%>">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <text>Số điện thoại</text>
-                                        <div class="col-md-10">
-                                            <input type="text" name="email" id="email" value="<%=tt.getEmail()%>">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <text>Địa chỉ</text>
-                                        <div class="col-md-10">
-                                            <input type="text" name="sdt" id=sdt value="<%=tt.getSdtcuahang()%>">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-md-offset-2 col-md-10">
-                                            <input type="submit" value="Save" class="btn btn-default" />
-                                        </div>
-                                    </div>
-                                </form>
-                                <%}%>
-
-                                 <a href="dsTTCH.jsp">Quay lại danh sách</a>
-=======
 %>
 <div id="layoutSidenav_content">
     <main>
@@ -101,7 +56,7 @@
                             <text>Địa chỉ</text>
                             <div class="col-md-10">
                                 <input type="text" name="diachi" id="diachi" value="<%=tt.getDiachi()%>">
->>>>>>> fb8db9797de2a36b53b1f4fae819d6b9e0321716
+
                             </div>
                         </div>
                         <div class="form-group">

@@ -22,22 +22,6 @@
         if (macv.contains("1") == true) {
 %>
 <jsp:include page="layoutAdmin/menuAdmin.jsp" />
-<<<<<<< HEAD
-<div id="layoutSidenav_content">
-        <main>
-            <div class="container-fluid">
-                <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item"><a href="index.html">Thông tin cửa hàng</a></li>
-                    <li class="breadcrumb-item active">Thêm thông tin cửa hàng</li>
-                </ol>
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <form class="form-horizontal" action="themTTCH" method="post">
-                            <h4>Thêm thông tin cửa hàng</h4>
-                            <hr />
-                            <span id="messBoxErr" style="color: red"></span>
-                            <span id="messBox" style="color: greenyellow"></span>
-=======
 <%
 } else {
 %>
@@ -47,32 +31,21 @@
     }
 
 %>
-            <div id="layoutSidenav_content">
-                <main>
-                    <main>
-                        <div class="container-fluid">
-                            <ol class="breadcrumb mb-4">
-                                <li class="breadcrumb-item"><a href="index.html">Thông tin cửa hàng</a></li>
-                                <li class="breadcrumb-item active">Thêm thông tin cửa hàng</li>
-                            </ol>
-                            <div class="card mb-4">
-                                <div class="card-body">
-                                    <form class="form-horizontal" action="themTTCH" method="post">
-                                        <h4>Thông tin cửa hàng</h4>
-                                        <hr />
-                                        <span id="messBoxErr" style="color: red"></span>
-                                        <span id="messBox" style="color: greenyellow"></span>
-                                        
-                                        <div class="form-group">
-                                           Địa chỉ cửa hàng
-                                            <input  id="diachi" name="diachi" type="text">
-                                        </div>
-                                         <div class="form-group">
-                                            Email
-                                            <input id="email" name="email" type="text">
-                                        </div>
->>>>>>> fb8db9797de2a36b53b1f4fae819d6b9e0321716
-
+<div id="layoutSidenav_content">
+    <main>
+        <main>
+            <div class="container-fluid">
+                <ol class="breadcrumb mb-4">
+                    <li class="breadcrumb-item"><a href="index.html">Thông tin cửa hàng</a></li>
+                    <li class="breadcrumb-item active">Thêm thông tin cửa hàng</li>
+                </ol>
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <form class="form-horizontal" action="themTTCH" method="post">
+                            <h4>Thông tin cửa hàng</h4>
+                            <hr />
+                            <span id="messBoxErr" style="color: red"></span>
+                            <span id="messBox" style="color: greenyellow"></span>
                             <div class="form-group row">
                                 <p class="col-sm-2 font-weight-bold">  Địa chỉ cửa hàng</p>
                                 <div class="col-sm-10">
@@ -104,18 +77,18 @@
                 </div>
             </div>
         </main>
-    <footer class="py-4 bg-light mt-auto">
-        <div class="container-fluid">
-            <div class="d-flex align-items-center justify-content-between small">
-                <div class="text-muted">Copyright &copy; Your Website 2020</div>
-                <div>
-                    <a href="#">Privacy Policy</a>
-                    &middot;
-                    <a href="#">Terms &amp; Conditions</a>
+        <footer class="py-4 bg-light mt-auto">
+            <div class="container-fluid">
+                <div class="d-flex align-items-center justify-content-between small">
+                    <div class="text-muted">Copyright &copy; Your Website 2020</div>
+                    <div>
+                        <a href="#">Privacy Policy</a>
+                        &middot;
+                        <a href="#">Terms &amp; Conditions</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </footer>
+        </footer>
 </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>

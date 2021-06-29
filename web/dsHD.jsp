@@ -9,64 +9,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <jsp:include page="layoutAdmin/menuAdmin.jsp" />
-<<<<<<< HEAD
-            <div id="layoutSidenav_content">
-                <main>
-                    <div class="container-fluid">
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="menuAdmin.jsp">Thông tin hóa đơn</a></li>
-                            <li class="breadcrumb-item active">Danh Sách</li>
-                        </ol>
-                        <div class="card mb-4">
-                            <div class="card-body">
-
-                              
-                                <%
-                                    Vector<hoaDonModel> ds = new Vector<hoaDonModel>();
-                                    int kq = CSDL.hoadon.listHD(ds);
-                                    if (kq == 1) {
-                                %>
-                                <table class="table">
-                                    <tr>
-                                        <th>
-                                            <text><b>Mã hóa đơn</b></text>
-                                        </th>
-                                        <th>
-                                            <text><b>Ngày bán</b></text>
-                                        </th>
-                                        <th>
-                                            <text><b>Tổng tiền</b></text>
-                                        </th>
-                                        <th>
-                                            <text><b>Mã khách hàng</b></text>
-                                        </th>
-                                        <th></th>
-                                    </tr>
-                                    <%
-                                        for (hoaDonModel hd : ds) {
-                                    %>
-                                    <tr>
-                                        <td>
-                                            <text><%=hd.getMahd()%></text>
-                                        </td>
-                                        <td>
-                                            <text><%=hd.getNgayban()%></text>
-                                        </td>
-                                        <td>
-                                            <text><%=hd.getTongtien()%></text>
-                                        </td>
-                                        <td>
-                                            <text><%=hd.getMakh()%></text>
-                                        </td>
-                                        <td>
-                                            <a href="xoaHD.jsp?mahd=<%=hd.getMahd()%>">Delete</a>
-                                        </td>
-                                    </tr>
-                                    <%}%>
-                                </table>
-                                <%}%>
-=======
-
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid">
@@ -120,8 +62,6 @@
                         <%}%>
                     </table>
                     <%}%>
->>>>>>> fb8db9797de2a36b53b1f4fae819d6b9e0321716
-
                 </div>
             </div>
         </div>

@@ -38,17 +38,9 @@
                                 <button type="submit" value="Create" class="btn btn-dark">Thêm Chức vụ</button>
                                 <a href=dsCV.jsp" class="btn btn-dark" role="button" aria-pressed="true">Quay lại danh sách</a>
                             </div>
-<<<<<<< HEAD
-                             
-                            <a href="dsCV.jsp" class="btn btn-dark" role="button" aria-pressed="true">Quay lại danh sách</a>
-                       
-                             </div>
-=======
-
-
 
                         </div>
->>>>>>> fb8db9797de2a36b53b1f4fae819d6b9e0321716
+
                     </form>
 
                 </div>
@@ -70,11 +62,9 @@
         </div>
     </div>
 </footer>
-<<<<<<< HEAD
-    </div>
-=======
 
->>>>>>> fb8db9797de2a36b53b1f4fae819d6b9e0321716
+    </div>
+
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="content/js/scripts.js"></script>

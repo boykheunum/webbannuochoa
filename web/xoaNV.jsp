@@ -100,25 +100,25 @@
                     </div>
                 </form>
                 <%}%>
-                
-                        <a href="dsNV.jsp">Quay lại danh sách</a>
-                 
+
+                <a href="dsNV.jsp">Quay lại danh sách</a>
+
 
             </div>
         </div>
-</main>
-<footer class="py-4 bg-light mt-auto">
-    <div class="container-fluid">
-        <div class="d-flex align-items-center justify-content-between small">
-            <div class="text-muted">Copyright &copy; Your Website 2020</div>
-            <div>
-                <a href="#">Privacy Policy</a>
-                &middot;
-                <a href="#">Terms &amp; Conditions</a>
+    </main>
+    <footer class="py-4 bg-light mt-auto">
+        <div class="container-fluid">
+            <div class="d-flex align-items-center justify-content-between small">
+                <div class="text-muted">Copyright &copy; Your Website 2020</div>
+                <div>
+                    <a href="#">Privacy Policy</a>
+                    &middot;
+                    <a href="#">Terms &amp; Conditions</a>
+                </div>
             </div>
         </div>
-    </div>
-</footer>
+    </footer>
 </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>

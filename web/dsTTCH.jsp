@@ -33,64 +33,7 @@
         }
     }
 
-<<<<<<< HEAD
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="menuAdmin.jsp">Thông tin cửa hàng</a></li>
-                            <li class="breadcrumb-item active">Danh Sách</li>
-                        </ol>
-                        <div class="card mb-4">
-                            <div class="card-body">
-<button class="btn btn-dark" style="margin-bottom: 2%">
-                        <a href="themTTCH.jsp" style="text-decoration: none; color:white" >Thêm mới</a>
-                    </button>
-                                
-                                <%
-                                    Vector<thongTinCuaHangModel> ds = new Vector<thongTinCuaHangModel>();
-                                    int kq = CSDL.thongtincuahang.listTT(ds);
-                                    if (kq == 1) {
-                                %>
-                                <table class="table">
-                                    <tr>
-                                        <th>
-                                           <text> Id</text>
-                                        </th>
-                                        <th>
-                                           <text> Email</text>
-                                        </th>
-                                        <th>
-                                            <text>Địa Chỉ</text>
-                                        </th>
-                                        <th>
-                                            <text>Số điện thoại</text>
-                                        </th>                                        
-                                        <th></th>
-                                    </tr>
-                                    <%
-                                        for (thongTinCuaHangModel tt : ds) {
-                                    %>
-                                    <tr>
-                                        <td>
-                                           <text> <%=tt.getId()%></text>
-                                        </td>
-                                        <td>
-                                            <text><%=tt.getEmail()%></text>
-                                        </td>>
-                                        <td>
-                                             <text> <%=tt.getDiachi()%></text>
-                                        </td>
-                                        <td>
-                                            <text>  <%=tt.getSdtcuahang()%></text>
-                                        </td>
-                                        <td>
-                                            <a href="suaTTCH.jsp?id=<%=tt.getId()%>">Edit</a>|
-                                            <a href="chitietTTCH.jsp?id=<%=tt.getId()%>">Details</a>|
-                                            <a href="xoaTTCH.jsp?id=<%=tt.getId()%>">Delete</a>
-                                        </td>
-                                    </tr>
-                                    <%}%>
-                                </table>
-                                <%}%>
-=======
+
 %>
 <div id="layoutSidenav_content">
     <main>
@@ -151,8 +94,6 @@
                         <%}%>
                     </table>
                     <%}%>
->>>>>>> fb8db9797de2a36b53b1f4fae819d6b9e0321716
-
                 </div>
             </div>
         </div>

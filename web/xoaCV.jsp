@@ -13,15 +13,7 @@
         <div class="container-fluid">
 
             <ol class="breadcrumb mb-4">
-<<<<<<< HEAD
-                <li class="breadcrumb-item"><a href="dsCV.jsp">Chức vụ</a></li>
-                <li class="breadcrumb-item active">Xóa chức vụ</li>
-            </ol>
-            <div class="card mb-4">
-                <div class="card-body">
 
-
-=======
                 <li class="breadcrumb-item"><a href="index.html">Loại Sản Phẩm</a></li>
                 <li class="breadcrumb-item active">Xóa</li>
             </ol>
@@ -29,7 +21,7 @@
                 <div class="card-body">
 
                     <h3>Are you sure you want to delete this?</h3>
->>>>>>> fb8db9797de2a36b53b1f4fae819d6b9e0321716
+
                     <%
                         String macv = request.getParameter("macv");
                         chucVuModel cv = new chucVuModel();
@@ -41,42 +33,25 @@
                             <h4>Xóa chức vụ</h4>
                             <hr />
 
-<<<<<<< HEAD
-                            <div class="form-group row">
-                            <p class="col-sm-2 font-weight-bold">Mã chức vụ</p>
-                            <div class="col-sm-10">
-=======
                             <div class="form-group">
                                 <text><b>Mã chức vụ</b></text>
                                 <div class="col-md-6">
->>>>>>> fb8db9797de2a36b53b1f4fae819d6b9e0321716
+
                                     <input type="hidden" id="macv" name="macv" value="<%=cv.getMacv()%>">
                                     <text><%=cv.getMacv()%></text>
                                 </div>
                             </div>
-<<<<<<< HEAD
-                            <div class="form-group row">
-                            <p class="col-sm-2 font-weight-bold">Tên chức vụ</p>
-                            <div class="col-sm-10">
-=======
+
                             <div class="form-group">
                                 <text><b>Tên chức vụ</b></text>
                                 <div class="col-md-6">
->>>>>>> fb8db9797de2a36b53b1f4fae819d6b9e0321716
+
                                     <input type="hidden" id="tencv" name="tencv" value="<%=cv.getTencv()%>">
                                     <text><%=cv.getTencv()%></text>
                                 </div>
                             </div>
                         </div>
 
-<<<<<<< HEAD
-                        <div class="form-actions no-color">
-                            <input type="submit" value="Delete" class="btn btn-default" />                                   
-                        </div>
-
-                    </form>
-                    <a href="dsCV.jsp">Quay lại danh sách</a>
-=======
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-10">
                                 <input type="submit" value="Save" class="btn btn-dark" >
@@ -85,28 +60,24 @@
                                 </button>
                             </div>
                         </div>
-
                     </form>
-
->>>>>>> fb8db9797de2a36b53b1f4fae819d6b9e0321716
-
                 </div>
             </div>
         </div>
     </main>
 
-    <footer class="py-4 bg-light mt-auto">
-        <div class="container-fluid">
-            <div class="d-flex align-items-center justify-content-between small">
-                <div class="text-muted">Copyright &copy; Your Website 2020</div>
-                <div>
-                    <a href="#">Privacy Policy</a>
-                    &middot;
-                    <a href="#">Terms &amp; Conditions</a>
-                </div>
+<footer class="py-4 bg-light mt-auto">
+    <div class="container-fluid">
+        <div class="d-flex align-items-center justify-content-between small">
+            <div class="text-muted">Copyright &copy; Your Website 2020</div>
+            <div>
+                <a href="#">Privacy Policy</a>
+                &middot;
+                <a href="#">Terms &amp; Conditions</a>
             </div>
         </div>
-    </footer>
+    </div>
+</footer>
 </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>

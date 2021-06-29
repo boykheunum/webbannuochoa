@@ -101,12 +101,6 @@
             </div>
             </form>
             <%}%>
-<<<<<<< HEAD
-
-           <a href="dsTT.jsp">Quay lại danh sách</a>
-
-=======
->>>>>>> fb8db9797de2a36b53b1f4fae819d6b9e0321716
         </div>
 
     </main>

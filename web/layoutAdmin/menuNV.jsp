@@ -91,11 +91,8 @@
                                     <a class="nav-link" href="#">Danh sách</a>
                                 </nav>
                             </div>
-<<<<<<< HEAD
-                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts9" aria-expanded="false" aria-controls="collapseLayouts">
-=======
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts4" aria-expanded="false" aria-controls="collapseLayouts">
->>>>>>> fb8db9797de2a36b53b1f4fae819d6b9e0321716
+
                                 Tin Tức
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>

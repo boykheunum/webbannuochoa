@@ -31,71 +31,6 @@
 <%
         }
     }
-
-<<<<<<< HEAD
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="menuAdmin.jsp">Tin Tức</a></li>
-                            <li class="breadcrumb-item active">Danh Sách</li>
-                        </ol>
-                        <div class="card mb-4">
-                            <div class="card-body">
-
-                                <button class="btn btn-dark" style="margin-bottom: 2%">
-                        <a href="themTT.jsp" style="text-decoration: none; color:white" >Thêm mới</a>
-                    </button>
-                                <%
-                                    Vector<tintucModel> ds = new Vector<tintucModel>();
-                                    int kq = CSDL.tintuc.listTT(ds);
-                                    if (kq == 1) {
-                                %>
-                                <table class="table">
-                                    <tr>
-                                        <th>
-                                            Mã bài viết
-                                        </th>
-                                        <th>
-                                            Tiêu đề
-                                        </th>
-                                        <th>
-                                            Ảnh
-                                        </th>
-                                        <th>
-                                            <text>Nội dung</text>
-                                        </th>
-                                        <th>
-                                            <text>Ngày đăng</text>
-                                        </th>
-                                        <th></th>
-                                    </tr>
-                                    <%
-                                        for (tintucModel tt : ds) {
-                                    %>
-                                    <tr>
- <td>
-                                           <text> <%=tt.getId()%></text>
-                                        </td>
-                                        <td>
-                                          <text>  <%=tt.getTieude()%></text>
-                                        </td>
-                                        <td>
-                                            <img width='348px' height="348px"  src="imageSP/<%=tt.getAnh()%>">
-                                        </td>
-                                        <td>
-                                           <text> <%=tt.getNoidung()%></text>
-                                        </td>
-                                        <td>
-                                           <text> <%=tt.getNgaydang()%></text>
-                                        </td>                                      
-                                        <td>
-                                            <a href="suaTT.jsp?id=<%=tt.getId()%>">Edit</a>|
-                                            <a href="chitietTT.jsp?id=<%=tt.getId()%>">Details</a>|
-                                            <a href="xoaTT.jsp?id=<%=tt.getId()%>">Delete</a>
-                                        </td>
-                                    </tr>
-                                    <%}%>
-                                </table>
-                                <%}%>
-=======
 %>
 <div id="layoutSidenav_content">
     <main>
@@ -161,8 +96,6 @@
                         <%}%>
                     </table>
                     <%}%>
->>>>>>> fb8db9797de2a36b53b1f4fae819d6b9e0321716
-
                 </div>
             </div>
         </div>

@@ -24,45 +24,6 @@
         if (macv.contains("1") == true) {
 %>
 <jsp:include page="layoutAdmin/menuAdmin.jsp" />
-<<<<<<< HEAD
-            <div id="layoutSidenav_content">
-                <main>
-                    <div class="container-fluid">
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="menuAdmin.jsp">Khách hàng</a></li>
-                            <li class="breadcrumb-item active">Danh Sách</li>
-                        </ol>
-                        <div class="card mb-4">
-                            <div class="card-body">
-<button class="btn btn-dark" style="margin-bottom: 2%">
-                        <a href="themKH.jsp" style="text-decoration: none; color:white" >Thêm mới</a>
-                    </button>
-                                <%
-                                    Vector<nguoiDungModel> ds = new Vector<nguoiDungModel>();
-                                    int kq = CSDL.nguoidung.listNguoiDung(ds);
-                                    if (kq == 1) {
-                                %>
-                                <table class="table">
-                                    <tr>
-                                        <th>
-                                            <text>Mã Khách hàng</text>
-                                        </th>
-                                        <th>
-                                            <text>Tên đăng nhập</text>
-                                        </th>
-                                        <th>
-                                            <text>Mật khẩu</text>
-                                        </th>
-                                        <th>
-                                            <text>Họ và tên</text>
-                                        </th>
-                                        <th>
-                                            <text>Địa chỉ</text>
-                                        </th>
-                                        <th>
-                                            <text>Số điện thoại</text>
-                                        </th>
-=======
 <%
 } else {
 %>
@@ -105,7 +66,7 @@
                             <th>
                                 <text>Số điện thoại</text>
                             </th>
->>>>>>> fb8db9797de2a36b53b1f4fae819d6b9e0321716
+
 
                             <th></th>
                         </tr>

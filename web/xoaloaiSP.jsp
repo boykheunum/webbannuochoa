@@ -4,6 +4,7 @@
     Author     : Nguyen Tien Dat
 --%>
 
+<%@page import="Model.nhanVienModel"%>
 <%@page import="Model.loaispModel"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%

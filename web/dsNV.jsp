@@ -13,39 +13,6 @@
     <main>
         <div class="container-fluid">
 
-<<<<<<< HEAD
-                                <button class="btn btn-dark" style="margin-bottom: 2%">
-                        <a href="themNV.jsp" style="text-decoration: none; color:white" >Thêm mới</a>
-                    </button>
-                                <%
-                                    Vector<nhanVienModel> ds = new Vector<nhanVienModel>();
-                                    int kq = CSDL.nhanVien.listNhanVien(ds);
-                                    if (kq == 1) {
-                                %>
-                                <table class="table">
-                                    <tr>
-                                        <th>
-                                            Mã chức vụ
-                                        </th>
-                                        <th>
-                                            Mã nhân viên
-                                        </th>
-                                        <th>
-                                            <text>Tên nhân viên</text>
-                                        </th>
-                                        <th>
-                                            <text>Số điện thoại</text>
-                                        </th>
-                                        <th>
-                                            <text>Địa chỉ</text>
-                                        </th>
-                                        <th>
-                                            <text>Tên đăng nhập</text>
-                                        </th>
-                                        <th>
-                                            <text>Mật khẩu</text>
-                                        </th>
-=======
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item"><a href="menuAdmin.jsp">Nhân Viên</a></li>
                 <li class="breadcrumb-item active">Danh Sách</li>
@@ -83,8 +50,6 @@
                             <th>
                                 <text><b>Mật khẩu</b></text>
                             </th>
->>>>>>> fb8db9797de2a36b53b1f4fae819d6b9e0321716
-
                             <th></th>
                         </tr>
                         <%

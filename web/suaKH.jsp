@@ -37,13 +37,9 @@
         <div class="container-fluid">
 
             <ol class="breadcrumb mb-4">
-<<<<<<< HEAD
-                <li class="breadcrumb-item"><a href="dsKH.jsp">Khách hàng</a></li>
-                <li class="breadcrumb-item active">Sửa thông tin khách hàng</li>
-=======
                 <li class="breadcrumb-item"><a href="index.html">Sửa khách hàng</a></li>
                 <li class="breadcrumb-item active">Sửa </li>
->>>>>>> fb8db9797de2a36b53b1f4fae819d6b9e0321716
+
             </ol>
             <div class="card mb-4">
                 <%

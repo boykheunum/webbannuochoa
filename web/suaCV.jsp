@@ -30,38 +30,11 @@
         }
     }
 
-<<<<<<< HEAD
-                    <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item"><a href="dsCV.jsp">Chức Vụ</a></li>
-                        <li class="breadcrumb-item active">Sửa Chức Vụ</li>
-                    </ol>
-                    <div class="card mb-4">
-                        <div class="card-body">
-                                <%
-                                    String macv = request.getParameter("macv");
-                                    chucVuModel cv = new chucVuModel();
-                                    int kq = CSDL.chucVu.searchChucVu(cv, macv);
-                                    if(kq == 1){
-                                %>
-                                <form class="form-horizontal" method="post" action="suaCV">
-                                    <h4> Sửa chức vụ</h4>
-                                    <hr />
-                                    <div class="form-group">
-                                        
-                                        <input type="hidden" name="macv" id="maloaisp" value="<%=cv.getMacv()%>">
-                                        <div class="form-group row">
-                            <p class="col-sm-2 font-weight-bold"> Tên chức vụ</p>
-                            <div class="col-sm-10">                                          
-                                            <input type="text" name="tencv" id="tenloaisp" value="<%=cv.getTencv()%>">
-                                        </div>
-                                    </div>
-=======
+
 %>
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid">
->>>>>>> fb8db9797de2a36b53b1f4fae819d6b9e0321716
-
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item"><a href="index.html">Chức Vụ</a></li>
                 <li class="breadcrumb-item active">Sửa Chức Vụ</li>

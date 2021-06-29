@@ -41,8 +41,7 @@
             </ol>
             <div class="card mb-4">
                 <div class="card-body">
-                    <%
-                        String maloaisp = request.getParameter("maloaisp");
+                    <%                        String maloaisp = request.getParameter("maloaisp");
                         loaispModel lsm = new loaispModel();
                         int kq = CSDL.LoaiSP.searchLoaiSP(lsm, maloaisp);
                         if (kq == 1) {
@@ -50,15 +49,15 @@
                     <form class="form-horizontal" method="post" action="sualoaiSP">
                         <h4>Loại sản phẩm</h4>
                         <hr />
-                           <div class="form-group row">
+                        <div class="form-group row">
                             <p class="col-sm-2 font-weight-bold">Mã loại sản phẩm</p>
                             <div class="col-sm-10">
                                 <input type="hidden" name="maloaisp" id="maloaisp" value="<%=lsm.getMaloaisp()%>">
                             </div>
                         </div>
-                        
-                       
-                                <div class="form-group row">
+
+
+                        <div class="form-group row">
                             <p class="col-sm-2 font-weight-bold">Tên loại sản phẩm</p>
                             <div class="col-sm-10">
                                 <input class="col-md-10" type="text" name="tenloaisp" id="tenloaisp" value="<%=lsm.getTenloaisp()%>">
@@ -66,22 +65,16 @@
                         </div>
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-10">
-<<<<<<< HEAD
-                                <input type="submit" value="Save" class="btn btn-dark" >
-                              
-=======
+
                                 <input type="submit" value="Save" class="btn btn-dark" >                                
-                                    <button class="btn btn-dark">
-                                        <a href="dsloaiSP.jsp" style="color: white; text-decoration: none">Quay lại danh sách</a>
-                                    </button>
->>>>>>> fb8db9797de2a36b53b1f4fae819d6b9e0321716
+                                <button class="btn btn-dark">
+                                    <a href="dsloaiSP.jsp" style="color: white; text-decoration: none">Quay lại danh sách</a>
+                                </button>
+
                             </div>
                         </div>
                     </form>
                     <%}%>
-  <button class="btn btn-dark">
-                                    <a href="dsloaiSP.jsp">Quay lại danh sách</a>
-                                </button>
                 </div>
             </div>
         </div>

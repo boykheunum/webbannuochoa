@@ -8,50 +8,22 @@
 <%@page import="Model.chucVuModel"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item"><a href="menuAdmin.jsp">Chức Vụ</a></li>
+    <li class="breadcrumb-item active">Danh Sách</li>
+</ol>
+<div class="card mb-4">
+    <div class="card-body">
+
+        <jsp:include page="layoutAdmin/menuAdmin.jsp" />
 
 
-<<<<<<< HEAD
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="menuAdmin.jsp">Chức Vụ</a></li>
-                            <li class="breadcrumb-item active">Danh Sách</li>
-                        </ol>
-                        <div class="card mb-4">
-                            <div class="card-body">
-=======
-<jsp:include page="layoutAdmin/menuAdmin.jsp" />
->>>>>>> fb8db9797de2a36b53b1f4fae819d6b9e0321716
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid">
 
-<div id="layoutSidenav_content">
-    <main>
-        <div class="container-fluid">
-
-<<<<<<< HEAD
-                                <button class="btn btn-dark" style="margin-bottom: 2%">
-                        <a href="themCV.jsp" style="text-decoration: none; color:white" >Thêm mới</a>
-                    </button>
-                                <%
-                                    Vector<chucVuModel> ds = new Vector<chucVuModel>();
-                                    int kq = CSDL.chucVu.listLoaiCV(ds);
-                                    if (kq == 1) {
-                                %>
-                                <table class="table">
-                                    <tr>
-                                        <th>
-                                            <text>Mã chức vụ</text>
-                                        <th>
-                                            <text>Tên chức vụ</text>
-                                        </th>
-                                        <th></th>
-                                    </tr>
-=======
-            <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item"><a href="">Chức Vụ</a></li>
-                <li class="breadcrumb-item active">Danh Sách</li>
-            </ol>
-            <div class="card mb-4">
-                <div class="card-body">
                     <button class="btn btn-dark" style="margin-bottom: 2%">
-                        <a href="themSP.jsp" style="text-decoration: none; color:white" >Thêm mới</a>
+                        <a href="themCV.jsp" style="text-decoration: none; color:white" >Thêm mới</a>
                     </button>
                     <%
                         Vector<chucVuModel> ds = new Vector<chucVuModel>();
@@ -67,8 +39,6 @@
                             </th>
                             <th></th>
                         </tr>
->>>>>>> fb8db9797de2a36b53b1f4fae819d6b9e0321716
-
                         <%for (chucVuModel cv : ds) {%>
                         <tr>
                             <td>
@@ -88,22 +58,22 @@
 
 
                 </div>
-            </div>
         </div>
-    </main>
+    </div>
+</main>
 
-    <footer class="py-4 bg-light mt-auto">
-        <div class="container-fluid">
-            <div class="d-flex align-items-center justify-content-between small">
-                <div class="text-muted">Copyright &copy; Your Website 2020</div>
-                <div>
-                    <a href="#">Privacy Policy</a>
-                    &middot;
-                    <a href="#">Terms &amp; Conditions</a>
-                </div>
+<footer class="py-4 bg-light mt-auto">
+    <div class="container-fluid">
+        <div class="d-flex align-items-center justify-content-between small">
+            <div class="text-muted">Copyright &copy; Your Website 2020</div>
+            <div>
+                <a href="#">Privacy Policy</a>
+                &middot;
+                <a href="#">Terms &amp; Conditions</a>
             </div>
         </div>
-    </footer>
+    </div>
+</footer>
 </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>

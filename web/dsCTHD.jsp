@@ -19,14 +19,9 @@
             </ol>
             <div class="card mb-4">
                 <div class="card-body">
-
-<<<<<<< HEAD
-                    
                     <%
                         Vector<chiTietHoaDonModel> ds = new Vector<chiTietHoaDonModel>();
-=======
-                    <%                        Vector<chiTietHoaDonModel> ds = new Vector<chiTietHoaDonModel>();
->>>>>>> fb8db9797de2a36b53b1f4fae819d6b9e0321716
+
                         int kq = CSDL.chitiethoadon.listCTHD(ds);
                         if (kq == 1) {
                     %>
